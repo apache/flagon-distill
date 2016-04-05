@@ -13,7 +13,7 @@ Licensed under Apache Software License
 import sys
 from setuptools import setup, find_packages
 from setuptools.command.test import test as TestCommand
-import os, sys
+import io, os, sys
 
 here = os.path.abspath(os.path.dirname(__file__))
 
@@ -67,7 +67,7 @@ setup(
     tests_require=['pytest'],
     cmdclass={'test': PyTest},
     # TODO: List of packages that this one depends upon:   
-    install_requires=['Flask>0.10.1', 'networkx>1.11', 'elasticsearch-dsl', 'numpy', 'scipy'],
+    install_requires=['Flask>=0.10.1', 'networkx>=1.11', 'elasticsearch-dsl', 'numpy', 'scipy'],
     # TODO: List executable scripts, provided by the package (this is just an example)
     entry_points={
       'console_scripts': 
