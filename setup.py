@@ -17,6 +17,10 @@ import io, os, sys
 
 here = os.path.abspath(os.path.dirname(__file__))
 
+if sys.argv[-1] == 'setup.py':
+    print("To install, run 'python setup.py install'")
+    print()
+    
 def read(*filenames, **kwargs):
     encoding = kwargs.get('encoding', 'utf-8')
     sep = kwargs.get('sep', '\n')
