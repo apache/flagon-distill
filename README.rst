@@ -16,7 +16,7 @@ To build the source code and run all unit tests::
 
     $ python setup.py develop test
 
-To start up the web server, running on localhost:8090
+To start up the web server, running on localhost:8090::
 
     $ dev
 
