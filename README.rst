@@ -16,6 +16,22 @@ The easiest way to install most Python packages is via ``easy_install`` or ``pip
 
     $ easy_install distill
 
+Development and Testing
+------------
+To build the source code and run all unit tests
+
+	$ python setup.py develop test
+
+To start up the web server, running on localhost:8090
+	$ dev
+
+Using curl
+	$ curl http://localhost:8090/app/register' -d '{
+		"application_name" : "my_app",
+		"version" : "0.1",
+		"application_description" : "my test app"
+	}'
+
 Usage
 -----
 
