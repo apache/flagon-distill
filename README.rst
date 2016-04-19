@@ -20,6 +20,9 @@ To start up the web server, running on localhost:8090::
 
     $ dev
 
+Usage
+-----
+
 Using  ``curl``::
 
 	$ curl -XGET 'http://localhost:8090/app/register' -d '{
@@ -27,15 +30,5 @@ Using  ``curl``::
 		"version" : "0.1",
 		"application_description" : "my test app"
 	}'
-
-Usage
------
-
-TODO: This is a good place to start with a couple of concrete examples of how the package should be used.
-
-The boilerplate code provides a dummy ``main`` function that prints out the word 'Hello'::
-
-    >> from distill import main
-    >> main()
     
 When the package is installed via ``easy_install`` or ``pip`` this function will be bound to the ``distill`` executable in the Python installation's ``bin`` directory (on Windows - the ``Scripts`` directory).
