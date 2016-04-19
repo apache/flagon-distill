@@ -20,7 +20,7 @@ To start up the web server, running on localhost:8090::
 
     $ dev
 
-Using curl::
+Using  ``curl``::
 
 	$ curl -XGET 'http://localhost:8090/app/register' -d '{
 		"application_name" : "my_app",
