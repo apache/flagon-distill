@@ -12,7 +12,7 @@ The easiest way to install most Python packages is via ``easy_install`` or ``pip
 Development and Testing
 ------------
 
-To build the source code and run all unit tests
+To build the source code and run all unit tests::
 
     $ python setup.py develop test
 
@@ -20,7 +20,7 @@ To start up the web server, running on localhost:8090
 
     $ dev
 
-Using curl:
+Using curl::
 
 	$ curl -XGET 'http://localhost:8090/app/register' -d '{
 		"application_name" : "my_app",
