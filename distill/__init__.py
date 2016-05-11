@@ -14,6 +14,7 @@ if sys.version_info[:2] < (2, 7):
     raise ImportError (m % sys.version_info[:2])
 del sys
 
+# Initialize Flask instance
 my_app = Flask (__name__)
 
 # Load Configurations

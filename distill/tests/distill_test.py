@@ -1,9 +1,9 @@
 from flask import Flask, request
 
-app = Flask (__name__)
+from distill import my_app
 
 def test_example ():
-	with app.test_client () as c:
+	with my_app.test_client () as c:
 		rv = c.get ('/?tequila=42')
 		assert request.args ['tequila'] == '42'
 
