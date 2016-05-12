@@ -8,10 +8,11 @@ Copyright 2016, The Charles Stark Draper Laboratory
 Licensed under Apache Software License.
 '''
 
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from distill import my_app
 from distill.classes.userale import UserAle
-import json
+from distill.exceptions import ValidationError
+from distill.validation import validate_request
 
 """
 curl -XGET https://[hostname]:[port]
@@ -20,12 +21,7 @@ Show Distill version information, connection status, number of live nodes/shards
 """
 @my_app.route ('/', methods=['GET'])
 def index ():	
-	msg = '{ "name" : "Distill", "version": "1.0 alpha", "author" : "Michelle Beard <mbeard@draper.com>" }'
-	# parsed = json.loads (msg)
-	# print parsed
-	# res = json.dumps (parsed, sort_keys=True, indent=4, separators=(',',':'))
-	# print res
-	return msg
+	return jsonify (name="Distill", version="1.0 alpha", author="Michelle Beard", email="mbeard@draper.com")
 
 """
 curl -XGET https://[hostname]:[port]/app_name
@@ -58,20 +54,40 @@ curl -XGET http://[hostname]:[port]/app_name/select?q=*:*&size=100&scroll=true&f
 Example:
 curl -XGET http://[hostname]:[port]/app_name/select?q=session_id:A1234&size=100&scroll=false&fl=param1,param2
 
+
 Get all data associated with an application
 """
-@my_app.route ('/<app_id>/select', methods=['GET'])
-def select (app_id):
-	error = None
-	# Parsing parameters
-	# required q
-	# optional: everything else
-	required = ["q"]
-	optional = ["size", "scroll", "fl"]
-
+@my_app.route ('/<app_id>/select', defaults={"app_type": None})
 @my_app.route ('/<app_id>/<app_type>/select', methods=['GET'])
-def query (app_id, app_type):
-	return "false"
+def select (app_id, app_type):
+	q = request.args
+	try:
+		validate_request (q)
+		return UserAle.select (app_id, type=app_type, params=q)
+	except ValidationError as e:
+		return jsonify (error=e.message)
+
+"""
+curl -XGET http://[hostname]:[port]/app_name/denoise?save=true&type=parsed
+
+Run the denoise script to cleanup the raw logs. A document type called "parsed"
+will be stored with new log created unless specified in the request. Have option to save 
+parsed results back to data store.
+"""
+@my_app.route ('/<app_id>/denoise', methods=['GET'])
+def denoise (app_id):
+	doc_type = 'parsed'
+	save = False
+	q = request.args
+	if 'save' in q:
+		save = str2bool (q.get ('save'))
+	if 'type' in q:
+		"""
+		@TODO: Proper cleanup script needs to happen
+		"""
+		doc_type = q.get ('type')
+	return UserAle.denoise (app_id, doc_type=doc_type, save=save)
+
 """
 @TODO
 """
@@ -80,7 +96,7 @@ def update (app_id):
 	return UserAle.update (app_id)
 
 """
-Error handling
+Generic Error
 """
 @my_app.errorhandler(404)
 def page_not_found (error):
