@@ -1,0 +1,14 @@
+Distill is written and maintained by Michelle Beard and 
+various contributors:
+
+Development Lead
+````````````````
+
+- Michelle Beard <mbeard@draper.com>
+
+Additional Staff
+````````````````
+
+- Joshua Poore
+- Clay Gimenez
+- Laura Mariano

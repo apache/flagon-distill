@@ -50,7 +50,7 @@ setup (
     author = "Michelle Beard",
     author_email = "mbeard@draper.com",
     description = "An analytical framework for User-ALE <https://github.com/draperlaboratory/user-ale>.",
-    long_description = read ('README.rst', 'CHANGELOG.txt'),
+    long_description = read ('README.txt', 'CHANGELOG.txt'),
 
     classifiers = [ # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
       'Development Status :: 1 - Planning',
@@ -59,7 +59,7 @@ setup (
       'Environment :: Web Environment',
       'Intended Audience :: Developers',
       'License :: OSI Approved :: Apache Software License',
-      'Operating System :: OS Independent', # Maybe not on Windows
+      'Operating System :: OS Independent', 
       'Private :: Do Not Upload"'
     ],
     keywords = "analytics graph portal user-ale instrumentation", # Separate with spaces
@@ -73,7 +73,8 @@ setup (
                         'networkx>=1.11',
                         'elasticsearch-dsl', 
                         'numpy', 
-                        'scipy'
+                        'scipy',
+                        'sphinx'
     ],
     # @TODO: List executable scripts, provided by the package (this is just an example)
     entry_points = {
