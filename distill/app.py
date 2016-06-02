@@ -9,8 +9,9 @@ Licensed under Apache Software License.
 '''
 
 from flask import Flask, request, jsonify
-from distill import my_app
+from distill import app
 from distill.classes.userale import UserAle
+from distill.classes.stout import Stout
 from distill.exceptions import ValidationError
 from distill.validation import validate_request
 
@@ -19,34 +20,53 @@ curl -XGET https://[hostname]:[port]
 
 Show Distill version information, connection status, number of live nodes/shards, etc.
 """
-@my_app.route ('/', methods=['GET'])
+@app.route ('/', methods=['GET'])
 def index ():	
-	return jsonify (name="Distill", version="1.0 alpha", author="Michelle Beard", email="mbeard@draper.com")
+	return jsonify (name="Distill", version="1.0 alpha", author="Michelle Beard", email="mbeard@draper.com", status=UserAle.getStatus ())
 
 """
-curl -XGET https://[hostname]:[port]/app_name
-curl -XPOST https://[hostname]:[port]/app_name
-curl -XDELETE https://[hostname]:[port]/<app_id>
+curl -XPOST https://[hostname]:[port]/create/app_name
+curl -XPUT https://[hostname]:[port]/create/app_name
 
 Example:
-curl -XGET https://[hostname]:[port]/xdata_v3
 curl -XPOST https://[hostname]:[port]/xdata_v3
+curl -XPUT https://[hostname]:[port]/xdata_v3
+
+Creates an index in Elasticsearch to store user logs to
+"""
+@app.route ('/create/<app_id>', defaults={"app_id" : False}, methods=['POST', 'PUT'])
+def create (app_id):
+	return UserAle.create (app_id)
+
+"""
+curl -XGET https://[hostname]:[port]/status/app_name
+
+Example:
+curl -XGET https://[hostname]:[port]/status/xdata_v3
+
+Presents meta information about index app_name: field names and document types
+"""
+@app.route ('/status/<app_id>', defaults={"app_id" : False}, methods=['GET'])
+def status (app_id): 
+	return UserAle.read (app_id)
+
+"""
+@TODO
+"""
+@app.route ('/update/<app_id>', methods=['POST'])
+def update (app_id):
+	return UserAle.update (app_id)
+
+"""
+curl -XDELETE https://[hostname]:[port]/app_name
+
 curl -XDELETE https://[hostname]:[port]/xdata_v3
 
-If GET: Presents meta information about index app_name: field names and document types
-If POST/PUT: Creates an index in Elasticsearch to store user logs to
-If DELETE: Deletes an index permentantly from Elasticsearch
+Deletes an index permentantly from Elasticsearch
 """
-@my_app.route ('/<app_id>', methods=['GET', 'POST', 'PUT', 'DELETE'])
-def register (app_id): 
-	if request.method == 'GET':
-		return UserAle.read (app_id)
-	elif request.method == 'POST' or request.method == 'PUT':
-		return UserAle.create (app_id)
-	elif request.method == 'DELETE':
-		return UserAle.delete (app_id)
-	else:
-		return UserAle.read (app_id)
+@app.route ('/delete/<app_id>', defaults={"app_id" : False}, methods=['DELETE'])
+def delete (app_id):
+	return UserAle.delete (app_id)
 
 """
 curl -XGET http://[hostname]:[port]/app_name/select?q=*:*&size=100&scroll=true&fl=param1,param2
@@ -54,27 +74,27 @@ curl -XGET http://[hostname]:[port]/app_name/select?q=*:*&size=100&scroll=true&f
 Example:
 curl -XGET http://[hostname]:[port]/app_name/select?q=session_id:A1234&size=100&scroll=false&fl=param1,param2
 
-
 Get all data associated with an application
-"""
-@my_app.route ('/<app_id>/select', defaults={"app_type": None})
-@my_app.route ('/<app_id>/<app_type>/select', methods=['GET'])
-def select (app_id, app_type):
+""" 
+@app.route ('/search/<app_id>', defaults={"app_type" : None})
+@app.route ('/search/<app_id>/<app_type>', methods=['GET'])
+def search (app_id, app_type):
 	q = request.args
 	try:
 		validate_request (q)
-		return UserAle.select (app_id, type=app_type, params=q)
+		return UserAle.select (app_id, app_type=app_type, params=q)
 	except ValidationError as e:
 		return jsonify (error=e.message)
 
 """
-curl -XGET http://[hostname]:[port]/app_name/denoise?save=true&type=parsed
+curl -XGET http://[hostname]:[port]/denoise/app_name?save=true&type=parsed
 
-Run the denoise script to cleanup the raw logs. A document type called "parsed"
+Bootstrap script to cleanup the raw logs. A document type called "parsed"
 will be stored with new log created unless specified in the request. Have option to save 
-parsed results back to data store.
+parsed results back to data store. These parsed logs can be intergrated with STOUT results 
+by running the stout bootstrap script 
 """
-@my_app.route ('/<app_id>/denoise', methods=['GET'])
+@app.route ('/denoise/<app_id>', methods=['GET'])
 def denoise (app_id):
 	doc_type = 'parsed'
 	save = False
@@ -82,22 +102,25 @@ def denoise (app_id):
 	if 'save' in q:
 		save = str2bool (q.get ('save'))
 	if 'type' in q:
-		"""
-		@TODO: Proper cleanup script needs to happen
-		"""
+		# @TODO: Proper cleanup script needs to happen
 		doc_type = q.get ('type')
 	return UserAle.denoise (app_id, doc_type=doc_type, save=save)
 
 """
-@TODO
+Bootstrap script to aggregate user ale logs to stout master answer table
+This will save the merged results back to ES instance at new index stout
+OR denoise data first, then merge with the stout index...
+If STOUT is enabled, the select method expects a stout index to exist or otherwise 
+it will return an error message. 
 """
-@my_app.route ('/<app_id>/update', methods=['POST'])
-def update (app_id):
-	return UserAle.update (app_id)
+@app.route ('/stout/<app_id>', defaults={"app_type" : None})
+@app.route ('/stout/<app_id>/<app_type>', methods=['GET'])
+def merge_stout (app_id):
+	pass
 
 """
-Generic Error
+Generic Error Message
 """
-@my_app.errorhandler(404)
+@app.errorhandler(404)
 def page_not_found (error):
 	return "Unable to find Distill." 
