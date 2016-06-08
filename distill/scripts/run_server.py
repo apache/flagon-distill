@@ -9,14 +9,7 @@ from distill import app
 from distill.app import *
 
 """
-@TODO
-Define Distill production server
-"""
-def run_server ():
-	print "production server yet defined"
-
-"""
-Devlopment server
+Start up a local WSGI server called development 
 """
 def dev_server ():
 	host = app.config ['HOST']
