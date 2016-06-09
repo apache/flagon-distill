@@ -43,18 +43,18 @@ class PyTest (TestCommand):
         sys.exit (pytest.main (self.test_args))
 
 setup (
-    name = "distill",
-    version = "0.1",
+    name = "Distill",
+    version = "1.0",
     url = "https://github.com/draperlaboratory/distill",
     license = "Apache Software License",
     author = "Michelle Beard",
     author_email = "mbeard@draper.com",
-    description = "An analytical framework for User-ALE <https://github.com/draperlaboratory/user-ale>.",
-    long_description = read ('README.txt', 'CHANGELOG.txt'),
-
-    classifiers = [ # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
-      'Development Status :: 1 - Planning',
+    description = "An analytical framework for User-ALE.",
+    long_description = __doc__,
+    classifiers = [
+      'Development Status :: 4 - Beta',
       'Programming Language :: Python',
+      'Programming Language :: Python :: 2.7',
       'Natural Language :: English',
       'Environment :: Web Environment',
       'Intended Audience :: Developers',
@@ -62,21 +62,19 @@ setup (
       'Operating System :: OS Independent', 
       'Private :: Do Not Upload"'
     ],
-    keywords = "analytics graph portal user-ale instrumentation", # Separate with spaces
+    keywords = "analytics graph stout user-ale instrumentation", # Separate with spaces
     packages = find_packages (exclude=['examples', 'tests']),
     include_package_data = True,
     zip_safe = False,
     tests_require = ['pytest'],
     cmdclass = {'test': PyTest},
-    # TODO: List of packages that this one depends upon:   
     install_requires = ['Flask==0.10.1', 
-                        'networkx>=1.11',
-                        'elasticsearch-dsl', 
-                        'numpy', 
-                        'scipy',
-                        'sphinx'
+                        'networkx==1.11',
+                        'elasticsearch-dsl==2.0.0', 
+                        'numpy>=1.10.0', 
+                        'scipy>=0.17.0',
+                        'sphinx>=1.4.0'
     ],
-    # @TODO: List executable scripts, provided by the package (this is just an example)
     entry_points = {
       'console_scripts': [
         'dev = distill.scripts.run_server:dev_server'
