@@ -20,6 +20,8 @@ from distill import app, es
 
 import datetime
 import json
+import csv
+import StringIO
 import yaml
 import urllib2
 
@@ -28,17 +30,61 @@ Generic class supporting basic CRUD operations
 """
 class UserAle (object):
 
+	"""
+	Get Status of Elasticsearch Instance, show all applications registered and the number
+	of logs in each application (based on doc_type).
+	Example:
+	{
+		"author" : "Michelle Beard",
+		"email" : "mbeard@draper.com",
+		"name": "Distill",
+		"status" : true,
+		"version" : "1.0",
+		"apps" : {
+			"xdata_v3" : {
+				testing: 205,
+				parsed: 500,
+			},
+			"test_app" : {
+				logs: 500,
+				parsed: 100,
+			}
+		}
+	}
+	"""
 	@staticmethod
 	def getStatus ():
-		"""
-		Get Status of Elasticsearch Instance
-		"""
 		try:
 			res = es.ping ()
 		except ConnectionError as e:
 			res = False
 		return res
 
+	@staticmethod
+	def getApps ():
+		doc = {}
+		try:
+			cluster_status = es.cat.indices (h=["index"], pri=False)
+			x = cluster_status.strip ().splitlines()
+
+			for idx in x:
+			    idx = idx.rstrip ()
+			    
+			    # Ignore private indexes (like .kibana or .stout)
+			    if idx [:1] != '4':
+			        s = Search (using=es, index=idx)
+			        s.aggs.bucket ('count_by_type', 'terms', field='_type')
+			        response = s.execute ()
+			        d = {}
+			        for tag in response.aggregations.count_by_type.buckets:
+			            d [tag ['key']] = tag ['doc_count']
+			        doc [idx] = d
+
+		except TransportError as e:
+			doc ['error'] = e.info
+
+		return doc
+	
 	"""
 	Register a new application in User Ale
 	Example:
@@ -98,7 +144,7 @@ class UserAle (object):
 		return jsonify (status="not implemented")
 
 	"""
-	Delete an application from User Ale
+	Technically close the index so its content is not searchable. 
 	Example:
 	{
 
@@ -106,12 +152,11 @@ class UserAle (object):
 	"""
 	@staticmethod
 	def delete (app):
-		# try:
-		# 	res = es.indices.delete (index=app)
-		# 	return jsonify (status="Deleted index %s" % app)
-		# except TransportError as e:
-		# 	return jsonify (e.info)
-		return jsonify (status="not allowed")
+		try:
+			res = es.indices.close (index=app)
+			return jsonify (status="Deleted index %s" % app)
+		except TransportError as e:
+			return jsonify (e.info)
 
 	"""
 	Main method of entry to perform segmentation and integration of STOUT's master
@@ -167,7 +212,7 @@ class UserAle (object):
 		pass
 
 """
-Helper method to gather cluster information
+Helper method to gather cluster information for a specific index
 """
 def get_cluster_status (app):
 	# Return cluster status, index health, and document count as string
