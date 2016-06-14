@@ -10,19 +10,22 @@ Licensed under Apache Software License.
 
 from flask import Flask, request, jsonify
 from distill import app
-from distill.classes.userale import UserAle
-from distill.classes.stout import Stout
+from distill.models.userale import UserAle
+from distill.models.stout import Stout
 from distill.exceptions import ValidationError
 from distill.validation import validate_request
 
 """
 curl -XGET https://[hostname]:[port]
 
-Show Distill version information, connection status, number of live nodes/shards, etc.
+Example:
+curl -XGET https://[hostname]:[port]
+
+Show Distill version information, connection status, and all registered applications.
 """
 @app.route ('/', methods=['GET'])
 def index ():	
-	return jsonify (name="Distill", version="1.0 alpha", author="Michelle Beard", email="mbeard@draper.com", status=UserAle.getStatus ())
+	return jsonify (name="Distill", version="1.0 alpha", author="Michelle Beard", email="mbeard@draper.com", status=UserAle.getStatus (), apps=UserAle.getApps ())
 
 """
 curl -XPOST https://[hostname]:[port]/create/app_name
@@ -34,7 +37,7 @@ curl -XPUT https://[hostname]:[port]/xdata_v3
 
 Creates an index in Elasticsearch to store user logs to
 """
-@app.route ('/create/<app_id>', defaults={"app_id" : False}, methods=['POST', 'PUT'])
+@app.route ('/create/<app_id>', methods=['POST', 'PUT'])
 def create (app_id):
 	return UserAle.create (app_id)
 
@@ -46,33 +49,41 @@ curl -XGET https://[hostname]:[port]/status/xdata_v3
 
 Presents meta information about index app_name: field names and document types
 """
-@app.route ('/status/<app_id>', defaults={"app_id" : False}, methods=['GET'])
+@app.route ('/status/<app_id>', methods=['GET'])
 def status (app_id): 
 	return UserAle.read (app_id)
 
 """
-@TODO
+curl -XPOST https://[hostname]:[port]/update/app_name?name="new_app_name"
+curl -XPUT https://[hostname]:[port]/update/app_name?name="new_app_name"
+
+Example:
+curl -XPOST https://[hostname]:[port]/update/xdata_v3?name="xdata_v4"
+curl -XPUT https://[hostname]:[port]/update/xdata_v3?name="xdata_v4"
+
+Renames a specific index in Elasticsearch
 """
-@app.route ('/update/<app_id>', methods=['POST'])
+@app.route ('/update/<app_id>', methods=['POST', 'PUT'])
 def update (app_id):
 	return UserAle.update (app_id)
 
 """
 curl -XDELETE https://[hostname]:[port]/app_name
 
+Example:
 curl -XDELETE https://[hostname]:[port]/xdata_v3
 
 Deletes an index permentantly from Elasticsearch
 """
-@app.route ('/delete/<app_id>', defaults={"app_id" : False}, methods=['DELETE'])
+@app.route ('/delete/<app_id>', methods=['DELETE'])
 def delete (app_id):
 	return UserAle.delete (app_id)
 
 """
-curl -XGET http://[hostname]:[port]/app_name/select?q=*:*&size=100&scroll=true&fl=param1,param2
+curl -XGET https://[hostname]:[port]/app_name/select?q=*:*&size=100&scroll=true&fl=param1,param2
 
 Example:
-curl -XGET http://[hostname]:[port]/app_name/select?q=session_id:A1234&size=100&scroll=false&fl=param1,param2
+curl -XGET https://[hostname]:[port]/app_name/select?q=session_id:A1234&size=100&scroll=false&fl=param1,param2
 
 Get all data associated with an application
 """ 
@@ -87,7 +98,10 @@ def search (app_id, app_type):
 		return jsonify (error=e.message)
 
 """
-curl -XGET http://[hostname]:[port]/denoise/app_name?save=true&type=parsed
+curl -XGET https://[hostname]:[port]/denoise/app_name?save=true&type=parsed
+
+Example:
+curl -XGET https://[hostname]:[port]/denoise/xdata_v3?save=true&type=parsed
 
 Bootstrap script to cleanup the raw logs. A document type called "parsed"
 will be stored with new log created unless specified in the request. Have option to save 
@@ -107,6 +121,13 @@ def denoise (app_id):
 	return UserAle.denoise (app_id, doc_type=doc_type, save=save)
 
 """
+curl -XGET https://[hostname]:[port]/stout/app_name
+curl -XGET https://[hostname]:[port]/stout/app_name/app_type
+
+Example:
+curl -XGET https://[hostname]:[port]/stout/xdata_v3
+curl -XGET https://[hostname]:[port]/stout/xdata_v3/testing
+
 Bootstrap script to aggregate user ale logs to stout master answer table
 This will save the merged results back to ES instance at new index stout
 OR denoise data first, then merge with the stout index...
