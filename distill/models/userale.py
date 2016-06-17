@@ -65,13 +65,13 @@ class UserAle (object):
 		doc = {}
 		try:
 			cluster_status = es.cat.indices (h=["index"], pri=False)
-			x = cluster_status.strip ().splitlines()
+			x = cluster_status.splitlines()
 
 			for idx in x:
 			    idx = idx.rstrip ()
 			    
 			    # Ignore private indexes (like .kibana or .stout)
-			    if idx [:1] != '4':
+			    if idx [:1] != '.':
 			        s = Search (using=es, index=idx)
 			        s.aggs.bucket ('count_by_type', 'terms', field='_type')
 			        response = s.execute ()
@@ -79,7 +79,6 @@ class UserAle (object):
 			        for tag in response.aggregations.count_by_type.buckets:
 			            d [tag ['key']] = tag ['doc_count']
 			        doc [idx] = d
-
 		except TransportError as e:
 			doc ['error'] = e.info
 
@@ -137,7 +136,7 @@ class UserAle (object):
 		return jsonify (doc)
 
 	"""
-	@TODO Not Implemented
+	@TODO Not Supported
 	"""
 	@staticmethod
 	def update (app):
@@ -147,7 +146,7 @@ class UserAle (object):
 	Technically close the index so its content is not searchable. 
 	Example:
 	{
-
+	  status: "Deleted index xdata_v3"
 	}
 	"""
 	@staticmethod
