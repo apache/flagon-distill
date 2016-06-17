@@ -25,7 +25,7 @@ Show Distill version information, connection status, and all registered applicat
 """
 @app.route ('/', methods=['GET'])
 def index ():	
-	return jsonify (name="Distill", version="1.0 alpha", author="Michelle Beard", email="mbeard@draper.com", status=UserAle.getStatus (), apps=UserAle.getApps ())
+	return jsonify (name="Distill", version="1.0 alpha", author="Michelle Beard", email="mbeard@draper.com", status=UserAle.getStatus (), applications=UserAle.getApps ())
 
 """
 curl -XPOST https://[hostname]:[port]/create/app_name
@@ -87,7 +87,7 @@ curl -XGET https://[hostname]:[port]/app_name/select?q=session_id:A1234&size=100
 
 Get all data associated with an application
 """ 
-@app.route ('/search/<app_id>', defaults={"app_type" : None})
+@app.route ('/search/<app_id>', defaults={"app_type" : None}, methods=['GET'])
 @app.route ('/search/<app_id>/<app_type>', methods=['GET'])
 def search (app_id, app_type):
 	q = request.args
@@ -96,6 +96,22 @@ def search (app_id, app_type):
 		return UserAle.select (app_id, app_type=app_type, params=q)
 	except ValidationError as e:
 		return jsonify (error=e.message)
+
+"""
+This can be folded into /search api
+curl -XGET https://[hostname]:[port]/app_name/stat?elem=button&event=param1,param2
+
+Example:
+curl -XGET https://[hostname]:[port]/xdata_v3/testing/?elem=signup&event=click
+
+How many users clicked on my sign up button?
+"""
+@app.route ('/stat/<app_id>', defaults={"app_type" : None}, methods=['GET'])
+@app.route ('/stat/<app_id>/<app_type>', methods=['GET'])
+def stat (app_id, app_type):
+	q = request.args
+
+	return jsonify (error='Not implemented')
 
 """
 curl -XGET https://[hostname]:[port]/denoise/app_name?save=true&type=parsed
@@ -134,10 +150,14 @@ OR denoise data first, then merge with the stout index...
 If STOUT is enabled, the select method expects a stout index to exist or otherwise 
 it will return an error message. 
 """
-@app.route ('/stout/<app_id>', defaults={"app_type" : None})
-@app.route ('/stout/<app_id>/<app_type>', methods=['GET'])
-def merge_stout (app_id):
-	pass
+#@app.route ('/stout/<app_id>', defaults={"app_type" : None})
+#@app.route ('/stout/<app_id>/<app_type>', methods=['GET'])
+@app.route ('/stout', methods=['GET'])
+def merge_stout ():
+	flag = app.config ['ENABLE_STOUT']
+	if flag:
+		return Stout.ingest ()
+	return jsonify (status="STOUT is disabled.")
 
 """
 Generic Error Message
