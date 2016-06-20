@@ -9,6 +9,7 @@ Development Lead
 Additional Staff
 ````````````````
 
-- Joshua Poore
-- Clay Gimenez
-- Laura Mariano
+- Laura Mariano <lmariano@draper.com>
+- Dr. Joshua Poore <jpoore@draper.com>
+- Clay Gimenez <cgimenez@draper.com>
+- Steven York <syork@draper.com>

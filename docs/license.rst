@@ -12,7 +12,7 @@ Authors
 
 .. include:: ../AUTHORS.txt
 
-.. _distill-license:
+.. _distill-license: ../LICENSE.txt
 
 Distill License
 ---------------

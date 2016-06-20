@@ -2,8 +2,9 @@ User's Guide
 ------------
 
 Entire documentation of Distill lives here. Provides
-step by step instructions to install Distill and a
-full fleshed out API documentation.
+step by step instructions to install and deploy Distill in a 
+development and production environment. Including is a API reference
+portal and quickstart quide.
 
 .. toctree::
    :maxdepth: 2
@@ -16,7 +17,6 @@ API Reference
 
 .. toctree::
    :maxdepth: 2
-
 
    api
 
