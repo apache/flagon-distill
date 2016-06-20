@@ -10,11 +10,11 @@ The full license text can be found below (:ref:`distill-license`).
 Authors
 -------
 
-.. include:: ../AUTHORS.txt
+.. include:: ../../AUTHORS.txt
 
 .. _distill-license: ../LICENSE.txt
 
 Distill License
 ---------------
 
-.. include:: ../LICENSE.txt
+.. include:: ../../LICENSE.txt
