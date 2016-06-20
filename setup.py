@@ -73,7 +73,8 @@ setup (
                         'elasticsearch-dsl==2.0.0', 
                         'numpy>=1.10.0', 
                         'scipy>=0.17.0',
-                        'sphinx>=1.4.0'
+                        'sphinx>=1.4.0',
+                        'pandas>=0.18.1'
     ],
     entry_points = {
       'console_scripts': [
