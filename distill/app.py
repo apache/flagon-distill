@@ -15,16 +15,17 @@ from distill.models.stout import Stout
 from distill.exceptions import ValidationError
 from distill.validation import validate_request
 
-"""
-curl -XGET https://[hostname]:[port]
 
-Example:
-curl -XGET https://[hostname]:[port]
-
-Show Distill version information, connection status, and all registered applications.
-"""
 @app.route ('/', methods=['GET'])
 def index ():	
+	"""
+	curl -XGET https://[hostname]:[port]
+
+	Example:
+	curl -XGET https://[hostname]:[port]
+
+	Show Distill version information, connection status, and all registered applications.
+	"""
 	return jsonify (name="Distill", version="1.0 alpha", author="Michelle Beard", email="mbeard@draper.com", status=UserAle.getStatus (), applications=UserAle.getApps ())
 
 """
