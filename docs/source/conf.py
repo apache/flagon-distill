@@ -49,8 +49,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Distill'
-copyright = u'2016, Charles Stark Draper Laboratory'
+project = u'Apache Distill'
+copyright = u'2016, The Charles Stark Draper Laboratory Licensed under Apache Software License.'
 author = u'Michelle Beard <mbeard@draper.com>'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -112,7 +112,7 @@ todo_include_todos = True
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'alabaster'
+html_theme = 'sphinx_rtd_theme'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -228,7 +228,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'Distill.tex', u'Distill Documentation',
+    (master_doc, 'Distill.tex', u'Apache Distill Documentation',
      u'Michelle Beard', 'manual'),
 ]
 
@@ -258,7 +258,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'distill', u'Distill Documentation',
+    (master_doc, 'distill', u'Apache Distill Documentation',
      [author], 1)
 ]
 
@@ -272,7 +272,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'Distill', u'Distill Documentation',
+    (master_doc, 'Distill', u'Apache Distill Documentation',
      author, 'Distill', 'One line description of project.',
      'Miscellaneous'),
 ]

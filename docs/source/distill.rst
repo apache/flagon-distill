@@ -15,23 +15,23 @@ Subpackages
 Submodules
 ----------
 
-distill.app module
-------------------
+Distill RESTful API
+-------------------
 
 .. automodule:: distill.app
     :members:
     :undoc-members:
     :show-inheritance:
 
-distill.exceptions module
--------------------------
+Distill Exceptions
+------------------
 
 .. automodule:: distill.exceptions
     :members:
     :undoc-members:
     :show-inheritance:
 
-distill.validation module
+Distill Validation Library
 -------------------------
 
 .. automodule:: distill.validation

@@ -1,12 +1,6 @@
-'''
-distill: This package contains a flask app RESTful api for distill
-
-This flask app exposes some restful api endpoints for querying User-ALE. 
-Very similar to Lucene syntax for basic query operations.
-
-Copyright 2016, The Charles Stark Draper Laboratory
-Licensed under Apache Software License.
-'''
+__license__ = "Apache License 2.0" 
+__revision__ = " $Id: $ "
+__docformat__ = 'reStructuredText'
 
 from elasticsearch_dsl import DocType, String, Boolean, Date, Float, Search
 from elasticsearch_dsl.query import MultiMatch, Match, Q
@@ -25,35 +19,17 @@ import StringIO
 import yaml
 import urllib2
 
-"""
-Generic class supporting basic CRUD operations
-"""
 class UserAle (object):
+	""" Generic class supporting basic CRUD operations
+	"""
 
-	"""
-	Get Status of Elasticsearch Instance, show all applications registered and the number
-	of logs in each application (based on doc_type).
-	Example:
-	{
-		"author" : "Michelle Beard",
-		"email" : "mbeard@draper.com",
-		"name": "Distill",
-		"status" : true,
-		"version" : "1.0",
-		"apps" : {
-			"xdata_v3" : {
-				testing: 205,
-				parsed: 500,
-			},
-			"test_app" : {
-				logs: 500,
-				parsed: 100,
-			}
-		}
-	}
-	"""
 	@staticmethod
 	def getStatus ():
+		""" Fetch the status of an Elasticsearch instance. 
+
+		:return: True/False if connection to Elasticsearch instance has been established.
+		:rtype: bool
+		"""
 		try:
 			res = es.ping ()
 		except ConnectionError as e:
@@ -62,6 +38,13 @@ class UserAle (object):
 
 	@staticmethod
 	def getApps ():
+		""" Fetch all the registered applications for an Elasticsearch instance. 
+		
+		.. note:: Privated indexes starting with a period are not included in the result set.
+
+		:return: A 
+		:rtype: dict
+		"""
 		doc = {}
 		try:
 			cluster_status = es.cat.indices (h=["index"], pri=False)
