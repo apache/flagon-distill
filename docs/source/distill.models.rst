@@ -1,37 +1,15 @@
-distill.models package
-======================
-
-Subpackages
------------
-
-.. toctree::
-
-    distill.models.tests
-
-Submodules
-----------
-
-distill.models.stout module
----------------------------
+Stout Interface
+---------------
 
 .. automodule:: distill.models.stout
     :members:
     :undoc-members:
     :show-inheritance:
 
-distill.models.userale module
------------------------------
+UserAle Interface
+-----------------
 
 .. automodule:: distill.models.userale
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
-Module contents
----------------
-
-.. automodule:: distill.models
     :members:
     :undoc-members:
     :show-inheritance:

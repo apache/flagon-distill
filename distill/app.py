@@ -25,7 +25,7 @@ def index ():
 			"name": "Distill",
 			"status" : true,
 			"version" : "1.0",
-			"apps" : {
+			"applications" : {
 				"xdata_v3" : {
 					testing: 205,
 					parsed: 500,
@@ -63,6 +63,13 @@ def status (app_id):
 	.. code-block:: bash
 
 		$ curl -XGET https://localhost:8000/status/xdata_v3
+
+		{
+		  "application": "xdata_v3",
+		  "health": "green",
+		  "num_docs": "433",
+		  "status": "open"
+		}
 
 	:param app_id: Application name
 	:return: Registered applications meta data as JSON blob
@@ -105,11 +112,11 @@ def search (app_id, app_type):
 
 	.. code-block:: bash
 
-		$ curl -XGET https://[hostname]:[port]/app_name/select?q=session_id:A1234&size=100&scroll=false&fl=param1,param2
+		$ curl -XGET https://[hostname]:[port]/search/xdata_v3?q=session_id:A1234&size=100&scroll=false&fl=param1,param2
 
 	:param app_id: Application name
 	:param app_type: Optional document type to filter against
-	:param q: Main search query
+	:param q: Main search query. To return all documents, pass in q=*:*
 	:param size: Maximum number of documents to return in request
 	:param scroll: Scroll id if the number of documents exceeds 10,000
 	:param fl: List of fields to restrict the result set

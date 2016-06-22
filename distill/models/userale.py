@@ -4,7 +4,7 @@ __docformat__ = 'reStructuredText'
 
 from elasticsearch_dsl import DocType, String, Boolean, Date, Float, Search
 from elasticsearch_dsl.query import MultiMatch, Match, Q
-from elasticsearch import Elasticsearch, TransportError, ConnectionError
+from elasticsearch import Elasticsearch, TransportError
 from elasticsearch_dsl.connections import connections
 from werkzeug.datastructures import ImmutableMultiDict, MultiDict
 
@@ -32,7 +32,7 @@ class UserAle (object):
 		"""
 		try:
 			res = es.ping ()
-		except ConnectionError as e:
+		except:
 			res = False
 		return res
 
@@ -64,7 +64,8 @@ class UserAle (object):
 			        doc [idx] = d
 		except TransportError as e:
 			doc ['error'] = e.info
-
+		except:
+			doc ['error'] = "Exception encountered."
 		return doc
 	
 	"""
@@ -85,6 +86,8 @@ class UserAle (object):
 			return jsonify (doc)
 		except TransportError as e:
 			return jsonify (error=e.info)
+		except:
+			return jsonify(error="Exception encountered.")
 
 	"""
 	Fetch meta data associated with an application
@@ -139,6 +142,8 @@ class UserAle (object):
 			return jsonify (status="Deleted index %s" % app)
 		except TransportError as e:
 			return jsonify (e.info)
+		except:
+			return jsonify ("Exception encountered.")
 
 	"""
 	Main method of entry to perform segmentation and integration of STOUT's master
@@ -147,6 +152,7 @@ class UserAle (object):
 	@staticmethod
 	def select (app, app_type=None, params=None):
 		p = parse_query_parameters (app, app_type, params)
+		print p
 		# doc = UserAleDoc (meta={"index" : app, "doc_type" : app_type});
 		# search = UserAleDoc.search().query ('match', activity="HIDE")
 
@@ -157,10 +163,7 @@ class UserAle (object):
         # 'filters': request_args.getlist ('fq')
  
   		# Start Search
-		s = Search (index="xdata_v3", doc_type=app_type)
-
-		# Check query
-
+		s = Search (index=app, doc_type=app_type)
 
 		# Execute Filter Query
 		for x in p['filters']:
@@ -184,7 +187,7 @@ class UserAle (object):
 
 		# Execute
 		response = s.execute()
-		print(response.hits.total)
+		# print(response.hits.total)
 		return jsonify (response.to_dict())
 
 	"""
@@ -208,6 +211,8 @@ def get_cluster_status (app):
 		doc ["application"] = app
 	except TransportError as e:
 		doc ['error'] = e.info
+	except:
+		doc ['error'] ="Exception encountered."
 	return doc
 
 """

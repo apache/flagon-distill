@@ -10,12 +10,17 @@ Copyright 2016, The Charles Stark Draper Laboratory, Inc.
 Licensed under Apache Software License
 '''
 
-import sys
+from __future__ import absolute_import
 from setuptools import setup, find_packages
 from setuptools.command.test import test as TestCommand
 import io, os, sys
 
-here = os.path.abspath(os.path.dirname (__file__) )
+if sys.version_info[:2] < (2, 7):
+    m = "Python 2.7 or later is required for Distill (%d.%d detected)."
+    raise ImportError (m % sys.version_info[:2])
+del sys
+
+#here = os.path.abspath(os.path.dirname (__file__) )
 
 if sys.argv[-1] == 'setup.py':
     print ("To install, run 'python setup.py install'")

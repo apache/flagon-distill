@@ -18,32 +18,33 @@ Distill Exceptions
     :show-inheritance:
 
 Distill Validation Library
--------------------------
+--------------------------
 
 .. automodule:: distill.validation
     :members:
     :undoc-members:
     :show-inheritance:
 
-
-Module contents
----------------
-
-.. automodule:: distill
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-Subpackages
------------
-
+Distill Analytics
+-----------------
 .. toctree::
 
     distill.algorithms
-    distill.deploy
-    distill.models
-    distill.tests
-    distill.utils
 
-Submodules
-----------
+Distill Models
+--------------
+.. toctree::
+
+    distill.models
+
+Distill Deploy
+--------------
+.. toctree::
+    
+    distill.deploy
+    
+Distill Utilities
+-----------------
+.. toctree::
+    
+    distill.utils

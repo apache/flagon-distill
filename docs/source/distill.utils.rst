@@ -1,15 +1,5 @@
-distill.utils package
-=====================
-
-Subpackages
------------
-
-.. toctree::
-
-    distill.utils.tests
-
-Module contents
----------------
+Utilities Library
+-----------------
 
 .. automodule:: distill.utils
     :members:

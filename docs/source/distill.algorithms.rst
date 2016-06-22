@@ -1,19 +1,15 @@
-distill.algorithms package
-==========================
-
-Subpackages
------------
-
-.. toctree::
-
-    distill.algorithms.graphs
-    distill.algorithms.stats
-    distill.algorithms.tests
-
-Module contents
+Graph Analytics
 ---------------
 
-.. automodule:: distill.algorithms
+.. automodule:: distill.algorithms.graphs.graph
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Statistics Package
+------------------
+
+.. automodule:: distill.algorithms.stats.stats
     :members:
     :undoc-members:
     :show-inheritance:
