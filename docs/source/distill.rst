@@ -1,19 +1,5 @@
-distill package
-===============
-
-Subpackages
------------
-
-.. toctree::
-
-    distill.algorithms
-    distill.deploy
-    distill.models
-    distill.tests
-    distill.utils
-
-Submodules
-----------
+API Documentation
+=================
 
 Distill RESTful API
 -------------------
@@ -47,3 +33,17 @@ Module contents
     :members:
     :undoc-members:
     :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+
+    distill.algorithms
+    distill.deploy
+    distill.models
+    distill.tests
+    distill.utils
+
+Submodules
+----------
