@@ -1,29 +1,12 @@
 API Documentation
 =================
 
-Distill RESTful API
+Distill HTTP Client
 -------------------
-
-.. automodule:: distill.app
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-Distill Exceptions
-------------------
-
-.. automodule:: distill.exceptions
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-Distill Validation Library
---------------------------
-
-.. automodule:: distill.validation
-    :members:
-    :undoc-members:
-    :show-inheritance:
+    
+.. toctree::
+    
+    distill.api
 
 Distill Analytics
 -----------------
@@ -36,15 +19,10 @@ Distill Models
 .. toctree::
 
     distill.models
-
-Distill Deploy
---------------
-.. toctree::
-    
-    distill.deploy
     
 Distill Utilities
 -----------------
 .. toctree::
     
     distill.utils
+

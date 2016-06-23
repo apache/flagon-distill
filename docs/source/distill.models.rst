@@ -1,3 +1,10 @@
+Brew Interface
+-----------------
+.. automodule:: distill.models.brew
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 Stout Interface
 ---------------
 
