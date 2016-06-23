@@ -1,14 +1,11 @@
-__license__ = "Apache-2.0"
-__revision__ = " $Id:  $ "
-__docformat__ = 'reStructuredText'
-
 from flask import Flask, request, jsonify
 from distill import app
+
+from distill.models.brew import Brew
 from distill.models.userale import UserAle
 from distill.models.stout import Stout
 from distill.exceptions import ValidationError
 from distill.validation import validate_request
-
 
 @app.route ('/', methods=['GET'])
 def index ():	
@@ -39,7 +36,7 @@ def index ():
 
 	:return: Distill's status information as JSON blob
 	"""
-	return jsonify (name="Distill", version="1.0 alpha", author="Michelle Beard", email="mbeard@draper.com", status=UserAle.getStatus (), applications=UserAle.getApps ())
+	return jsonify (name="Distill", version="1.0 alpha", author="Michelle Beard", email="mbeard@draper.com", status=Brew.get_status (), applications=Brew.get_applications ())
 
 @app.route ('/create/<app_id>', methods=['POST', 'PUT'])
 def create (app_id):
@@ -53,7 +50,7 @@ def create (app_id):
 	:param app_id: Application name
 	:return: Newly created application's status as JSON blob
 	"""
-	return UserAle.create (app_id)
+	return Brew.create (app_id)
 
 @app.route ('/status/<app_id>', methods=['GET'])
 def status (app_id): 
@@ -74,7 +71,7 @@ def status (app_id):
 	:param app_id: Application name
 	:return: Registered applications meta data as JSON blob
 	"""
-	return UserAle.read (app_id)
+	return Brew.read (app_id)
 
 @app.route ('/update/<app_id>', methods=['POST', 'PUT'])
 def update (app_id):
@@ -88,7 +85,7 @@ def update (app_id):
 	:param app_id: Application name
 	:return: Boolean response message as JSON blob
 	"""
-	return UserAle.update (app_id)
+	return Brew.update (app_id)
 
 @app.route ('/delete/<app_id>', methods=['DELETE'])
 def delete (app_id):
@@ -102,7 +99,7 @@ def delete (app_id):
 	:param app_id: Application name
 	:return: Boolean response message as JSON blob
 	"""
-	return UserAle.delete (app_id)
+	return Brew.delete (app_id)
 
 @app.route ('/search/<app_id>', defaults={"app_type" : None}, methods=['GET'])
 @app.route ('/search/<app_id>/<app_type>', methods=['GET'])
@@ -122,13 +119,7 @@ def search (app_id, app_type):
 	:param fl: List of fields to restrict the result set
 	:return: JSON blob of result set
 	""" 
-
-	q = request.args
-	try:
-		validate_request (q)
-		return UserAle.select (app_id, app_type=app_type, params=q)
-	except ValidationError as e:
-		return jsonify (error=e.message)
+	return UserAle.select (app_id, app_type=app_type, params=q)
 
 @app.route ('/stat/<app_id>', defaults={"app_type" : None}, methods=['GET'])
 @app.route ('/stat/<app_id>/<app_type>', methods=['GET'])
