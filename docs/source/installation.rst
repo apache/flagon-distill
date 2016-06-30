@@ -3,8 +3,8 @@
 Installation Guide
 ==================
 
-Installing Distill in an Development Environment
-------------------------------------------------
+Installing Distill
+------------------
 
 The first step is to install Distill. First, checkout the latest version of Distill.
 
@@ -24,7 +24,7 @@ or
 
     $ pip install distill
 
-Advanced users can install Distill in a virtualenv if they wish. Instructions to setup an virtual environment will be explained below.
+Users are strongly recommended to install Distill in a virtualenv. Instructions to setup an virtual environment will be explained below.
 
 .. note ::
 
@@ -33,23 +33,50 @@ Advanced users can install Distill in a virtualenv if they wish. Instructions to
 Installing Distill in an Virtual Environment
 --------------------------------------------
 
-	TODO
+virtualenv is a tool to create isolated Python environments. virtualenv creates a folder which contains all the necessary executables to use the packages that the Distill project would need. 
 
-Development and Testing
------------------------
+Install virtualenv via pip:
+
+::
+
+	$ sudo pip install virtualenv
+
+Start by changing directory into the root of Distill's project directory, and then use the virtualenv command-line tool to create a new environment:
+
+::
+
+	$ mkdir env 
+	$ virtualenv env
+
+Activate environment:
+
+::
+
+	$ source env/bin/activate
+
+Install Distill requirements:
+
+::
+
+	$ env/bin/pip -r requirements.txt
 
 To build the source code and run all unit tests.
 
 ::
 
-    $ python setup.py develop test
+    $ env/bin/python setup.py develop test
 
-To start up a local web server, running on localhost:8090.
+Launch local Distill server, running on localhost:8090:
 
 ::
+	
+	$ env/bin/dev 
 
-    $ dev
+Deactivate environment
 
+:: 	
+
+	$ deactivate
 
 Deployment
 ----------
@@ -75,7 +102,7 @@ Download the project from the GitHub repository and copy the application to the 
 
 	$ git clone https://github.com/draperlaboratory/distill.git /home/public_html
 
-Install Distill's requirements.
+Install Distill's requirements either globally or in a virutal environment:
 
 ::
 

@@ -1,14 +1,18 @@
-'''
-Distill: An analytical framework for User-ALE <https://github.com/draperlaboratory/user-ale>.
-
-Note that "python setup.py test" invokes pytest on the package. With appropriately
-configured setup.cfg, this will check both xxx_test modules and docstrings.
-
-You can install Distill with "python setup.py install"
-
-Copyright 2016, The Charles Stark Draper Laboratory, Inc.
-Licensed under Apache Software License
-'''
+# -*- coding: utf-8 -*-
+#
+# Copyright 2016 The Charles Stark Draper Laboratory, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 from __future__ import absolute_import
 from setuptools import setup, find_packages
@@ -18,9 +22,6 @@ import io, os, sys
 if sys.version_info[:2] < (2, 7):
     m = "Python 2.7 or later is required for Distill (%d.%d detected)."
     raise ImportError (m % sys.version_info[:2])
-del sys
-
-#here = os.path.abspath(os.path.dirname (__file__) )
 
 if sys.argv[-1] == 'setup.py':
     print ("To install, run 'python setup.py install'")
@@ -54,7 +55,7 @@ setup (
     license = "Apache Software License",
     author = "Michelle Beard",
     author_email = "mbeard@draper.com",
-    description = "An analytical framework for User-ALE.",
+    description = "An analytical framework for UserALE.",
     long_description = __doc__,
     classifiers = [
       'Development Status :: 4 - Beta',
@@ -67,11 +68,11 @@ setup (
       'Operating System :: OS Independent', 
       'Private :: Do Not Upload"'
     ],
-    keywords = "analytics graph stout user-ale instrumentation", # Separate with spaces
+    keywords = "stout userale tap", # Separate with spaces
     packages = find_packages (exclude=['examples', 'tests']),
     include_package_data = True,
     zip_safe = False,
-    tests_require = ['pytest'],
+    tests_require = ['pytest>=2.9.0'],
     cmdclass = {'test': PyTest},
     install_requires = ['Flask==0.10.1', 
                         'networkx==1.11',

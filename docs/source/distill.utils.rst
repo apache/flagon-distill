@@ -1,7 +1,7 @@
-Utilities Library
------------------
+Query Builder
+-------------
 
-.. automodule:: distill.utils
+.. automodule:: distill.utils.query_builder
     :members:
     :undoc-members:
     :show-inheritance:
@@ -9,15 +9,15 @@ Utilities Library
 Exception Handling
 ------------------
 
-.. automodule:: distill.exceptions
-	:members:
-   :undoc-members:
+.. automodule:: distill.utils.exceptions
+    :members:
+    :undoc-members:
     :show-inheritance:
 
 Validation Library
 ------------------
 
-.. automodule:: distill.validation
+.. automodule:: distill.utils.validation
     :members:
     :undoc-members:
     :show-inheritance:
