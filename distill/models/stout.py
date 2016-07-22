@@ -1,46 +1,61 @@
+# -*- coding: utf-8 -*-
+#
+# This file is part of Distill.
+# Copyright 2016 The Charles Stark Draper Laboratory, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 from distill import app, es
 from elasticsearch_dsl import DocType, String, Boolean, Date, Nested, Search
 from elasticsearch_dsl.query import MultiMatch, Match, Q
-from elasticsearch import Elasticsearch, TransportError, ConnectionError
-from elasticsearch_dsl.connections import connections
+from elasticsearch import Elasticsearch, TransportError
 from flask import jsonify
-
 import pandas as pd 
 
 class StoutDoc (DocType):
+    """
+    Representation of a Stout documentat.
+    """
+
     sessionID = String (index="not_analyzed")
     task1 = Nested ()
     task2 = Nested ()
-    # tags = String (index='not_analyzed')
 
     class Meta:
         index = '.stout'
         doc_type = 'testing'
 
-    @classmethod
-    def sync (cls, stout):
-        stout_doc = StoutDoc (meta={'id': stout['sessionID']})
-        stout_doc.sessionID = stout ['sessionID']
-        stout_doc.task1 = stout ['task1']
-        stout_doc.task2 = stout ['task2']
-        stout_doc.save ()
-
     def save (self, *args, **kwargs):
+        """
+        Save data from parsing as a Stout document in Distill
+        """
         return super (StoutDoc, self).save (*args, **kwargs)
 
-    # Don't think this is right? Should just be a single 
-    # Stout entry, not StoutDoc
-    def get_model_obj (self):
-        from distill.models import StoutDoc
-        return StoutDoc.objects.get(id=self.meta.id)
-
 class Stout (object):
+    """
+    Main Stout class to support ingest and search operations.
+    """
+
     @staticmethod
     def ingest (): 
+        """
+        Ingest data coming from Stout to Distill
+        """
+
         # Create the mappings in elasticsearch
         StoutDoc.init ()
         status = True
-        data = parse ();           
+        data = _parse ();           
         try:
             for k,v in data.items ():
                 doc = StoutDoc ()
@@ -55,10 +70,12 @@ class Stout (object):
             status = False
         return jsonify (status=status)
 
-"""
-Parse master answer table with mapping into an Associate Array
-"""
-def parse ():
+def _parse ():
+    """
+    Parse master answer table with mapping into an associative array
+
+    :return: [dict] dictionary of session information
+    """
     master = app.config ['MASTER']
     mappings = app.config ['MAPPINGS']
 

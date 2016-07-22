@@ -137,7 +137,7 @@ To build Distill's documentation, create a directory at the root level of ``/dis
 
 ::
 
-	$ mkdir distill-docs & cd distill/docs
+	$ mkdir distill-docs & cd distill-docs
 
 Execute build command:
 

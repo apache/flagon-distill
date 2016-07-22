@@ -1,3 +1,19 @@
+# -*- coding: utf-8 -*-
+#
+# Copyright 2016 The Charles Stark Draper Laboratory, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 from elasticsearch import Elasticsearch, TransportError
 from elasticsearch_dsl import DocType, String, Boolean, Date, Float, Search
 from elasticsearch_dsl.query import MultiMatch, Match, Q
@@ -10,11 +26,6 @@ from flask import jsonify, Markup
 from distill import app, es
 
 import datetime
-import json
-import csv
-import StringIO
-import yaml
-import urllib2
 
 class UserAle (object):
 	"""
@@ -24,47 +35,43 @@ class UserAle (object):
 	"""
 
 	@staticmethod
-	def select (app, app_type=None, params=None):
+	def segment (app, app_type=None, params=''):
 		"""
+		Just support match all for now. 
 		"""
-		p = parse_query_parameters (app, app_type, params)
-		print p
-		# doc = UserAleDoc (meta={"index" : app, "doc_type" : app_type});
-		# search = UserAleDoc.search().query ('match', activity="HIDE")
+		q = params.get ("q") if params.get ("q") else {}
+		fields = params.get ("fields") if params.get ("fields") else []
+		size = params.get ("size") if params.get ("size") else 10
+		scroll = params.get ("scroll") if params.get ("scroll") else False
+		fl = params.get ("fl") if params.get ("fl") else []
 
-	    # 'q': args.get('q', '{}'),
-        # 'fields': args.get('fl', '{}'),
-        # 'size': args.get ('size', 100),
-        # 'scroll': args.get ('scroll', False),
-        # 'filters': request_args.getlist ('fq')
- 
-  		# Start Search
-		s = Search (index=app, doc_type=app_type)
+		# filters = params.get ("filter") if params.get ("filter") else {}
+		
+		# 'q': args.get('q', '{}'),
+		# 'fields': args.get('fl', '{}'),
+		# 'size': args.get ('size', 100),
+		# 'scroll': args.get ('scroll', False),
+		# 'filters': request_args.getlist ('fq')
+		query = {}
 
-		# Execute Filter Query
-		for x in p['filters']:
-			l = x.split (':', 1)
-			m = {}
-			m[l[0]] = l[1]
+		if q:
+			res = q.split(":")
+			key = res [0]
+			val = res [1]
+			query ['query'] = {"match" : { key : val } }
+		else:
+			query ['query'] = {"match_all" : {}}
 
-			# print m[l[0]]
-			s = s.query ('match', **m)
+		if len (fields) > 0:
+			ex = {
+					"include" : [fields]
+				}
+			query ['_source'] = ex
 
-		# Check fields array
-		fields = p ['fields']
-		# if not fields:
-		# Comma delimited list
-		s = s.fields (p['fields'])
 
-		# Filter request
-		# s = s.filter('terms', tags='5c8b88fbca0fc7a5783c77931e037d\:\:3139')
+		response = es.search (index=app, doc_type=app_type, body=query)
 
-		# Size
-
-		# Execute
-		response = s.execute()
-		# print(response.hits.total)
-		return jsonify (response.to_dict())
+		return jsonify (response)
 
 	@staticmethod
 	def search (app,
@@ -93,10 +100,10 @@ class UserAle (object):
 		data = merged_results (log_result, stout_result)
 		return data
 
-	"""
-	"""
 	@staticmethod
 	def denoise (app, app_type='parsed', save=False):
+		"""
+		"""
 		pass
 
 """
@@ -114,22 +121,22 @@ Get query parameters from the request and preprocess them.
 :result [dict] Parsed parameters
 """
 def parse_query_parameters (indx, app_type=None, request_args = {}):
-    args = {key: value[0] for (key, value) in dict (request_args).iteritems ()}
+	args = {key: value[0] for (key, value) in dict (request_args).iteritems ()}
 
-    # print "args = ", args
-    # Parse out simple filter queries
-    filters = []
-    for filter in get_all_fields (indx, app_type):
-        if filter in args:
-            filters.append((filter, args[filter]))
-    
-    return {
-        'q': args.get('q', '{}'),
-        'fields': args.get('fl', []),
-        'size': args.get ('size', 100),
-        'scroll': args.get ('scroll', False),
-        'filters': request_args.getlist ('fq')
-    }
+	# print "args = ", args
+	# Parse out simple filter queries
+	filters = []
+	for filter in get_all_fields (indx, app_type):
+		if filter in args:
+			filters.append((filter, args[filter]))
+	
+	return {
+		'q': args.get('q', '{}'),
+		'fields': args.get('fl', []),
+		'size': args.get ('size', 100),
+		'scroll': args.get ('scroll', False),
+		'filters': request_args.getlist ('fq')
+	}
 
 # """
 # Parsed Docs Class
@@ -137,13 +144,13 @@ def parse_query_parameters (indx, app_type=None, request_args = {}):
 # Defaults to doctype=parsed
 # """
 # class UserAleParsedDoc (DocType):
-# 	timestamp = Date ()
+#   timestamp = Date ()
 
-# 	class Meta:
-# 		doc_type = 'parsed'
+#   class Meta:
+#       doc_type = 'parsed'
 
-# 	def save (self, ** kwargs):
-# 		return super (UserAleParsedDoc, self).save (**kwargs)
+#   def save (self, ** kwargs):
+#       return super (UserAleParsedDoc, self).save (**kwargs)
 
 # doc = UserAleDoc (meta={"index" : "xdata_v3", "doc_type" : "testing"});
 # search = UserAleDoc.search().query ('match', activity="HIDE")

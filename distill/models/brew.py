@@ -1,3 +1,20 @@
+# -*- coding: utf-8 -*-
+#
+# This file is part of Distill.
+# Copyright 2016 The Charles Stark Draper Laboratory, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 from elasticsearch import Elasticsearch, TransportError
 from flask import jsonify
 from distill import es
@@ -82,7 +99,7 @@ class Brew (object):
 		return jsonify (doc)
 
 	@staticmethod
-	def read (app):	
+	def read (app, app_type=None):	
 		"""
 		Fetch meta data associated with an application
 
@@ -116,7 +133,7 @@ class Brew (object):
 		:return: [dict] dictionary of application and its meta information
 		"""
 
-		return jsonify (_get_cluster_status (app))
+		return jsonify (_get_cluster_status (app, app_type=app_type))
 
 	@staticmethod
 	def update (app):
@@ -146,10 +163,11 @@ class Brew (object):
 		es.indices.close (index=app, ignore=[400, 404])
 		return jsonify (status="Deleted index %s" % app)
 
-def _get_cluster_status (app):
+def _get_cluster_status (app, app_type=None):
 	"""
 	Return cluster status, index health, and document count as string
 
+	@todo figure out how to count individual documents stored at an app_type (currently shows only index count)
 	:param app: [string] application name (e.g. xdata_v3)
 	:return: [dict] dictionary of index meta data including field names
 	"""
@@ -167,7 +185,7 @@ def _get_cluster_status (app):
 	except Exception as e:
 		doc ['error'] = str (e)
 
-	doc ['fields'] = _get_all_fields (app)
+	doc ['fields'] = _get_all_fields (app, app_type)
 	return doc
 
 def _parse_mappings (app, app_type=None):
@@ -212,7 +230,7 @@ def _get_all_fields (app, app_type=None):
 		for tag in response['aggregations']['fields']['buckets']:
 			d.append (tag ['key'])
 	except TransportError as e:
-		doc ['error'] = e.info			
+		d.append (str (e.info))			
 	except Exception as e:
 		d.append (str (e))
 	return d
