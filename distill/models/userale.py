@@ -53,7 +53,8 @@ class UserAle (object):
 		# 'scroll': args.get ('scroll', False),
 		# 'filters': request_args.getlist ('fq')
 		query = {}
-
+		query ['size'] = size
+		
 		if q:
 			res = q.split(":")
 			key = res [0]
@@ -64,7 +65,7 @@ class UserAle (object):
 
 		if len (fields) > 0:
 			ex = {
-					"include" : [fields]
+					"include" : fields.split(",")
 				}
 			query ['_source'] = ex
 
