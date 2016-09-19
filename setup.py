@@ -92,7 +92,7 @@ setup (
     ],
     entry_points = {
       'console_scripts': [
-        'dev = distill.deploy.run_server:dev_server'
+        'dev = distill.server:dev_server'
         ]
     }
 )

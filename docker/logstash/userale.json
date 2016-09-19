@@ -1,0 +1,152 @@
+{
+  "template" : "userale",
+  "order" : 1,
+  "settings" : {
+    "number_of_shards" : 1,
+    "number_of_replicas" : 0,
+    "index.refresh_interval" : "5s"
+  },
+  "mappings" : {
+    "_default_" : {
+      "_all" : {
+        "enabled" : false
+      },
+      "properties" : {
+        "geoip" : {
+          "properties" : {
+            "ip" : {
+              "type" : "ip"
+            },
+            "country_code2" : {
+              "index" : "not_analyzed",
+              "type" : "string"
+            },
+            "country_code3" : {
+              "index" : "not_analyzed",
+              "type" : "string"
+            },
+            "country_name" : {
+              "index" : "not_analyzed",
+              "type" : "string"
+            },
+            "continent_code" : {
+              "index" : "not_analyzed",
+              "type" : "string"
+            },
+            "region_name" : {
+              "index" : "not_analyzed",
+              "type" : "string"
+            },
+            "city_name" : {
+              "index" : "not_analyzed",
+              "type" : "string"
+            },
+            "postal_code" : {
+              "index" : "not_analyzed",
+              "type" : "string"
+            },
+            "latitude" : {
+              "type" : "double"
+            },
+            "longitude" : {
+              "type" : "double"
+            },
+            "dma_code" : {
+              "type" : "integer"
+            },
+            "area_code" : {
+              "type" : "long"
+            },
+            "timezone" : {
+              "index" : "not_analyzed",
+              "type" : "string"
+            },
+            "real_region_name" : {
+              "index" : "not_analyzed",
+              "type" : "string"
+            },
+            "location" : {
+              "doc_values" : true,
+              "type" : "geo_point"
+            }
+          }
+        }
+      }
+    },
+    "logs" : {
+      "properties" : {
+        "userAction" : {
+          "type" : "boolean"
+        },
+        "type" : {
+          "index" : "not_analyzed",
+          "type" : "string"
+        },
+        "clientTime" : {
+          "type" : "date",
+          "format" : "strict_date_optional_time||epoch_millis"
+        },
+        "target" : {
+          "index" : "not_analyzed",
+          "type" : "string"
+        },
+        "path" : {
+          "index" : "not_analyzed",
+          "type" : "string"
+        },
+        "details" : {
+          "type" : "object"
+        },
+        "location" : {
+          "type" : "object",
+          "properties" : {
+            "x" : {
+              "type" : "integer"
+            },
+            "y" : {
+              "type" : "integer"
+            }
+          }
+        },
+        "userId" : {
+          "index" : "not_analyzed",
+          "type" : "string"
+        },
+        "session" : {
+          "index" : "not_analyzed",
+          "type" : "string"
+        },
+        "toolName" : {
+          "index" : "not_analyzed",
+          "type" : "string"
+        },
+        "toolVersion" : {
+          "index" : "not_analyzed",
+          "type" : "string"
+        },
+        "useraleVersion" : {
+          "index" : "not_analyzed",
+          "type" : "string"
+        },
+        "major_ver" : {
+          "type" : "integer"
+        },
+        "minor_ver" : {
+          "type" : "integer"
+        },
+        "patch_ver" : {
+          "type" : "integer"
+        },
+        "tool_major_ver" : {
+          "type" : "integer"
+        },
+        "tool_minor_ver" : {
+          "type" : "integer"
+        },
+        "tool_patch_ver" : {
+          "type" : "integer"
+        }
+      }
+    }
+  }
+}   
