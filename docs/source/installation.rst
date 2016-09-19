@@ -96,8 +96,34 @@ Deactivate environment
 
 	$ deactivate
 
-Deployment
-----------
+Running Apache Distill on Docker Compose
+----------------------------------------
+
+From the project directory, start up Apache Distill in the background.
+
+:: 
+
+	$ docker-compose up -d
+	Starting elastic
+	Starting logstash
+	Starting kibana
+	Starting distill
+	$ docker-compose ps
+	Name                Command               State                       Ports                      
+	--------------------------------------------------------------------------------------------------
+	distill    /bin/sh -c python distill/ ...   Up      0.0.0.0:8090->8090/tcp                         
+	elastic    elasticsearch                    Up      0.0.0.0:9200->9200/tcp, 0.0.0.0:9300->9300/tcp 
+	kibana     /tmp/entrypoint.sh               Up      0.0.0.0:5601->5601/tcp                         
+	logstash   logstash -f /etc/logstash/ ...   Up  
+
+To stop services once you've finished with them:
+
+::
+	
+	$ docker-compose stop
+
+Deployment with Nginx and Gunicorn
+----------------------------------
 
 I will describe a setup with nginx as a web server on Ubuntu. A web server cannot communicate directly with a Flask application such as Apache Distill. Thus gunicorn will be used to act as a medium between the web server and Apache Distill. Gunicorn is like an application web server that will be running behind nginx, and it is WSGI compatible. It can communicate with applications that support WSGI – Flask, Django, etc.
 
