@@ -13,17 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from distill import app
-from distill.app import *
+"""Version information for Distill.
 
+This file is imported by ``Distill.__init__``,
+and parsed by ``setup.py``.
 """
-Start up a local WSGI server called development 
-"""
-def dev_server ():
-	host = app.config ['HOST']
-	port = app.config ['PORT']
-	debug = app.config ['DEBUG']
-	app.run (host=host, port=port, debug=debug)
 
-if __name__ == '__main__':
-    dev_server ()
+__version__ = "0.1.3"

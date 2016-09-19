@@ -16,10 +16,19 @@
 	limitations under the License. 
 	--->
 
-RESTful Endpoints
------------------
+.. _authors:
 
-.. automodule:: distill.app
-    :members:
-    :undoc-members:
-    :show-inheritance:
+Apache Distill is written and maintained by Draper and various contributors:
+
+Development Lead
+````````````````
+
+- Michelle Beard <msbeard@apache.org>
+
+Additional Staff
+````````````````
+
+- Laura Mariano <lmariano@apache.org>
+- Dr. Joshua Poore <jpoore@apache.org>
+- Clay Gimenez <cgimenez@dapache.org>
+- Steven York <syork@draper.com>

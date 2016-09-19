@@ -16,10 +16,4 @@
 	limitations under the License. 
 	--->
 
-RESTful Endpoints
------------------
-
-.. automodule:: distill.app
-    :members:
-    :undoc-members:
-    :show-inheritance:
+.. include:: ../../CONTRIBUTING.rst

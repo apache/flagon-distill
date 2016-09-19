@@ -1,12 +1,11 @@
-# -*- coding: utf-8 -*-
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
 #
-# Copyright 2016 The Charles Stark Draper Laboratory, Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#    http://www.apache.org/licenses/LICENSE-2.0
+#   http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -48,9 +47,18 @@ class PyTest (TestCommand):
         import pytest  # import here, because outside the required eggs aren't loaded yet
         sys.exit (pytest.main (self.test_args))
 
+# Get the version string
+def get_version ():
+    basedir = os.path.dirname (__file__)
+    with open (os.path.join (basedir, 'distill/version.py')) as f:
+        version = {}
+        exec (f.read (), version)
+        return version['__version__']
+    raise RuntimeError ('No version info found.')
+
 setup (
     name = "Distill",
-    version = "1.0",
+    version = get_version (),
     url = "https://github.com/draperlaboratory/distill",
     license = "Apache Software License",
     author = "Michelle Beard",

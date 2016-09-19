@@ -16,10 +16,7 @@
 	limitations under the License. 
 	--->
 
-RESTful Endpoints
------------------
+Apache Distill - Under Development
 
-.. automodule:: distill.app
-    :members:
-    :undoc-members:
-    :show-inheritance:
+~ What is Apache Distill
+  An analytical engine for Apache UserALE to interact with user activity logs and apply basic analtical operations to the data. 

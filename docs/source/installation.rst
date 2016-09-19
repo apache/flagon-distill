@@ -1,18 +1,36 @@
+.. ..
+
+	<!--- Licensed to the Apache Software Foundation (ASF) under one or more
+	contributor license agreements.  See the NOTICE file distributed with
+	this work for additional information regarding copyright ownership.
+	The ASF licenses this file to You under the Apache License, Version 2.0
+	(the "License"); you may not use this file except in compliance with
+	the License.  You may obtain a copy of the License at
+
+	  http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License. 
+	--->
+
 .. _installation:
 
 Installation Guide
 ==================
 
-Installing Distill
-------------------
+Installing Apache Distill
+-------------------------
 
-The first step is to install Distill. First, checkout the latest version of Distill.
+The first step is to install Apache Distill. First, checkout the latest version of Apache Distill.
 
 ::
 
-	$ git clone https://github.com/draperlaboratory/distill.git
+	$ git clone https://git-wip-us.apache.org/repos/asf/incubator-senssoft-distill.git
 
-Distill is a python project, so it can be installed like any other python library. Several operating systems (Mac OS X, Major Versions of Linux/BSD) have Python pre-installed, so you should just have to run
+Apache Distill is a python project, so it can be installed like any other python library. Several operating systems (Mac OS X, Major Versions of Linux/BSD) have Python pre-installed, so you should just have to run
 
 ::
 	
@@ -24,24 +42,24 @@ or
 
     $ pip install distill
 
-Users are strongly recommended to install Distill in a virtualenv. Instructions to setup an virtual environment will be explained below.
+Users are strongly recommended to install Apache Distill in a virtualenv. Instructions to setup an virtual environment will be explained below.
 
 .. note ::
 
 	When the package is installed via ``easy_install`` or ``pip`` this function will be bound to the ``distill`` executable in the Python installation's ``bin`` directory (on Windows - the ``Scripts`` directory).
 
-Installing Distill in an Virtual Environment
---------------------------------------------
+Installing Apache Distill in an Virtual Environment
+---------------------------------------------------
 
-virtualenv is a tool to create isolated Python environments. virtualenv creates a folder which contains all the necessary executables to use the packages that the Distill project would need. 
+virtualenv is a tool to create isolated Python environments. virtualenv creates a folder which contains all the necessary executables to use the packages that the Apache Distill project would need. 
 
 Install virtualenv via pip:
 
 ::
 
-	$ sudo pip install virtualenv
+	$ sudo env/bin/pip install virtualenv
 
-Start by changing directory into the root of Distill's project directory, and then use the virtualenv command-line tool to create a new environment:
+Start by changing directory into the root of Apache Distill's project directory, and then use the virtualenv command-line tool to create a new environment:
 
 ::
 
@@ -54,7 +72,7 @@ Activate environment:
 
 	$ source env/bin/activate
 
-Install Distill requirements:
+Install Apache Distill requirements:
 
 ::
 
@@ -66,7 +84,7 @@ To build the source code and run all unit tests.
 
     $ env/bin/python setup.py develop test
 
-Launch local Distill server, running on localhost:8090:
+Launch local Apache Distill server, running on localhost:8090:
 
 ::
 	
@@ -81,7 +99,7 @@ Deactivate environment
 Deployment
 ----------
 
-I will describe a setup with nginx as a web server on Ubuntu. A web server cannot communicate directly with a Flask application such as Distill, that’s why gunicorn will be used to act as a medium between the web server and Distill. Gunicorn is like an application web server that will be running behind nginx, and it is WSGI compatible. It can communicate with applications that support WSGI – Flask, Django, etc.
+I will describe a setup with nginx as a web server on Ubuntu. A web server cannot communicate directly with a Flask application such as Apache Distill. Thus gunicorn will be used to act as a medium between the web server and Apache Distill. Gunicorn is like an application web server that will be running behind nginx, and it is WSGI compatible. It can communicate with applications that support WSGI – Flask, Django, etc.
 
 Install requirements.
 
@@ -100,15 +118,15 @@ Download the project from the GitHub repository and copy the application to the 
 
 ::
 
-	$ git clone https://github.com/draperlaboratory/distill.git /home/public_html
+	$ git clone https://git-wip-us.apache.org/repos/asf/incubator-senssoft-distill.git /home/public_html
 
-Install Distill's requirements either globally or in a virutal environment:
+Install Apache Distill's requirements either globally or in a virutal environment:
 
 ::
 
-	$ pip install -r requirements.txt
+	$ env/bin/pip install -r requirements.txt
 
-Distill has provided an nginx configuration file located in ``distill/deploy/nginx.conf``.
+Apache Distill has provided an nginx configuration file located in ``distill/deploy/nginx.conf``.
 
 Gunicorn will use port 8000 and handle the incoming HTTP requests.
 
@@ -133,7 +151,13 @@ To save yourself the trouble, all up to date documentation is available at https
 
 However, if you want to manully build the documentation, the instructions are below.
 
-To build Distill's documentation, create a directory at the root level of ``/distill`` called distill-docs.
+First, install the documentation dependencies:
+
+::
+
+	$ env/bin/pip install -r doc_requirements.txt
+
+To build Apache Distill's documentation, create a directory at the root level of ``/distill`` called distill-docs.
 
 ::
 
