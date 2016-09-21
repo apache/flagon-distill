@@ -19,9 +19,7 @@
 Apache SensSoft Distill
 =======================
 
-What is Apache SensSoft Distill?
---------------------------------
-
-Distill is part of the [SensSoft](http://sensssoft.incubator.apache.org) software stack. 
-It comprises an analytical engine for [SensSoft UserALE](https://github.com/apache/incubator-senssoft-user-ale) 
+Apache Distill is part of the `SensSoft <http://sensssoft.incubator.apache.org>`_ software stack. 
+It comprises an analytical engine for `SensSoft UserALE.js <https://github.com/apache/incubator-senssoft-user-ale>`_
+and `SensSoft UserALE.PyQt5 <https://github.com/apache/incubator-senssoft-userale-pyqt5>`_
 to interact with user activity logs and apply basic analtical operations to the data. 

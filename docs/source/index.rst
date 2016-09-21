@@ -18,10 +18,7 @@
 
 :orphan:
 
-Apache Distill
-==============
-
-Apache Distill is an analytical framework and backend server to support Apache Tap requests. It can also be used standalone as a RESTful service. 
+.. include:: ../../README.rst
 
 .. include:: contents.rst.inc
 
