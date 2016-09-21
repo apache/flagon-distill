@@ -56,6 +56,8 @@ services:
   logstash:
     build: ./docker/logstash
     container_name: logstash
+    ports:
+      - 8000:8000
     command: logstash -f /etc/logstash/conf.d/logstash.conf
     volumes:
       - ./userale:/var/log/sennsoft
