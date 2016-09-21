@@ -16,9 +16,12 @@
 	limitations under the License. 
 	--->
 
-# Apache SensSoft Distill
+Apache SensSoft Distill
+=======================
 
-## What is Apache SensSoft Distill?
+What is Apache SensSoft Distill?
+--------------------------------
+
 Distill is part of the [SensSoft](http://sensssoft.incubator.apache.org) software stack. 
 It comprises an analytical engine for [SensSoft UserALE](https://github.com/apache/incubator-senssoft-user-ale) 
 to interact with user activity logs and apply basic analtical operations to the data. 
