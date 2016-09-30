@@ -76,7 +76,7 @@ Install Apache Distill requirements:
 
 ::
 
-	$ env/bin/pip -r requirements.txt
+	$ env/bin/pip install -r requirements.txt
 
 To build the source code and run all unit tests.
 
@@ -175,7 +175,7 @@ Installing Documentation
 
 To save yourself the trouble, all up to date documentation is available at https://draperlaboratory.github.io/distill/.
 
-However, if you want to manully build the documentation, the instructions are below.
+However, if you want to manually build the documentation, the instructions are below.
 
 First, install the documentation dependencies:
 

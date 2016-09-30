@@ -38,14 +38,16 @@ def read (*filenames, **kwargs):
 # This is a plug-in for setuptools that will invoke py.test
 # when you run python setup.py test
 class PyTest (TestCommand):
+
     def finalize_options (self):
         TestCommand.finalize_options (self)
         self.test_args = []
         self.test_suite = True
 
     def run_tests (self):
-        import pytest  # import here, because outside the required eggs aren't loaded yet
-        sys.exit (pytest.main (self.test_args))
+    	import pytest  # import here, because outside the required eggs aren't loaded yet
+    	errno = pytest.main (self.test_args)
+    	sys.exit (errno)
 
 # Get the version string
 def get_version ():
@@ -80,14 +82,13 @@ setup (
     packages = find_packages (exclude=['examples', 'tests']),
     include_package_data = True,
     zip_safe = False,
-    tests_require = ['pytest>=2.9.0'],
+    tests_require = ['pytest>=3.0.0'],
     cmdclass = {'test': PyTest},
     install_requires = ['Flask==0.10.1', 
-                        'networkx==1.11',
+                        #'networkx==1.11',
                         'elasticsearch-dsl==2.0.0', 
-                        'numpy>=1.10.0', 
-                        'scipy>=0.17.0',
-                        'sphinx>=1.4.0',
+                        #'numpy>=1.10.0', 
+                        #'scipy>=0.17.0',
                         'pandas>=0.18.1'
     ],
     entry_points = {
