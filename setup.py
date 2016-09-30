@@ -38,16 +38,17 @@ def read (*filenames, **kwargs):
 # This is a plug-in for setuptools that will invoke py.test
 # when you run python setup.py test
 class PyTest (TestCommand):
+    user_options = [('pytest-args=', 'a', "Arguments to pass to pytest")]
 
-    def finalize_options (self):
-        TestCommand.finalize_options (self)
-        self.test_args = []
-        self.test_suite = True
+    def initialize_options(self):
+        TestCommand.initialize_options(self)
+        self.pytest_args = []
 
-    def run_tests (self):
-    	import pytest  # import here, because outside the required eggs aren't loaded yet
-    	errno = pytest.main (self.test_args)
-    	sys.exit (errno)
+    def run_tests(self):
+        #import here, cause outside the eggs aren't loaded
+        import pytest
+        errno = pytest.main(self.pytest_args)
+        sys.exit(errno)
 
 # Get the version string
 def get_version ():
