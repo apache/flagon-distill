@@ -65,7 +65,7 @@ setup (
     url = "https://github.com/draperlaboratory/distill",
     license = "Apache Software License",
     author = "Michelle Beard",
-    author_email = "mbeard@draper.com",
+    author_email = "msbeard@apache.org",
     description = "An analytical framework for UserALE.",
     long_description = __doc__,
     classifiers = [

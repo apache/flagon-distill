@@ -65,7 +65,7 @@ master_doc = 'index'
 # General information about the project.
 project = u'Apache Distill'
 copyright = u'2016, Apache Software License'
-author = u'Michelle Beard <msbeard@apache.dot.org>'
+author = u'Michelle Beard <msbeard@apache.org>'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -242,7 +242,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'ApacheDistill.tex', u'Apache Distill Documentation',
-     u'Michelle Beard \\textless{}msbeard@apache.dot.org\\textgreater{}', 'manual'),
+     u'Michelle Beard \\textless{}msbeard@apache.org\\textgreater{}', 'manual'),
 ]
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
