@@ -13,18 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-[egg_info]
-tag_build = 0.1.4
-tag_svn_revision = false
-
-[aliases]
-test=pytest
-
-[tool:pytest] 
-addopts = --verbose --ignore=build --ignore=setup.py --ignore=dist --junitxml=test-report.xml --cov-report xml --cov=distill distill/. 
-norecursedirs = *.eggs *env* .git 
-
-[build_sphinx]
-source-dir = docs
-build-dir = docs/_build
-all_files = 1
+pylint==1.6.4
+pytest==3.0.3
+pytest-cov==2.4.0
+pytest-runner==2.9
+pytest-pylint
+coverage==4.2

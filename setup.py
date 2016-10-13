@@ -15,8 +15,10 @@
 
 from __future__ import absolute_import
 from setuptools import setup, find_packages
+import distutils.cmd
+import distutils.log
 from setuptools.command.test import test as TestCommand
-import io, os, sys
+import io, os, sys, subprocess
 
 if sys.version_info[:2] < (2, 7):
     m = "Python 2.7 or later is required for Distill (%d.%d detected)."
@@ -35,21 +37,6 @@ def read (*filenames, **kwargs):
             buf.append (f.read ())
     return sep.join (buf)
 
-# This is a plug-in for setuptools that will invoke py.test
-# when you run python setup.py test
-class PyTest (TestCommand):
-    user_options = [('pytest-args=', 'a', "Arguments to pass to pytest")]
-
-    def initialize_options(self):
-        TestCommand.initialize_options(self)
-        self.pytest_args = []
-
-    def run_tests(self):
-        #import here, cause outside the eggs aren't loaded
-        import pytest
-        errno = pytest.main(self.pytest_args)
-        sys.exit(errno)
-
 # Get the version string
 def get_version ():
     basedir = os.path.dirname (__file__)
@@ -62,7 +49,7 @@ def get_version ():
 setup (
     name = "Distill",
     version = get_version (),
-    url = "https://github.com/draperlaboratory/distill",
+    url = "https://github.com/apache/incubator-senssoft-distill",
     license = "Apache Software License",
     author = "Michelle Beard",
     author_email = "msbeard@apache.org",
@@ -79,12 +66,12 @@ setup (
       'Operating System :: OS Independent', 
       'Private :: Do Not Upload"'
     ],
-    keywords = "stout userale tap", # Separate with spaces
+    keywords = "stout userale tap distill", # Separate with spaces
     packages = find_packages (exclude=['examples', 'tests']),
     include_package_data = True,
     zip_safe = False,
-    tests_require = ['pytest>=3.0.0'],
-    cmdclass = {'test': PyTest},
+    setup_requires = ['pytest-runner'],
+    tests_require = ['pytest>=3.0.0', 'pytest-pylint', 'coverage'],
     install_requires = ['Flask==0.10.1', 
                         #'networkx==1.11',
                         'elasticsearch-dsl==2.0.0', 
