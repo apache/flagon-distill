@@ -12,15 +12,13 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-from flask import Flask, request
 
-from distill import app as test_app
 
-def test_example ():
-	assert True
-	# with test_app.test_client () as c:
-	# 	rv = c.get ('/?tequila=42')
-	# 	assert request.args ['tequila'] == '42'
+def test_example():
+    assert True
+    # with test_app.test_client () as c:
+    # 	rv = c.get ('/?tequila=42')
+    # 	assert request.args ['tequila'] == '42'
 
 # import os
 # import flaskr

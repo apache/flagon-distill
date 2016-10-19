@@ -13,12 +13,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
 class GraphAnalytics (object):
-	"""
-	Distill's graph analytics package. Apply graph algorithms to User Ale log data segmented with
-	Stout.
-	"""
-	
-	@staticmethod
-	def foo ():
-		pass
+    """
+    Distill's graph analytics package. Apply graph algorithms
+    to User Ale log data segmented with Stout.
+    """
+
+    @staticmethod
+    def foo():
+        pass

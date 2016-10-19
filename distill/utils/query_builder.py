@@ -13,23 +13,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
 class QueryBuilder (object):
 
-	def __init__ (self, query=None):
-		if query:
-			self.query = query
-		else:
-			self.query = {
-				"query" : {
-					"match_all" : {}
-					}
-				}
+    def __init__(self, query=None):
+        if query:
+            self.query = query
+        else:
+            self.query = {
+                "query": {
+                    "match_all": {}
+                }
+            }
 
+    def add_filters(self, filters):
+        pass
 
-	def add_filters (self, filters):
-		pass
-
-	def add_sorting (self, sort_field='', sort_order=''):
-		pass
-
-	
+    def add_sorting(self, sort_field='', sort_order=''):
+        pass

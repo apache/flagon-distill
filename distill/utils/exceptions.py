@@ -13,13 +13,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
 class Error (Exception):
     """Base class for exceptions."""
     pass
 
-class ValidationError (Error):
-	""" Exceptions raised for errors in validated a url."""
 
-	def __init__ (self, url, msg):
-		self.url = url
-		self.msg = msg
+class ValidationError (Error):
+    """ Exceptions raised for errors in validated a url."""
+
+    def __init__(self, url, msg):
+        self.url = url
+        self.msg = msg
