@@ -60,7 +60,7 @@ services:
       - 8000:8000
     command: logstash -f /etc/logstash/conf.d/logstash.conf
     volumes:
-      - ./userale:/var/log/sennsoft
+      - ./userale:/var/log/senssoft
     depends_on:
       - elasticsearch
     links:
