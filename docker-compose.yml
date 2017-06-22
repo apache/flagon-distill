@@ -17,51 +17,16 @@
 
 version: "2"
 services:
+  # SensSoft Distill Application
   distill:
-    build: 
-      context: .
-      dockerfile: ./docker/distill/Dockerfile
-    container_name: distill
+    build: ./docker/distill
+    container_name: senssoft-distill
     ports:
       - 8090:8090
-    depends_on:
-      - elasticsearch
-    links:
-      - elasticsearch
+
   # Web server
-  #webserver:
-  #  build: ./docker/webserver
-  #  container_name: webserver
-  #  links:
-  #    - distill
-  # ELK Stack
-  elasticsearch:
-    build: ./docker/es
-    container_name: elastic
-    ports:
-      - 9200:9200
-      - 9300:9300
-    volumes:
-      - ./es/data:/usr/share/elasticsearch/data
-      - ./es/logs:/usr/share/elasticsearch/logs
-  kibana:
-    build: ./docker/kibana
-    container_name: kibana
-    ports:
-      - 5601:5601
-    depends_on:
-      - elasticsearch
+  webserver:
+    build: ./docker/webserver
+    container_name: senssoft-distill-webserver
     links:
-      - elasticsearch
-  logstash:
-    build: ./docker/logstash
-    container_name: logstash
-    ports:
-      - 8000:8000
-    command: logstash -f /etc/logstash/conf.d/logstash.conf
-    volumes:
-      - ./userale:/var/log/senssoft
-    depends_on:
-      - elasticsearch
-    links:
-      - elasticsearch
+      - distill
