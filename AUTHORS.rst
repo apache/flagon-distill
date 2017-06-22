@@ -31,4 +31,4 @@ Additional Staff
 - Laura Mariano <lmariano@apache.org>
 - Dr. Joshua Poore <jpoore@apache.org>
 - Clay Gimenez <cgimenez@dapache.org>
-- Steven York <syork@draper.com>
+- Arthi Vezhavendan <avezhavendan@apache.org>

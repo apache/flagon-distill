@@ -57,8 +57,8 @@ class CleanCommand(setuptools.Command):
         Execute Clean Command
         """
         assert os.getcwd() == self.cwd, 'Must be in package root: %s' % self.cwd
-        os.system('rm -rf ./docs/build ./build ./dist ./*.egg-info')
-        os.system('rm -rf ./*.log html_cov .coverage *.html')
+        os.system('rm -rf ./docs/_build ./build ./dist ./*.egg-info')
+        os.system('rm -rf ./*.log *.xml .coverage *.html')
 
 def read(*filenames, **kwargs):
     encoding = kwargs.get('encoding', 'utf-8')
@@ -88,9 +88,9 @@ setup_requires = [
 
 install_requires = [
     'elasticsearch-dsl >= 5.0.0',
+    'pandas >= 0.20.2',
     'Flask >= 0.12.2',
-    'celery',
-    'pandas',
+    'celery >= 4.0.2',
 ]
 
 tests_require = [
@@ -152,6 +152,7 @@ setuptools.setup(
     setup_requires=setup_requires,
     tests_require=tests_require,
     install_requires=install_requires,
+    extras_require=extras_require,
     entry_points={
         'console_scripts': [
             'dev = distill.server:dev_server'

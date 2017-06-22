@@ -42,7 +42,6 @@ Changelog
 
 0.0.2 (2016-06-14)
 ------------------
-
 * Completed index route for status endpoint which lists all applications registered and their document count segmented by type.
 * Updated setup.py to reference deploy scripts
 * Example configuration to deploy Distill with Gunicorn and Nginx for Linux/Mac users
@@ -51,5 +50,4 @@ Changelog
 
 0.0.1 (2016-04-01)
 ------------------
-
-Initial alpha release.
+* Initial alpha release.

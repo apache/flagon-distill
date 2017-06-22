@@ -20,7 +20,7 @@ from elasticsearch_dsl.connections import connections
 app = Flask(__name__)
 
 # Load Configurations
-app.config.from_pyfile('config.cfg')
+app.config.from_pyfile('config/config.cfg')
 
 # Unpack Elasticsearch configuration and create elasticsearch connection
 host = app.config['ES_HOST']

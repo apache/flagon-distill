@@ -19,11 +19,10 @@
 Apache SensSoft Distill
 =======================
 
-Apache Distill is part of the `SensSoft <http://sensssoft.incubator.apache.org>`_ software stack. 
-It comprises an analytical engine for `SensSoft UserALE.js <https://github.com/apache/incubator-senssoft-user-ale>`_
-and `SensSoft UserALE.PyQt5 <https://github.com/apache/incubator-senssoft-userale-pyqt5>`_
-to interact with user activity logs and apply basic analtical operations to the data. 
+Distill is part of the `Apache SensSoft <http://sensssoft.incubator.apache.org>`_ project.
+It comprises an analytical engine for `UserALE <http://senssoft.incubator.apache.org/userale/>`_
+to interact with user activity logs and apply basic analytical operations to the data.
 
-Install instructions can be found `here <https://draperlaboratory.github.io/distill/installation.html>`_.
+Install instructions can be found `here <http://senssoft.incubator.apache.org/docs/distill/>`_.
 
-A contribution guide has been provided `here <https://draperlaboratory.github.io/distill/contributing.html>`_.
+A contribution guide has been provided `here <http://senssoft.incubator.apache.org/docs/contributing.html>`_.

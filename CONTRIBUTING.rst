@@ -18,10 +18,10 @@
 
 .. _contributing:
 
-Contributing to Apache Distill
-------------------------------
+Contributing to Apache SensSoft
+-------------------------------
 
-Thank you for contributing to the Apache Distill project!
+Thank you for contributing to the Distill project!
 
 There are certain procedures that must be followed for all contributions. These
 procedures are necessary to allow us to allocate resources for reviewing and
@@ -30,7 +30,7 @@ the review process.
 
 1) Create an issue in JIRA
 
-    All changes to Apache Distill must have a corresponding issue in JIRA so the
+    All changes to Distill must have a corresponding issue in JIRA so the
     change can be properly tracked:
 
         https://issues.apache.org/jira/browse/senssoft
@@ -40,7 +40,7 @@ the review process.
 
 2) Make and test your changes locally
 
-    The Apache Distill source is maintained in a git repository hosted on Apache:
+    The Distill source is maintained in a git repository hosted on Apache:
 
         https://git-wip-us.apache.org/repos/asf/incubator-senssoft-distill.git
 
@@ -64,5 +64,5 @@ the review process.
     the corresponding topic branch you created when you began working on your
     changes.
 
-    The Apache Distill team will then review your changes and, if they pass review,
+    The Apache SensSoft team will then review your changes and, if they pass review,
     your changes will be merged.
