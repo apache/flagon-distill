@@ -26,10 +26,6 @@ setup_tools
 # Flask instance folder
 instance/
 
-# Docker stuff
-es/
-userale/
-
 # Scrapy stuff:
 .scrapy
 
@@ -49,7 +45,7 @@ coverage.xml
 
 # Distribution / packaging
 .Python
-env/
+env*/
 build/
 develop-eggs/
 dist/

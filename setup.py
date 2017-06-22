@@ -14,7 +14,7 @@
 # limitations under the License.
 
 from __future__ import absolute_import
-from setuptools import setup, find_packages
+import setuptools
 import io
 import os
 import sys
@@ -24,9 +24,41 @@ if sys.version_info[:2] < (2, 7):
     raise ImportError(m % sys.version_info[:2])
 
 if sys.argv[-1] == 'setup.py':
-    print ("To install, run 'python setup.py install'")
-    print ()
+    print("To install, run 'python setup.py install'\n")
+    print("To run tests, run 'python setup.py test'\n")
+    print("To build docs, run 'python setup.py docs'\n")
+    print("To clean, run 'python setup.py clean'\n")
 
+
+class CleanCommand(setuptools.Command):
+    """
+    A command class to clean up build artifacts, including log files
+
+    python setup.py clean
+    """
+    description = "clean build artifacts"
+    user_options = []
+
+    def initialize_options(self):
+        """
+        Initialize Clean Command
+        """
+        self.cwd = None
+
+    def finalize_options(self):
+        """
+        Set Current Working directory for Clean Command
+
+        """
+        self.cwd = os.getcwd()
+
+    def run(self):
+        """
+        Execute Clean Command
+        """
+        assert os.getcwd() == self.cwd, 'Must be in package root: %s' % self.cwd
+        os.system('rm -rf ./docs/build ./build ./dist ./*.egg-info')
+        os.system('rm -rf ./*.log html_cov .coverage *.html')
 
 def read(*filenames, **kwargs):
     encoding = kwargs.get('encoding', 'utf-8')
@@ -48,39 +80,78 @@ def get_version():
     raise RuntimeError('No version info found.')
 
 
-setup(
+setup_requires = [
+    'pip >= 9.0.1',
+    'setuptools >= 34.0',
+    'pytest-runner',
+]
+
+install_requires = [
+    'elasticsearch-dsl >= 5.0.0',
+    'Flask >= 0.12.2',
+    'celery',
+    'pandas',
+]
+
+tests_require = [
+    'pytest >= 3.0.0',
+    'pytest-pylint',
+    'pytest-html',
+    'pytest-cov',
+]
+
+docs_require = [
+    'Sphinx >= 1.5.2',
+    'sphinx-rtd-theme >= 0.1.9',
+]
+
+extras_require = {
+    'docker': [
+        'docker-compose >= 1.12.0, < 1.13',
+    ],
+    'test' : tests_require,
+    'doc' : docs_require,
+    'monitor': [
+        'flower'
+    ]
+}
+
+classifiers = [
+    'Development Status :: 4 - Beta',
+    'Intended Audience :: Developers',
+    'Intended Audience :: Science/Research',
+    'License :: OSI Approved :: Apache Software License',
+    'Natural Language :: English',
+    'Operating System :: OS Independent',
+    'Programming Language :: Python',
+    'Programming Language :: Python :: 2.7',
+    'Programming Language :: Python :: 3.5',
+    'Environment :: Web Environment',
+    'Framework :: Flask',
+    'Framework :: Pytest',
+    'Topic :: Internet :: Log Analysis'
+]
+
+setuptools.setup(
     name="Distill",
     version=get_version(),
-    url="https://github.com/apache/incubator-senssoft-distill",
+    url="http://senssoft.incubator.apache.org",
     license="Apache Software License 2.0",
     author="Michelle Beard",
     author_email="msbeard@apache.org",
     description="An analytical framework for UserALE.",
     long_description=__doc__,
-    classifiers=[
-            'Development Status :: 4 - Beta',
-            'Intended Audience :: Developers',
-            'Intended Audience :: Science/Research',
-            'License :: OSI Approved :: Apache Software License',
-            'Natural Language :: English',
-            'Operating System :: OS Independent',
-            'Programming Language :: Python',
-            'Programming Language :: Python :: 2.7',
-            'Programming Language :: Python :: 3.5',
-            'Environment :: Web Environment',
-            'Framework :: Flask',
-            'Framework :: Pytest',
-            'Topic :: Internet :: Log Analysis'
-    ],
+    classifiers=classifiers,
     keywords="stout userale tap distill",
-    packages=find_packages(exclude=['examples', 'tests']),
+    packages=setuptools.find_packages(exclude=['examples', 'tests']),
     include_package_data=True,
     zip_safe=False,
-    setup_requires=['pytest-runner'],
-    tests_require=['pytest>=3.0.0', 'pytest-pylint', 'coverage'],
-    install_requires=['Flask==0.10.1',
-                      'elasticsearch-dsl==2.0.0',
-                      'pandas>=0.18.1'],
+    cmdclass={
+        'clean': CleanCommand,
+    },
+    setup_requires=setup_requires,
+    tests_require=tests_require,
+    install_requires=install_requires,
     entry_points={
         'console_scripts': [
             'dev = distill.server:dev_server'

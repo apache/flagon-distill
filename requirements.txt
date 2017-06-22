@@ -13,10 +13,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-Flask==0.10.1
-#networkx==1.11
-elasticsearch-dsl==2.0.0
-#numpy>=1.10.0
-#scipy>=0.17.0
-pandas>=0.18.1
-pytest>=3.0.0
