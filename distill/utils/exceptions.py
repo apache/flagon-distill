@@ -14,12 +14,12 @@
 # limitations under the License.
 
 
-class Error (Exception):
+class Error(Exception):
     """Base class for exceptions."""
     pass
 
 
-class ValidationError (Error):
+class ValidationError(Error):
     """ Exceptions raised for errors in validated a url."""
 
     def __init__(self, url, msg):

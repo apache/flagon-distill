@@ -22,4 +22,5 @@ Read more here: http://pytest.org/
 
 
 def test_example():
+    """Generic test"""
     assert True

@@ -13,7 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from __future__ import absolute_import
 import setuptools
 import io
 import os
@@ -87,7 +86,7 @@ setup_requires = [
 ]
 
 install_requires = [
-    'elasticsearch-dsl >= 5.0.0',
+    'elasticsearch-dsl >= 5.0.0, < 6.0.0',
     'pandas >= 0.20.2',
     'Flask >= 0.12.2',
     'celery >= 4.0.2',
@@ -128,7 +127,6 @@ classifiers = [
     'Programming Language :: Python :: 3.5',
     'Environment :: Web Environment',
     'Framework :: Flask',
-    'Framework :: Pytest',
     'Topic :: Internet :: Log Analysis'
 ]
 
@@ -138,8 +136,8 @@ setuptools.setup(
     url="http://senssoft.incubator.apache.org",
     license="Apache Software License 2.0",
     author="Michelle Beard",
-    author_email="msbeard@apache.org",
-    description="An analytical framework for UserALE.",
+    author_email="mbeard@apache.org",
+    description="An analytical framework for UserALE and TAP.",
     long_description=__doc__,
     classifiers=classifiers,
     keywords="stout userale tap distill",

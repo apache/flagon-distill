@@ -13,29 +13,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import unittest
 
-def test_example():
-    assert True
-    # with test_app.test_client () as c:
-    # 	rv = c.get ('/?tequila=42')
-    # 	assert request.args ['tequila'] == '42'
+from distill import app
 
-# import os
-# import flaskr
-# import unittest
-# import tempfile
+class AppTests(unittest.TestCase):
+    """
+    App Setup
+    """
+    @classmethod
+    def setUpClass(cls):
+        pass
 
-# class FlaskrTestCase(unittest.TestCase):
+    @classmethod
+    def tearDownClass(cls):
+        pass
 
-#     def setUp(self):
-#         self.db_fd, flaskr.app.config['DATABASE'] = tempfile.mkstemp()
-#         flaskr.app.config['TESTING'] = True
-#         self.app = flaskr.app.test_client()
-#         flaskr.init_db()
+    def setUp(self):
+        # creates a test client
+        self.app = app.test_client()
+        # propagate the exceptions to the test client
+        self.app.testing = True
 
-#     def tearDown(self):
-#         os.close(self.db_fd)
-#         os.unlink(flaskr.app.config['DATABASE'])
-
-# if __name__ == '__main__':
-#     unittest.main()
+    def tearDown(self):
+        pass

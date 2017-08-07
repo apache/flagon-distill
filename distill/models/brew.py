@@ -15,15 +15,14 @@
 
 
 from elasticsearch import TransportError
-from flask import jsonify
+
 from distill import es
 
 
 class Brew (object):
     """
-    Distill supports basic CRUD operations and publishes the status
-    of an persistenct database. Eventually it will support ingesting
-    logs sent from a registered application.
+    Brew supports basic CRUD operations and publishes the status
+    of Elasticsearch.
     """
 
     @staticmethod
@@ -46,14 +45,15 @@ class Brew (object):
         :return: [dict] dictionary of all registered applications and meta info
         """
         doc = {}
-        query = {"aggs": {
-            "count_by_type": {
-                "terms": {
-                    "field": "_type",
-                    "size": 100
+        query = {
+            "aggs": {
+                "count_by_type": {
+                    "terms": {
+                        "field": "_type",
+                        "size": 100
+                    }
                 }
             }
-        }
         }
 
         try:
@@ -97,7 +97,7 @@ class Brew (object):
         # ignore 400 cause by IndexAlreadyExistsException when creating index
         res = es.indices.create(index=app, ignore=[400, 404])
         doc = _get_cluster_status(app)
-        return jsonify(doc)
+        return doc
 
     @staticmethod
     def read(app, app_type=None):
@@ -134,7 +134,7 @@ class Brew (object):
         :return: [dict] dictionary of application and its meta information
         """
 
-        return jsonify(_get_cluster_status(app, app_type=app_type))
+        return _get_cluster_status(app, app_type=app_type)
 
     @staticmethod
     def update(app):
@@ -143,7 +143,7 @@ class Brew (object):
                 Currently  not implemented
         """
 
-        return jsonify(status="not implemented")
+        raise NotImplementedError()
 
     @staticmethod
     def delete(app):
@@ -161,8 +161,7 @@ class Brew (object):
         :return: [dict] status message of the event
         """
 
-        es.indices.close(index=app, ignore=[400, 404])
-        return jsonify(status="Deleted index %s" % app)
+        return es.indices.close(index=app, ignore=[400, 404])
 
 
 def _get_cluster_status(app, app_type=None):
@@ -226,14 +225,15 @@ def _get_all_fields(app, app_type=None):
     :return: [list] list of strings representing the fields names
     """
     d = list()
-    query = {"aggs": {
-        "fields": {
-            "terms": {
-                "field": "_field_names",
-                "size": 100
+    query = {
+        "aggs": {
+            "fields": {
+                "terms": {
+                    "field": "_field_names",
+                    "size": 100
+                }
             }
         }
-    }
     }
 
     try:

@@ -15,7 +15,6 @@
 
 from flask import jsonify
 from distill import es
-from distill import Stout
 
 
 class UserAle (object):
@@ -92,17 +91,16 @@ class UserAle (object):
         log_result = es.search(index=app, doc_type=app_type,
                                body=query, fields=filters, size=size)
 
-        stout_result = Stout.getSessions()
-
-        data = merged_results(log_result, stout_result)
-        return data
+        # stout_result = Stout.getSessions()
+        #
+        # data = merged_results(log_result, stout_result)
+        return log_result
 
     @staticmethod
     def denoise(app, app_type='parsed', save=False):
         """
         """
         pass
-
 
 def merge_dicts(lst):
     """

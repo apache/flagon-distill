@@ -13,29 +13,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from distill.utils.exceptions import ValidationError
-
-
-def validate_request(query):
-    """
-    Parse out request message and validate inputs
-
-    :param query: Url query string
-    :raises ValidationError: if the query is missing required parameters
-    """
-    if 'q' not in query:
-        raise ValidationError("Missing required parameter: %s" % 'q')
-    else:
-        # Handle rest of parsing
-        pass
-
-
-def str2bool(val):
-    """
-    Convert string expression to boolean
-
-    :param val: Input value
-    :returns: Converted message as boolean type
-    :rtype: bool
-    """
-    return val.lower() in ("yes", "true", "t", "1")
+ELASTICSEARCH_PARAMS = {
+    'host': ['vlsmsbx.draper.com'],
+    'port': 9200,
+    'http_auth': None,
+    'use_ssl': False,
+    'verify_certs': False,
+    'ca_certs': None,
+    'client_cert': None,
+    'client_key': None,
+    'timeout': 3
+}

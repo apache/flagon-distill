@@ -13,14 +13,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from flask import request
-from flask import jsonify
-from distill import app
+from flask import Flask, request, jsonify
+
 from distill.models.brew import Brew
 from distill.models.userale import UserAle
-from distill.models.stout import Stout
+# from distill.models.stout import Stout
 from distill.algorithms.stats.hist import Hist
+from distill.version import __version__
 
+app = Flask(__name__)
+app.config.from_pyfile('config/config.cfg')
 
 @app.route('/', methods=['GET'])
 def index():
@@ -33,11 +35,9 @@ def index():
             $ curl -XGET http://localhost:8090
 
             {
-                    "author" : "Michelle Beard",
-                    "email" : "mbeard@draper.com",
                     "name": "Distill",
+                    "version" : "0.1.0",
                     "status" : true,
-                    "version" : "1.0",
                     "applications" : {
                             "xdata_v3" : {
                                     testing: 205,
@@ -50,12 +50,10 @@ def index():
                     }
             }
 
-    :return: Distill's status information as JSON blob
+    :return: Distill's status information
     """
     return jsonify(name="Distill",
-                   version="1.0 alpha",
-                   author="Michelle Beard",
-                   email="mbeard@draper.com",
+                   version=__version__,
                    status=Brew.get_status(),
                    applications=Brew.get_applications())
 
@@ -63,17 +61,43 @@ def index():
 @app.route('/create/<app_id>', methods=['POST', 'PUT'])
 def create(app_id):
     """
-    Registers an application in Distill.
+    Register an application.
+    @todo Need to include UserALE.js mapping information in a general sense.
 
     .. code-block:: bash
 
-            $ curl -XPOST http://localhost:8090/xdata_v3
+            $ curl -XPOST http://localhost:8090/create/xdata_v3
 
     :param app_id: Application name
-    :return: Newly created application's status as JSON blob
+    :return: Newly created application's status
     """
-    return Brew.create(app_id)
+    return jsonify(Brew.create(app_id))
 
+@app.route('/sankey/<app_id>', methods=['GET'])
+def sankey(app_id):
+    """
+    Generate a node-link diagram
+    """
+    from distill.algorithms.graphs.graph import GraphAnalytics
+
+    # Time range using date math
+    from_range = 'now-15m'
+    to_range = 'now'
+    if 'from' in request.args:
+        from_range = request.args.get('from')
+
+        if 'to' in request.args:
+            to_range = request.args.get('to')
+            ts_range = [from_range, to_range]
+
+    # Size
+    size = 20
+    if 'size' in request.args:
+        size = request.args.get('size')
+
+    return jsonify(GraphAnalytics.generate_graph(app_id,
+                                                 time_range=ts_range,
+                                                 size=size))
 
 @app.route('/status/<app_id>', defaults={"app_type": None}, methods=['GET'])
 @app.route('/status/<app_id>/<app_type>', methods=['GET'])
@@ -94,9 +118,11 @@ def status(app_id, app_type):
             }
 
     :param app_id: Application name
-    :return: Registered applications meta data as JSON blob
+    :param app_type: Application type
+    :return: Registered applications meta data
     """
-    return Brew.read(app_id, app_type=app_type)
+    res = Brew.read(app_id, app_type=app_type)
+    return jsonify(res)
 
 
 @app.route('/update/<app_id>', methods=['POST', 'PUT'])
@@ -109,9 +135,9 @@ def update(app_id):
             $ curl -XPOST http://localhost:8090/update/xdata_v3?name="xdata_v4"
 
     :param app_id: Application name
-    :return: Boolean response message as JSON blob
+    :return: Boolean response message
     """
-    return Brew.update(app_id)
+    return jsonify(Brew.update(app_id))
 
 
 @app.route('/delete/<app_id>', methods=['DELETE'])
@@ -124,9 +150,10 @@ def delete(app_id):
             $ curl -XDELETE http://localhost:8090/xdata_v3
 
     :param app_id: Application name
-    :return: Boolean response message as JSON blob
+    :return: Boolean response message
     """
-    return Brew.delete(app_id)
+    res = Brew.delete(app_id)
+    jsonify(status="Deleted index %s" % app_id)
 
 
 @app.route('/search/<app_id>', defaults={"app_type": None}, methods=['GET'])
@@ -182,53 +209,31 @@ def stat(app_id, app_type):
         return jsonify(error=msg)
 
 
-@app.route('/denoise/<app_id>', methods=['GET'])
-def denoise(app_id):
-    """
-    Bootstrap script to cleanup the raw logs. A document type called "parsed"
-    will be stored with new log created unless specified in the request.
-    Have option to save parsed results back to data store.
-    These parsed logs can be intergrated with STOUT results
-    by running the stout bootstrap script.
-
-    .. code-block:: bash
-
-            $ curl -XGET http://localhost:8090/denoise/xdata_v3?save=true&type=parsed
-
-    :param app_id: Application name
-    :return: [dict]
-    """
-    doc_type = 'parsed'
-    save = False
-    # q = request.args
-    # if 'save' in q:
-    #     save = str2bool(q.get('save'))
-    #     if 'type' in q:
-    #         # @TODO: Proper cleanup script needs to happen
-    #         doc_type = q.get('type')
-    return UserAle.denoise(app_id, doc_type=doc_type, save=save)
-
-
-@app.route('/stout', methods=['GET'])
-def merge_stout():
-    """
-    Bootstrap script to aggregate user ale logs to stout master answer table
-    This will save the merged results back to ES instance at new index stout
-    OR denoise data first, then merge with the stout index...
-    If STOUT is enabled, the select method expects a stout index
-    to exist or otherwise it will return an error message.
-
-    .. code-block:: bash
-
-            $ curl -XGET http://locahost:8090/stout/xdata_v3
-
-    :return: Status message
-    """
-    flag = app.config['ENABLE_STOUT']
-    if flag:
-        return Stout.ingest()
-    return jsonify(status="STOUT is disabled.")
-
+# @app.route('/denoise/<app_id>', methods=['GET'])
+# def denoise(app_id):
+#     """
+#     Bootstrap script to cleanup the raw logs. A document type called "parsed"
+#     will be stored with new log created unless specified in the request.
+#     Have option to save parsed results back to data store.
+#     These parsed logs can be integrated with STOUT results
+#     by running the stout bootstrap script.
+#
+#     .. code-block:: bash
+#
+#             $ curl -XGET http://localhost:8090/denoise/xdata_v3?save=true&type=parsed
+#
+#     :param app_id: Application name
+#     :return: [dict]
+#     """
+#     doc_type = 'parsed'
+#     save = False
+#     # q = request.args
+#     # if 'save' in q:
+#     #     save = str2bool(q.get('save'))
+#     #     if 'type' in q:
+#     #         # @TODO: Proper cleanup script needs to happen
+#     #         doc_type = q.get('type')
+#     return UserAle.denoise(app_id, doc_type=doc_type, save=save)
 
 @app.errorhandler(404)
 def page_not_found(error):

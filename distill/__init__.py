@@ -13,28 +13,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from flask import Flask
 from elasticsearch_dsl.connections import connections
 
-# Initialize Flask instance
-app = Flask(__name__)
+from distill.config.elasticsearch import ELASTICSEARCH_PARAMS
 
-# Load Configurations
-app.config.from_pyfile('config/config.cfg')
 
 # Unpack Elasticsearch configuration and create elasticsearch connection
-host = app.config['ES_HOST']
-port = app.config['ES_PORT']
-http_auth = app.config['HTTP_AUTH']
-use_ssl = app.config['USE_SSL']
-verify_certs = app.config['VERIFY_CERTS']
-ca_certs = app.config['CA_CERTS']
-client_cert = app.config['CLIENT_CERT']
-client_key = app.config['CLIENT_KEY']
-timeout = app.config['TIMEOUT']
+host = ELASTICSEARCH_PARAMS['host']
+port = ELASTICSEARCH_PARAMS['port']
+http_auth = ELASTICSEARCH_PARAMS['http_auth']
+use_ssl = ELASTICSEARCH_PARAMS['use_ssl']
+verify_certs = ELASTICSEARCH_PARAMS['verify_certs']
+ca_certs = ELASTICSEARCH_PARAMS['ca_certs']
+client_cert = ELASTICSEARCH_PARAMS['client_cert']
+client_key = ELASTICSEARCH_PARAMS['client_key']
+timeout = ELASTICSEARCH_PARAMS['timeout']
 
 # Initialize Elasticsearch instance
-es = connections.create_connection(hosts=[host],
+es = connections.create_connection(hosts=host,
                                    port=port,
                                    http_auth=http_auth,
                                    use_ssl=use_ssl,

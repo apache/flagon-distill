@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from distill import app
+from distill.app import app
 
 
 def dev_server():
