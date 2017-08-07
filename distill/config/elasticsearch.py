@@ -14,7 +14,7 @@
 # limitations under the License.
 
 ELASTICSEARCH_PARAMS = {
-    'host': ['vlsmsbx.draper.com'],
+    'host': ['elasticsearch1'],
     'port': 9200,
     'http_auth': None,
     'use_ssl': False,
