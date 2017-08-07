@@ -264,17 +264,18 @@ class GraphAnalytics (object):
                     seqID = '%s->%s' % (nodename1, nodename2)
 
                     # @todo Ensure src and target are not the same (self-loop)
-                    link = {
-                        'sequenceID': seqID,
-                        'sourceName': nodename1,
-                        'targetName': nodename2,
-                        'type': node1['type'],
-                        # 'duration': node1['duration'],
-                        'pathLength': len(node1['path']),
-                        'targetChange': node1['targetChange'],
-                        'typeChange': node1['typeChange']
-                    }
-                    visitedLinks.append(link)
+                    if nodename1 != nodename2:
+                        link = {
+                            'sequenceID': seqID,
+                            'sourceName': nodename1,
+                            'targetName': nodename2,
+                            'type': node1['type'],
+                            # 'duration': node1['duration'],
+                            'pathLength': len(node1['path']),
+                            'targetChange': node1['targetChange'],
+                            'typeChange': node1['typeChange']
+                        }
+                        visitedLinks.append(link)
 
             # How many users visited a sequence at this step
             counts = collections.Counter(k['sequenceID'] for k in visitedLinks if k.get('sequenceID'))
