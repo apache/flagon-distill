@@ -87,7 +87,7 @@ setup_requires = [
 
 install_requires = [
     'elasticsearch-dsl >= 5.0.0, < 6.0.0',
-    'pandas >= 0.20.2',
+    # 'pandas >= 0.20.2',
     'Flask >= 0.12.2',
     'celery >= 4.0.2',
 ]
@@ -105,9 +105,6 @@ docs_require = [
 ]
 
 extras_require = {
-    'docker': [
-        'docker-compose >= 1.12.0, < 1.13',
-    ],
     'test' : tests_require,
     'doc' : docs_require,
     'monitor': [

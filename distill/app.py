@@ -83,6 +83,7 @@ def sankey(app_id):
     # Time range using date math
     from_range = 'now-15m'
     to_range = 'now'
+    ts_range = [from_range, to_range]
     if 'from' in request.args:
         from_range = request.args.get('from')
 
