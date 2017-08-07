@@ -234,8 +234,9 @@ class GraphAnalytics (object):
             newSessions.append(pairs)
 
         # Node Map
-        node_map = []   # Need to keep 0based index for sankey diagram
+        node_list = []   # Need to keep 0-based index for sankey diagram
         links = []      # Aggregate sequence list
+        node_map = []   # Final node map {"name": "foo", "id": 0"}
 
         # Align the sequences
         alignment = itertools.izip_longest(*newSessions)
@@ -277,16 +278,19 @@ class GraphAnalytics (object):
 
             # How many users visited a sequence at this step
             counts = collections.Counter(k['sequenceID'] for k in visitedLinks if k.get('sequenceID'))
+            # print(counts)
+            # Append into growing node_list
+            map(lambda x: node_list.append(x), nodenames)
 
-            # Append into growing nodeMap
-            map(lambda x: node_map.append(x), nodenames)
+            map(lambda x: node_map.append({ "name": x,
+                                            "id": len(node_list) - 1 - node_list[::-1].index(x)}), nodenames)
 
             for v in visitedLinks:
                 # Pass through and update count, also generate src and target id
-                v['value'] = c[v['sequenceID']]
+                v['value'] = counts[v['sequenceID']]
                 # Last occurence is the src and target id
-                v['sourceID'] = len(node_map) -1 - node_map[::-1].index(v['sourceName'])
-                v['targetID'] = len(node_map) -1 - node_map[::-1].index(v['targetName'])
+                v['source'] = len(node_list) -1 - node_list[::-1].index(v['sourceName'])
+                v['target'] = len(node_list) -1 - node_list[::-1].index(v['targetName'])
                 links.append(v)
 
         # Save everything
@@ -297,8 +301,8 @@ class GraphAnalytics (object):
             'nodes': node_map
         }
 
-        # with open('sankey.json', 'w') as outfile:
-        #     json.dump(res, outfile, indent=4, sort_keys=False)
+        with open('sankey.json', 'w') as outfile:
+            json.dump(res, outfile, sort_keys=False)
 
         # with open('data.txt', 'w') as outfile:
         #     json.dump(intervalSessions, outfile, indent=4, sort_keys=False)
