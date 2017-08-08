@@ -21,6 +21,11 @@ from elasticsearch import helpers
 
 from distill import es
 
+
+class hashabledict(dict):
+    def __hash__(self):
+        return hash(tuple(sorted(self.items())))
+
 class GraphAnalytics (object):
     """
     Distill's graph analytics package. Apply graph algorithms
@@ -236,7 +241,7 @@ class GraphAnalytics (object):
         # Node Map
         node_list = []   # Need to keep 0-based index for sankey diagram
         links = []      # Aggregate sequence list
-        node_map = []   # Final node map {"name": "foo", "id": 0"}
+        node_map = set([])   # Final node map {"name": "foo", "id": 0"}
 
         # Align the sequences
         alignment = itertools.izip_longest(*newSessions)
@@ -246,7 +251,8 @@ class GraphAnalytics (object):
             c = collections.Counter()
             visitedLinks = []
             nodenames = set([])
-
+            sources = set([])
+            targets = set([])
             # Process all the edges
             for edge in step:
                 if edge:
@@ -256,15 +262,17 @@ class GraphAnalytics (object):
                     nodename1 = node1['target']
                     nodename2 = node2['target']
 
-                    # Add src and targetids
-                    nodenames.add(nodename1)
-                    nodenames.add(nodename2)
-
                     # Generate sequence ID
                     seqID = '%s->%s' % (nodename1, nodename2)
 
                     # @todo Ensure src and target are not the same (self-loop)
                     if nodename1 != nodename2:
+                        # Add src and targetids
+                        nodenames.add(nodename1)
+                        nodenames.add(nodename2)
+                        sources.add(nodename1)
+                        targets.add(nodename2)
+
                         link = {
                             'sequenceID': seqID,
                             'sourceName': nodename1,
@@ -279,12 +287,24 @@ class GraphAnalytics (object):
 
             # How many users visited a sequence at this step
             counts = collections.Counter(k['sequenceID'] for k in visitedLinks if k.get('sequenceID'))
-            # print(counts)
-            # Append into growing node_list
-            map(lambda x: node_list.append(x), nodenames)
 
-            map(lambda x: node_map.append({ "name": x,
-                                            "id": len(node_list) - 1 - node_list[::-1].index(x)}), nodenames)
+            # Append into growing node_list
+            # map(lambda x: node_list.append(x), sources)
+            # map(lambda x: node_list.append(x) if x not in sources, targets)
+
+            # Only treat sources as new nodes if not visited already
+            for x in sources:
+                if x not in node_list:
+                    node_list.append(x)
+
+            # Treat all targets as new nodes
+            map(lambda x: node_list.append(x), targets)
+
+            map(lambda x: node_map.add(hashabledict({ "name": x,
+                                                        "id": len(node_list) - 1 - node_list[::-1].index(x)})), sources)
+
+            map(lambda x: node_map.add(hashabledict({ "name": x,
+                                                        "id": len(node_list) - 1 - node_list[::-1].index(x)})), targets)
 
             for v in visitedLinks:
                 # Pass through and update count, also generate src and target id
@@ -299,11 +319,11 @@ class GraphAnalytics (object):
         res['bargraph'] = generate_bargraph(allTargets)
         res['sankey'] = {
             'links': links,
-            'nodes': node_map
+            'nodes': list(node_map)
         }
 
         with open('sankey.json', 'w') as outfile:
-            json.dump(res, outfile, sort_keys=False)
+            json.dump(res, outfile, indent=4, sort_keys=False)
 
         # with open('data.txt', 'w') as outfile:
         #     json.dump(intervalSessions, outfile, indent=4, sort_keys=False)
