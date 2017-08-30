@@ -96,7 +96,13 @@ def sankey(app_id):
     if 'size' in request.args:
         size = request.args.get('size')
 
+    # target events
+    events = []
+    if 'event' in request.args:
+        events.append(request.args.get('event'))
+
     return jsonify(GraphAnalytics.generate_graph(app_id,
+                                                 target_events=events,
                                                  time_range=ts_range,
                                                  size=size))
 

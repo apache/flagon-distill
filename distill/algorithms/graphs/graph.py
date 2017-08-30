@@ -36,20 +36,9 @@ class GraphAnalytics (object):
                        size=20):
         """
         Return all elements from an application, possible matching against
-        a specific event (e.g. click, mouseover, etc)
+        a specific event type (e.g. click, mouseover, etc)
         """
         # @TODO ref_url filter
-
-        # Filtering
-        should_query = []
-        if (target_events):
-            for event in target_events:
-                res = {
-                    "term": {
-                        "type": event
-                    }
-                }
-                should_query.append(res)
 
         must_not_query = [
             {
@@ -69,9 +58,19 @@ class GraphAnalytics (object):
                 "term": {
                     "logType": log_type
                 },
-
             },
         ]
+
+        # Filtering
+        # should_query = []
+        if (target_events):
+            for event in target_events:
+                res = {
+                    "term": {
+                        "type": event
+                    }
+                }
+                filter_query.append(res)
 
         # Sort By Time
         sort_query = [
@@ -144,7 +143,7 @@ class GraphAnalytics (object):
             "query": {
                 "bool": {
                     # "must": must_match,
-                    "should": should_query,
+                    # "should": should_query,
                     "filter": filter_query,
                     "must_not": must_not_query,
                 }
@@ -163,6 +162,7 @@ class GraphAnalytics (object):
             "aggregations": agg_query
         }
 
+        # return query
         # Process Aggregate Results
         response = es.search(app, doc_type=app_type, body=query, size=0)
 
@@ -409,7 +409,7 @@ class GraphAnalytics (object):
 
         res['nodes'] = node_map
         res['links'] = links
-
+        res['sessions'] = sessions
         with open('sankey.json', 'w') as outfile:
             json.dump(res, outfile, sort_keys=False, indent=4)
 
