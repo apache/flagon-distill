@@ -83,26 +83,37 @@ def sankey(app_id):
     # Time range using date math
     from_range = 'now-15m'
     to_range = 'now'
-    ts_range = [from_range, to_range]
-    if 'from' in request.args:
+
+    if 'from' in request.args and request.args.get('from') != '':
         from_range = request.args.get('from')
 
-        if 'to' in request.args:
-            to_range = request.args.get('to')
-            ts_range = [from_range, to_range]
+    if 'to' in request.args and request.args.get('to') != '':
+        to_range = request.args.get('to')
+
+    ts_range = [from_range, to_range]
 
     # Size
     size = 20
-    if 'size' in request.args:
+    if 'size' in request.args and request.args.get('size') != '':
         size = request.args.get('size')
 
-    # target events
+    # events (event_in)
     events = []
-    if 'event' in request.args:
-        events.append(request.args.get('event'))
+    if 'event' in request.args and request.args.get('event') != '':
+        events = request.args.get('event').split(',')
+
+    # filter in/out targets
+    target_in = []
+    if 'target_in' in request.args and request.args.get('target_in') != '':
+        target_in = request.args.get('target_in').split(',')
+
+    target_out = []
+    if 'target_out' in request.args and request.args.get('target_out') != '':
+        target_out = request.args.get('target_out').split(',')
 
     return jsonify(GraphAnalytics.generate_graph(app_id,
-                                                 target_events=events,
+                                                 targets=[target_in, target_out],
+                                                 events=events,
                                                  time_range=ts_range,
                                                  size=size))
 

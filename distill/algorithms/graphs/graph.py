@@ -31,7 +31,8 @@ class GraphAnalytics (object):
     def generate_graph(app,
                        app_type='logs',
                        log_type='raw',
-                       target_events=[],
+                       targets=[],
+                       events=[],
                        time_range=['now-1h', 'now'],
                        size=20):
         """
@@ -62,15 +63,41 @@ class GraphAnalytics (object):
         ]
 
         # Filtering
-        # should_query = []
-        if (target_events):
-            for event in target_events:
-                res = {
-                    "term": {
-                        "type": event
-                    }
+        should_query = []
+        must_query = []
+
+        # Include these events in the request
+        if events:
+            include_events = {
+                "terms": {
+                    "type.keyword": events
                 }
-                filter_query.append(res)
+            }
+            filter_query.append(include_events)
+
+        target_in = targets[0]
+        target_out = targets[1]
+
+        if target_in:
+            include_targets = {
+                "terms": {
+                    "target.keyword": target_in
+                }
+            }
+
+            filter_query.append(include_targets)
+
+        # Remove these elementids from result set
+        for target in target_out:
+            res = {
+                "term": {
+                    "target.keyword": target
+                }
+            }
+            must_not_query.append(res)
+
+        # Finish off should query
+        # must_query.append({"bool": {"should": should_query}})
 
         # Sort By Time
         sort_query = [
@@ -98,7 +125,7 @@ class GraphAnalytics (object):
         session_query = {
                 "terms": {
                     "field": "sessionID.keyword",
-                    "min_doc_count": 1
+                    # "min_doc_count": 1
                 }
             }
 
@@ -108,14 +135,14 @@ class GraphAnalytics (object):
         target_query = {
                 "terms": {
                     "field": "target.keyword",
-                    "min_doc_count": 1,
+                    # "min_doc_count": 1,
                     "size": size
                 },
                 "aggs": {
                     "events": {
                         "terms": {
                             "field": "type.keyword",
-                            "min_doc_count": 1,
+                            # "min_doc_count": 1,
                             "size": size
                         }
                     },
@@ -142,10 +169,11 @@ class GraphAnalytics (object):
             "sort": sort_query,
             "query": {
                 "bool": {
-                    # "must": must_match,
+                    # "must": must_query,
                     # "should": should_query,
                     "filter": filter_query,
                     "must_not": must_not_query,
+                    # "minimum_should_match": len(should_query) - 1
                 }
             },
             "_source": {
@@ -165,7 +193,6 @@ class GraphAnalytics (object):
         # return query
         # Process Aggregate Results
         response = es.search(app, doc_type=app_type, body=query, size=0)
-
         # Only want to look at aggregations
         sessions = response['aggregations']['sessions']['buckets']
         # allSessions = { x['key']: [] for x in sessions }
@@ -285,10 +312,10 @@ class GraphAnalytics (object):
                     nodename2 = node2['target']
 
                     seqID = '%s->%s' % (nodename1, nodename2)
-                    print(seqID)
+                    #print(seqID)
 
                     if nodename1 != nodename2:  #double check again for self-loops
-                        print(node1)
+                        #print(node1)
                         link = {
                             'sequenceID': seqID,
                             'sourceName': nodename1,
