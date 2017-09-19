@@ -70,7 +70,7 @@ class GraphAnalytics (object):
         if events:
             include_events = {
                 "terms": {
-                    "type.keyword": events
+                    "type": events
                 }
             }
             filter_query.append(include_events)
@@ -81,7 +81,7 @@ class GraphAnalytics (object):
         if target_in:
             include_targets = {
                 "terms": {
-                    "target.keyword": target_in
+                    "target": target_in
                 }
             }
 
@@ -91,7 +91,7 @@ class GraphAnalytics (object):
         for target in target_out:
             res = {
                 "term": {
-                    "target.keyword": target
+                    "target": target
                 }
             }
             must_not_query.append(res)
@@ -437,8 +437,8 @@ class GraphAnalytics (object):
         res['nodes'] = node_map
         res['links'] = links
         res['sessions'] = sessions
-        with open('sankey.json', 'w') as outfile:
-            json.dump(res, outfile, sort_keys=False, indent=4)
+        # with open('sankey.json', 'w') as outfile:
+        #     json.dump(res, outfile, sort_keys=False, indent=4)
 
         # with open('data.txt', 'w') as outfile:
         #     json.dump(intervalSessions, outfile, indent=4, sort_keys=False)
