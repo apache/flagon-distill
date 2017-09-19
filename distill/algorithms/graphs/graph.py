@@ -97,7 +97,7 @@ class GraphAnalytics (object):
         # Get all unique sessions
         session_query = {
                 "terms": {
-                    "field": "sessionID.keyword",
+                    "field": "sessionID",
                     "min_doc_count": 1
                 }
             }
@@ -107,14 +107,14 @@ class GraphAnalytics (object):
         # Generating all top targets and breakdowns by type, including path_length
         target_query = {
                 "terms": {
-                    "field": "target.keyword",
+                    "field": "target",
                     "min_doc_count": 1,
                     "size": size
                 },
                 "aggs": {
                     "events": {
                         "terms": {
-                            "field": "type.keyword",
+                            "field": "type",
                             "min_doc_count": 1,
                             "size": size
                         }
@@ -125,7 +125,7 @@ class GraphAnalytics (object):
                                 "path_length": {
                                     "script": {
                                         "lang": "painless",
-                                        "inline": "doc['path.keyword'].length;"
+                                        "inline": "doc['path'].length;"
                                     }
                                 }
                             },
@@ -155,7 +155,7 @@ class GraphAnalytics (object):
                 "path_length": {
                     "script": {
                         "lang": "painless",
-                        "inline": "doc['path.keyword'].length;"
+                        "inline": "doc['path'].length;"
                     }
                 }
             },
@@ -295,7 +295,7 @@ class GraphAnalytics (object):
                             'targetName': nodename2,
                             'type': node1['type'],
                             'duration': node1['duration'],
-                            'pathLength': len(node1['path']),
+                            'pathLength': len(node1['path']) if node1['path'] is not None else 0,
                             'targetChange': node1['targetChange'],
                             'typeChange': node1['typeChange']
                         }
