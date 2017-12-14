@@ -13,8 +13,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
+
+host = [os.getenv('ELASTICSEARCH_URL', 'localhost')]
+
 ELASTICSEARCH_PARAMS = {
-    'host': ['elasticsearch1'],
+    'host': host,
     'port': 9200,
     'http_auth': None,
     'use_ssl': False,
