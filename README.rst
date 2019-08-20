@@ -16,13 +16,15 @@
 	limitations under the License. 
 	--->
 
-Apache SensSoft Distill
+Apache Flagon Distill
 =======================
 
-Distill is part of the `Apache SensSoft <http://sensssoft.incubator.apache.org>`_ project.
-It comprises an analytical engine for `UserALE <http://senssoft.incubator.apache.org/userale/>`_
+NOTE: This project is not currently maintained and will be refactored. If you are interested in Distill, join the discussion on our [dev list](dev-subscribe@flagon.incubator.apache.org).
+
+Distill is part of the `Apache Flagon <http://flagon.incubator.apache.org>`_ project.
+It comprises an analytical engine for `UserALE <http://flagon.incubator.apache.org/userale/>`_
 to interact with user activity logs and apply basic analytical operations to the data.
 
-Install instructions can be found `here <http://senssoft.incubator.apache.org/docs/distill/>`_.
+Install instructions can be found `here <http://flagon.incubator.apache.org/docs/distill/>`_.
 
-A contribution guide has been provided `here <http://senssoft.incubator.apache.org/docs/contributing.html>`_.
+A contribution guide has been provided `here <http://flagon.incubator.apache.org/docs/contributing.html>`_.
