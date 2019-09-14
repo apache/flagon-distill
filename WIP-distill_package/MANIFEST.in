@@ -1,0 +1,11 @@
+include MANIFEST.in
+include *.rst
+include NOTICE LICENSE DISCLAIMER.txt
+include setup.py setup.cfg
+
+# Include all sources
+graft distill
+
+# Exclude
+global-exclude *.py[co]
+global-exclude __pycache__

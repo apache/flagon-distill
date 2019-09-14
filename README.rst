@@ -19,7 +19,7 @@
 Apache Flagon Distill
 =======================
 
-NOTE: This project is not currently maintained and will be refactored. If you are interested in Distill, join the discussion on our dev list: dev-subscribe@flagon.incubator.apache.org.
+NOTE: This project is not currently maintained and is being refactored. If you are interested in Distill, join the discussion on our dev list: dev-subscribe@flagon.incubator.apache.org.
 
 Distill is part of the `Apache Flagon <http://flagon.incubator.apache.org/>`_ project.
 It comprises an analytical engine for `UserALE <http://flagon.incubator.apache.org/userale/>`_
