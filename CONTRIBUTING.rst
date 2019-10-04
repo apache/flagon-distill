@@ -20,6 +20,7 @@
 
 Contributing to Apache SensSoft
 -------------------------------
+##TO DO: Update for WIP-Package
 
 Thank you for contributing to the Distill project!
 
