@@ -16,7 +16,7 @@
 #
 
 github:
-  description: "Apache Flagon Distill is a python package to support and analyze Flagon UserAle.js logs
+  description: "Apache Flagon Distill is a python package to support and analyze Flagon UserAle.js logs"
   homepage: https://flagon.incubator.apache.org/
   labels:
     - flagon
