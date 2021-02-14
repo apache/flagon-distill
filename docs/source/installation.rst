@@ -96,32 +96,6 @@ Deactivate environment
 
 	$ deactivate
 
-Running Apache Distill on Docker Compose
-----------------------------------------
-
-From the project directory, start up Apache Distill in the background.
-
-:: 
-
-	$ docker-compose up -d
-	Starting elastic
-	Starting logstash
-	Starting kibana
-	Starting distill
-	$ docker-compose ps
-	Name                Command               State                       Ports                      
-	--------------------------------------------------------------------------------------------------
-	distill    /bin/sh -c python distill/ ...   Up      0.0.0.0:8090->8090/tcp                         
-	elastic    elasticsearch                    Up      0.0.0.0:9200->9200/tcp, 0.0.0.0:9300->9300/tcp 
-	kibana     /tmp/entrypoint.sh               Up      0.0.0.0:5601->5601/tcp                         
-	logstash   logstash -f /etc/logstash/ ...   Up  
-
-To stop services once you've finished with them:
-
-::
-	
-	$ docker-compose stop
-
 Deployment with Nginx and Gunicorn
 ----------------------------------
 
