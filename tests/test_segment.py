@@ -34,6 +34,23 @@ def setup():
 
     return (sorted_data, sorted_dict)
 
+def setup_one_segment():
+    data = setup()
+    sorted_data = data[0]
+    sorted_dict = data[1]
+
+    # Create Test Segment Tuples
+    start_end_vals = []
+    start_end_vals.append((sorted_data[0][1]['clientTime'], sorted_data[1][1]['clientTime']))
+
+    segment_names = ["test_segment_1"]
+
+    # Call create_segment
+    result = segment.Segment.create_segment(sorted_dict, segment_names, start_end_vals)
+    
+    return result["test_segment_1"]
+
+
 def test_create_segment():
     data = setup()
     sorted_data = data[0]
@@ -84,3 +101,43 @@ def test_write_segment():
     assert len(result["test_segment_extra_log"]) == 8
 
     #TODO: Create additional tests ensuring the content of logs
+
+def test_union():
+    data = setup()
+    sorted_data = data[0]
+    sorted_dict = data[1]
+
+    # Create Tuples
+    start_end_vals = []
+    start_end_vals.append((sorted_data[0][1]['clientTime'], sorted_data[18][1]['clientTime']))
+    start_end_vals.append((sorted_data[5][1]['clientTime'], sorted_data[6][1]['clientTime']))
+    start_end_vals.append((sorted_data[6][1]['clientTime'], sorted_data[7][1]['clientTime']))
+    start_end_vals.append((sorted_data[3][1]['clientTime'], sorted_data[9][1]['clientTime']))
+
+    segment_names = ["test_segment_1", "test_segment_2", "test_segment_3", "test_segment_4"]
+
+    result = segment.Segment.create_segment(sorted_dict, segment_names, start_end_vals)
+
+    new_segment = segment.Segment.union("new_segment", result["test_segment_2"], result["test_segment_3"])
+    
+    assert new_segment.segment_name == "new_segment"
+    assert new_segment.num_logs == 4
+    assert new_segment.uids == [sorted_data[5][0], sorted_data[6][0], sorted_data[7][0], sorted_data[8][0]]
+    assert new_segment.start_end_val == (sorted_data[5][1]['clientTime'], sorted_data[7][1]['clientTime'])
+
+def test_getters():
+    data = setup()
+    sorted_data = data[0]
+    sorted_dict = data[1]
+
+    # Create Test Segment
+    start_end_vals = []
+    start_end_vals.append((sorted_data[0][1]['clientTime'], sorted_data[1][1]['clientTime']))
+    segment_names = ["test_segment_1"]
+    result = segment.Segment.create_segment(sorted_dict, segment_names, start_end_vals)
+    seg = result["test_segment_1"]
+    
+    assert seg.get_segment_name() == "test_segment_1"
+    assert seg.get_start_end_val() == (sorted_data[0][1]['clientTime'], sorted_data[1][1]['clientTime'])
+    assert seg.get_num_logs() == 2
+    assert seg.get_segment_uids() == [sorted_data[0][0], sorted_data[1][0]]
