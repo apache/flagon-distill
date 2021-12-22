@@ -62,3 +62,5 @@ var/
 .installed.cfg
 *.egg
 /bin/
+/.ipynb_checkpoints/*
+/distill/.ipynb_checkpoints/*
