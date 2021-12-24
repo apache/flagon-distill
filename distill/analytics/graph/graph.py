@@ -48,10 +48,12 @@ class graph:
 
     @staticmethod
 #    TODO complete function (args--input edge-list, labels)
-    def sankey ():
+    def sankey (edges_segmentN, node_labels = []):
         """
-
-        :return:
+        Creates Sankey Graph from defined edge list and optional user-provided labels
+        :param edges_segmentN: List of Tuples
+        :param node_labels: Optional List of Strings
+        :return: A Sankey graph object
         """
         edge_list_temp = []
         for row in edges_segmentN:
@@ -65,11 +67,12 @@ class graph:
         target_list = [i[1] for i in edge_list_counter.keys()]
         value_list = [i for i in edge_list_counter.values()]
 
-        nodes = []
-        for row in edge_list:
-            for col in row:
-                if col not in nodes:
-                    nodes.append(col)
+        if not node_labels:
+            nodes = []
+            for row in edge_list:
+                for col in row:
+                    if col not in nodes:
+                        nodes.append(col)
 
         sources = []
         for i in source_list:
@@ -91,6 +94,7 @@ class graph:
 
         fig.show()
 
-    @staticmethod
-#   TODO complete function (args--input edge-list, labels)
-    def funnel():
+#     @staticmethod
+# #   TODO complete function (args--input edge-list, labels)
+#     def funnel():
+
