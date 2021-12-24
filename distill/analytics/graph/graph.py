@@ -13,6 +13,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+go_from_this = [('a', 'b'),
+                ('b', 'c'),
+                ('c', 'd')]
+
+go_to_this = [('a', 'b', 'c'),
+              ('b', 'c', 'd')]
+
+new_list = []
+length = len(go_from_this)-1
+for i in go_from_this:
+    if go_from_this.index(i) != length:
+        new_list.append(i[0])
+    else:
+        new_list.append(i[0])
+        new_list.append(i[1])
+
+print(new_list)
+
+
+
+
+
 import itertools
 import json
 import collections
@@ -53,7 +75,7 @@ class graph:
         Creates Sankey Graph from defined edge list and optional user-provided labels
         :param edges_segmentN: List of Tuples
         :param node_labels: Optional List of Strings
-        :return: A Sankey graph object
+        :return: A Sankey graph
         """
         edge_list_temp = []
         for row in edges_segmentN:
@@ -94,7 +116,99 @@ class graph:
 
         fig.show()
 
-#     @staticmethod
-# #   TODO complete function (args--input edge-list, labels)
-#     def funnel():
+    @staticmethod
+#   TODO complete function (args--input edge-list, labels)
+    def funnel(edges_segmentN,
+               user_specification,
+               labels = []):
 
+        """
+        Creates Funnel Graph from defined edge list and optional user-provided labels
+        :param edges_segmentN: List of Tuples
+        :param user_specification: String of Target of interest e.g. #document
+        :param labels: Optional List of Strings
+        :return: A Funnel graph
+        """
+
+        ## First removing duplicates
+
+        edge_list_temp = []
+        for row in edges_segmentN:
+            if row[0] != row[1]:
+                edge_list_temp.append(row)
+        edge_list = edge_list_temp
+
+        ## Then we convert from list of 2s to list of 1s
+
+        edgelist_list = []
+        length = len(edge_list) - 1
+        for i in edge_list:
+            if edge_list.index(i) != length:
+                edgelist_list.append(i[0])
+            else:
+                edgelist_list.append(i[0])
+                edgelist_list.append(i[1])
+
+        # We can then remove the None values
+
+        funnel_targets_temp = []
+        for item in edgelist_list:
+            if item != None:
+                funnel_targets_temp.append(item)
+        funnel_targets = funnel_targets_temp
+
+        ## We can then convert that list into a list of 3s
+        edge_list = []
+        for i in range(len(funnel_targets)):
+            if i == (len(funnel_targets) - 2):
+                break
+            else:
+                edge_list.append((funnel_targets[i], funnel_targets[i + 1], funnel_targets[i + 2]))
+
+        ## Then we can convert the list of 3s to a counter
+
+        edge_list_counter = Counter(edge_list)
+        first_rung = user_specification
+        new_edge_list = []
+        for i in edge_list:
+            if i[0] == user_specification:
+                new_edge_list.append((i[0], i[1], i[2]))
+
+        new_edge_list_counter = Counter(new_edge_list)
+        new_edge_list_counter.most_common(1)
+
+        first_rung = new_edge_list_counter.most_common(1)[0][0][0]
+        second_rung = new_edge_list_counter.most_common(1)[0][0][1]
+        third_rung = new_edge_list_counter.most_common(1)[0][0][2]
+
+        counter1 = 0
+        counter2 = 0
+        counter3 = 0
+        for i in edge_list:
+            if i[0] == first_rung:
+                counter1 += 1
+                if i[1] == second_rung:
+                    counter2 += 1
+                    if i[2] == third_rung:
+                        counter3 += 1
+
+        numbers = [counter1, counter2, counter3]
+        edges = [first_rung, second_rung, third_rung]
+
+        # Plotting labels from the list with the values from the dictionary
+        data = dict(
+            number=numbers,
+            edge=edges)
+
+        # Plotting the figure
+        fig = go.Figure(go.Funnel(
+            y=edges,
+            x=numbers,
+            textposition="inside",
+            textinfo="value+percent initial",
+            opacity=0.65, marker={"color": ["deepskyblue", "lightsalmon", "tan"],
+                                  "line": {"width": [2]}},
+            connector={"line": {"color": "lime", "dash": "dot", "width": 5}})
+        )
+
+        fig.show()
