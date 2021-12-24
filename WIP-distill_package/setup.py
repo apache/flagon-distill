@@ -13,8 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-##TODO Update for WIP-PACKAGE
-
 import setuptools
 import io
 import os
@@ -25,10 +23,10 @@ if sys.version_info[:2] < (2, 7):
     raise ImportError(m % sys.version_info[:2])
 
 if sys.argv[-1] == 'setup.py':
-    print("To install, run 'python setup.py install'\n")
-    print("To run tests, run 'python setup.py test'\n")
-    print("To build docs, run 'python setup.py docs'\n")
-    print("To clean, run 'python setup.py clean'\n")
+    #print("To install, run 'python setup.py install'\n")
+    #print("To run tests, run 'python setup.py test'\n")
+    #print("To build docs, run 'python setup.py docs'\n")
+    #print("To clean, run 'python setup.py clean'\n")
 
 
 class CleanCommand(setuptools.Command):
@@ -89,60 +87,61 @@ setup_requires = [
 
 install_requires = [
     'elasticsearch-dsl >= 5.0.0, < 6.0.0',
-    # 'pandas >= 0.20.2',
-    'Flask >= 0.12.2',
-    'celery >= 4.0.2',
+    'pandas >= 0.20.2',
+    #'Flask >= 0.12.2',
+    #'celery >= 4.0.2',
 ]
 
 tests_require = [
-    'pytest >= 3.0.0',
-    'pytest-pylint',
-    'pytest-html',
-    'pytest-cov',
+    #'pytest >= 3.0.0',
+    #'pytest-pylint',
+    #'pytest-html',
+    #'pytest-cov',
 ]
 
 docs_require = [
-    'Sphinx >= 1.5.2',
-    'sphinx-rtd-theme >= 0.1.9',
+    #'Sphinx >= 1.5.2',
+    #'sphinx-rtd-theme >= 0.1.9',
 ]
 
 extras_require = {
-    'test' : tests_require,
-    'doc' : docs_require,
-    'monitor': [
-        'flower'
-    ]
+    #'test' : tests_require,
+    #'doc' : docs_require,
+    #'monitor': [
+    #    'flower'
+    #]
 }
 
 classifiers = [
     'Development Status :: 4 - Beta',
     'Intended Audience :: Developers',
-    'Intended Audience :: Science/Research',
+    'Intended Audience :: Science/Research/Development',
     'License :: OSI Approved :: Apache Software License',
     'Natural Language :: English',
     'Operating System :: OS Independent',
     'Programming Language :: Python',
-    'Programming Language :: Python :: 2.7',
-    'Programming Language :: Python :: 3.5',
+    #'Programming Language :: Python :: 2.7',
+    #'Programming Language :: Python :: 3.5',
     'Environment :: Web Environment',
-    'Framework :: Flask',
-    'Topic :: Internet :: Log Analysis'
+    #'Framework :: Flask',
+    #'Topic :: Internet :: Log Analysis '
 ]
 
 setuptools.setup(
     name="Distill",
     version=get_version(),
-    url="http://senssoft.incubator.apache.org",
-    license="Apache Software License 2.0",
-    author="Michelle Beard",
-    author_email="mbeard@apache.org",
-    description="An analytical framework for UserALE and TAP.",
+    author="Joshua Poore, Michelle Beard",
+    author_email="poorejc@apache.org",
+    description="An analytical framework for UserALE.js",
     long_description=__doc__,
-    classifiers=classifiers,
-    keywords="stout userale tap distill",
+    long_description_content_type="text/markdown"
+    license="Apache Software License 2.0",
+    url="https://github.com/apache/incubator-flagon-distill",
     packages=setuptools.find_packages(exclude=['examples', 'tests']),
+    classifiers=classifiers,
+    keywords="userale distill",
     include_package_data=True,
-    zip_safe=False,
+    #zip_safe=False,
     cmdclass={
         'clean': CleanCommand,
     },

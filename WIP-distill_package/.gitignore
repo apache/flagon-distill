@@ -13,27 +13,52 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#TO DO: UPDATE FOR WIP-PACKAGE
+.DS_Store
+.idea
 
-[egg_info]
-tag_build = .dev
-tag_date = 1
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
 
-[aliases]
-test=pytest
-docs = build_sphinx
-daily = egg_info --tag-date sdist
-release = egg_info --tag-build=".rc" sdist bdist_wheel bdist_egg
+# setup_tools
+setup_tools
 
-[tool:pytest] 
+# Flask instance folder
+instance/
 
-[build_sphinx]
-source-dir = docs/source
-build-dir = docs/_build
-all_files = 1
+# Scrapy stuff:
+.scrapy
 
-[upload_sphinx]
-upload-dir = docs/_build/html
+# Sphinx documentation
+docs/_build/
 
-[bdist_wheel]
-universal = 1
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+.hypothesis/
+
+# Distribution / packaging
+.Python
+env*/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+/bin/

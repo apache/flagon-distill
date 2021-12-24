@@ -13,27 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#TO DO: UPDATE FOR WIP-PACKAGE
+"""Version information for Distill.
 
-[egg_info]
-tag_build = .dev
-tag_date = 1
+This file is imported by ``Distill.__init__``,
+and parsed by ``setup.py``.
+"""
 
-[aliases]
-test=pytest
-docs = build_sphinx
-daily = egg_info --tag-date sdist
-release = egg_info --tag-build=".rc" sdist bdist_wheel bdist_egg
-
-[tool:pytest] 
-
-[build_sphinx]
-source-dir = docs/source
-build-dir = docs/_build
-all_files = 1
-
-[upload_sphinx]
-upload-dir = docs/_build/html
-
-[bdist_wheel]
-universal = 1
+__version__ = "0.1.0"

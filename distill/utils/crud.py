@@ -13,27 +13,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#TO DO: UPDATE FOR WIP-PACKAGE
+import pandas as pd
+from uuid import uuid4
 
-[egg_info]
-tag_build = .dev
-tag_date = 1
+class crud():
+    """
+    Distill's segmentation package. Allows the user to segment User Ale log data.
+    """
 
-[aliases]
-test=pytest
-docs = build_sphinx
-daily = egg_info --tag-date sdist
-release = egg_info --tag-build=".rc" sdist bdist_wheel bdist_egg
+    @staticmethod
+    def epoch_to_datetime(epoch_string):
+        """
+        Turns Unix/Epoch DateTime string into a pandas date-time object
+        :param epoch_string: Unix/Epoch DateTime string (e.g., UserALE:clientTime)
+        :return: Pandas DateTime object
+        """
+        new_datetime = (pd.to_datetime(epoch_string, unit='ms', origin='unix') - pd.Timestamp('1970-01-01')) // pd.Timedelta('1ms')
+        return new_datetime
 
-[tool:pytest] 
+    @staticmethod
+    def getUID(log):
+        return str(log['sessionID']) + str(log['clientTime']) + str(log["logType"]) + str(log["type"])
 
-[build_sphinx]
-source-dir = docs/source
-build-dir = docs/_build
-all_files = 1
-
-[upload_sphinx]
-upload-dir = docs/_build/html
-
-[bdist_wheel]
-universal = 1

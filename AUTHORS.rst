@@ -18,17 +18,25 @@
 
 .. _authors:
 
-Apache Distill is written and maintained by Draper and various contributors:
+Apache Distill is written and maintained by various contributors:
 
-Development Lead
+Development Leads:
+````````````````
+
+- Joshua Poore <jpoore@apache.org>
+- Kelsey Rassmann
+
+Contributors:
+````````````````
+- Grant Tamrakar
+- Alex Veerasammy
+- Amir Ghaemi
+
+Inspired by Previous Contributors:
 ````````````````
 
 - Michelle Beard <msbeard@apache.org>
-
-Additional Staff
-````````````````
-
 - Laura Mariano <lmariano@apache.org>
-- Dr. Joshua Poore <jpoore@apache.org>
+- Ryan Brill
 - Clay Gimenez <cgimenez@dapache.org>
 - Arthi Vezhavendan <avezhavendan@apache.org>

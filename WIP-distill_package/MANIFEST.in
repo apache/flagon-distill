@@ -1,5 +1,3 @@
-#TO DO: Update for WIP-PACKAGE
-
 include MANIFEST.in
 include *.rst
 include NOTICE LICENSE DISCLAIMER.txt
