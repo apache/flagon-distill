@@ -13,28 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-go_from_this = [('a', 'b'),
-                ('b', 'c'),
-                ('c', 'd')]
-
-go_to_this = [('a', 'b', 'c'),
-              ('b', 'c', 'd')]
-
-new_list = []
-length = len(go_from_this)-1
-for i in go_from_this:
-    if go_from_this.index(i) != length:
-        new_list.append(i[0])
-    else:
-        new_list.append(i[0])
-        new_list.append(i[1])
-
-print(new_list)
-
-
-
-
-
 import itertools
 import json
 import collections
