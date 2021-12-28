@@ -117,13 +117,13 @@ class graph:
 #   TODO complete function (args--input edge-list, labels)
     def funnel(edges_segmentN,
                user_specification,
-               labels = []):
+               node_labels=False):
 
         """
         Creates Funnel Graph from defined edge list and optional user-provided labels
         :param edges_segmentN: List of Tuples
         :param user_specification: String of Target of interest e.g. #document
-        :param labels: Optional List of Strings
+        :param node_labels: Optional Dictionary of key default values, value replacements
         :return: A Funnel graph
         """
 
@@ -191,6 +191,17 @@ class graph:
 
         numbers = [counter1, counter2, counter3]
         edges = [first_rung, second_rung, third_rung]
+
+        # ADD REPLACEMENT CODE HERE
+        if node_labels:
+            new_edges = []
+            for edge in edges:
+                if edge in node_labels:
+                    new_edges.append(node_labels[edge])
+                else:
+                    new_edges.append(edge)
+            edges = new_edges
+
 
         # Plotting labels from the list with the values from the dictionary
         data = dict(
