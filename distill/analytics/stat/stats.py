@@ -19,7 +19,7 @@ def session_clickrate_dict(data, session):
     Creates clickrate dictionary from user defined dataframe and session
     :param data: Dataframe of logs imported from JSON (SampleLogs2Session)
     :param session: String of session ID of interest
-    :return: A Sankey graph
+    :return: A session clickrate dictionary
     """
 
     # turn clientTime into indexable data-time object
