@@ -92,7 +92,7 @@ class graph:
         if node_labels:
             fig = go.Figure(data=[go.Sankey(
                 node=dict(
-                    label=[new_nodes[item].split("|")[0] for item in range(len(nodes))],
+                    label=[new_nodes[item].split("|")[0] for item in range(len(new_nodes))],
                 ),
                 link=dict(
                     source=sources,
