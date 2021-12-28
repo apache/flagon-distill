@@ -48,11 +48,11 @@ class graph:
 
     @staticmethod
 #    TODO complete function (args--input edge-list, labels)
-    def sankey (edges_segmentN, node_labels = []):
+    def sankey(edges_segmentN, node_labels=False):
         """
         Creates Sankey Graph from defined edge list and optional user-provided labels
         :param edges_segmentN: List of Tuples
-        :param node_labels: Optional List of Strings
+        :param node_labels: Optional Dictionary of Values; keys are originals, values are replacements
         :return: A Sankey graph
         """
         edge_list_temp = []
@@ -67,12 +67,19 @@ class graph:
         target_list = [i[1] for i in edge_list_counter.keys()]
         value_list = [i for i in edge_list_counter.values()]
 
-        if not node_labels:
-            nodes = []
-            for row in edge_list:
-                for col in row:
-                    if col not in nodes:
-                        nodes.append(col)
+        nodes = []
+        for row in edge_list:
+            for col in row:
+                if col not in nodes:
+                    nodes.append(col)
+
+        if node_labels:
+            new_nodes = []
+            for node in nodes:
+                if node in node_labels:
+                    new_nodes.append(node_labels[node])
+                else:
+                    new_nodes.append(node)
 
         sources = []
         for i in source_list:
@@ -82,17 +89,29 @@ class graph:
             targets.append(nodes.index(i))
         values = value_list
 
-        fig = go.Figure(data=[go.Sankey(
-            node=dict(
-                label=[nodes[item].split("|")[0] for item in range(len(nodes))],
-            ),
-            link=dict(
-                source=sources,
-                target=targets,
-                value=values
-            ))])
+        if node_labels:
+            fig = go.Figure(data=[go.Sankey(
+                node=dict(
+                    label=[new_nodes[item].split("|")[0] for item in range(len(nodes))],
+                ),
+                link=dict(
+                    source=sources,
+                    target=targets,
+                    value=values
+                ))])
+        else:
+            fig = go.Figure(data=[go.Sankey(
+                node=dict(
+                    label=[nodes[item].split("|")[0] for item in range(len(nodes))],
+                ),
+                link=dict(
+                    source=sources,
+                    target=targets,
+                    value=values
+                ))])
 
         fig.show()
+
 
     @staticmethod
 #   TODO complete function (args--input edge-list, labels)
