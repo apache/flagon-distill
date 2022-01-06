@@ -17,6 +17,35 @@ from elasticsearch_dsl.connections import connections
 
 from distill.config.elasticsearch import ELASTICSEARCH_PARAMS
 
+from distill.segmentation.segment import (
+    Segment,
+    union,
+    create_segment,
+    write_segment,
+    generate_segments,
+)
+
+from distill.utils.crud import (
+    epoch_to_datetime,
+    getUUID,
+)
+
+from distill.analytics.graph.graph import (
+    graph,
+)
+
+from distill.analytics.stat.stats import (
+    session_clickrate_dict,
+)
+
+from distill.process.search import (
+    search,
+)
+
+from distill.process.transform import (
+    transform,
+)
+
 
 # Unpack Elasticsearch configuration and create elasticsearch connection
 host = ELASTICSEARCH_PARAMS['host']
@@ -39,3 +68,17 @@ es = connections.create_connection(hosts=host,
                                    client_cert=client_cert,
                                    client_key=client_key,
                                    timeout=timeout)
+
+__all__ = [
+    "Segment",
+    "graph",
+    "session_clickrate_dict",
+    "search",
+    "transfrom",
+    "union",
+    "create_segment",
+    "write_segment",
+    "generate_segments",
+    "getUUID",
+    "epoch_to_datetime",
+]

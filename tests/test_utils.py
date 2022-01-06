@@ -1,7 +1,7 @@
 # Util Tests
 import json
 import datetime
-from distill.utils import crud
+import distill
 
 ##############
 # Test Setup #
@@ -26,7 +26,7 @@ def setup_with_uid():
     # Add UIDs to raw data
     data = {}
     for log in raw_data:
-        data[crud.getUUID(log)] = log
+        data[distill.getUUID(log)] = log
 
     return data
 
@@ -40,12 +40,12 @@ def test_UUID():
     data = {}
 
     # Assert the same log will produce the same UID
-    id1 = crud.getUUID(raw_data[0])
-    id2 = crud.getUUID(raw_data[0])
+    id1 = distill.getUUID(raw_data[0])
+    id2 = distill.getUUID(raw_data[0])
     assert id1 == id2
 
     for log in raw_data:
-        data[crud.getUUID(log)] = log
+        data[distill.getUUID(log)] = log
 
     # Assert UID uniqueness
     assert len(data) == len(raw_data)

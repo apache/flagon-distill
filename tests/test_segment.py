@@ -1,8 +1,7 @@
 # Segment Testing
 import json
 import pandas as pd
-from distill.segmentation import segment
-from distill.utils import crud
+import distill
 
 def setup():
 
@@ -12,13 +11,13 @@ def setup():
 
     data = {}
     for log in raw_data:
-        data[crud.getUUID(log)] = log
+        data[distill.getUUID(log)] = log
     
     # Convert clientTime to Date/Time object
     for uid in data:
         log = data[uid]
         client_time = log['clientTime']
-        log['clientTime'] = crud.epoch_to_datetime(client_time)
+        log['clientTime'] = distill.epoch_to_datetime(client_time)
     
     # Sort
     sorted_data = sorted(data.items(), key = lambda kv: kv[1]['clientTime'])
@@ -38,7 +37,7 @@ def setup_one_segment():
     segment_names = ["test_segment_1"]
 
     # Call create_segment
-    result = segment.create_segment(sorted_dict, segment_names, start_end_vals)
+    result = distill.create_segment(sorted_dict, segment_names, start_end_vals)
     
     return result["test_segment_1"]
 
@@ -57,7 +56,7 @@ def test_create_segment():
     segment_names = ["test_segment_all", "test_segment_same_client_time", "test_segment_extra_log"]
 
     # Call create_segment
-    result = segment.create_segment(sorted_dict, segment_names, start_end_vals)
+    result = distill.create_segment(sorted_dict, segment_names, start_end_vals)
 
     assert result["test_segment_all"].num_logs == 19
     assert result["test_segment_all"].segment_name == "test_segment_all"
@@ -86,7 +85,7 @@ def test_write_segment():
     segment_names = ["test_segment_all", "test_segment_same_client_time", "test_segment_extra_log"]
 
     # Call write_segment
-    result = segment.write_segment(sorted_dict, segment_names, start_end_vals)
+    result = distill.write_segment(sorted_dict, segment_names, start_end_vals)
 
     assert len(result["test_segment_all"]) == 19
     assert len(result["test_segment_same_client_time"]) == 2
@@ -108,9 +107,9 @@ def test_union():
 
     segment_names = ["test_segment_1", "test_segment_2", "test_segment_3", "test_segment_4"]
 
-    result = segment.create_segment(sorted_dict, segment_names, start_end_vals)
+    result = distill.create_segment(sorted_dict, segment_names, start_end_vals)
 
-    new_segment = segment.union("new_segment", result["test_segment_2"], result["test_segment_3"])
+    new_segment = distill.union("new_segment", result["test_segment_2"], result["test_segment_3"])
     
     assert new_segment.segment_name == "new_segment"
     assert new_segment.num_logs == 4
@@ -126,7 +125,7 @@ def test_getters():
     start_end_vals = []
     start_end_vals.append((sorted_data[0][1]['clientTime'], sorted_data[1][1]['clientTime']))
     segment_names = ["test_segment_1"]
-    result = segment.create_segment(sorted_dict, segment_names, start_end_vals)
+    result = distill.create_segment(sorted_dict, segment_names, start_end_vals)
     seg = result["test_segment_1"]
     
     assert seg.get_segment_name() == "test_segment_1"
