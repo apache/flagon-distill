@@ -202,3 +202,25 @@ def generate_segments(target_dict, field_name, field_values, start_time_limit, e
     # Create segment dictionary with create_segment
     segments = create_segment(target_dict, segment_names, start_end_vals)
     return segments
+
+def intersection(segment_name, segment1, segment2):
+    
+    #intersections uids
+    uids = segment1.uids 
+    for uid in segment2.uids:
+        if uid in uids:
+            uids.append(uid)
+            
+    #Get the earliest start and latest end value
+    start_time = segment1.start_end_val[0]
+    end_time = segment1.start_end_val[1]
+    if segment1.start_end_val[0] > segment2.start_end_val[0]:
+        start_time = segment2.start_end_val[0]
+    if segment1.start_end_val[1] < segment2.start_end_val[1]:
+        end_time = segment2.start_end_val[1]
+        
+    segment = Segment(segment_name, (start_time, end_time), len(uids), uids)
+    return segment
+    
+    
+  

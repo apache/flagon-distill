@@ -132,3 +132,27 @@ def test_getters():
     assert seg.get_start_end_val() == (sorted_data[0][1]['clientTime'], sorted_data[1][1]['clientTime'])
     assert seg.get_num_logs() == 2
     assert seg.get_segment_uids() == [sorted_data[0][0], sorted_data[1][0]]
+#Getting intersections 
+
+def test_intersection():
+    data = setup()
+    sorted_data = data[0]
+    sorted_dict = data[1]
+    
+    # Create Tuples
+    start_end_vals = []
+    start_end_vals.append((sorted_data[0][1]['clientTime'], sorted_data[18][1]['clientTime']))
+    start_end_vals.append((sorted_data[5][1]['clientTime'], sorted_data[6][1]['clientTime']))
+    start_end_vals.append((sorted_data[6][1]['clientTime'], sorted_data[7][1]['clientTime']))
+    start_end_vals.append((sorted_data[3][1]['clientTime'], sorted_data[9][1]['clientTime']))
+
+    segment_names = ["test_segment_1", "test_segment_2", "test_segment_3", "test_segment_4"]
+
+    result = distill.create_segment(sorted_dict, segment_names, start_end_vals)
+
+    new_segment = distill.intersection("new_segment", result["test_segment_2"], result["test_segment_3"])
+    
+    assert new_segment.segment_name == "new_segment"
+    assert new_segment.num_logs == 4
+    assert new_segment.uids == [sorted_data[5][0], sorted_data[6][0], sorted_data[7][0], sorted_data[8][0]]
+    assert new_segment.start_end_val == (sorted_data[5][1]['clientTime'], sorted_data[7][1]['clientTime'])
