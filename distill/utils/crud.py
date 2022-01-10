@@ -26,9 +26,6 @@ def epoch_to_datetime(epoch_string):
     new_datetime = (pd.to_datetime(epoch_string, unit='ms', origin='unix') - pd.Timestamp('1970-01-01')) // pd.Timedelta('1ms')
     return new_datetime
 
-def getUID(log):
-    return str(log['sessionID']) + str(log['clientTime']) + str(log["logType"]) + str(log["type"])
-
 def getUUID(log):
     """
     Creates a unique id for a userale log.

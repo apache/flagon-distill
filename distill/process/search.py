@@ -13,26 +13,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-class search():
+def find_meta_values(key, dict, *, unique: bool = True):
     """
-    Distill's transformation package. Supports tranform and restructure operations on UserALE.js data
-    for use in a range of analytics
+    Uses List Comprehension to list all unique values for the given key in a dict,
+    assuming nested dict of dicts with depth = 2, e.g., {k:{k:v, ...}, ...}
+    :param key: a dict key to find values for
+    :param dict: a nested dictionary of depth 2 (dict of dicts)
+    :param unique: (optional, default == True) if False returns all values for the given key
+    :return: a list object with values for given key
     """
-
-    @staticmethod
-    def find_meta_values(key, dict, *, unique: bool = True):
-        """
-        Uses List Comprehension to list all unique values for the given key in a dict,
-        assuming nested dict of dicts with depth = 2, e.g., {k:{k:v, ...}, ...}
-        :param key: a dict key to find values for
-        :param dict: a nested dictionary of depth 2 (dict of dicts)
-        :param unique: (optional, default == True) if False returns all values for the given key
-        :return: a list object with values for given key
-        """
-        value_list = [sub[key] for sub in dict.values() for v in sub.keys()]
-        if unique == True:
-            value_set = set(value_list)
-            return list(value_set)
-        if unique == False:
-            return value_list
-
+    value_list = [sub[key] for sub in dict.values() for v in sub.keys()]
+    if unique == True:
+        value_set = set(value_list)
+        return list(value_set)
+    if unique == False:
+        return value_list

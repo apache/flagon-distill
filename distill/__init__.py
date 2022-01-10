@@ -32,7 +32,9 @@ from distill.utils.crud import (
 )
 
 from distill.analytics.graph.graph import (
-    graph,
+    createDiGraph,
+    sankey,
+    funnel,
 )
 
 from distill.analytics.stat.stats import (
@@ -40,11 +42,13 @@ from distill.analytics.stat.stats import (
 )
 
 from distill.process.search import (
-    search,
+    find_meta_values,
 )
 
 from distill.process.transform import (
-    transform,
+    pairwiseStag,
+    pairwiseSeq,
+
 )
 
 

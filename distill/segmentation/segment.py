@@ -241,7 +241,3 @@ def generate_segments(target_dict, field_name, field_values, start_time_limit, e
     segments = create_segment(target_dict, segment_names, start_end_vals)
     return segments
 
-
-    
-    
-  
