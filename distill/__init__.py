@@ -20,6 +20,7 @@ from distill.config.elasticsearch import ELASTICSEARCH_PARAMS
 from distill.segmentation.segment import (
     Segment,
     union,
+    intersection,
     create_segment,
     write_segment,
     generate_segments,
@@ -74,8 +75,9 @@ __all__ = [
     "graph",
     "session_clickrate_dict",
     "search",
-    "transfrom",
+    "transform",
     "union",
+    "intersection",
     "create_segment",
     "write_segment",
     "generate_segments",
