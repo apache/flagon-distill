@@ -4,8 +4,7 @@ import distill
 import pandas as pd
 import json
 
-def setup(date_type):
-    file = "./data/sample_data.json"
+def setup(file, date_type):
     with open(file) as json_file:
         raw_data = json.load(json_file)
 
@@ -29,3 +28,6 @@ def setup(date_type):
     sorted_dict = dict(sorted_data)
 
     return (sorted_data, sorted_dict)
+
+def to_datetime(date):
+    return pd.to_datetime(date, unit='ms', origin='unix')

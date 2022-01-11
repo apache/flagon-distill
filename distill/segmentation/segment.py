@@ -225,12 +225,12 @@ def generate_segments(target_dict, field_name, field_values, start_time_limit, e
                 orig_start_time = target_dict[keylist[i]]['clientTime']
                 if isinstance(orig_start_time, int):
                     start_time = orig_start_time - (start_time_limit*1000)
-                    end_time = start_time + (end_time_limit*1000)
+                    end_time = orig_start_time + (end_time_limit*1000)
                     start_end_tuple = (start_time, end_time)
                     start_end_vals.append(start_end_tuple)
                 elif isinstance(orig_start_time, datetime.datetime):
                     start_time = orig_start_time - datetime.timedelta(seconds=start_time_limit)
-                    end_time = start_time + datetime.timedelta(seconds=end_time_limit)
+                    end_time = orig_start_time + datetime.timedelta(seconds=end_time_limit)
                     start_end_tuple = (start_time, end_time)
                     start_end_vals.append(start_end_tuple)
                 else:
