@@ -385,6 +385,57 @@ def test_generate_segments_datetime():
            (testing_utils.to_datetime(1623691906302), testing_utils.to_datetime(1623691908302))
     assert load_result["session_16236918905391623691907302rawload"].num_logs == 7
 
+#############################
+# DETECT_DEADSPACE TESTS #
+#############################
+def test_deadspace_detection_integer():
+    data = testing_utils.setup("./data/deadspace_detection_sample_data.json", "integer")
+    sorted_dict = data[1]
+
+    result = distill.detect_deadspace(sorted_dict, 5, 1, 2)
+
+    assert len(result) == 3
+    assert result["session_16236918905391623691891459rawscroll"].start_end_val == (1623691890459, 1623691994888)
+    assert result["session_16236918905391623691891459rawscroll"].num_logs == 7
+    assert result["session_16236918905391623691992900customclick"].start_end_val == (1623691991900, 1623693994900)
+    assert result["session_16236918905391623691992900customclick"].num_logs == 15
+    assert result["session_16236918905391623693995550rawload"].start_end_val == (1623693994550, 1623697997550)
+    assert result["session_16236918905391623693995550rawload"].num_logs == 3
+
+def test_deadspace_detection_datetime():
+    data = testing_utils.setup("./data/deadspace_detection_sample_data.json", "datetime")
+    sorted_dict = data[1]
+
+    result = distill.detect_deadspace(sorted_dict, 5, 1, 2)
+
+    assert len(result) == 3
+    assert result["session_16236918905391623691891459rawscroll"].start_end_val == \
+           (testing_utils.to_datetime(1623691890459), testing_utils.to_datetime(1623691994888))
+    assert result["session_16236918905391623691891459rawscroll"].num_logs == 7
+    assert result["session_16236918905391623691992900customclick"].start_end_val == \
+           (testing_utils.to_datetime(1623691991900), testing_utils.to_datetime(1623693994900))
+    assert result["session_16236918905391623691992900customclick"].num_logs == 15
+    assert result["session_16236918905391623693995550rawload"].start_end_val == \
+           (testing_utils.to_datetime(1623693994550), testing_utils.to_datetime(1623697997550))
+    assert result["session_16236918905391623693995550rawload"].num_logs == 3
+
+def test_deadspace_detection_error1():
+    with pytest.raises(TypeError):
+        data = testing_utils.setup("./data/deadspace_detection_sample_data.json", "string")
+        sorted_dict = data[1]
+
+        distill.detect_deadspace(sorted_dict, 5, 1, 2)
+
+def test_deadspace_detection_error2():
+    with pytest.raises(TypeError):
+        data = testing_utils.setup("./data/deadspace_detection_sample_data.json", "integer")
+        sorted_dict = data[1]
+
+        sorted_dict["session_16236918905391623691891459rawscroll"]['clientTime'] = \
+            testing_utils.to_datetime(sorted_dict["session_16236918905391623691891459rawscroll"]['clientTime'])
+
+        distill.detect_deadspace(sorted_dict, 5, 1, 2)
+
 ###################
 # SET LOGIC TESTS #
 ###################
