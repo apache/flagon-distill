@@ -17,6 +17,7 @@ import itertools
 import json
 import collections
 import networkx as nx
+import plotly.graph_objects as go
 
 def createDiGraph(nodes, edges, *, drop_recursions: bool = False):
     """
@@ -54,7 +55,7 @@ def sankey(edges_segmentN, node_labels=False):
             edge_list_temp.append(row)
     edge_list = edge_list_temp
 
-    edge_list_counter = Counter(edge_list)
+    edge_list_counter = collections.Counter(edge_list)
 
     source_list = [i[0] for i in edge_list_counter.keys()]
     target_list = [i[1] for i in edge_list_counter.keys()]
@@ -156,14 +157,14 @@ def funnel(edges_segmentN,
 
     ## Then we can convert the list of 3s to a counter
 
-    edge_list_counter = Counter(edge_list)
+    edge_list_counter = collections.Counter(edge_list)
     first_rung = user_specification
     new_edge_list = []
     for i in edge_list:
         if i[0] == user_specification:
             new_edge_list.append((i[0], i[1], i[2]))
 
-    new_edge_list_counter = Counter(new_edge_list)
+    new_edge_list_counter = collections.Counter(new_edge_list)
     new_edge_list_counter.most_common(1)
 
     first_rung = new_edge_list_counter.most_common(1)[0][0][0]

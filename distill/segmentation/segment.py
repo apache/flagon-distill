@@ -202,7 +202,7 @@ def write_segment(target_dict, segment_names, start_end_vals):
 
 def generate_segments(target_dict, field_name, field_values, start_time_limit, end_time_limit):
     """
-    Generates a list of Segment objects cooresponding to windows of time defined by the given time limits, 
+    Generates a list of Segment objects corresponding to windows of time defined by the given time limits,
     field name, and associated values meant to match the field name indicated.
 
     :param target_dict ({}): A dictionary of User Ale logs assumed to be ordered by clientTime (Date/Time Objects or integers).
@@ -211,7 +211,7 @@ def generate_segments(target_dict, field_name, field_values, start_time_limit, e
     :param start_time_limit (int): Amount of time (in seconds) prior to a detected event that should be included in the generated segment.
     :param end_time_limit (int): Amount of time (in seconds) to keep the segment window open after a detected event.
                 
-    :return: A dictionary of segment_names to generated Segment objects
+    :return: A dictionary of segment_names to generated Segment objects.
     """
 
     # Iterate through the target dictionary using key list
@@ -249,3 +249,48 @@ def generate_segments(target_dict, field_name, field_values, start_time_limit, e
     segments = create_segment(target_dict, segment_names, start_end_vals)
     return segments
 
+def detect_deadspace(target_dict, deadspace_limit, start_time_limit, end_time_limit):
+    """
+    Detects deadspace in a dictionary of User Ale logs.  Detected instances of deadspace are captured in Segment
+    objects based on the start and end time limits indicated by the function parameters.
+
+    :param target_dict ({}): A dictionary of User Ale logs assumed to be ordered by clientTime (Date/Time Objects or integers).
+    :param deadspace_limit (int): An integer representing the amount of time (in seconds) considered to be 'deadspace'.
+    :param start_time_limit (int): Amount of time (in seconds) prior to a detected deadspace event that should be included in the deadspace segment.
+    :param end_time_limit (int): Amount of time (in seconds) to keep the segment window open after a detected deadspace event.
+
+    :return: A dictionary of segment_names to generated Segment objects containing detected deadspace.
+    """
+
+    # Iterate through the target dictionary using key list
+    start_end_vals = []
+    segment_names = []
+    key_list = list(target_dict.keys())
+    for i in range(len(key_list)):
+        # Check for deadspace
+        if i < len(key_list) - 1:
+            curr_time = target_dict[key_list[i]]['clientTime']
+            next_time = target_dict[key_list[i + 1]]['clientTime']
+            time_delta = next_time - curr_time
+            if isinstance(curr_time, int) and isinstance(next_time, int):
+                if time_delta > deadspace_limit * 1000:
+                    # Deadspace detected
+                    start_time = curr_time - (start_time_limit * 1000)
+                    end_time = next_time + (end_time_limit * 1000)
+                    start_end_tuple = (start_time, end_time)
+                    start_end_vals.append(start_end_tuple)
+                    segment_names.append(key_list[i])
+            elif isinstance(curr_time, datetime.datetime) and isinstance(next_time, datetime.datetime):
+                if time_delta > datetime.timedelta(seconds=deadspace_limit):
+                    # Deadspace detected
+                    start_time = curr_time - datetime.timedelta(seconds=start_time_limit)
+                    end_time = next_time + datetime.timedelta(seconds=end_time_limit)
+                    start_end_tuple = (start_time, end_time)
+                    start_end_vals.append(start_end_tuple)
+                    segment_names.append(key_list[i])
+            else:
+                raise TypeError('clientTime field is not consistently represented as an integer or datetime object')
+
+    # Create segment dictionary with create_segment
+    segments = create_segment(target_dict, segment_names, start_end_vals)
+    return segments
