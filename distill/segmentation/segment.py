@@ -217,26 +217,34 @@ def generate_segments(target_dict, field_name, field_values, start_time_limit, e
     # Iterate through the target dictionary using key list
     start_end_vals = []
     segment_names = []
+    end_time = 0
     keylist = list(target_dict.keys())
     for i in range(len(keylist)):
         if field_name in target_dict[keylist[i]]:
-            if target_dict[keylist[i]][field_name] in field_values:
+            # Matches value in field_values list with dict values (str or list)
+            if any(item in target_dict[keylist[i]][field_name] for item in field_values):
                 # Matches values - Create segment
                 orig_start_time = target_dict[keylist[i]]['clientTime']
                 if isinstance(orig_start_time, int):
                     start_time = orig_start_time - (start_time_limit*1000)
-                    end_time = start_time + (end_time_limit*1000)
-                    start_end_tuple = (start_time, end_time)
-                    start_end_vals.append(start_end_tuple)
+                    # new window doesn't overlap with last
+                    # @TODO might try refactoring start > end time -- make more succinct
+                    if start_time > end_time:
+                        end_time = start_time + (end_time_limit*1000)
+                        start_end_tuple = (start_time, end_time)
+                        start_end_vals.append(start_end_tuple)
+                        segment_names.append(keylist[i])
                 elif isinstance(orig_start_time, datetime.datetime):
                     start_time = orig_start_time - datetime.timedelta(seconds=start_time_limit)
-                    end_time = start_time + datetime.timedelta(seconds=end_time_limit)
-                    start_end_tuple = (start_time, end_time)
-                    start_end_vals.append(start_end_tuple)
+                    # new window doesn't overlap with last
+                    if start_time > end_time:
+                        end_time = start_time + datetime.timedelta(seconds=end_time_limit)
+                        start_end_tuple = (start_time, end_time)
+                        start_end_vals.append(start_end_tuple)
+                        segment_names.append(keylist[i])
                 else:
                     raise TypeError('clientTime field is not represented as an integer or datetime object')
-                segment_names.append(keylist[i])
-                    
+
     # Create segment dictionary with create_segment
     segments = create_segment(target_dict, segment_names, start_end_vals)
     return segments
