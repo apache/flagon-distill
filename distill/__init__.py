@@ -1,3 +1,6 @@
+#
+# Copyright 2022 The Applied Research Laboratory for Intelligence and Security (ARLIS)
+#
 # Licensed to the Apache Software Foundation (ASF) under one or more
 # contributor license agreements.  See the NOTICE file distributed with
 # this work for additional information regarding copyright ownership.
@@ -12,10 +15,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
-from elasticsearch_dsl.connections import connections
-
-from distill.config.elasticsearch import ELASTICSEARCH_PARAMS
 
 from distill.segmentation.segment import (
     Segment,
@@ -52,32 +51,14 @@ from distill.process.transform import (
 
 )
 
-
-# Unpack Elasticsearch configuration and create elasticsearch connection
-host = ELASTICSEARCH_PARAMS['host']
-port = ELASTICSEARCH_PARAMS['port']
-http_auth = ELASTICSEARCH_PARAMS['http_auth']
-use_ssl = ELASTICSEARCH_PARAMS['use_ssl']
-verify_certs = ELASTICSEARCH_PARAMS['verify_certs']
-ca_certs = ELASTICSEARCH_PARAMS['ca_certs']
-client_cert = ELASTICSEARCH_PARAMS['client_cert']
-client_key = ELASTICSEARCH_PARAMS['client_key']
-timeout = ELASTICSEARCH_PARAMS['timeout']
-
-# Initialize Elasticsearch instance
-es = connections.create_connection(hosts=host,
-                                   port=port,
-                                   http_auth=http_auth,
-                                   use_ssl=use_ssl,
-                                   verify_certs=verify_certs,
-                                   ca_certs=ca_certs,
-                                   client_cert=client_cert,
-                                   client_key=client_key,
-                                   timeout=timeout)
-
 __all__ = [
     "Segment",
     "graph",
+    "sankey",
+    "funnel",
+    "find_meta_values",
+    "pairwiseStag",
+    "pairwiseSeq",
     "session_clickrate_dict",
     "search",
     "transform",
