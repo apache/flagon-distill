@@ -18,6 +18,7 @@
 
 from distill.segmentation.segment import (
     Segment,
+    Segment_Type,
     union,
     intersection,
     create_segment,
@@ -53,6 +54,7 @@ from distill.process.transform import (
 
 __all__ = [
     "Segment",
+    "Segment_Type",
     "graph",
     "sankey",
     "funnel",
