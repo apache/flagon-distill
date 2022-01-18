@@ -49,24 +49,28 @@ def sankey(edges_segmentN, node_labels=False):
     :param node_labels: Optional Dictionary of Values; keys are originals, values are replacements
     :return: A Sankey graph
     """
+    # Remove self-to-self recursions
     edge_list_temp = []
     for row in edges_segmentN:
         if row[0] != row[1]:
             edge_list_temp.append(row)
     edge_list = edge_list_temp
 
+    # Create a counter to count how many elements are in the edge list
     edge_list_counter = collections.Counter(edge_list)
 
+    # Extract source list, target list, and value list from the tuples
     source_list = [i[0] for i in edge_list_counter.keys()]
     target_list = [i[1] for i in edge_list_counter.keys()]
     value_list = [i for i in edge_list_counter.values()]
 
+    # Extract the node names if node_labels does not exist as an argument
     nodes = []
     for row in edge_list:
         for col in row:
             if col not in nodes:
                 nodes.append(col)
-
+    # Replace node names with the give node_labels if it is given as an argument
     if node_labels:
         new_nodes = []
         for node in nodes:
@@ -74,15 +78,19 @@ def sankey(edges_segmentN, node_labels=False):
                 new_nodes.append(node_labels[node])
             else:
                 new_nodes.append(node)
-
+    # Sources are the nodes sending connections
     sources = []
     for i in source_list:
         sources.append(nodes.index(i))
+    # Targets are the nodes receiving connections
     targets = []
     for i in target_list:
         targets.append(nodes.index(i))
+    # Values are the weight of the connections
     values = value_list
 
+    # If node labels is given as an argument, we replace nodes with node labels
+    # If not, we use the original node names
     if node_labels:
         fig = go.Figure(data=[go.Sankey(
             node=dict(
@@ -120,7 +128,7 @@ def funnel(edges_segmentN,
     :return: A Funnel graph
     """
 
-    ## First removing duplicates
+    ## Removing duplicates
 
     edge_list_temp = []
     for row in edges_segmentN:
@@ -128,7 +136,7 @@ def funnel(edges_segmentN,
             edge_list_temp.append(row)
     edge_list = edge_list_temp
 
-    ## Then we convert from list of 2s to list of 1s
+    ## Convert from list of 2s to list of 1s
 
     edgelist_list = []
     length = len(edge_list) - 1
@@ -139,7 +147,7 @@ def funnel(edges_segmentN,
             edgelist_list.append(i[0])
             edgelist_list.append(i[1])
 
-    # We can then remove the None values
+    # Remove the None values
 
     funnel_targets_temp = []
     for item in edgelist_list:
@@ -147,7 +155,7 @@ def funnel(edges_segmentN,
             funnel_targets_temp.append(item)
     funnel_targets = funnel_targets_temp
 
-    ## We can then convert that list into a list of 3s
+    ## Convert that list into a list of 3s
     edge_list = []
     for i in range(len(funnel_targets)):
         if i == (len(funnel_targets) - 2):
@@ -155,7 +163,7 @@ def funnel(edges_segmentN,
         else:
             edge_list.append((funnel_targets[i], funnel_targets[i + 1], funnel_targets[i + 2]))
 
-    ## Then we can convert the list of 3s to a counter
+    ## Convert the list of 3s to a counter
 
     edge_list_counter = collections.Counter(edge_list)
     first_rung = user_specification
@@ -182,10 +190,12 @@ def funnel(edges_segmentN,
                 if i[2] == third_rung:
                     counter3 += 1
 
+    # Numbers are how many times each target occured
+    # Edges are the targets
     numbers = [counter1, counter2, counter3]
     edges = [first_rung, second_rung, third_rung]
 
-    # ADD REPLACEMENT CODE HERE
+    # If node labels was given as an argument, replaces the targets with the provided names
     if node_labels:
         new_edges = []
         for edge in edges:
