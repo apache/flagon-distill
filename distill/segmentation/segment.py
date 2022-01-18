@@ -1,3 +1,6 @@
+#
+# Copyright 2022 The Applied Research Laboratory for Intelligence and Security (ARLIS)
+#
 # Licensed to the Apache Software Foundation (ASF) under one or more
 # contributor license agreements.  See the NOTICE file distributed with
 # this work for additional information regarding copyright ownership.
@@ -14,6 +17,14 @@
 # limitations under the License.
 
 import datetime
+from enum import Enum
+
+class Segment_Type(Enum):
+    CREATE = 1
+    GENERATE = 2
+    DEADSPACE = 3
+    UNION = 4
+    INTERSECTION = 5
 
 class Segment():
     """
@@ -34,10 +45,13 @@ class Segment():
         self.start_end_val = start_end_val
         self.num_logs = num_logs
         self.uids = uids
+        self.generate_field_name = None
+        self.generate_matched_values = None
+        self.segment_type = None
 
     def get_segment_name(self):
         """
-        Retreives the name of a given segment.
+        Gets the name of a given segment.
 
         :return: The segment name of the given segment.
         """
@@ -45,7 +59,7 @@ class Segment():
         
     def get_start_end_val(self):
         """
-        Retreives the start and end values of a given segment.
+        Gets the start and end values of a given segment.
 
         :return: The start and end values of the given segment.
         """
@@ -53,7 +67,7 @@ class Segment():
 
     def get_num_logs(self):
         """
-        Retreives the number of logs within a given segment.
+        Gets the number of logs within a given segment.
 
         :return: The number of logs within the given segment.
         """
@@ -61,12 +75,35 @@ class Segment():
     
     def get_segment_uids(self):
         """
-        Retreives the uid list of a given segment.
+        Gets the uid list of a given segment.
 
         :return: The uid list of the given segment.
         """
         return self.uids
 
+    def get_segment_type(self):
+        """
+        Gets the segment type of a given segment.
+
+        :return: The segment type of the given segment.
+        """
+        return self.segment_type
+
+    def get_generate_field_name(self):
+        """
+        Gets the field name used to create a segment with generate_segment.
+
+        :return: The field name used to create a segment with generate_segment.
+        """
+        return self.generate_field_name
+
+    def get_generate_matched_values(self):
+        """
+        Gets the values used to create a segment with generate_segment.
+
+        :return: The values used to create a segment with generate_segment.
+        """
+        return self.generate_matched_values
 
 #######################
 # SET LOGIC FUNCTIONS #
@@ -104,6 +141,9 @@ def union(segment_name, segment1, segment2):
 
     # Create segment to return
     segment = Segment(segment_name, (start_time, end_time), len(uids), uids)
+    segment.segment_type = Segment_Type.UNION
+    segment.generate_field_name = None
+    segment.generate_matched_values = None
     return segment
 
 
@@ -138,6 +178,9 @@ def intersection(segment_name, segment1, segment2):
         end_time = segment2.start_end_val[1]
 
     segment = Segment(segment_name, (start_time, end_time), len(uids), uids)
+    segment.segment_type = Segment_Type.INTERSECTION
+    segment.generate_field_name = None
+    segment.generate_matched_values = None
     return segment
     
 
@@ -174,6 +217,9 @@ def create_segment(target_dict, segment_names, start_end_vals):
             else:
                 raise TypeError("clientTime and start/end times must be represented as the same type and must either be a datetime object or integer.")
             segment = Segment(segment_name, start_end_vals[i], num_logs, uids)
+            segment.segment_type = Segment_Type.CREATE
+            segment.generate_field_name = None
+            segment.generate_matched_values = None
             result[segment_name] = segment
     return result
 
@@ -202,7 +248,7 @@ def write_segment(target_dict, segment_names, start_end_vals):
 
 def generate_segments(target_dict, field_name, field_values, start_time_limit, end_time_limit):
     """
-    Generates a list of Segment objects cooresponding to windows of time defined by the given time limits, 
+    Generates a list of Segment objects corresponding to windows of time defined by the given time limits,
     field name, and associated values meant to match the field name indicated.
 
     :param target_dict ({}): A dictionary of User Ale logs assumed to be ordered by clientTime (Date/Time Objects or integers).
@@ -211,33 +257,96 @@ def generate_segments(target_dict, field_name, field_values, start_time_limit, e
     :param start_time_limit (int): Amount of time (in seconds) prior to a detected event that should be included in the generated segment.
     :param end_time_limit (int): Amount of time (in seconds) to keep the segment window open after a detected event.
                 
-    :return: A dictionary of segment_names to generated Segment objects
+    :return: A dictionary of segment_names to generated Segment objects.
     """
 
     # Iterate through the target dictionary using key list
     start_end_vals = []
     segment_names = []
+    end_time = 0
     keylist = list(target_dict.keys())
     for i in range(len(keylist)):
         if field_name in target_dict[keylist[i]]:
-            if target_dict[keylist[i]][field_name] in field_values:
+            # Matches value in field_values list with dict values (str or list)
+            if any(item in target_dict[keylist[i]][field_name] for item in field_values):
                 # Matches values - Create segment
                 orig_start_time = target_dict[keylist[i]]['clientTime']
                 if isinstance(orig_start_time, int):
                     start_time = orig_start_time - (start_time_limit*1000)
-                    end_time = start_time + (end_time_limit*1000)
-                    start_end_tuple = (start_time, end_time)
-                    start_end_vals.append(start_end_tuple)
+                    # new window doesn't overlap with last
+                    # @TODO might try refactoring start > end time -- make more succinct
+                    if start_time > end_time:
+                        end_time = start_time + (end_time_limit*1000)
+                        start_end_tuple = (start_time, end_time)
+                        start_end_vals.append(start_end_tuple)
+                        segment_names.append(keylist[i])
                 elif isinstance(orig_start_time, datetime.datetime):
                     start_time = orig_start_time - datetime.timedelta(seconds=start_time_limit)
-                    end_time = start_time + datetime.timedelta(seconds=end_time_limit)
-                    start_end_tuple = (start_time, end_time)
-                    start_end_vals.append(start_end_tuple)
+                    # new window doesn't overlap with last
+                    if start_time > end_time:
+                        end_time = start_time + datetime.timedelta(seconds=end_time_limit)
+                        start_end_tuple = (start_time, end_time)
+                        start_end_vals.append(start_end_tuple)
+                        segment_names.append(keylist[i])
                 else:
                     raise TypeError('clientTime field is not represented as an integer or datetime object')
-                segment_names.append(keylist[i])
-                    
+
     # Create segment dictionary with create_segment
     segments = create_segment(target_dict, segment_names, start_end_vals)
+    for segment_name in segments:
+        segments[segment_name].segment_type = Segment_Type.GENERATE
+        segments[segment_name].generate_field_name = field_name
+        segments[segment_name].generate_matched_values = field_values
+
     return segments
 
+def detect_deadspace(target_dict, deadspace_limit, start_time_limit, end_time_limit):
+    """
+    Detects deadspace in a dictionary of User Ale logs.  Detected instances of deadspace are captured in Segment
+    objects based on the start and end time limits indicated by the function parameters.
+
+    :param target_dict ({}): A dictionary of User Ale logs assumed to be ordered by clientTime (Date/Time Objects or integers).
+    :param deadspace_limit (int): An integer representing the amount of time (in seconds) considered to be 'deadspace'.
+    :param start_time_limit (int): Amount of time (in seconds) prior to a detected deadspace event that should be included in the deadspace segment.
+    :param end_time_limit (int): Amount of time (in seconds) to keep the segment window open after a detected deadspace event.
+
+    :return: A dictionary of segment_names to generated Segment objects containing detected deadspace.
+    """
+
+    # Iterate through the target dictionary using key list
+    start_end_vals = []
+    segment_names = []
+    key_list = list(target_dict.keys())
+    for i in range(len(key_list)):
+        # Check for deadspace
+        if i < len(key_list) - 1:
+            curr_time = target_dict[key_list[i]]['clientTime']
+            next_time = target_dict[key_list[i + 1]]['clientTime']
+            time_delta = next_time - curr_time
+            if isinstance(curr_time, int) and isinstance(next_time, int):
+                if time_delta > deadspace_limit * 1000:
+                    # Deadspace detected
+                    start_time = curr_time - (start_time_limit * 1000)
+                    end_time = next_time + (end_time_limit * 1000)
+                    start_end_tuple = (start_time, end_time)
+                    start_end_vals.append(start_end_tuple)
+                    segment_names.append(key_list[i])
+            elif isinstance(curr_time, datetime.datetime) and isinstance(next_time, datetime.datetime):
+                if time_delta > datetime.timedelta(seconds=deadspace_limit):
+                    # Deadspace detected
+                    start_time = curr_time - datetime.timedelta(seconds=start_time_limit)
+                    end_time = next_time + datetime.timedelta(seconds=end_time_limit)
+                    start_end_tuple = (start_time, end_time)
+                    start_end_vals.append(start_end_tuple)
+                    segment_names.append(key_list[i])
+            else:
+                raise TypeError('clientTime field is not consistently represented as an integer or datetime object')
+
+    # Create segment dictionary with create_segment
+    segments = create_segment(target_dict, segment_names, start_end_vals)
+    for segment_name in segments:
+        segments[segment_name].segment_type = Segment_Type.DEADSPACE
+        segments[segment_name].generate_field_name = None
+        segments[segment_name].generate_matched_values = None
+
+    return segments

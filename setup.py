@@ -1,3 +1,6 @@
+#
+# Copyright 2022 The Applied Research Laboratory for Intelligence and Security (ARLIS)
+#
 # Licensed to the Apache Software Foundation (ASF) under one or more
 # contributor license agreements.  See the NOTICE file distributed with
 # this work for additional information regarding copyright ownership.
@@ -21,7 +24,7 @@ import os
 import sys
 
 if sys.version_info[:2] < (2, 7):
-    m = "Python 2.7 or later is required for Distill (%d.%d detected)."
+    m = "Python 3.8 or later is required for Distill (%d.%d detected)."
     raise ImportError(m % sys.version_info[:2])
 
 if sys.argv[-1] == 'setup.py':

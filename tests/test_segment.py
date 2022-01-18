@@ -1,3 +1,23 @@
+#
+# Copyright 2022 The Applied Research Laboratory for Intelligence and Security (ARLIS)
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# @TODO add header with description of file
+
 # Segment Testing
 import pytest
 import json
@@ -10,7 +30,7 @@ import datetime
 # SEGMENT OBJECT TESTS #
 ########################
 def test_getters():
-    data = testing_utils.setup("integer")
+    data = testing_utils.setup("./data/sample_data.json", "integer")
     sorted_data = data[0]
     sorted_dict = data[1]
 
@@ -25,12 +45,15 @@ def test_getters():
     assert seg.get_start_end_val() == (sorted_data[0][1]['clientTime'], sorted_data[1][1]['clientTime'])
     assert seg.get_num_logs() == 2
     assert seg.get_segment_uids() == [sorted_data[0][0], sorted_data[1][0]]
+    assert seg.get_segment_type() == distill.Segment_Type.CREATE
+    assert seg.get_generate_field_name() is None
+    assert seg.get_generate_matched_values() is None
 
 ########################
 # CREATE_SEGMENT TESTS #
 ########################
 def test_create_segment_integer():
-    data = testing_utils.setup("integer")
+    data = testing_utils.setup("./data/sample_data.json", "integer")
     sorted_data = data[0]
     sorted_dict = data[1]
 
@@ -58,9 +81,16 @@ def test_create_segment_integer():
     assert result["test_segment_extra_log"].num_logs == 8
     assert result["test_segment_extra_log"].segment_name == "test_segment_extra_log"
     assert result["test_segment_extra_log"].start_end_val == (1623691904212, 1623691904923)
+    for segment_name in result:
+        assert result[segment_name].segment_type == distill.Segment_Type.CREATE
+        assert result[segment_name].get_segment_type() == distill.Segment_Type.CREATE
+        assert result[segment_name].generate_field_name is None
+        assert result[segment_name].get_generate_field_name() is None
+        assert result[segment_name].generate_matched_values is None
+        assert result[segment_name].get_generate_matched_values() is None
 
 def test_create_segment_datetime():
-    data = testing_utils.setup("datetime")
+    data = testing_utils.setup("./data/sample_data.json", "datetime")
     sorted_data = data[0]
     sorted_dict = data[1]
 
@@ -77,39 +107,46 @@ def test_create_segment_datetime():
 
     assert result["test_segment_all"].num_logs == 19
     assert result["test_segment_all"].segment_name == "test_segment_all"
-    assert result["test_segment_all"].start_end_val == (pd.to_datetime(1623691890656, unit='ms', origin='unix'),
-                                                        pd.to_datetime(1623691909728, unit='ms', origin='unix'))
+    assert result["test_segment_all"].start_end_val == (testing_utils.to_datetime(1623691890656),
+                                                        testing_utils.to_datetime(1623691909728))
 
     assert result["test_segment_same_client_time"].num_logs == 2
     assert result["test_segment_same_client_time"].segment_name == "test_segment_same_client_time"
     assert result["test_segment_same_client_time"].start_end_val == \
-           (pd.to_datetime(1623691904488, unit='ms', origin='unix'),
-            pd.to_datetime(1623691904488, unit='ms', origin='unix'))
+           (testing_utils.to_datetime(1623691904488),
+            testing_utils.to_datetime(1623691904488))
     assert result["test_segment_same_client_time"].uids == ["session_16236918905391623691904488rawclick",
                                                             "session_16236918905391623691904488customclick"]
 
     assert result["test_segment_extra_log"].num_logs == 8
     assert result["test_segment_extra_log"].segment_name == "test_segment_extra_log"
-    assert result["test_segment_extra_log"].start_end_val == (pd.to_datetime(1623691904212, unit='ms', origin='unix'),
-                                                              pd.to_datetime(1623691904923, unit='ms', origin='unix'))
+    assert result["test_segment_extra_log"].start_end_val == (testing_utils.to_datetime(1623691904212),
+                                                              testing_utils.to_datetime(1623691904923))
+    for segment_name in result:
+        assert result[segment_name].segment_type == distill.Segment_Type.CREATE
+        assert result[segment_name].get_segment_type() == distill.Segment_Type.CREATE
+        assert result[segment_name].generate_field_name is None
+        assert result[segment_name].get_generate_field_name() is None
+        assert result[segment_name].generate_matched_values is None
+        assert result[segment_name].get_generate_matched_values() is None
 
 def test_create_segment_error_1():
     with pytest.raises(TypeError):
-        data = testing_utils.setup("integer")
+        data = testing_utils.setup("./data/sample_data.json", "integer")
         sorted_data = data[0]
         sorted_dict = data[1]
 
         # Create Test Segment Tuples
         start_end_vals = []
-        start_end_vals.append((pd.to_datetime(sorted_data[0][1]['clientTime'], unit='ms', origin='unix'),
-                               pd.to_datetime(sorted_data[18][1]['clientTime'], unit='ms', origin='unix')))
+        start_end_vals.append((testing_utils.to_datetime(sorted_data[0][1]['clientTime']),
+                               testing_utils.to_datetime(sorted_data[18][1]['clientTime'])))
         segment_names = ["test_segment_error"]
 
         result = distill.create_segment(sorted_dict, segment_names, start_end_vals)
 
 def test_create_segment_error_2():
     with pytest.raises(TypeError):
-        data = testing_utils.setup("string")
+        data = testing_utils.setup("./data/sample_data.json", "string")
         sorted_data = data[0]
         sorted_dict = data[1]
 
@@ -124,7 +161,7 @@ def test_create_segment_error_2():
 # WRITE_SEGMENT TESTS #
 #######################
 def test_write_segment_integer():
-    data = testing_utils.setup("integer")
+    data = testing_utils.setup("./data/sample_data.json", "integer")
     sorted_data = data[0]
     sorted_dict = data[1]
 
@@ -153,7 +190,7 @@ def test_write_segment_integer():
         assert isinstance(result['test_segment_extra_log'][uid]['clientTime'], int)
 
 def test_write_segment_datetime():
-    data = testing_utils.setup("datetime")
+    data = testing_utils.setup("./data/sample_data.json", "datetime")
     sorted_data = data[0]
     sorted_dict = data[1]
 
@@ -185,37 +222,317 @@ def test_write_segment_datetime():
 
 def test_write_segment_error_1():
     with pytest.raises(TypeError):
-        data = testing_utils.setup("integer")
+        data = testing_utils.setup("./data/sample_data.json", "integer")
         sorted_data = data[0]
         sorted_dict = data[1]
 
         # Create Test Segment Tuples
         start_end_vals = []
-        start_end_vals.append((pd.to_datetime(sorted_data[0][1]['clientTime'], unit='ms', origin='unix'),
-                               pd.to_datetime(sorted_data[18][1]['clientTime'], unit='ms', origin='unix')))
+        start_end_vals.append((testing_utils.to_datetime(sorted_data[0][1]['clientTime']),
+                               testing_utils.to_datetime(sorted_data[18][1]['clientTime'])))
         segment_names = ["test_segment_error"]
 
         result = distill.write_segment(sorted_dict, segment_names, start_end_vals)
 
 def test_write_segment_error_2():
     with pytest.raises(TypeError):
-        data = testing_utils.setup("string")
+        data = testing_utils.setup("./data/sample_data.json", "string")
         sorted_data = data[0]
         sorted_dict = data[1]
 
         # Create Test Segment Tuples
         start_end_vals = []
-        start_end_vals.append((pd.to_datetime(sorted_data[0][1]['clientTime'], unit='ms', origin='unix'),
-                               pd.to_datetime(sorted_data[18][1]['clientTime'], unit='ms', origin='unix')))
+        start_end_vals.append((testing_utils.to_datetime(sorted_data[0][1]['clientTime']),
+                               testing_utils.to_datetime(sorted_data[18][1]['clientTime'])))
         segment_names = ["test_segment_error"]
 
         result = distill.write_segment(sorted_dict, segment_names, start_end_vals)
+
+###########################
+# GENERATE_SEGMENTS TESTS #
+###########################
+def test_generate_segments_integer():
+    data = testing_utils.setup("./data/segment_generator_sample_data.json", "integer")
+    sorted_data = data[0]
+    sorted_dict = data[1]
+
+    load_result = distill.generate_segments(sorted_dict, 'type', ['load'], 1, 1)
+    assert len(load_result) == 2
+    assert load_result["session_16236918905391623691890600rawload"].start_end_val == (1623691889600, 1623691891600)
+    assert load_result["session_16236918905391623691890600rawload"].num_logs == 3
+    assert load_result["session_16236918905391623691907302rawload"].start_end_val == (1623691906302, 1623691908302)
+    assert load_result["session_16236918905391623691907302rawload"].num_logs == 7
+    for segment_name in load_result:
+        assert load_result[segment_name].segment_type == distill.Segment_Type.GENERATE
+        assert load_result[segment_name].generate_field_name == 'type'
+        assert load_result[segment_name].generate_matched_values == ['load']
+
+    click_result = distill.generate_segments(sorted_dict, 'type', ['click'], 1, 1)
+    assert len(click_result) == 11
+    assert click_result["session_16236918905391623691904200rawclick"].start_end_val == (1623691903200, 1623691905200)
+    assert click_result["session_16236918905391623691904200rawclick"].num_logs == 2
+    assert click_result["session_16236918905391623691904200customclick"].start_end_val == (1623691903200, 1623691905200)
+    assert click_result["session_16236918905391623691904200customclick"].num_logs == 2
+    assert click_result["session_16236918905391623691905488rawclick"].start_end_val == (1623691904488, 1623691906488)
+    assert click_result["session_16236918905391623691905488rawclick"].num_logs == 7
+    assert click_result["session_16236918905391623691905488customclick"].start_end_val == (1623691904488, 1623691906488)
+    assert click_result["session_16236918905391623691905488customclick"].num_logs == 7
+    assert click_result["session_16236918905391623691905724rawclick"].start_end_val == (1623691904724, 1623691906724)
+    assert click_result["session_16236918905391623691905724rawclick"].num_logs == 7
+    assert click_result["session_16236918905391623691905724customclick"].start_end_val == (1623691904724, 1623691906724)
+    assert click_result["session_16236918905391623691905724customclick"].num_logs == 7
+    assert click_result["session_16236918905391623691905923rawclick"].start_end_val == (1623691904923, 1623691906923)
+    assert click_result["session_16236918905391623691905923rawclick"].num_logs == 7
+    assert click_result["session_16236918905391623691905923customclick"].start_end_val == (1623691904923, 1623691906923)
+    assert click_result["session_16236918905391623691905923customclick"].num_logs == 7
+    assert click_result["session_16236918905391623691906955rawclick"].start_end_val == (1623691905955, 1623691907955)
+    assert click_result["session_16236918905391623691906955rawclick"].num_logs == 7
+    assert click_result["session_16236918905391623691907135rawclick"].start_end_val == (1623691906135, 1623691908135)
+    assert click_result["session_16236918905391623691907135rawclick"].num_logs == 8
+    assert click_result["session_16236918905391623691908100rawclick"].start_end_val == (1623691907100, 1623691909100)
+    assert click_result["session_16236918905391623691908100rawclick"].num_logs == 5
+    for segment_name in click_result:
+        assert click_result[segment_name].segment_type == distill.Segment_Type.GENERATE
+        assert click_result[segment_name].get_segment_type() == distill.Segment_Type.GENERATE
+        assert click_result[segment_name].generate_field_name == 'type'
+        assert click_result[segment_name].get_generate_field_name() == 'type'
+        assert click_result[segment_name].generate_matched_values == ['click']
+        assert click_result[segment_name].get_generate_matched_values() == ['click']
+
+    load_click_result = distill.generate_segments(sorted_dict, 'type', ['load', 'click'], 1, 1)
+    assert len(load_click_result) == 13
+    assert load_click_result["session_16236918905391623691890600rawload"].start_end_val == (1623691889600,
+                                                                                            1623691891600)
+    assert load_click_result["session_16236918905391623691890600rawload"].num_logs == 3
+    assert load_click_result["session_16236918905391623691904200rawclick"].start_end_val == (1623691903200,
+                                                                                             1623691905200)
+    assert load_click_result["session_16236918905391623691904200rawclick"].num_logs == 2
+    assert load_click_result["session_16236918905391623691904200customclick"].start_end_val == (1623691903200,
+                                                                                                1623691905200)
+    assert load_click_result["session_16236918905391623691904200customclick"].num_logs == 2
+    assert load_click_result["session_16236918905391623691905488rawclick"].start_end_val == (1623691904488,
+                                                                                             1623691906488)
+    assert load_click_result["session_16236918905391623691905488rawclick"].num_logs == 7
+    assert load_click_result["session_16236918905391623691905488customclick"].start_end_val == (1623691904488,
+                                                                                                1623691906488)
+    assert load_click_result["session_16236918905391623691905488customclick"].num_logs == 7
+    assert load_click_result["session_16236918905391623691905724rawclick"].start_end_val == (1623691904724,
+                                                                                             1623691906724)
+    assert load_click_result["session_16236918905391623691905724rawclick"].num_logs == 7
+    assert load_click_result["session_16236918905391623691905724customclick"].start_end_val == (1623691904724,
+                                                                                                1623691906724)
+    assert load_click_result["session_16236918905391623691905724customclick"].num_logs == 7
+    assert load_click_result["session_16236918905391623691905923rawclick"].start_end_val == (1623691904923,
+                                                                                             1623691906923)
+    assert load_click_result["session_16236918905391623691905923rawclick"].num_logs == 7
+    assert load_click_result["session_16236918905391623691905923customclick"].start_end_val == (1623691904923,
+                                                                                                1623691906923)
+    assert load_click_result["session_16236918905391623691905923customclick"].num_logs == 7
+    assert load_click_result["session_16236918905391623691906955rawclick"].start_end_val == (1623691905955,
+                                                                                             1623691907955)
+    assert load_click_result["session_16236918905391623691906955rawclick"].num_logs == 7
+    assert load_click_result["session_16236918905391623691907135rawclick"].start_end_val == (1623691906135,
+                                                                                             1623691908135)
+    assert load_click_result["session_16236918905391623691907135rawclick"].num_logs == 8
+    assert load_click_result["session_16236918905391623691908100rawclick"].start_end_val == (1623691907100,
+                                                                                             1623691909100)
+    assert load_click_result["session_16236918905391623691908100rawclick"].num_logs == 5
+    assert load_click_result["session_16236918905391623691907302rawload"].start_end_val == (1623691906302,
+                                                                                            1623691908302)
+    assert load_click_result["session_16236918905391623691907302rawload"].num_logs == 7
+    for segment_name in load_click_result:
+        assert load_click_result[segment_name].segment_type == distill.Segment_Type.GENERATE
+        assert load_click_result[segment_name].get_segment_type() == distill.Segment_Type.GENERATE
+        assert load_click_result[segment_name].generate_field_name == 'type'
+        assert load_click_result[segment_name].get_generate_field_name() == 'type'
+        assert load_click_result[segment_name].generate_matched_values == ['load', 'click']
+        assert load_click_result[segment_name].get_generate_matched_values() == ['load', 'click']
+
+def test_generate_segments_datetime():
+    data = testing_utils.setup("./data/segment_generator_sample_data.json", "datetime")
+    sorted_data = data[0]
+    sorted_dict = data[1]
+
+    load_result = distill.generate_segments(sorted_dict, 'type', ['load'], 1, 1)
+    assert len(load_result) == 2
+    assert load_result["session_16236918905391623691890600rawload"].start_end_val == \
+           (testing_utils.to_datetime(1623691889600), testing_utils.to_datetime(1623691891600))
+    assert load_result["session_16236918905391623691890600rawload"].num_logs == 3
+    assert load_result["session_16236918905391623691907302rawload"].start_end_val == \
+           (testing_utils.to_datetime(1623691906302), testing_utils.to_datetime(1623691908302))
+    assert load_result["session_16236918905391623691907302rawload"].num_logs == 7
+    for segment_name in load_result:
+        assert load_result[segment_name].segment_type == distill.Segment_Type.GENERATE
+        assert load_result[segment_name].get_segment_type() == distill.Segment_Type.GENERATE
+        assert load_result[segment_name].generate_field_name == 'type'
+        assert load_result[segment_name].get_generate_field_name() == 'type'
+        assert load_result[segment_name].generate_matched_values == ['load']
+        assert load_result[segment_name].get_generate_matched_values() == ['load']
+
+    click_result = distill.generate_segments(sorted_dict, 'type', ['click'], 1, 1)
+    assert len(click_result) == 11
+    assert click_result["session_16236918905391623691904200rawclick"].start_end_val == \
+           (testing_utils.to_datetime(1623691903200), testing_utils.to_datetime(1623691905200))
+    assert click_result["session_16236918905391623691904200rawclick"].num_logs == 2
+    assert click_result["session_16236918905391623691904200customclick"].start_end_val == \
+           (testing_utils.to_datetime(1623691903200), testing_utils.to_datetime(1623691905200))
+    assert click_result["session_16236918905391623691904200customclick"].num_logs == 2
+    assert click_result["session_16236918905391623691905488rawclick"].start_end_val == \
+           (testing_utils.to_datetime(1623691904488), testing_utils.to_datetime(1623691906488))
+    assert click_result["session_16236918905391623691905488rawclick"].num_logs == 7
+    assert click_result["session_16236918905391623691905488customclick"].start_end_val == \
+           (testing_utils.to_datetime(1623691904488), testing_utils.to_datetime(1623691906488))
+    assert click_result["session_16236918905391623691905488customclick"].num_logs == 7
+    assert click_result["session_16236918905391623691905724rawclick"].start_end_val == \
+           (testing_utils.to_datetime(1623691904724), testing_utils.to_datetime(1623691906724))
+    assert click_result["session_16236918905391623691905724rawclick"].num_logs == 7
+    assert click_result["session_16236918905391623691905724customclick"].start_end_val == \
+           (testing_utils.to_datetime(1623691904724), testing_utils.to_datetime(1623691906724))
+    assert click_result["session_16236918905391623691905724customclick"].num_logs == 7
+    assert click_result["session_16236918905391623691905923rawclick"].start_end_val == \
+           (testing_utils.to_datetime(1623691904923), testing_utils.to_datetime(1623691906923))
+    assert click_result["session_16236918905391623691905923rawclick"].num_logs == 7
+    assert click_result["session_16236918905391623691905923customclick"].start_end_val == \
+           (testing_utils.to_datetime(1623691904923), testing_utils.to_datetime(1623691906923))
+    assert click_result["session_16236918905391623691905923customclick"].num_logs == 7
+    assert click_result["session_16236918905391623691906955rawclick"].start_end_val == \
+           (testing_utils.to_datetime(1623691905955), testing_utils.to_datetime(1623691907955))
+    assert click_result["session_16236918905391623691906955rawclick"].num_logs == 7
+    assert click_result["session_16236918905391623691907135rawclick"].start_end_val == \
+           (testing_utils.to_datetime(1623691906135), testing_utils.to_datetime(1623691908135))
+    assert click_result["session_16236918905391623691907135rawclick"].num_logs == 8
+    assert click_result["session_16236918905391623691908100rawclick"].start_end_val == \
+           (testing_utils.to_datetime(1623691907100), testing_utils.to_datetime(1623691909100))
+    assert click_result["session_16236918905391623691908100rawclick"].num_logs == 5
+    for segment_name in click_result:
+        assert click_result[segment_name].segment_type == distill.Segment_Type.GENERATE
+        assert click_result[segment_name].get_segment_type() == distill.Segment_Type.GENERATE
+        assert click_result[segment_name].generate_field_name == 'type'
+        assert click_result[segment_name].get_generate_field_name() == 'type'
+        assert click_result[segment_name].generate_matched_values == ['click']
+        assert click_result[segment_name].get_generate_matched_values() == ['click']
+
+    load_click_result = distill.generate_segments(sorted_dict, 'type', ['load', 'click'], 1, 1)
+    assert len(load_click_result) == 13
+    assert load_click_result["session_16236918905391623691904200rawclick"].start_end_val == \
+           (testing_utils.to_datetime(1623691903200), testing_utils.to_datetime(1623691905200))
+    assert load_click_result["session_16236918905391623691904200rawclick"].num_logs == 2
+    assert load_click_result["session_16236918905391623691904200customclick"].start_end_val == \
+           (testing_utils.to_datetime(1623691903200), testing_utils.to_datetime(1623691905200))
+    assert load_click_result["session_16236918905391623691904200customclick"].num_logs == 2
+    assert load_click_result["session_16236918905391623691905488rawclick"].start_end_val == \
+           (testing_utils.to_datetime(1623691904488), testing_utils.to_datetime(1623691906488))
+    assert load_click_result["session_16236918905391623691905488rawclick"].num_logs == 7
+    assert load_click_result["session_16236918905391623691905488customclick"].start_end_val == \
+           (testing_utils.to_datetime(1623691904488), testing_utils.to_datetime(1623691906488))
+    assert load_click_result["session_16236918905391623691905488customclick"].num_logs == 7
+    assert load_click_result["session_16236918905391623691905724rawclick"].start_end_val == \
+           (testing_utils.to_datetime(1623691904724), testing_utils.to_datetime(1623691906724))
+    assert load_click_result["session_16236918905391623691905724rawclick"].num_logs == 7
+    assert load_click_result["session_16236918905391623691905724customclick"].start_end_val == \
+           (testing_utils.to_datetime(1623691904724), testing_utils.to_datetime(1623691906724))
+    assert load_click_result["session_16236918905391623691905724customclick"].num_logs == 7
+    assert load_click_result["session_16236918905391623691905923rawclick"].start_end_val == \
+           (testing_utils.to_datetime(1623691904923), testing_utils.to_datetime(1623691906923))
+    assert load_click_result["session_16236918905391623691905923rawclick"].num_logs == 7
+    assert load_click_result["session_16236918905391623691905923customclick"].start_end_val == \
+           (testing_utils.to_datetime(1623691904923), testing_utils.to_datetime(1623691906923))
+    assert load_click_result["session_16236918905391623691905923customclick"].num_logs == 7
+    assert load_click_result["session_16236918905391623691906955rawclick"].start_end_val == \
+           (testing_utils.to_datetime(1623691905955), testing_utils.to_datetime(1623691907955))
+    assert load_click_result["session_16236918905391623691906955rawclick"].num_logs == 7
+    assert load_click_result["session_16236918905391623691907135rawclick"].start_end_val == \
+           (testing_utils.to_datetime(1623691906135), testing_utils.to_datetime(1623691908135))
+    assert load_click_result["session_16236918905391623691907135rawclick"].num_logs == 8
+    assert load_click_result["session_16236918905391623691908100rawclick"].start_end_val == \
+           (testing_utils.to_datetime(1623691907100), testing_utils.to_datetime(1623691909100))
+    assert load_click_result["session_16236918905391623691908100rawclick"].num_logs == 5
+    assert load_click_result["session_16236918905391623691890600rawload"].start_end_val == \
+           (testing_utils.to_datetime(1623691889600), testing_utils.to_datetime(1623691891600))
+    assert load_click_result["session_16236918905391623691890600rawload"].num_logs == 3
+    assert load_click_result["session_16236918905391623691907302rawload"].start_end_val == \
+           (testing_utils.to_datetime(1623691906302), testing_utils.to_datetime(1623691908302))
+    assert load_click_result["session_16236918905391623691907302rawload"].num_logs == 7
+    for segment_name in load_click_result:
+        assert load_click_result[segment_name].segment_type == distill.Segment_Type.GENERATE
+        assert load_click_result[segment_name].get_segment_type() == distill.Segment_Type.GENERATE
+        assert load_click_result[segment_name].generate_field_name == 'type'
+        assert load_click_result[segment_name].get_generate_field_name() == 'type'
+        assert load_click_result[segment_name].generate_matched_values == ['load', 'click']
+        assert load_click_result[segment_name].get_generate_matched_values() == ['load', 'click']
+
+
+#############################
+# DETECT_DEADSPACE TESTS #
+#############################
+def test_deadspace_detection_integer():
+    data = testing_utils.setup("./data/deadspace_detection_sample_data.json", "integer")
+    sorted_dict = data[1]
+
+    result = distill.detect_deadspace(sorted_dict, 5, 1, 2)
+
+    assert len(result) == 3
+    assert result["session_16236918905391623691891459rawscroll"].start_end_val == (1623691890459, 1623691994888)
+    assert result["session_16236918905391623691891459rawscroll"].num_logs == 7
+    assert result["session_16236918905391623691992900customclick"].start_end_val == (1623691991900, 1623693994900)
+    assert result["session_16236918905391623691992900customclick"].num_logs == 15
+    assert result["session_16236918905391623693995550rawload"].start_end_val == (1623693994550, 1623697997550)
+    assert result["session_16236918905391623693995550rawload"].num_logs == 3
+    for segment_name in result:
+        assert result[segment_name].segment_type == distill.Segment_Type.DEADSPACE
+        assert result[segment_name].get_segment_type() == distill.Segment_Type.DEADSPACE
+        assert result[segment_name].generate_field_name is None
+        assert result[segment_name].get_generate_field_name() is None
+        assert result[segment_name].generate_matched_values is None
+        assert result[segment_name].get_generate_matched_values() is None
+
+
+def test_deadspace_detection_datetime():
+    data = testing_utils.setup("./data/deadspace_detection_sample_data.json", "datetime")
+    sorted_dict = data[1]
+
+    result = distill.detect_deadspace(sorted_dict, 5, 1, 2)
+
+    assert len(result) == 3
+    assert result["session_16236918905391623691891459rawscroll"].start_end_val == \
+           (testing_utils.to_datetime(1623691890459), testing_utils.to_datetime(1623691994888))
+    assert result["session_16236918905391623691891459rawscroll"].num_logs == 7
+    assert result["session_16236918905391623691992900customclick"].start_end_val == \
+           (testing_utils.to_datetime(1623691991900), testing_utils.to_datetime(1623693994900))
+    assert result["session_16236918905391623691992900customclick"].num_logs == 15
+    assert result["session_16236918905391623693995550rawload"].start_end_val == \
+           (testing_utils.to_datetime(1623693994550), testing_utils.to_datetime(1623697997550))
+    assert result["session_16236918905391623693995550rawload"].num_logs == 3
+    for segment_name in result:
+        assert result[segment_name].segment_type == distill.Segment_Type.DEADSPACE
+        assert result[segment_name].get_segment_type() == distill.Segment_Type.DEADSPACE
+        assert result[segment_name].generate_field_name is None
+        assert result[segment_name].get_generate_field_name() is None
+        assert result[segment_name].generate_matched_values is None
+        assert result[segment_name].get_generate_matched_values() is None
+
+def test_deadspace_detection_error1():
+    with pytest.raises(TypeError):
+        data = testing_utils.setup("./data/deadspace_detection_sample_data.json", "string")
+        sorted_dict = data[1]
+
+        distill.detect_deadspace(sorted_dict, 5, 1, 2)
+
+def test_deadspace_detection_error2():
+    with pytest.raises(TypeError):
+        data = testing_utils.setup("./data/deadspace_detection_sample_data.json", "integer")
+        sorted_dict = data[1]
+
+        sorted_dict["session_16236918905391623691891459rawscroll"]['clientTime'] = \
+            testing_utils.to_datetime(sorted_dict["session_16236918905391623691891459rawscroll"]['clientTime'])
+
+        distill.detect_deadspace(sorted_dict, 5, 1, 2)
 
 ###################
 # SET LOGIC TESTS #
 ###################
 def test_union_integer():
-    data = testing_utils.setup("integer")
+    data = testing_utils.setup("./data/sample_data.json", "integer")
     sorted_data = data[0]
     sorted_dict = data[1]
 
@@ -236,10 +553,16 @@ def test_union_integer():
     assert new_segment.num_logs == 4
     assert new_segment.uids == [sorted_data[5][0], sorted_data[6][0], sorted_data[7][0], sorted_data[8][0]]
     assert new_segment.start_end_val == (sorted_data[5][1]['clientTime'], sorted_data[7][1]['clientTime'])
+    assert new_segment.segment_type == distill.Segment_Type.UNION
+    assert new_segment.get_segment_type() == distill.Segment_Type.UNION
+    assert new_segment.generate_field_name is None
+    assert new_segment.get_generate_field_name() is None
+    assert new_segment.generate_matched_values is None
+    assert new_segment.get_generate_matched_values() is None
 
 
 def test_union_datetime():
-    data = testing_utils.setup("datetime")
+    data = testing_utils.setup("./data/sample_data.json", "datetime")
     sorted_data = data[0]
     sorted_dict = data[1]
 
@@ -260,14 +583,20 @@ def test_union_datetime():
     assert new_segment.num_logs == 4
     assert new_segment.uids == [sorted_data[5][0], sorted_data[6][0], sorted_data[7][0], sorted_data[8][0]]
     assert new_segment.start_end_val == (sorted_data[5][1]['clientTime'], sorted_data[7][1]['clientTime'])
+    assert new_segment.segment_type == distill.Segment_Type.UNION
+    assert new_segment.get_segment_type() == distill.Segment_Type.UNION
+    assert new_segment.generate_field_name is None
+    assert new_segment.get_generate_field_name() is None
+    assert new_segment.generate_matched_values is None
+    assert new_segment.get_generate_matched_values() is None
 
 def test_union_error():
     with pytest.raises(TypeError):
-        data_integer = testing_utils.setup("integer")
+        data_integer = testing_utils.setup("./data/sample_data.json", "integer")
         sorted_data_integer = data_integer[0]
         sorted_dict_integer = data_integer[1]
 
-        data_datetime = testing_utils.setup("datetime")
+        data_datetime = testing_utils.setup("./data/sample_data.json", "datetime")
         sorted_data_datetime = data_datetime[0]
         sorted_dict_datetime = data_datetime[1]
 
@@ -285,7 +614,7 @@ def test_union_error():
         distill.union("new_segment", int_segment["test_segment_integer"], datetime_segment["test_segment_datetime"])
 
 def test_intersection_integer():
-    data = testing_utils.setup("integer")
+    data = testing_utils.setup("./data/sample_data.json", "integer")
     sorted_data = data[0]
     sorted_dict = data[1]
 
@@ -306,9 +635,15 @@ def test_intersection_integer():
     assert new_segment.num_logs == 2
     assert new_segment.uids == [sorted_data[5][0], sorted_data[6][0]]
     assert new_segment.start_end_val == (sorted_data[5][1]['clientTime'], sorted_data[7][1]['clientTime'])
+    assert new_segment.segment_type == distill.Segment_Type.INTERSECTION
+    assert new_segment.get_segment_type() == distill.Segment_Type.INTERSECTION
+    assert new_segment.generate_field_name is None
+    assert new_segment.get_generate_field_name() is None
+    assert new_segment.generate_matched_values is None
+    assert new_segment.get_generate_matched_values() is None
 
 def test_intersection_datetime():
-    data = testing_utils.setup("datetime")
+    data = testing_utils.setup("./data/sample_data.json", "datetime")
     sorted_data = data[0]
     sorted_dict = data[1]
 
@@ -329,14 +664,20 @@ def test_intersection_datetime():
     assert new_segment.num_logs == 2
     assert new_segment.uids == [sorted_data[5][0], sorted_data[6][0]]
     assert new_segment.start_end_val == (sorted_data[5][1]['clientTime'], sorted_data[7][1]['clientTime'])
+    assert new_segment.segment_type == distill.Segment_Type.INTERSECTION
+    assert new_segment.get_segment_type() == distill.Segment_Type.INTERSECTION
+    assert new_segment.generate_field_name is None
+    assert new_segment.get_generate_field_name() is None
+    assert new_segment.generate_matched_values is None
+    assert new_segment.get_generate_matched_values() is None
 
 def test_intersection_error():
     with pytest.raises(TypeError):
-        data_integer = testing_utils.setup("integer")
+        data_integer = testing_utils.setup("./data/sample_data.json", "integer")
         sorted_data_integer = data_integer[0]
         sorted_dict_integer = data_integer[1]
 
-        data_datetime = testing_utils.setup("datetime")
+        data_datetime = testing_utils.setup("./data/sample_data.json", "datetime")
         sorted_data_datetime = data_datetime[0]
         sorted_dict_datetime = data_datetime[1]
 
@@ -351,5 +692,6 @@ def test_intersection_error():
         int_segment = distill.create_segment(sorted_dict_integer, segment_name_integer, start_end_integer)
         datetime_segment = distill.create_segment(sorted_dict_datetime, segment_name_datetime, start_end_datetime)
 
-        distill.intersection("new_segment", int_segment["test_segment_integer"], datetime_segment["test_segment_datetime"])
+        distill.intersection("new_segment", int_segment["test_segment_integer"],
+                             datetime_segment["test_segment_datetime"])
 
