@@ -18,6 +18,7 @@
 
 import datetime
 from enum import Enum
+import csv
 
 class Segment_Type(Enum):
     CREATE = 1
@@ -263,33 +264,29 @@ def generate_segments(target_dict, field_name, field_values, start_time_limit, e
     # Iterate through the target dictionary using key list
     start_end_vals = []
     segment_names = []
-    end_time = 0
-    keylist = list(target_dict.keys())
-    for i in range(len(keylist)):
-        if field_name in target_dict[keylist[i]]:
+    prev_end_time = None
+    keys = list(target_dict.keys())
+    for i in range(len(keys)):
+        if field_name in target_dict[keys[i]]:
             # Matches value in field_values list with dict values (str or list)
-            if any(item in target_dict[keylist[i]][field_name] for item in field_values):
+            if any(item in target_dict[keys[i]][field_name] for item in field_values):
                 # Matches values - Create segment
-                orig_start_time = target_dict[keylist[i]]['clientTime']
+                orig_start_time = target_dict[keys[i]]['clientTime']
                 if isinstance(orig_start_time, int):
-                    start_time = orig_start_time - (start_time_limit*1000)
-                    # new window doesn't overlap with last
-                    # @TODO might try refactoring start > end time -- make more succinct
-                    if start_time > end_time:
-                        end_time = start_time + (end_time_limit*1000)
-                        start_end_tuple = (start_time, end_time)
-                        start_end_vals.append(start_end_tuple)
-                        segment_names.append(keylist[i])
+                    start_time = orig_start_time - (start_time_limit * 1000)
+                    end_time = orig_start_time + (end_time_limit*1000)
                 elif isinstance(orig_start_time, datetime.datetime):
                     start_time = orig_start_time - datetime.timedelta(seconds=start_time_limit)
-                    # new window doesn't overlap with last
-                    if start_time > end_time:
-                        end_time = start_time + datetime.timedelta(seconds=end_time_limit)
-                        start_end_tuple = (start_time, end_time)
-                        start_end_vals.append(start_end_tuple)
-                        segment_names.append(keylist[i])
+                    end_time = orig_start_time + datetime.timedelta(seconds=end_time_limit)
                 else:
                     raise TypeError('clientTime field is not represented as an integer or datetime object')
+                if prev_end_time is None or orig_start_time > prev_end_time:
+                    if prev_end_time is not None and start_time < prev_end_time:
+                        start_time = prev_end_time
+                    start_end_tuple = (start_time, end_time)
+                    start_end_vals.append(start_end_tuple)
+                    segment_names.append(keys[i])
+                    prev_end_time = end_time
 
     # Create segment dictionary with create_segment
     segments = create_segment(target_dict, segment_names, start_end_vals)
@@ -350,3 +347,30 @@ def detect_deadspace(target_dict, deadspace_limit, start_time_limit, end_time_li
         segments[segment_name].generate_matched_values = None
 
     return segments
+
+######################
+# EXPORTING SEGMENTS #
+######################
+
+def export_segments(path, segment_dict):
+    """
+    Writes segment metadata into a csv file.  Csv will be saved at the indicated path.
+
+    :param path (string): Represents the path of the new file.
+    :param segment_dict ({}): A dictionary of segment name to Segment objects.
+    """
+
+    file = open(path, 'w')
+    writer = csv.writer(file)
+
+    # Populate the csv row by row
+    # TODO: Make sure this is the right format
+    header_row = ['Segment Name', 'Start Time', 'End Time', 'Number of Logs', 'Generate Field Name',
+                  'Generate Matched Values', 'Segment Type']
+    writer.writerow(header_row)
+    for segment_name in segment_dict:
+        segment = segment_dict[segment_name]
+        row = [segment.segment_name, str(segment.start_end_val[0]), str(segment.start_end_val[1]), segment.num_logs,
+               segment.generate_field_name, segment.generate_matched_values, segment.segment_type]
+        writer.writerow(row)
+    file.close()

@@ -25,6 +25,7 @@ from distill.segmentation.segment import (
     write_segment,
     generate_segments,
     detect_deadspace,
+    export_segments,
 )
 
 from distill.utils.crud import (
@@ -70,6 +71,7 @@ __all__ = [
     "write_segment",
     "generate_segments",
     "detect_deadspace",
+    "export_segments",
     "getUUID",
     "epoch_to_datetime",
 ]

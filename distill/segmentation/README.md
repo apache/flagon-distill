@@ -12,13 +12,13 @@
 
 ### Segment Field Access through Getters
 Segment fields can be accessed through get functions.  For example, if a dictionary of segments is created using the `generate_segments` function:
-```
+```python
 generated_segments = distill.generate_segments(sorted_dict, 'type', ['click'], 1, 1)
 ```
 then the number of logs in each of these segments could be printed to the console by running:
-```
+```python
 for segment_name in generated_segments:
-    print(generated_segments[segment_name]).get_num_logs())
+    print(generated_segments[segment_name].get_num_logs())
 ```
 Note that these functions are called via the `Segment` object itself, following the pattern:
 ```
