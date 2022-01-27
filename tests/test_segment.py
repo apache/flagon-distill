@@ -659,6 +659,68 @@ def test_intersection_error():
         distill.intersection("new_segment", int_segment["test_segment_integer"],
                              datetime_segment["test_segment_datetime"])
 
+def test_difference_integer():
+    data = testing_utils.setup("./data/sample_data.json", "integer")
+    sorted_data = data[0]
+    sorted_dict = data[1]
+
+    # Create Tuples
+    start_end_vals = []
+    start_end_vals.append((sorted_data[0][1]['clientTime'], sorted_data[18][1]['clientTime']))
+    start_end_vals.append((sorted_data[5][1]['clientTime'], sorted_data[6][1]['clientTime']))
+    start_end_vals.append((sorted_data[6][1]['clientTime'], sorted_data[7][1]['clientTime']))
+    start_end_vals.append((sorted_data[3][1]['clientTime'], sorted_data[9][1]['clientTime']))
+
+    segment_names = ["test_segment_1", "test_segment_2", "test_segment_3", "test_segment_4"]
+
+    result = distill.create_segment(sorted_dict, segment_names, start_end_vals)
+
+    new_segment = distill.difference("new_segment", result["test_segment_1"], result["test_segment_4"])
+
+    assert new_segment.segment_name == "new_segment"
+    assert new_segment.num_logs == 11
+    assert new_segment.uids == [sorted_data[0][0], sorted_data[1][0], sorted_data[2][0], sorted_data[11][0],
+                                sorted_data[12][0], sorted_data[13][0], sorted_data[14][0], sorted_data[15][0],
+                                sorted_data[16][0], sorted_data[17][0], sorted_data[18][0]]
+    assert new_segment.start_end_val == result["test_segment_1"].start_end_val
+    assert new_segment.segment_type == distill.Segment_Type.DIFFERENCE
+    assert new_segment.get_segment_type() == distill.Segment_Type.DIFFERENCE
+    assert new_segment.generate_field_name is None
+    assert new_segment.get_generate_field_name() is None
+    assert new_segment.generate_matched_values is None
+    assert new_segment.get_generate_matched_values() is None
+
+def test_difference_datetime():
+    data = testing_utils.setup("./data/sample_data.json", "datetime")
+    sorted_data = data[0]
+    sorted_dict = data[1]
+
+    # Create Tuples
+    start_end_vals = []
+    start_end_vals.append((sorted_data[0][1]['clientTime'], sorted_data[18][1]['clientTime']))
+    start_end_vals.append((sorted_data[5][1]['clientTime'], sorted_data[6][1]['clientTime']))
+    start_end_vals.append((sorted_data[6][1]['clientTime'], sorted_data[7][1]['clientTime']))
+    start_end_vals.append((sorted_data[3][1]['clientTime'], sorted_data[9][1]['clientTime']))
+
+    segment_names = ["test_segment_1", "test_segment_2", "test_segment_3", "test_segment_4"]
+
+    result = distill.create_segment(sorted_dict, segment_names, start_end_vals)
+
+    new_segment = distill.difference("new_segment", result["test_segment_1"], result["test_segment_4"])
+
+    assert new_segment.segment_name == "new_segment"
+    assert new_segment.num_logs == 11
+    assert new_segment.uids == [sorted_data[0][0], sorted_data[1][0], sorted_data[2][0], sorted_data[11][0],
+                                sorted_data[12][0], sorted_data[13][0], sorted_data[14][0], sorted_data[15][0],
+                                sorted_data[16][0], sorted_data[17][0], sorted_data[18][0]]
+    assert new_segment.start_end_val == result["test_segment_1"].start_end_val
+    assert new_segment.segment_type == distill.Segment_Type.DIFFERENCE
+    assert new_segment.get_segment_type() == distill.Segment_Type.DIFFERENCE
+    assert new_segment.generate_field_name is None
+    assert new_segment.get_generate_field_name() is None
+    assert new_segment.generate_matched_values is None
+    assert new_segment.get_generate_matched_values() is None
+
 ############################
 # EXPORTING SEGMENTS TESTS #
 ############################

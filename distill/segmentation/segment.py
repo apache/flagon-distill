@@ -21,11 +21,12 @@ from enum import Enum
 import csv
 
 class Segment_Type(Enum):
-    CREATE = 1
-    GENERATE = 2
-    DEADSPACE = 3
-    UNION = 4
-    INTERSECTION = 5
+    CREATE = "create"
+    GENERATE = "generate"
+    DEADSPACE = "deadspace"
+    UNION = "union"
+    INTERSECTION = "intersection"
+    DIFFERENCE = "difference"
 
 class Segment():
     """
@@ -183,7 +184,39 @@ def intersection(segment_name, segment1, segment2):
     segment.generate_field_name = None
     segment.generate_matched_values = None
     return segment
-    
+
+def difference(segment_name, segment1, segment2):
+    """
+    Creates a new segment based on the logical difference of segment2 from segment1.
+
+    :param segment_name (string): Name associated with the new segment
+    :param segment1 (Segment): Segment from which to subtract segment2's matched UIDs.
+    :param segment2 (Segment): Segment whose matched UIDs are to be subtracted from segment1.
+
+    :return: A new segment with the given segment_name, start and end values based on segment1, and a list of the
+    difference of the uids of segment1 and segment2.
+    """
+
+    # Find matching UIDs
+    matched_uids = []
+    for uid in segment2.uids:
+        if uid in segment1.uids:
+            matched_uids.append(uid)
+
+    # Subtract matched UIDs from segment1
+    uids = segment1.uids
+    for uid in matched_uids:
+        uids.remove(uid)
+
+    # Return new segment
+    segment = Segment(segment_name, segment1.start_end_val, len(uids), uids)
+    segment.segment_type = Segment_Type.DIFFERENCE
+    segment.generate_field_name = None
+    segment.generate_matched_values = None
+    return segment
+
+
+
 
 ####################
 # SEGMENT CREATION #
