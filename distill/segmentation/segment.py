@@ -247,7 +247,7 @@ def write_segment(target_dict, segment_names, start_end_vals):
 
     return result
 
-def generate_segments(target_dict, field_name, field_values, start_time_limit, end_time_limit):
+def generate_segments(target_dict, field_name, field_values, start_time_limit, end_time_limit, label=""):
     """
     Generates a list of Segment objects corresponding to windows of time defined by the given time limits,
     field name, and associated values meant to match the field name indicated.
@@ -257,6 +257,7 @@ def generate_segments(target_dict, field_name, field_values, start_time_limit, e
     :param field_values ([object]): A list of field values to be matched in order to start a segment.
     :param start_time_limit (int): Amount of time (in seconds) prior to a detected event that should be included in the generated segment.
     :param end_time_limit (int): Amount of time (in seconds) to keep the segment window open after a detected event.
+    :param label (String): An optional string argument that provides a prefix for the returned dictionary keys.
                 
     :return: A dictionary of segment_names to generated Segment objects.
     """
@@ -266,6 +267,7 @@ def generate_segments(target_dict, field_name, field_values, start_time_limit, e
     segment_names = []
     prev_end_time = None
     keys = list(target_dict.keys())
+    index = 0
     for i in range(len(keys)):
         if field_name in target_dict[keys[i]]:
             # Matches value in field_values list with dict values (str or list)
@@ -285,8 +287,9 @@ def generate_segments(target_dict, field_name, field_values, start_time_limit, e
                         start_time = prev_end_time
                     start_end_tuple = (start_time, end_time)
                     start_end_vals.append(start_end_tuple)
-                    segment_names.append(keys[i])
+                    segment_names.append(label + str(index))
                     prev_end_time = end_time
+                    index += 1
 
     # Create segment dictionary with create_segment
     segments = create_segment(target_dict, segment_names, start_end_vals)
@@ -297,7 +300,7 @@ def generate_segments(target_dict, field_name, field_values, start_time_limit, e
 
     return segments
 
-def detect_deadspace(target_dict, deadspace_limit, start_time_limit, end_time_limit):
+def detect_deadspace(target_dict, deadspace_limit, start_time_limit, end_time_limit, label=""):
     """
     Detects deadspace in a dictionary of User Ale logs.  Detected instances of deadspace are captured in Segment
     objects based on the start and end time limits indicated by the function parameters.
@@ -306,6 +309,7 @@ def detect_deadspace(target_dict, deadspace_limit, start_time_limit, end_time_li
     :param deadspace_limit (int): An integer representing the amount of time (in seconds) considered to be 'deadspace'.
     :param start_time_limit (int): Amount of time (in seconds) prior to a detected deadspace event that should be included in the deadspace segment.
     :param end_time_limit (int): Amount of time (in seconds) to keep the segment window open after a detected deadspace event.
+    :param label (String): An optional string argument that provides a prefix for the returned dictionary keys.
 
     :return: A dictionary of segment_names to generated Segment objects containing detected deadspace.
     """
@@ -314,6 +318,7 @@ def detect_deadspace(target_dict, deadspace_limit, start_time_limit, end_time_li
     start_end_vals = []
     segment_names = []
     key_list = list(target_dict.keys())
+    index = 0
     for i in range(len(key_list)):
         # Check for deadspace
         if i < len(key_list) - 1:
@@ -327,7 +332,8 @@ def detect_deadspace(target_dict, deadspace_limit, start_time_limit, end_time_li
                     end_time = next_time + (end_time_limit * 1000)
                     start_end_tuple = (start_time, end_time)
                     start_end_vals.append(start_end_tuple)
-                    segment_names.append(key_list[i])
+                    segment_names.append(label + str(index))
+                    index += 1
             elif isinstance(curr_time, datetime.datetime) and isinstance(next_time, datetime.datetime):
                 if time_delta > datetime.timedelta(seconds=deadspace_limit):
                     # Deadspace detected
@@ -335,7 +341,8 @@ def detect_deadspace(target_dict, deadspace_limit, start_time_limit, end_time_li
                     end_time = next_time + datetime.timedelta(seconds=end_time_limit)
                     start_end_tuple = (start_time, end_time)
                     start_end_vals.append(start_end_tuple)
-                    segment_names.append(key_list[i])
+                    segment_names.append(label + str(index))
+                    index += 1
             else:
                 raise TypeError('clientTime field is not consistently represented as an integer or datetime object')
 

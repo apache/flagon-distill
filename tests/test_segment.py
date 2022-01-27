@@ -256,12 +256,12 @@ def test_generate_segments_integer():
     data = testing_utils.setup("./data/segment_generator_sample_data.json", "integer")
     sorted_dict = data[1]
 
-    load_result = distill.generate_segments(sorted_dict, 'type', ['load'], 1, 1)
+    load_result = distill.generate_segments(sorted_dict, 'type', ['load'], 1, 1, label="load")
     assert len(load_result) == 2
-    assert load_result["session_16236918905391623691890600rawload"].start_end_val == (1623691889600, 1623691891600)
-    assert load_result["session_16236918905391623691890600rawload"].num_logs == 3
-    assert load_result["session_16236918905391623691907302rawload"].start_end_val == (1623691906302, 1623691908302)
-    assert load_result["session_16236918905391623691907302rawload"].num_logs == 7
+    assert load_result["load0"].start_end_val == (1623691889600, 1623691891600)
+    assert load_result["load0"].num_logs == 3
+    assert load_result["load1"].start_end_val == (1623691906302, 1623691908302)
+    assert load_result["load1"].num_logs == 7
     for segment_name in load_result:
         assert load_result[segment_name].segment_type == distill.Segment_Type.GENERATE
         assert load_result[segment_name].generate_field_name == 'type'
@@ -269,14 +269,14 @@ def test_generate_segments_integer():
 
     click_result = distill.generate_segments(sorted_dict, 'type', ['click'], 1, 1)
     assert len(click_result) == 4
-    assert click_result["session_16236918905391623691904200rawclick"].start_end_val == (1623691903200, 1623691905200)
-    assert click_result["session_16236918905391623691904200rawclick"].num_logs == 2
-    assert click_result["session_16236918905391623691905488rawclick"].start_end_val == (1623691905200, 1623691906488)
-    assert click_result["session_16236918905391623691905488rawclick"].num_logs == 7
-    assert click_result["session_16236918905391623691906955rawclick"].start_end_val == (1623691906488, 1623691907955)
-    assert click_result["session_16236918905391623691906955rawclick"].num_logs == 6
-    assert click_result["session_16236918905391623691908100rawclick"].start_end_val == (1623691907955, 1623691909100)
-    assert click_result["session_16236918905391623691908100rawclick"].num_logs == 1
+    assert click_result["0"].start_end_val == (1623691903200, 1623691905200)
+    assert click_result["0"].num_logs == 2
+    assert click_result["1"].start_end_val == (1623691905200, 1623691906488)
+    assert click_result["1"].num_logs == 7
+    assert click_result["2"].start_end_val == (1623691906488, 1623691907955)
+    assert click_result["2"].num_logs == 6
+    assert click_result["3"].start_end_val == (1623691907955, 1623691909100)
+    assert click_result["3"].num_logs == 1
     for segment_name in click_result:
         assert click_result[segment_name].segment_type == distill.Segment_Type.GENERATE
         assert click_result[segment_name].get_segment_type() == distill.Segment_Type.GENERATE
@@ -287,21 +287,16 @@ def test_generate_segments_integer():
 
     load_click_result = distill.generate_segments(sorted_dict, 'type', ['load', 'click'], 1, 1)
     assert len(load_click_result) == 5
-    assert load_click_result["session_16236918905391623691890600rawload"].start_end_val == (1623691889600,
-                                                                                            1623691891600)
-    assert load_click_result["session_16236918905391623691890600rawload"].num_logs == 3
-    assert load_click_result["session_16236918905391623691904200rawclick"].start_end_val == (1623691903200,
-                                                                                             1623691905200)
-    assert load_click_result["session_16236918905391623691904200rawclick"].num_logs == 2
-    assert load_click_result["session_16236918905391623691905488rawclick"].start_end_val == (1623691905200,
-                                                                                             1623691906488)
-    assert load_click_result["session_16236918905391623691905488rawclick"].num_logs == 7
-    assert load_click_result["session_16236918905391623691906955rawclick"].start_end_val == (1623691906488,
-                                                                                             1623691907955)
-    assert load_click_result["session_16236918905391623691906955rawclick"].num_logs == 6
-    assert load_click_result["session_16236918905391623691908100rawclick"].start_end_val == (1623691907955,
-                                                                                             1623691909100)
-    assert load_click_result["session_16236918905391623691908100rawclick"].num_logs == 1
+    assert load_click_result["0"].start_end_val == (1623691889600,1623691891600)
+    assert load_click_result["0"].num_logs == 3
+    assert load_click_result["1"].start_end_val == (1623691903200,1623691905200)
+    assert load_click_result["1"].num_logs == 2
+    assert load_click_result["2"].start_end_val == (1623691905200,1623691906488)
+    assert load_click_result["2"].num_logs == 7
+    assert load_click_result["3"].start_end_val == (1623691906488,1623691907955)
+    assert load_click_result["3"].num_logs == 6
+    assert load_click_result["4"].start_end_val == (1623691907955,1623691909100)
+    assert load_click_result["4"].num_logs == 1
     for segment_name in load_click_result:
         assert load_click_result[segment_name].segment_type == distill.Segment_Type.GENERATE
         assert load_click_result[segment_name].get_segment_type() == distill.Segment_Type.GENERATE
@@ -316,12 +311,12 @@ def test_generate_segments_datetime():
 
     load_result = distill.generate_segments(sorted_dict, 'type', ['load'], 1, 1)
     assert len(load_result) == 2
-    assert load_result["session_16236918905391623691890600rawload"].start_end_val == \
-           (testing_utils.to_datetime(1623691889600), testing_utils.to_datetime(1623691891600))
-    assert load_result["session_16236918905391623691890600rawload"].num_logs == 3
-    assert load_result["session_16236918905391623691907302rawload"].start_end_val == \
-           (testing_utils.to_datetime(1623691906302), testing_utils.to_datetime(1623691908302))
-    assert load_result["session_16236918905391623691907302rawload"].num_logs == 7
+    assert load_result["0"].start_end_val == (testing_utils.to_datetime(1623691889600),
+                                              testing_utils.to_datetime(1623691891600))
+    assert load_result["0"].num_logs == 3
+    assert load_result["1"].start_end_val == (testing_utils.to_datetime(1623691906302),
+                                              testing_utils.to_datetime(1623691908302))
+    assert load_result["1"].num_logs == 7
     for segment_name in load_result:
         assert load_result[segment_name].segment_type == distill.Segment_Type.GENERATE
         assert load_result[segment_name].get_segment_type() == distill.Segment_Type.GENERATE
@@ -330,20 +325,20 @@ def test_generate_segments_datetime():
         assert load_result[segment_name].generate_matched_values == ['load']
         assert load_result[segment_name].get_generate_matched_values() == ['load']
 
-    click_result = distill.generate_segments(sorted_dict, 'type', ['click'], 1, 1)
+    click_result = distill.generate_segments(sorted_dict, 'type', ['click'], 1, 1, "click")
     assert len(click_result) == 4
-    assert click_result["session_16236918905391623691904200rawclick"].start_end_val == \
-           (testing_utils.to_datetime(1623691903200), testing_utils.to_datetime(1623691905200))
-    assert click_result["session_16236918905391623691904200rawclick"].num_logs == 2
-    assert click_result["session_16236918905391623691905488rawclick"].start_end_val == \
-           (testing_utils.to_datetime(1623691905200), testing_utils.to_datetime(1623691906488))
-    assert click_result["session_16236918905391623691905488rawclick"].num_logs == 7
-    assert click_result["session_16236918905391623691906955rawclick"].start_end_val == \
-           (testing_utils.to_datetime(1623691906488), testing_utils.to_datetime(1623691907955))
-    assert click_result["session_16236918905391623691906955rawclick"].num_logs == 6
-    assert click_result["session_16236918905391623691908100rawclick"].start_end_val == \
-           (testing_utils.to_datetime(1623691907955), testing_utils.to_datetime(1623691909100))
-    assert click_result["session_16236918905391623691908100rawclick"].num_logs == 1
+    assert click_result["click0"].start_end_val == (testing_utils.to_datetime(1623691903200),
+                                                    testing_utils.to_datetime(1623691905200))
+    assert click_result["click0"].num_logs == 2
+    assert click_result["click1"].start_end_val == (testing_utils.to_datetime(1623691905200),
+                                                    testing_utils.to_datetime(1623691906488))
+    assert click_result["click1"].num_logs == 7
+    assert click_result["click2"].start_end_val == (testing_utils.to_datetime(1623691906488),
+                                                    testing_utils.to_datetime(1623691907955))
+    assert click_result["click2"].num_logs == 6
+    assert click_result["click3"].start_end_val == (testing_utils.to_datetime(1623691907955),
+                                                    testing_utils.to_datetime(1623691909100))
+    assert click_result["click3"].num_logs == 1
     for segment_name in click_result:
         assert click_result[segment_name].segment_type == distill.Segment_Type.GENERATE
         assert click_result[segment_name].get_segment_type() == distill.Segment_Type.GENERATE
@@ -354,21 +349,22 @@ def test_generate_segments_datetime():
 
     load_click_result = distill.generate_segments(sorted_dict, 'type', ['load', 'click'], 1, 1)
     assert len(load_click_result) == 5
-    assert click_result["session_16236918905391623691904200rawclick"].start_end_val == \
-           (testing_utils.to_datetime(1623691903200), testing_utils.to_datetime(1623691905200))
-    assert click_result["session_16236918905391623691904200rawclick"].num_logs == 2
-    assert click_result["session_16236918905391623691905488rawclick"].start_end_val == \
-           (testing_utils.to_datetime(1623691905200), testing_utils.to_datetime(1623691906488))
-    assert click_result["session_16236918905391623691905488rawclick"].num_logs == 7
-    assert click_result["session_16236918905391623691906955rawclick"].start_end_val == \
-           (testing_utils.to_datetime(1623691906488), testing_utils.to_datetime(1623691907955))
-    assert click_result["session_16236918905391623691906955rawclick"].num_logs == 6
-    assert click_result["session_16236918905391623691908100rawclick"].start_end_val == \
-           (testing_utils.to_datetime(1623691907955), testing_utils.to_datetime(1623691909100))
-    assert click_result["session_16236918905391623691908100rawclick"].num_logs == 1
-    assert load_click_result["session_16236918905391623691890600rawload"].start_end_val == \
-           (testing_utils.to_datetime(1623691889600), testing_utils.to_datetime(1623691891600))
-    assert load_click_result["session_16236918905391623691890600rawload"].num_logs == 3
+    assert load_click_result["0"].start_end_val == (testing_utils.to_datetime(1623691889600),
+                                                    testing_utils.to_datetime(1623691891600))
+    assert load_click_result["0"].num_logs == 3
+    assert load_click_result["1"].start_end_val == (testing_utils.to_datetime(1623691903200),
+                                               testing_utils.to_datetime(1623691905200))
+    assert load_click_result["1"].num_logs == 2
+    assert load_click_result["2"].start_end_val == (testing_utils.to_datetime(1623691905200),
+                                               testing_utils.to_datetime(1623691906488))
+    assert load_click_result["2"].num_logs == 7
+    assert load_click_result["3"].start_end_val == (testing_utils.to_datetime(1623691906488),
+                                               testing_utils.to_datetime(1623691907955))
+    assert load_click_result["3"].num_logs == 6
+    assert load_click_result["4"].start_end_val == (testing_utils.to_datetime(1623691907955),
+                                               testing_utils.to_datetime(1623691909100))
+    assert load_click_result["4"].num_logs == 1
+
     for segment_name in load_click_result:
         assert load_click_result[segment_name].segment_type == distill.Segment_Type.GENERATE
         assert load_click_result[segment_name].get_segment_type() == distill.Segment_Type.GENERATE
@@ -401,47 +397,83 @@ def test_deadspace_detection_integer():
     data = testing_utils.setup("./data/deadspace_detection_sample_data.json", "integer")
     sorted_dict = data[1]
 
-    result = distill.detect_deadspace(sorted_dict, 5, 1, 2)
+    result_no_label = distill.detect_deadspace(sorted_dict, 5, 1, 2)
 
-    assert len(result) == 3
-    assert result["session_16236918905391623691891459rawscroll"].start_end_val == (1623691890459, 1623691994888)
-    assert result["session_16236918905391623691891459rawscroll"].num_logs == 7
-    assert result["session_16236918905391623691992900customclick"].start_end_val == (1623691991900, 1623693994900)
-    assert result["session_16236918905391623691992900customclick"].num_logs == 15
-    assert result["session_16236918905391623693995550rawload"].start_end_val == (1623693994550, 1623697997550)
-    assert result["session_16236918905391623693995550rawload"].num_logs == 3
-    for segment_name in result:
-        assert result[segment_name].segment_type == distill.Segment_Type.DEADSPACE
-        assert result[segment_name].get_segment_type() == distill.Segment_Type.DEADSPACE
-        assert result[segment_name].generate_field_name is None
-        assert result[segment_name].get_generate_field_name() is None
-        assert result[segment_name].generate_matched_values is None
-        assert result[segment_name].get_generate_matched_values() is None
+    assert len(result_no_label) == 3
+    assert result_no_label["0"].start_end_val == (1623691890459, 1623691994888)
+    assert result_no_label["0"].num_logs == 7
+    assert result_no_label["1"].start_end_val == (1623691991900, 1623693994900)
+    assert result_no_label["1"].num_logs == 15
+    assert result_no_label["2"].start_end_val == (1623693994550, 1623697997550)
+    assert result_no_label["2"].num_logs == 3
+    for segment_name in result_no_label:
+        assert result_no_label[segment_name].segment_type == distill.Segment_Type.DEADSPACE
+        assert result_no_label[segment_name].get_segment_type() == distill.Segment_Type.DEADSPACE
+        assert result_no_label[segment_name].generate_field_name is None
+        assert result_no_label[segment_name].get_generate_field_name() is None
+        assert result_no_label[segment_name].generate_matched_values is None
+        assert result_no_label[segment_name].get_generate_matched_values() is None
+
+    result_with_label = distill.detect_deadspace(sorted_dict, 5, 1, 2, "deadspace")
+    assert len(result_with_label) == 3
+    assert result_with_label["deadspace0"].start_end_val == (1623691890459, 1623691994888)
+    assert result_with_label["deadspace0"].num_logs == 7
+    assert result_with_label["deadspace1"].start_end_val == (1623691991900, 1623693994900)
+    assert result_with_label["deadspace1"].num_logs == 15
+    assert result_with_label["deadspace2"].start_end_val == (1623693994550, 1623697997550)
+    assert result_with_label["deadspace2"].num_logs == 3
+    for segment_name in result_with_label:
+        assert result_with_label[segment_name].segment_type == distill.Segment_Type.DEADSPACE
+        assert result_with_label[segment_name].get_segment_type() == distill.Segment_Type.DEADSPACE
+        assert result_with_label[segment_name].generate_field_name is None
+        assert result_with_label[segment_name].get_generate_field_name() is None
+        assert result_with_label[segment_name].generate_matched_values is None
+        assert result_with_label[segment_name].get_generate_matched_values() is None
 
 
 def test_deadspace_detection_datetime():
     data = testing_utils.setup("./data/deadspace_detection_sample_data.json", "datetime")
     sorted_dict = data[1]
 
-    result = distill.detect_deadspace(sorted_dict, 5, 1, 2)
+    result_no_label = distill.detect_deadspace(sorted_dict, 5, 1, 2)
 
-    assert len(result) == 3
-    assert result["session_16236918905391623691891459rawscroll"].start_end_val == \
-           (testing_utils.to_datetime(1623691890459), testing_utils.to_datetime(1623691994888))
-    assert result["session_16236918905391623691891459rawscroll"].num_logs == 7
-    assert result["session_16236918905391623691992900customclick"].start_end_val == \
-           (testing_utils.to_datetime(1623691991900), testing_utils.to_datetime(1623693994900))
-    assert result["session_16236918905391623691992900customclick"].num_logs == 15
-    assert result["session_16236918905391623693995550rawload"].start_end_val == \
-           (testing_utils.to_datetime(1623693994550), testing_utils.to_datetime(1623697997550))
-    assert result["session_16236918905391623693995550rawload"].num_logs == 3
-    for segment_name in result:
-        assert result[segment_name].segment_type == distill.Segment_Type.DEADSPACE
-        assert result[segment_name].get_segment_type() == distill.Segment_Type.DEADSPACE
-        assert result[segment_name].generate_field_name is None
-        assert result[segment_name].get_generate_field_name() is None
-        assert result[segment_name].generate_matched_values is None
-        assert result[segment_name].get_generate_matched_values() is None
+    assert len(result_no_label) == 3
+    assert result_no_label["0"].start_end_val == (testing_utils.to_datetime(1623691890459),
+                                         testing_utils.to_datetime(1623691994888))
+    assert result_no_label["0"].num_logs == 7
+    assert result_no_label["1"].start_end_val == (testing_utils.to_datetime(1623691991900),
+                                         testing_utils.to_datetime(1623693994900))
+    assert result_no_label["1"].num_logs == 15
+    assert result_no_label["2"].start_end_val == (testing_utils.to_datetime(1623693994550),
+                                         testing_utils.to_datetime(1623697997550))
+    assert result_no_label["2"].num_logs == 3
+    for segment_name in result_no_label:
+        assert result_no_label[segment_name].segment_type == distill.Segment_Type.DEADSPACE
+        assert result_no_label[segment_name].get_segment_type() == distill.Segment_Type.DEADSPACE
+        assert result_no_label[segment_name].generate_field_name is None
+        assert result_no_label[segment_name].get_generate_field_name() is None
+        assert result_no_label[segment_name].generate_matched_values is None
+        assert result_no_label[segment_name].get_generate_matched_values() is None
+
+    result_with_label = distill.detect_deadspace(sorted_dict, 5, 1, 2, "deadspace")
+
+    assert len(result_with_label) == 3
+    assert result_with_label["deadspace0"].start_end_val == (testing_utils.to_datetime(1623691890459),
+                                                  testing_utils.to_datetime(1623691994888))
+    assert result_with_label["deadspace0"].num_logs == 7
+    assert result_with_label["deadspace1"].start_end_val == (testing_utils.to_datetime(1623691991900),
+                                                  testing_utils.to_datetime(1623693994900))
+    assert result_with_label["deadspace1"].num_logs == 15
+    assert result_with_label["deadspace2"].start_end_val == (testing_utils.to_datetime(1623693994550),
+                                                  testing_utils.to_datetime(1623697997550))
+    assert result_with_label["deadspace2"].num_logs == 3
+    for segment_name in result_with_label:
+        assert result_with_label[segment_name].segment_type == distill.Segment_Type.DEADSPACE
+        assert result_with_label[segment_name].get_segment_type() == distill.Segment_Type.DEADSPACE
+        assert result_with_label[segment_name].generate_field_name is None
+        assert result_with_label[segment_name].get_generate_field_name() is None
+        assert result_with_label[segment_name].generate_matched_values is None
+        assert result_with_label[segment_name].get_generate_matched_values() is None
 
 def test_deadspace_detection_error1():
     with pytest.raises(TypeError):
@@ -644,11 +676,11 @@ def test_export_segments():
     assert len(lines) == 4
     assert lines[0] == 'Segment Name,Start Time,End Time,Number of Logs,Generate Field Name,Generate Matched Values,' \
                        'Segment Type\n'
-    assert lines[1] == 'session_16236918905391623691891459rawscroll,1623691890459,1623691994888,7,,,' \
+    assert lines[1] == '0,1623691890459,1623691994888,7,,,' \
                        'Segment_Type.DEADSPACE\n'
-    assert lines[2] == 'session_16236918905391623691992900customclick,1623691991900,1623693994900,15,,,' \
+    assert lines[2] == '1,1623691991900,1623693994900,15,,,' \
                        'Segment_Type.DEADSPACE\n'
-    assert lines[3] == 'session_16236918905391623693995550rawload,1623693994550,1623697997550,3,,,' \
+    assert lines[3] == '2,1623693994550,1623697997550,3,,,' \
                        'Segment_Type.DEADSPACE\n'
 
     os.remove("./test.csv")
