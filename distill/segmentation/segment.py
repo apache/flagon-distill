@@ -24,6 +24,7 @@ class Segment_Type(Enum):
     CREATE = "create"
     GENERATE = "generate"
     DEADSPACE = "deadspace"
+    FIXED_TIME = "fixed_time"
     UNION = "union"
     INTERSECTION = "intersection"
     DIFFERENCE = "difference"
@@ -383,6 +384,75 @@ def detect_deadspace(target_dict, deadspace_limit, start_time_limit, end_time_li
     segments = create_segment(target_dict, segment_names, start_end_vals)
     for segment_name in segments:
         segments[segment_name].segment_type = Segment_Type.DEADSPACE
+        segments[segment_name].generate_field_name = None
+        segments[segment_name].generate_matched_values = None
+
+    return segments
+
+def generate_fixed_time_segments(target_dict, time, trim=False, label=0):
+    """
+    Generates segments based on fixed time intervals.
+
+    :param target_dict({}): A dictionary of User Ale logs assumed to be ordered by clientTime (Date/Time Objects or integers).
+    :param time(int): The fixed time from which the Segment start and end times are based (seconds).
+    :param trim(bool): An optional boolean indicating whether the logs that don't fit into the fixed windows should be trimmed.
+    :param label(String): An optional string argument that provides a prefix for the returned dictionary keys.
+    """
+    key_list = list(target_dict.keys())
+
+    # Get overall start and end time
+    start = target_dict[key_list[0]]['clientTime']
+    end = target_dict[key_list[len(key_list - 1)]]['clientTime']
+
+    start_end_vals = []
+    segment_names = []
+    index = 0
+
+    if isinstance(start, int) and isinstance(end, int):
+        if trim:
+            # Create equal segments
+            while start + (time * 1000) <= end:
+                # Create a new start/end tuple
+                start_end = (start, start + (time * 1000))
+                start_end_vals.append(start_end)
+                segment_names.append(label + str(index))
+                start += (time * 1000)
+                index += 1
+        else:
+            # Include all logs
+            while start < end:
+                # Create a new start/end tuple
+                start_end = (start, start + (time * 1000))
+                start_end_vals.append(start_end)
+                segment_names.append(label + str(index))
+                start += (time * 1000)
+                index += 1
+    elif isinstance(start, datetime.datetime) and isinstance(end, datetime.datetime):
+        if trim:
+            # Create equal segments
+            while start + datetime.timedelta(seconds=time) <= end:
+                # Create a new start/end tuple
+                start_end = (start, start + datetime.timedelta(seconds=time))
+                start_end_vals.append(start_end)
+                segment_names.append(label + str(index))
+                start += datetime.timedelta(seconds=time)
+                index += 1
+        else:
+            # Include all logs
+            while start < end:
+                # Create a new start/end tuple
+                start_end = (start, start + datetime.timedelta(seconds=time))
+                start_end_vals.append(start_end)
+                segment_names.append(label + str(index))
+                start += datetime.timedelta(seconds=time)
+                index += 1
+    else:
+        raise TypeError("clientTime must be represented as either an integer or datetime object.")
+
+    # Create segment dictionary with create_segment
+    segments = create_segment(target_dict, segment_names, start_end_vals)
+    for segment_name in segments:
+        segments[segment_name].segment_type = Segment_Type.FIXED_TIME
         segments[segment_name].generate_field_name = None
         segments[segment_name].generate_matched_values = None
 
