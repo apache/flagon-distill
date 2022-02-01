@@ -19,6 +19,7 @@
 import datetime
 from enum import Enum
 import csv
+from distill.segmentation.segments import Segments
 
 class Segment_Type(Enum):
     CREATE = "create"
@@ -51,6 +52,12 @@ class Segment():
         self.generate_field_name = None
         self.generate_matched_values = None
         self.segment_type = None
+
+    def __str__(self):
+        start = self.start_end_val[0]
+        end = self.start_end_val[1]
+        return "Segment: name=" + self.segment_name + ", num_logs=" + str(self.num_logs) + \
+                  ", start=" + str(start) + ", end=" + str(end) + ", type=" + str(self.segment_type)
 
     def get_segment_name(self):
         """
@@ -232,10 +239,10 @@ def create_segment(target_dict, segment_names, start_end_vals):
     :param segment_names ([strings]): A list of segment_names ordered in the same way as the start_end_vals
     :param start_end_vals ([(Date/Time or int, Date/Time or int)]): A list of tuples (i.e [(start_time, end_time)], where start_time and end_time are Date/Time Objects or integers
 
-    :return: A dictionary of segment_name to Segment objects
+    :return: A Segments object containing newly created Segment objects.
     """
 
-    result = {}
+    segments = []
     for i in range(len(segment_names)):
         num_logs = 0
         segment_name = segment_names[i]
@@ -251,12 +258,12 @@ def create_segment(target_dict, segment_names, start_end_vals):
                     uids.append(uid)
             else:
                 raise TypeError("clientTime and start/end times must be represented as the same type and must either be a datetime object or integer.")
-            segment = Segment(segment_name, start_end_vals[i], num_logs, uids)
-            segment.segment_type = Segment_Type.CREATE
-            segment.generate_field_name = None
-            segment.generate_matched_values = None
-            result[segment_name] = segment
-    return result
+        segment = Segment(segment_name, start_end_vals[i], num_logs, uids)
+        segment.segment_type = Segment_Type.CREATE
+        segment.generate_field_name = None
+        segment.generate_matched_values = None
+        segments.append(segment)
+    return Segments(segments)
 
 def write_segment(target_dict, segment_names, start_end_vals):
     """
@@ -274,10 +281,10 @@ def write_segment(target_dict, segment_names, start_end_vals):
     create_result = create_segment(target_dict, segment_names, start_end_vals)
 
     # Iterate through segments to get logs
-    for segment_name in create_result:
-        result[segment_name] = {}
-        for uid in create_result[segment_name].uids:
-            result[segment_name][uid] = target_dict[uid]
+    for segment in create_result:
+        result[segment.get_segment_name()] = {}
+        for uid in segment.uids:
+            result[segment.get_segment_name()][uid] = target_dict[uid]
 
     return result
 
@@ -293,7 +300,7 @@ def generate_segments(target_dict, field_name, field_values, start_time_limit, e
     :param end_time_limit (int): Amount of time (in seconds) to keep the segment window open after a detected event.
     :param label (String): An optional string argument that provides a prefix for the returned dictionary keys.
                 
-    :return: A dictionary of segment_names to generated Segment objects.
+    :return: A Segments object containing newly created Segment objects.
     """
 
     # Iterate through the target dictionary using key list
@@ -327,10 +334,10 @@ def generate_segments(target_dict, field_name, field_values, start_time_limit, e
 
     # Create segment dictionary with create_segment
     segments = create_segment(target_dict, segment_names, start_end_vals)
-    for segment_name in segments:
-        segments[segment_name].segment_type = Segment_Type.GENERATE
-        segments[segment_name].generate_field_name = field_name
-        segments[segment_name].generate_matched_values = field_values
+    for segment in segments:
+        segment.segment_type = Segment_Type.GENERATE
+        segment.generate_field_name = field_name
+        segment.generate_matched_values = field_values
 
     return segments
 
@@ -345,7 +352,7 @@ def detect_deadspace(target_dict, deadspace_limit, start_time_limit, end_time_li
     :param end_time_limit (int): Amount of time (in seconds) to keep the segment window open after a detected deadspace event.
     :param label (String): An optional string argument that provides a prefix for the returned dictionary keys.
 
-    :return: A dictionary of segment_names to generated Segment objects containing detected deadspace.
+    :return: A Segments object containing newly created Segment objects.
     """
 
     # Iterate through the target dictionary using key list
@@ -382,10 +389,10 @@ def detect_deadspace(target_dict, deadspace_limit, start_time_limit, end_time_li
 
     # Create segment dictionary with create_segment
     segments = create_segment(target_dict, segment_names, start_end_vals)
-    for segment_name in segments:
-        segments[segment_name].segment_type = Segment_Type.DEADSPACE
-        segments[segment_name].generate_field_name = None
-        segments[segment_name].generate_matched_values = None
+    for segment in segments:
+        segment.segment_type = Segment_Type.DEADSPACE
+        segment.generate_field_name = None
+        segment.generate_matched_values = None
 
     return segments
 
@@ -397,12 +404,14 @@ def generate_fixed_time_segments(target_dict, time, trim=False, label=0):
     :param time(int): The fixed time from which the Segment start and end times are based (seconds).
     :param trim(bool): An optional boolean indicating whether the logs that don't fit into the fixed windows should be trimmed.
     :param label(String): An optional string argument that provides a prefix for the returned dictionary keys.
+
+    :return: A Segments object containing newly created Segment objects.
     """
     key_list = list(target_dict.keys())
 
     # Get overall start and end time
     start = target_dict[key_list[0]]['clientTime']
-    end = target_dict[key_list[len(key_list - 1)]]['clientTime']
+    end = target_dict[key_list[len(key_list) - 1]]['clientTime']
 
     start_end_vals = []
     segment_names = []
@@ -451,10 +460,10 @@ def generate_fixed_time_segments(target_dict, time, trim=False, label=0):
 
     # Create segment dictionary with create_segment
     segments = create_segment(target_dict, segment_names, start_end_vals)
-    for segment_name in segments:
-        segments[segment_name].segment_type = Segment_Type.FIXED_TIME
-        segments[segment_name].generate_field_name = None
-        segments[segment_name].generate_matched_values = None
+    for segment in segments:
+        segment.segment_type = Segment_Type.FIXED_TIME
+        segment.generate_field_name = None
+        segment.generate_matched_values = None
 
     return segments
 
@@ -462,12 +471,12 @@ def generate_fixed_time_segments(target_dict, time, trim=False, label=0):
 # EXPORTING SEGMENTS #
 ######################
 
-def export_segments(path, segment_dict):
+def export_segments(path, segments):
     """
     Writes segment metadata into a csv file.  Csv will be saved at the indicated path.
 
     :param path (string): Represents the path of the new file.
-    :param segment_dict ({}): A dictionary of segment name to Segment objects.
+    :param segments (Segments): A Segments object containing Segment objects.
     """
 
     file = open(path, 'w')
@@ -478,8 +487,7 @@ def export_segments(path, segment_dict):
     header_row = ['Segment Name', 'Start Time', 'End Time', 'Number of Logs', 'Generate Field Name',
                   'Generate Matched Values', 'Segment Type']
     writer.writerow(header_row)
-    for segment_name in segment_dict:
-        segment = segment_dict[segment_name]
+    for segment in segments:
         row = [segment.segment_name, str(segment.start_end_val[0]), str(segment.start_end_val[1]), segment.num_logs,
                segment.generate_field_name, segment.generate_matched_values, segment.segment_type]
         writer.writerow(row)
