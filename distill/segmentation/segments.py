@@ -15,6 +15,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import datetime
+
 import distill
 from distill.segmentation.segmentation_error import SegmentationError
 
@@ -111,7 +113,13 @@ class Segments():
         :param time: An integer or datetime object that represents the time for which Segment end times should be before.
         :return: A new Segments object that contains Segment objects that have end times prior to the time indicated.
         """
-        raise SegmentationError("not yet implemented")
+        if not isinstance(time,int) and not isinstance(time,datetime.datetime):
+            raise TypeError('Time must be an integer or datetime object.')
+
+        segments = [segment for segment in self.segments if segment.start_end_val[1] < time]
+        return Segments(segments)
+
+
 
     def get_segments_of_type(self, segment_type):
         """
@@ -120,7 +128,9 @@ class Segments():
         :param segment_type: The type of Segment objects that should be included.
         :return: A new Segments object that contains Segment objects of the specified type.
         """
-        raise SegmentationError("not yet implemented")
+        segments = [segment for segment in self.segments if segment.segment_type == segment_type]
+        return Segments(segments)
+
 
     #################################
     # SEGMENT ADDITION AND DELETION #
