@@ -98,13 +98,44 @@ class Segments():
     def get_num_logs(self, num_logs):
         """
         Returns a new Segments object only including segments with the specified number of logs.
-
         :param num_logs: The minimum number of logs (inclusive) necessary to be included in the new Segments object.
+        :return: A new Segments object that contains Segment objects with at least the specified number of logs.
         """
-        segments = []
-        for segment in self.segments:
-            if segment.get_num_logs() >= num_logs:
-                segments.append(segment)
+        segments = [segment for segment in self.segments if segment.num_logs >= num_logs]
         return Segments(segments)
 
+    def get_segments_before(self, time):
+        """
+        Returns a new Segments object only including segments that have end times before the indicated time.
+
+        :param time: An integer or datetime object that represents the time for which Segment end times should be before.
+        :return: A new Segments object that contains Segment objects that have end times prior to the time indicated.
+        """
+        raise SegmentationError("not yet implemented")
+
+    def get_segments_of_type(self, segment_type):
+        """
+        Returns a new Segments object that includes Segment objects of a specified type.
+
+        :param segment_type: The type of Segment objects that should be included.
+        :return: A new Segments object that contains Segment objects of the specified type.
+        """
+        raise SegmentationError("not yet implemented")
+
+    #################################
+    # SEGMENT ADDITION AND DELETION #
+    #################################
+    def append(self, item):
+        """
+        Adds a Segment object to the Segments object.
+        :param item: The Segment object to add.
+        """
+        raise SegmentationError("not yet implemented")
+
+    def delete(self, segment_name):
+        """
+        Deletes the Segment object with the given segment_name.
+        :param segment_name: The name of the Segment to delete.
+        """
+        raise SegmentationError("not yet implemented")
 
