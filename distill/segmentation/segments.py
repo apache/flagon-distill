@@ -123,6 +123,9 @@ class Segments():
         :param segment_type: The type of Segment objects that should be included.
         :return: A new Segments object that contains Segment objects of the specified type.
         """
+        if not isinstance(segment_type, distill.Segment_Type):
+            raise TypeError("Given segment_type: " + str(segment_type) + " is not a valid segment type.")
+
         segments = [segment for segment in self.segments if segment.segment_type == segment_type]
         return Segments(segments)
 
@@ -134,7 +137,20 @@ class Segments():
         Adds a Segment object to the Segments object.
         :param item: The Segment object to add.
         """
+        if not isinstance(item, distill.Segment):
+            raise TypeError("Only Segment objects can be added to a Segments object.")
+
         self.segments.append(item)
+
+    def append_segments(self, segments):
+        """
+        Adds all Segment objects in the given Segments object to the current Segments object.
+        :param segments: A Segments object to append to the calling Segments object.
+        """
+        if not isinstance(segments, distill.Segments):
+            raise TypeError("Only Segments objects can be appended with append_segments.")
+
+        self.segments.extend(segments.segments)
 
     def delete(self, segment_name):
         """
