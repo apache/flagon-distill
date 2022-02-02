@@ -1,5 +1,5 @@
-Graph Functions
-===============
+Graph Function Examples
+=======================
 
 The file ‘graph.py’ provides Python functions for creating charts from
 edge lists.
