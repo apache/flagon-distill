@@ -27,6 +27,7 @@ from distill.segmentation.segment import (
     generate_segments,
     detect_deadspace,
     generate_fixed_time_segments,
+    generate_collapsing_window_segments,
     export_segments,
 )
 
@@ -85,6 +86,7 @@ __all__ = [
     "generate_segments",
     "detect_deadspace",
     "generate_fixed_time_segments",
+    "generate_collapsing_window_segments",
     "export_segments",
     "getUUID",
     "epoch_to_datetime",

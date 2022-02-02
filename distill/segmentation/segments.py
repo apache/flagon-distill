@@ -83,11 +83,8 @@ class Segments():
         must be unique.
         """
         result = {}
-        print(self.segments)
         for segment in self.segments:
             if segment.get_segment_name() in result:
-                print(result)
-                print(segment.get_segment_name())
                 raise SegmentationError("Segment names must be unique")
             else:
                 result[segment.get_segment_name()] = segment
@@ -119,8 +116,6 @@ class Segments():
         segments = [segment for segment in self.segments if segment.start_end_val[1] < time]
         return Segments(segments)
 
-
-
     def get_segments_of_type(self, segment_type):
         """
         Returns a new Segments object that includes Segment objects of a specified type.
@@ -131,7 +126,6 @@ class Segments():
         segments = [segment for segment in self.segments if segment.segment_type == segment_type]
         return Segments(segments)
 
-
     #################################
     # SEGMENT ADDITION AND DELETION #
     #################################
@@ -140,12 +134,18 @@ class Segments():
         Adds a Segment object to the Segments object.
         :param item: The Segment object to add.
         """
-        raise SegmentationError("not yet implemented")
+        self.segments.append(item)
 
     def delete(self, segment_name):
         """
         Deletes the Segment object with the given segment_name.
         :param segment_name: The name of the Segment to delete.
         """
-        raise SegmentationError("not yet implemented")
+        segment_names = [segment.get_segment_name() for segment in self.segments]
+        if segment_name in segment_names:
+            index = segment_names.index(segment_name)
+            segment = self.segments[index]
+            self.segments.remove(segment)
+        else:
+            raise SegmentationError("No Segment objects with given segment name: " + segment_name)
 

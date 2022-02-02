@@ -494,6 +494,120 @@ def test_deadspace_detection_error2():
 
         distill.detect_deadspace(sorted_dict, 5, 1, 2)
 
+def test_fixed_time_segments_integer():
+    data = testing_utils.setup("./data/sample_data.json", "integer")
+    sorted_dict = data[1]
+
+    result_no_label = distill.generate_fixed_time_segments(sorted_dict, 5).get_segment_name_dict()
+
+    # Check that start and end times are 5 seconds apart
+    for segment_name in result_no_label:
+        start = result_no_label[segment_name].start_end_val[0]
+        end = result_no_label[segment_name].start_end_val[1]
+        diff = end - start
+        assert diff == 5000
+
+    assert len(result_no_label) == 4
+
+    assert result_no_label["0"].start_end_val == (1623691890656, 1623691895656)
+    assert result_no_label["0"].num_logs == 3
+    assert result_no_label["1"].start_end_val == (1623691895656, 1623691900656)
+    assert result_no_label["1"].num_logs == 0
+    assert result_no_label["2"].start_end_val == (1623691900656, 1623691905656)
+    assert result_no_label["2"].num_logs == 9
+    assert result_no_label["3"].start_end_val == (1623691905656, 1623691910656)
+    assert result_no_label["3"].num_logs == 7
+
+    result_label_trim = distill.generate_fixed_time_segments(sorted_dict, 5, trim=True, label="trim").get_segment_name_dict()
+
+    # Check that start and end times are 5 seconds apart
+    for segment_name in result_label_trim:
+        start = result_label_trim[segment_name].start_end_val[0]
+        end = result_label_trim[segment_name].start_end_val[1]
+        diff = end - start
+        assert diff == 5000
+
+    assert len(result_label_trim) == 3
+
+    assert result_label_trim["trim0"].start_end_val == (1623691890656, 1623691895656)
+    assert result_label_trim["trim0"].num_logs == 3
+    assert result_label_trim["trim1"].start_end_val == (1623691895656, 1623691900656)
+    assert result_label_trim["trim1"].num_logs == 0
+    assert result_label_trim["trim2"].start_end_val == (1623691900656, 1623691905656)
+    assert result_label_trim["trim2"].num_logs == 9
+
+def test_fixed_time_segments_datetime():
+    data = testing_utils.setup("./data/sample_data.json", "datetime")
+    sorted_dict = data[1]
+
+    result_no_label = distill.generate_fixed_time_segments(sorted_dict, 5).get_segment_name_dict()
+
+    # Check that start and end times are 5 seconds apart
+    for segment_name in result_no_label:
+        start = result_no_label[segment_name].start_end_val[0]
+        end = result_no_label[segment_name].start_end_val[1]
+        diff = end - start
+        assert diff == datetime.timedelta(seconds=5)
+
+    assert len(result_no_label) == 4
+
+    assert result_no_label["0"].start_end_val == (testing_utils.to_datetime(1623691890656),
+                                                  testing_utils.to_datetime(1623691895656))
+    assert result_no_label["0"].num_logs == 3
+    assert result_no_label["1"].start_end_val == (testing_utils.to_datetime(1623691895656),
+                                                  testing_utils.to_datetime(1623691900656))
+    assert result_no_label["1"].num_logs == 0
+    assert result_no_label["2"].start_end_val == (testing_utils.to_datetime(1623691900656),
+                                                  testing_utils.to_datetime(1623691905656))
+    assert result_no_label["2"].num_logs == 9
+    assert result_no_label["3"].start_end_val == (testing_utils.to_datetime(1623691905656),
+                                                  testing_utils.to_datetime(1623691910656))
+    assert result_no_label["3"].num_logs == 7
+
+    result_label_trim = distill.generate_fixed_time_segments(sorted_dict, 5, trim=True, label="trim").get_segment_name_dict()
+
+    # Check that start and end times are 5 seconds apart
+    for segment_name in result_label_trim:
+        start = result_label_trim[segment_name].start_end_val[0]
+        end = result_label_trim[segment_name].start_end_val[1]
+        diff = end - start
+        assert diff == datetime.timedelta(seconds=5)
+
+    assert len(result_label_trim) == 3
+
+    assert result_label_trim["trim0"].start_end_val == (testing_utils.to_datetime(1623691890656),
+                                                        testing_utils.to_datetime(1623691895656))
+    assert result_label_trim["trim0"].num_logs == 3
+    assert result_label_trim["trim1"].start_end_val == (testing_utils.to_datetime(1623691895656),
+                                                        testing_utils.to_datetime(1623691900656))
+    assert result_label_trim["trim1"].num_logs == 0
+    assert result_label_trim["trim2"].start_end_val == (testing_utils.to_datetime(1623691900656),
+                                                        testing_utils.to_datetime(1623691905656))
+    assert result_label_trim["trim2"].num_logs == 9
+
+def test_fixed_time_segments_error():
+    with pytest.raises(TypeError):
+        data = testing_utils.setup("./data/deadspace_detection_sample_data.json", "string")
+        sorted_dict = data[1]
+
+        distill.generate_fixed_time_segments(sorted_dict, 10)
+
+def test_generate_collapsing_windows_integer():
+    data = testing_utils.setup("./data/sample_data.json", "integer")
+    sorted_dict = data[1]
+
+    result_no_label = distill.generate_collapsing_window_segments(sorted_dict, "path", ["button#test_button"])
+
+    assert len(result_no_label) == 1
+
+def test_generate_collapsing_windows_datetime():
+    data = testing_utils.setup("./data/sample_data.json", "datetime")
+    sorted_dict = data[1]
+
+    result_no_label = distill.generate_collapsing_window_segments(sorted_dict, "path", ["Window"])
+
+    assert len(result_no_label) == 2
+
 ###################
 # SET LOGIC TESTS #
 ###################
