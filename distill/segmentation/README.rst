@@ -25,6 +25,9 @@ then the number of logs in each of these segments could be printed to the consol
 .. note ::
     These functions are called via the ``Segment`` object itself, following the pattern ``segment.get_...()``
 
+The Segments Object
+-------------------
+
 Segment Creation
 ----------------
 The creation of segments can be done through the use of three functions: ``create_segment``, ``generate_segments``, and ``detect_deadspace``.
@@ -82,33 +85,49 @@ Another way to create segments is to do so based on deadspace in the UserAle log
 
 The above code will output a dictionary of segment names to ``Segment`` objects that represent deadspace segments.  In this case, we have defined 'deadspace' to be any idle time of 20 seconds.  Each time deadspace is detected, the logs that occurred 1 second before and 2 seconds after that idle time are recorded in the segment.
 
+Generating Fixed Time Segments
+******************************
+
+Collapsing Window Segments
+**************************
+
 Combining Segments with Set Logic
 ---------------------------------
-Segments can be combined to create set logic
+Segments can be combined to create set logic.
 
-
+Union
+*****
 You can perform union on the following:
 ::
-    uids = segment1.uids
-    for uid in segment2.uids:
-        if uid not in uids:
-            uids.append(uid)
+    # Segment 1
+    segment1.get_uids()     #[uid1, uid2, uid3]
+
+    # Segment 2
+    segment2.get_uids()     #[uid3, uid4, uid5]
+
+    # Perform Union
+    new_segment = distill.union(segment1, segment2)
+    new_segment.get_uids()  #[uid1, uid2, uid3, uid4, uid5]
 
 .. note::
     A new segment with the given segment_name, start and end values based on the smallest client time and
     largest client time of the given segments, and a list of the union of the uids of segment1 and segment2.
 
 
-
+Intersection
+************
 You can perform intersection on the following:
 ::
-    uids = []
-    for uid in segment2.uids:
-        if uid in segment1.uids:
-            uids.append(uid)
+    # Code to create a segment
+    # Code to create another segment
+    # Code to intersection them together
+
 .. note::
     A new segment with the given segment_name, start and end values based on the smallest client time and
     largest client time of the given segments, and a list of the intersection of the uids of segment1 and segment2.
+
+Difference
+**********
 
 Writing Segments
 ----------------
