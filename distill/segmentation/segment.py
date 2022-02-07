@@ -20,6 +20,7 @@ import datetime
 from enum import Enum
 import csv
 from distill.segmentation.segments import Segments
+import copy
 
 class Segment_Type(Enum):
     CREATE = "create"
@@ -137,7 +138,7 @@ def union(segment_name, segment1, segment2):
         raise TypeError("Segment start and end values must be of the same type between segments.")
 
     # Union uids
-    uids = segment1.uids
+    uids = copy.deepcopy(segment1.uids)
     for uid in segment2.uids:
         if uid not in uids:
             uids.append(uid)
@@ -213,7 +214,7 @@ def difference(segment_name, segment1, segment2):
             matched_uids.append(uid)
 
     # Subtract matched UIDs from segment1
-    uids = segment1.uids
+    uids = copy.deepcopy(segment1.uids)
     for uid in matched_uids:
         uids.remove(uid)
 
@@ -223,9 +224,6 @@ def difference(segment_name, segment1, segment2):
     segment.generate_field_name = None
     segment.generate_matched_values = None
     return segment
-
-
-
 
 ####################
 # SEGMENT CREATION #
@@ -289,6 +287,7 @@ def write_segment(target_dict, segment_names, start_end_vals):
 
     return result
 
+
 def generate_segments(target_dict, field_name, field_values, start_time_limit, end_time_limit, label=""):
     """
     Generates a list of Segment objects corresponding to windows of time defined by the given time limits,
@@ -342,6 +341,7 @@ def generate_segments(target_dict, field_name, field_values, start_time_limit, e
 
     return segments
 
+
 def detect_deadspace(target_dict, deadspace_limit, start_time_limit, end_time_limit, label=""):
     """
     Detects deadspace in a dictionary of User Ale logs.  Detected instances of deadspace are captured in Segment
@@ -366,8 +366,8 @@ def detect_deadspace(target_dict, deadspace_limit, start_time_limit, end_time_li
         if i < len(key_list) - 1:
             curr_time = target_dict[key_list[i]]['clientTime']
             next_time = target_dict[key_list[i + 1]]['clientTime']
-            time_delta = next_time - curr_time
             if isinstance(curr_time, int) and isinstance(next_time, int):
+                time_delta = next_time - curr_time
                 if time_delta > deadspace_limit * 1000:
                     # Deadspace detected
                     start_time = curr_time - (start_time_limit * 1000)
@@ -377,6 +377,7 @@ def detect_deadspace(target_dict, deadspace_limit, start_time_limit, end_time_li
                     segment_names.append(label + str(index))
                     index += 1
             elif isinstance(curr_time, datetime.datetime) and isinstance(next_time, datetime.datetime):
+                time_delta = next_time - curr_time
                 if time_delta > datetime.timedelta(seconds=deadspace_limit):
                     # Deadspace detected
                     start_time = curr_time - datetime.timedelta(seconds=start_time_limit)
@@ -396,6 +397,7 @@ def detect_deadspace(target_dict, deadspace_limit, start_time_limit, end_time_li
         segment.generate_matched_values = None
 
     return segments
+
 
 def generate_fixed_time_segments(target_dict, time, trim=False, label=""):
     """
@@ -467,6 +469,7 @@ def generate_fixed_time_segments(target_dict, time, trim=False, label=""):
         segment.generate_matched_values = None
 
     return segments
+
 
 def generate_collapsing_window_segments(target_dict, field_name, field_values_of_interest, label=""):
     """

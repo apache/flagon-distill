@@ -640,7 +640,6 @@ def test_union_integer():
     assert new_segment.generate_matched_values is None
     assert new_segment.get_generate_matched_values() is None
 
-
 def test_union_datetime():
     data = testing_utils.setup("./data/sample_data.json", "datetime")
     sorted_data = data[0]
@@ -657,12 +656,16 @@ def test_union_datetime():
 
     result = distill.create_segment(sorted_dict, segment_names, start_end_vals).get_segment_name_dict()
 
-    new_segment = distill.union("new_segment", result["test_segment_2"], result["test_segment_3"])
+    new_segment = distill.union("new_segment", result["test_segment_3"], result["test_segment_1"])
 
     assert new_segment.segment_name == "new_segment"
-    assert new_segment.num_logs == 4
-    assert new_segment.uids == [sorted_data[5][0], sorted_data[6][0], sorted_data[7][0], sorted_data[8][0]]
-    assert new_segment.start_end_val == (sorted_data[5][1]['clientTime'], sorted_data[7][1]['clientTime'])
+    assert new_segment.num_logs == 19
+    assert new_segment.uids == [sorted_data[5][0], sorted_data[6][0], sorted_data[7][0], sorted_data[8][0],
+                                sorted_data[0][0], sorted_data[1][0], sorted_data[2][0], sorted_data[3][0],
+                                sorted_data[4][0], sorted_data[9][0], sorted_data[10][0], sorted_data[11][0],
+                                sorted_data[12][0], sorted_data[13][0], sorted_data[14][0], sorted_data[15][0],
+                                sorted_data[16][0], sorted_data[17][0], sorted_data[18][0]]
+    assert new_segment.start_end_val == (sorted_data[0][1]['clientTime'], sorted_data[18][1]['clientTime'])
     assert new_segment.segment_type == distill.Segment_Type.UNION
     assert new_segment.get_segment_type() == distill.Segment_Type.UNION
     assert new_segment.generate_field_name is None
@@ -740,12 +743,12 @@ def test_intersection_datetime():
 
     result = distill.create_segment(sorted_dict, segment_names, start_end_vals).get_segment_name_dict()
 
-    new_segment = distill.intersection("new_segment", result["test_segment_2"], result["test_segment_3"])
+    new_segment = distill.intersection("new_segment", result["test_segment_3"], result["test_segment_1"])
 
     assert new_segment.segment_name == "new_segment"
-    assert new_segment.num_logs == 2
-    assert new_segment.uids == [sorted_data[5][0], sorted_data[6][0]]
-    assert new_segment.start_end_val == (sorted_data[5][1]['clientTime'], sorted_data[7][1]['clientTime'])
+    assert new_segment.num_logs == 4
+    assert new_segment.uids == [sorted_data[5][0], sorted_data[6][0], sorted_data[7][0], sorted_data[8][0]]
+    assert new_segment.start_end_val == (sorted_data[0][1]['clientTime'], sorted_data[18][1]['clientTime'])
     assert new_segment.segment_type == distill.Segment_Type.INTERSECTION
     assert new_segment.get_segment_type() == distill.Segment_Type.INTERSECTION
     assert new_segment.generate_field_name is None

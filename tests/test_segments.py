@@ -34,6 +34,37 @@ def test_segments_general():
         assert segment.segment_name == str(index)
         index += 1
 
+def test_get_segment_list():
+    data = testing_utils.setup("./data/sample_data.json", "integer")
+    sorted_dict = data[1]
+
+    segments = distill.generate_fixed_time_segments(sorted_dict, 5)
+
+    segments_list = segments.get_segment_list()
+    assert type(segments_list) == list
+    assert len(segments_list) == 4
+
+def test_get_segment_name_dict():
+    data = testing_utils.setup("./data/sample_data.json", "integer")
+    sorted_dict = data[1]
+
+    segments = distill.generate_fixed_time_segments(sorted_dict, 5)
+
+    segments_dict = segments.get_segment_name_dict()
+    assert type(segments_dict) == dict
+    assert len(segments_dict) == 4
+
+def test_get_segment_name_dict_error():
+    with pytest.raises(distill.SegmentationError):
+        data = testing_utils.setup("./data/sample_data.json", "integer")
+        sorted_dict = data[1]
+
+        segments = distill.generate_fixed_time_segments(sorted_dict, 5)
+        for segment in segments:
+            segment.segment_name = "test"
+
+        segments.get_segment_name_dict()
+
 def test_get_num_logs():
     data = testing_utils.setup("./data/sample_data.json", "integer")
     sorted_dict = data[1]
@@ -164,14 +195,11 @@ def test_get_segments_of_type():
     only_deadspace = segments.get_segments_of_type(distill.Segment_Type.DEADSPACE)
     assert len(only_deadspace) == 0
 
-def get_segments_of_type_error():
+def test_get_segments_of_type_error():
     with pytest.raises(TypeError):
         data = testing_utils.setup("./data/sample_data.json", "datetime")
         sorted_dict = data[1]
-
-        # Create Segments with fixed time
         segments = distill.generate_fixed_time_segments(sorted_dict, 5)
-
         segments.get_segments_of_type("random")
 
 def test_append():
@@ -264,3 +292,13 @@ def test_delete_error():
         segments = distill.generate_fixed_time_segments(sorted_dict, 5)
 
         segments.delete("random")
+
+def test_str():
+    segment = distill.Segment("segment_name", (1, 2), 5, ["uid1", "uid2"])
+
+    # Create Segments with fixed time
+    segments = distill.Segments([segment])
+
+    assert str(segments) == "Segments: [\n" \
+                            "Segment: name=segment_name, num_logs=5, start=1, end=2, type=None\n" \
+                            "]"
