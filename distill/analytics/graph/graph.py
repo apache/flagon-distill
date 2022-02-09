@@ -117,6 +117,8 @@ def sankey(edges_segmentN, node_labels=False):
 
     fig.show()
 
+    return fig
+
 
 #   TODO complete function (args--input edge-list, labels)
 def funnel(edges_segmentN,
@@ -226,3 +228,5 @@ def funnel(edges_segmentN,
     )
 
     fig.show()
+
+    return fig
