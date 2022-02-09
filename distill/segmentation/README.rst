@@ -25,8 +25,57 @@ then the number of logs in each of these segments could be printed to the consol
 .. note ::
     These functions are called via the ``Segment`` object itself, following the pattern ``segment.get_...()``
 
-The Segments Object
+The ``Segments`` Object
 -------------------
+When creating ``Segment`` objects, the segment creation functions described in the following section return ``Segments`` objects.  These objects contain a list of ``Segment`` objects and help us to access, filter, and represent these objects in a variety of different ways described below:
+
+Using Subscripts
+****************
+Individual ``Segment`` objects can be accessed using subscripts:
+::
+    segments    # A Segments object
+    segment0 = segments[0]  # Accessing the first Segment object
+    segment1 = segments[1]  # Accessing the second Segment object
+
+``Segments`` Iteration
+**********************
+``Segments`` iteration can be done as follows:
+::
+    segments    # A Segments object
+    for segment in segments:
+        print(segment)
+The above code will print each ``Segment`` in the underlying list of ``Segments``.
+
+List Comprehensions
+*******************
+``Segments`` objects can also be used when performing list comprehensions.
+::
+    segments    # A Segments object
+    segment_names = [segment.segment_name for segment in segments]     # Returns a list of segment names
+The list comprehension example above can be used to get a list of all of the segment names that exist in the ``Segments`` object.
+
+Filtering ``Segments``
+**********************
+The ``Segments`` object is particularly useful when attempting to curate a collection of ``Segment`` objects.  The ``Segments`` class currently contains three functions that filter the underlying list of ``Segment`` objects: ``get_num_logs``, ``get_segments_before``, and ``get_segments_of_type``.
+
+The ``get_num_logs`` function returns a new ``Segments`` object that only contains the ``Segment`` objects within the calling ``Segments`` object that contain at least the specified number of logs.  An example is shown below:
+::
+    segments    # A Segments object
+
+    # Let's say that there are three Segment objects in the Segments object and they have the following number of logs
+    segments[0].get_num_logs()      # 5 Logs
+    segments[1].get_num_logs()      # 3 Logs
+    segments[2].get_num_logs()      # 7 Logs
+
+    # However, we only want to include Segment objects that contain at least 5 logs, so, we filter the Segments object as follows:
+    segments = segments.get_num_logs(5)
+The above code removes the second ``Segment`` object from the ``Segments`` object since it only contains 3 logs.
+
+Appending and Deleting ``Segment`` Objects
+******************************************
+
+Returning Different Data Structures
+***********************************
 
 Segment Creation
 ----------------
