@@ -87,9 +87,22 @@ The above code will output a dictionary of segment names to ``Segment`` objects 
 
 Generating Fixed Time Segments
 ******************************
+Generates segments based on fixed time intervals
+::
+        segments = distill.generate_fixed_time_segments(sorted_dict, 5, label="generated")
+        #results
+        Segment: name=generated0, num_logs=3, start=1623691890656, end=1623691895656, type=Segment_Type.FIXED_TIME
+
+..note::
+
 
 Collapsing Window Segments
 **************************
+Generates segments based on a window to time in which the given field name has a value matching one of the values indicated by the field_values_of_interest list.
+::
+
+    #segments = create_segment(target_dict, segment_names, start_end_vals)
+
 
 Combining Segments with Set Logic
 ---------------------------------
@@ -106,7 +119,7 @@ You can perform union on the following:
     segment2.get_uids()     #[uid3, uid4, uid5]
 
     # Perform Union
-    new_segment = distill.union(segment1, segment2)
+    new_segment = distill.union(new_segment, segment1, segment2)
     new_segment.get_uids()  #[uid1, uid2, uid3, uid4, uid5]
 
 .. note::
@@ -119,8 +132,13 @@ Intersection
 You can perform intersection on the following:
 ::
     # Code to create a segment
-    # Code to create another segment
-    # Code to intersection them together
+    # segment1.get_uids()   #[uid1, uid3, uid6]
+
+    # Segment 2
+    segment2.get_uids()     #[uid3, uid6, uid9]
+
+    new_segment = distill.intersection(new_segment, segment1, segment2)
+    new_segment.get_uids()  #[uid3, uid6]
 
 .. note::
     A new segment with the given segment_name, start and end values based on the smallest client time and
@@ -128,6 +146,19 @@ You can perform intersection on the following:
 
 Difference
 **********
+Difference creates a new segment based on the logical difference of segments.
+::
+    # Code to create a segment
+    # segment1.get_uids()   #[uid1, uid2, uid3]
+
+    # Segment 2
+    segment2.get_uids()     #[uid2, uid4, uid5]
+
+    new_segment1 = distill.difference(new_segment, segment1, segment2)
+    new_segment1.get_uids()  #[uid1, uid3]
+
+    new_segment2 = distill.difference(new_segment, segment2, segment1)
+    new_segment2.get_uids()  #[uid4, uid5]
 
 Writing Segments
 ----------------
