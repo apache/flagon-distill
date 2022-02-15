@@ -110,7 +110,7 @@ class Segments():
         :param time: An integer or datetime object that represents the time for which Segment end times should be before.
         :return: A new Segments object that contains Segment objects that have end times prior to the time indicated.
         """
-        if not isinstance(time,int) and not isinstance(time,datetime.datetime):
+        if not isinstance(time, int) and not isinstance(time, datetime.datetime):
             raise TypeError('Time must be an integer or datetime object.')
 
         segments = [segment for segment in self.segments if segment.start_end_val[1] < time]
