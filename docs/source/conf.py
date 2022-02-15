@@ -321,7 +321,6 @@
 
 
 # -- Project information -----------------------------------------------------
-
 project = 'Graph Analytics Flagon Distill'
 copyright = '2022, UMD ARLIS'
 author = 'Amir Ghaemi'
