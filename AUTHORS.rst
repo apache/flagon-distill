@@ -24,19 +24,19 @@
 Apache Distill is written and maintained by various contributors:
 
 Development Leads:
-````````````````
+``````````````````
 
 - Joshua Poore <jpoore@apache.org>
 - Kelsey Rassmann
 
 Contributors:
-````````````````
+`````````````
 - Grant Tamrakar
 - Alex Veerasammy
 - Amir Ghaemi
 
 Inspired by Previous Contributors:
-````````````````
+``````````````````````````````````
 
 - Michelle Beard <msbeard@apache.org>
 - Laura Mariano <lmariano@apache.org>
