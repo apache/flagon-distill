@@ -39,6 +39,22 @@ def test_segments_general():
         assert segment.segment_name == str(index)
         index += 1
 
+def test_segments_subscript():
+    data = testing_utils.setup("./data/sample_data.json", "integer")
+    sorted_dict = data[1]
+
+    segments = distill.generate_fixed_time_segments(sorted_dict, 5)
+
+    assert type(segments["0"]) == distill.Segment
+    assert segments["0"].get_segment_name() == "0"
+    assert segments[0].get_segment_name() == "0"
+    assert segments["1"].get_segment_name() == "1"
+    assert segments[1].get_segment_name() == "1"
+    assert segments["2"].get_segment_name() == "2"
+    assert segments[2].get_segment_name() == "2"
+    assert segments["3"].get_segment_name() == "3"
+    assert segments[3].get_segment_name() == "3"
+
 def test_get_segment_list():
     data = testing_utils.setup("./data/sample_data.json", "integer")
     sorted_dict = data[1]

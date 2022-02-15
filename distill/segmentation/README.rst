@@ -37,13 +37,13 @@ When creating ``Segment`` objects, the segment creation functions described in t
 
 Using Subscripts
 ****************
-Individual ``Segment`` objects can be accessed using subscripts:
+Individual ``Segment`` objects can be accessed using subscripts.  These subscripts can either be an index indicating the location of the ``Segment`` object in the underlying list or the segment name of a ``Segment`` object.
 
 .. code:: python
 
     segments    # A Segments object
-    segment0 = segments[0]  # Accessing the first Segment object
-    segment1 = segments[1]  # Accessing the second Segment object
+    segment0 = segments[0]  # Accessing the first Segment object via numeric index
+    segment1 = segments["1"]  # Accessing the second Segment object via segment name
 
 ``Segments`` Iteration
 **********************

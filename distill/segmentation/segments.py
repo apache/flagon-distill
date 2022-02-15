@@ -51,9 +51,15 @@ class Segments():
 
     def __getitem__(self, item):
         """
-        Allows Segments to be subscriptable.
+        Allows Segments to be subscriptable by segment name or numeric index.
         """
-        return self.segments[item]
+        if isinstance(item, str):
+            segment_names = [segment.get_segment_name() for segment in self.segments]
+            if item in segment_names:
+                index = segment_names.index(item)
+                return self.segments[index]
+        else:
+            return self.segments[item]
 
     def __str__(self):
         """
