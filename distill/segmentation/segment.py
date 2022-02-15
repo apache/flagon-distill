@@ -37,14 +37,14 @@ class Segment():
     Distill's segmentation package. Allows the user to segment User Ale log data.
     """
 
-    def __init__(self, segment_name, start_end_val, num_logs, uids):
+    def __init__(self, segment_name="", start_end_val=None, num_logs=0, uids=[]):
         """
         Initializes a Segment object.  This object contains metadata for the associated Segment.
 
-        :param segment_name: Name associated with the segment
-        :param start_end_val: A list of tuples (i.e [(start_time, end_time)], where start_time and end_time are Date/Time Objects or integers.
-        :param num_logs: Number of logs in the segment
-        :param uids: A list of strings representing the associated uids of logs within the segment
+        :param segment_name: Name associated with the segment, defaults to an empty string
+        :param start_end_val: A list of tuples (i.e [(start_time, end_time)], where start_time and end_time are Date/Time Objects or integers.  Defaults to a None value.
+        :param num_logs: Number of logs in the segment.  Defaults to 0.
+        :param uids: A list of strings representing the associated uids of logs within the segment. Defaults to an empty list.
         """
 
         self.segment_name = segment_name

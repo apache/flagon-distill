@@ -29,11 +29,11 @@ class Segments():
     # IMPLEMENTATION OF PYTHON DEFINED FUNCTIONS #
     ##############################################
 
-    def __init__(self, segments):
+    def __init__(self, segments=[]):
         """
         Segments initialization function.
 
-        :param segments ([]): List of Segment objects to be included in the Segments abstraction.
+        :param segments ([]): An optional List of Segment objects to be included in the Segments abstraction.
         """
         self.segments = segments
 

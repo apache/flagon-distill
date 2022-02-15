@@ -30,6 +30,13 @@ import os
 ########################
 # SEGMENT OBJECT TESTS #
 ########################
+def test_segment_constructor():
+    segment = distill.Segment()
+    assert segment.get_segment_name() == ""
+    assert segment.get_num_logs() == 0
+    assert segment.get_start_end_val() is None
+    assert segment.get_segment_uids() == []
+
 def test_getters():
     data = testing_utils.setup("./data/sample_data.json", "integer")
     sorted_data = data[0]

@@ -20,6 +20,11 @@ import distill
 import testing_utils
 import pytest
 
+def test_segments_constructor():
+    segments = distill.Segments()
+    assert len(segments) == 0
+    assert segments.get_segment_list() == []
+
 def test_segments_general():
     data = testing_utils.setup("./data/sample_data.json", "integer")
     sorted_dict = data[1]
