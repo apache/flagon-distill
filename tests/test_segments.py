@@ -39,7 +39,7 @@ def test_segments_general():
         assert segment.segment_name == str(index)
         index += 1
 
-def test_segments_subscript():
+def test_segments_subscript_get():
     data = testing_utils.setup("./data/sample_data.json", "integer")
     sorted_dict = data[1]
 
@@ -54,6 +54,69 @@ def test_segments_subscript():
     assert segments[2].get_segment_name() == "2"
     assert segments["3"].get_segment_name() == "3"
     assert segments[3].get_segment_name() == "3"
+
+def test_segments_subscript_set():
+    data = testing_utils.setup("./data/sample_data.json", "integer")
+    sorted_dict = data[1]
+
+    segments = distill.generate_fixed_time_segments(sorted_dict, 5)
+
+    segment1 = distill.Segment()
+    segment1.segment_name = "test"
+
+    segment2 = distill.Segment()
+    segment2.segment_name = "test2"
+
+    segment3 = distill.Segment()
+    segment3.segment_name = "test"
+    segment3.num_logs = 5
+
+    assert len(segments) == 4
+
+    segments["test"] = segment1
+    assert len(segments) == 5
+    assert segments["test"] == segment1
+
+    segments["test"] = segment3
+    assert len(segments) == 5
+    assert segments["test"].num_logs == 5
+
+    segments[0] = segment2
+    assert len(segments) == 5
+    assert segments["test2"] == segment2
+    assert segments[0] == segment2
+
+def test_segments_subscript_set_error1():
+    with pytest.raises(distill.SegmentationError):
+        data = testing_utils.setup("./data/sample_data.json", "integer")
+        sorted_dict = data[1]
+
+        segments = distill.generate_fixed_time_segments(sorted_dict, 5)
+
+        segment1 = distill.Segment()
+        segment1.segment_name = "test"
+
+        segments["0"] = segment1
+
+def test_segments_subscript_set_error2():
+    with pytest.raises(TypeError):
+        data = testing_utils.setup("./data/sample_data.json", "integer")
+        sorted_dict = data[1]
+
+        segments = distill.generate_fixed_time_segments(sorted_dict, 5)
+
+        segments[0] = 0
+
+def test_segments_subscript_set_error3():
+    with pytest.raises(distill.SegmentationError):
+        data = testing_utils.setup("./data/sample_data.json", "integer")
+        sorted_dict = data[1]
+
+        segments = distill.generate_fixed_time_segments(sorted_dict, 5)
+
+        segment1 = distill.Segment()
+
+        segments[4] = segment1
 
 def test_get_segment_list():
     data = testing_utils.setup("./data/sample_data.json", "integer")

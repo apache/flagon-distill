@@ -61,6 +61,30 @@ class Segments():
         else:
             return self.segments[item]
 
+    def __setitem__(self, key, value):
+        """
+        Allows subscripts to be used to set items.
+        """
+        if not isinstance(value, distill.Segment):
+            raise TypeError("Segments objects can only hold Segment objects.")
+
+        if isinstance(key, str):
+            if not value.segment_name == key:
+                raise SegmentationError("Segment name in subscript must match the segment name of the Segment object.")
+
+            segment_names = [segment.get_segment_name() for segment in self.segments]
+            if key in segment_names:
+                index = segment_names.index(key)
+                self.segments[index] = value
+            else:
+                self.segments.append(value)
+        elif isinstance(key, int):
+            if key < len(self.segments):
+                self.segments[key] = value
+            else:
+                raise SegmentationError("Index provided goes beyond the length of the underlying list of Segment objects.")
+
+
     def __str__(self):
         """
         Creates a readable string for Segments.
