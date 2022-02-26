@@ -58,8 +58,16 @@ class Segment():
     def __str__(self):
         start = self.start_end_val[0]
         end = self.start_end_val[1]
-        return "Segment: name=" + self.segment_name + ", num_logs=" + str(self.num_logs) + \
-                  ", start=" + str(start) + ", end=" + str(end) + ", type=" + str(self.segment_type)
+        variables = vars(self)
+        final_str = "Segment:"
+        for var in variables:
+            if var != "uids":
+                if var == "start_end_val":
+                    final_str += " start" + "=" + str(start) + ","
+                    final_str += " end" + "=" + str(end) + ","
+                else:
+                    final_str += " " + str(var) + "=" + str(variables[var]) + ","
+        return final_str[:-1]
 
     def get_segment_name(self):
         """

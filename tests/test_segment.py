@@ -30,12 +30,27 @@ import os
 ########################
 # SEGMENT OBJECT TESTS #
 ########################
+
 def test_segment_constructor():
     segment = distill.Segment()
     assert segment.get_segment_name() == ""
     assert segment.get_num_logs() == 0
     assert segment.get_start_end_val() is None
     assert segment.get_segment_uids() == []
+
+def test_segment_string():
+    segment = distill.Segment()
+    segment.segment_name = "segment_name"
+    segment.start_end_val = (1, 2)
+    segment.segment_type = distill.Segment_Type.CREATE
+
+    assert str(segment) == "Segment: segment_name=segment_name, start=1, end=2, num_logs=0, " \
+                           "generate_field_name=None, generate_matched_values=None, segment_type=Segment_Type.CREATE"
+
+    segment.test = "test_attribute"
+    assert str(segment) == "Segment: segment_name=segment_name, start=1, end=2, num_logs=0, " \
+                           "generate_field_name=None, generate_matched_values=None, segment_type=Segment_Type.CREATE," \
+                           " test=test_attribute"
 
 def test_getters():
     data = testing_utils.setup("./data/sample_data.json", "integer")
