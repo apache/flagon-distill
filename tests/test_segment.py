@@ -620,13 +620,30 @@ def test_generate_collapsing_windows_integer():
 
     result_no_label = distill.generate_collapsing_window_segments(sorted_dict, "path", ["button#test_button"])
 
+    segment = result_no_label[0]
+
     assert len(result_no_label) == 1
+    assert segment.num_logs == 8
+    assert segment.segment_name == "0"
+    assert segment.start_end_val == (1623691904212, 1623691904923)
 
 def test_generate_collapsing_windows_datetime():
     data = testing_utils.setup("./data/sample_data.json", "datetime")
     sorted_dict = data[1]
 
     result_no_label = distill.generate_collapsing_window_segments(sorted_dict, "path", ["Window"])
+
+    segment1 = result_no_label[0]
+    segment2 = result_no_label[1]
+
+    assert segment1.num_logs == 16
+    assert segment2.num_logs == 1
+    assert segment1.segment_name == "0"
+    assert segment2.segment_name == "1"
+    assert segment1.start_end_val == (testing_utils.to_datetime(1623691891459),
+                                      testing_utils.to_datetime(1623691907136))
+    assert segment2.start_end_val == (testing_utils.to_datetime(1623691909728),
+                                      testing_utils.to_datetime(1623691909728))
 
     assert len(result_no_label) == 2
 
