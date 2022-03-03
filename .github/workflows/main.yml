@@ -8,11 +8,11 @@ on:
   push:
     branches: [ distill_toolkit_refactor ]
     paths:
-      - docs/
+      - docs/**
   pull_request:
     branches: [ distill_toolkit_refactor ]
     paths:
-      - docs/
+      - docs/**
     
 
   # Allows you to run this workflow manually from the Actions tab
