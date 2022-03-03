@@ -3,16 +3,16 @@
 name: CI
 
 # Controls when the workflow will run
-on:
+on: [pull_request]
   # Triggers the workflow on push or pull request events but only for the distill_toolkit_refactor branch and on changes to the rst files
-  push:
-    branches: [ distill_toolkit_refactor ]
-    paths:
-      - docs/source/**
-  pull_request:
-    branches: [ distill_toolkit_refactor ]
-    paths:
-      - docs/source/**
+  #push:
+   # branches: [ distill_toolkit_refactor ]
+   # paths:
+   #   - docs/source/**
+ # pull_request:
+   # branches: [ distill_toolkit_refactor ]
+   # paths:
+   #   - docs/source/**
     
 
   # Allows you to run this workflow manually from the Actions tab
@@ -36,7 +36,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: ammaraskar/sphinx-action@master
         with:
-        docs-folder: "docs/source/"
+        docs-folder: "docs/"
 
       # Runs a single command using the runners shell
       #- name: Run Makefile to generate the htmls
