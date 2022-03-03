@@ -3,7 +3,7 @@
 name: CI
 
 # Controls when the workflow will run
-on:
+on: 
   # Triggers the workflow on push or pull request events but only for the distill_toolkit_refactor branch and on changes to the rst files
   push:
     branches: [ distill_toolkit_refactor ]
@@ -33,8 +33,12 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
+      - uses: ammaraskar/sphinx-action@master
+        with:
+        docs-folder: "docs/"
 
       # Runs a single command using the runners shell
-      - name: Run Makefile to generate the htmls
-        run: make html
+      #- name: Run Makefile to generate the htmls
+        #run: make html
+
