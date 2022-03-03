@@ -5,14 +5,14 @@ name: CI
 # Controls when the workflow will run
 on: 
   # Triggers the workflow on push or pull request events but only for the distill_toolkit_refactor branch and on changes to the rst files
-  #push:
-   # branches: [ distill_toolkit_refactor ]
-   # paths:
-   #   - docs/source/**
+  push:
+    branches: [ distill_toolkit_refactor ]
+    paths:
+      - docs/source/**
   pull_request:
     branches: [ distill_toolkit_refactor ]
-   # paths:
-   #   - docs/source/**
+    paths:
+      - docs/source/**
     
 
   # Allows you to run this workflow manually from the Actions tab
