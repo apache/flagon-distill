@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writing Segments &mdash; Graph Analytics Flagon Distill  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/dark_mode_css/general.css" type="text/css" />
+      <link rel="stylesheet" href="_static/dark_mode_css/dark.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/dark_mode_js/default_dark.js"></script>
+        <script src="_static/dark_mode_js/theme_switcher.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Graph Analytics Flagon Distill
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Writing Segments</a><ul>
+<li><a class="reference internal" href="#write-segment">Write Segment</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Graph Analytics Flagon Distill</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Writing Segments</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/distill.segmentation.writing_segments.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="writing-segments">
+<h1>Writing Segments<a class="headerlink" href="#writing-segments" title="Permalink to this headline"></a></h1>
+<p>Along with the creation of <code class="docutils literal notranslate"><span class="pre">Segment</span></code> objects, analysts also need a way to easily access the UserALE logs associated with
+each <code class="docutils literal notranslate"><span class="pre">Segment</span></code>.  Distill’s Segmentation package allows analysts to do this through the use of the <code class="docutils literal notranslate"><span class="pre">write_segment</span></code>
+function.</p>
+<section id="write-segment">
+<h2>Write Segment<a class="headerlink" href="#write-segment" title="Permalink to this headline"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">write_segment</span></code> function creates a nested dictionary of segment names to UIDs which then map to individual logs
+(i.e result[‘segment_name’][uid] –&gt; log). This assists with easy iteration over defined <code class="docutils literal notranslate"><span class="pre">Segment</span></code> objects.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sorted dictionary of UserALE logs</span>
+<span class="n">sorted_dict</span>
+
+<span class="c1"># List of segment names</span>
+<span class="n">segment_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;segment1&quot;</span><span class="p">,</span> <span class="s2">&quot;segment2&quot;</span><span class="p">]</span>
+
+<span class="c1"># Time tuples</span>
+<span class="n">start_end_vals</span> <span class="o">=</span> <span class="p">[(</span><span class="n">start_time_1</span><span class="p">,</span> <span class="n">end_time_1</span><span class="p">),</span> <span class="p">(</span><span class="n">start_time_2</span><span class="p">,</span> <span class="n">end_time_2</span><span class="p">)]</span>
+
+<span class="c1"># Write Segments</span>
+<span class="n">segments</span> <span class="o">=</span> <span class="n">distill</span><span class="o">.</span><span class="n">write_segment</span><span class="p">(</span><span class="n">sorted_dict</span><span class="p">,</span> <span class="n">segment_names</span><span class="p">,</span> <span class="n">start_end_vals</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The above code looks similar to the <code class="docutils literal notranslate"><span class="pre">create_segments</span></code> example usage, however, rather than returning a <code class="docutils literal notranslate"><span class="pre">Segments</span></code> object,
+this code will create a dictionary of segment names to UIDs to individual UserALE logs.</p>
+<p>Since <code class="docutils literal notranslate"><span class="pre">Segments</span></code> objects support list comprehensions, the usage of the <code class="docutils literal notranslate"><span class="pre">write_segment</span></code> functon after curating a collection
+of <code class="docutils literal notranslate"><span class="pre">Segment</span></code> objects is simple.  Below is some example code that shows how this can be done with a <code class="docutils literal notranslate"><span class="pre">Segments</span></code> object:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sorted dictionary of UserALE logs</span>
+<span class="n">sorted_dict</span>
+
+<span class="c1"># Segments object</span>
+<span class="n">segments</span>
+
+<span class="c1"># Create list of segment names</span>
+<span class="n">segment_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">segment</span><span class="o">.</span><span class="n">segment_name</span> <span class="k">for</span> <span class="n">segment</span> <span class="ow">in</span> <span class="n">segments</span><span class="p">]</span>
+
+<span class="c1"># Create list of start and end values</span>
+<span class="n">start_end_vals</span> <span class="o">=</span> <span class="p">[</span><span class="n">segment</span><span class="o">.</span><span class="n">start_end_val</span> <span class="k">for</span> <span class="n">segment</span> <span class="ow">in</span> <span class="n">segments</span><span class="p">]</span>
+
+<span class="n">written_segments</span> <span class="o">=</span> <span class="n">distill</span><span class="o">.</span><span class="n">write_segments</span><span class="p">(</span><span class="n">sorted_dict</span><span class="p">,</span> <span class="n">segment_names</span><span class="p">,</span> <span class="n">start_end_vals</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, UMD ARLIS.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

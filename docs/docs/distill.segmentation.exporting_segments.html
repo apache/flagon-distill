@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exporting Segments &mdash; Graph Analytics Flagon Distill  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/dark_mode_css/general.css" type="text/css" />
+      <link rel="stylesheet" href="_static/dark_mode_css/dark.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/dark_mode_js/default_dark.js"></script>
+        <script src="_static/dark_mode_js/theme_switcher.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Graph Analytics Flagon Distill
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Exporting Segments</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Graph Analytics Flagon Distill</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Exporting Segments</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/distill.segmentation.exporting_segments.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="exporting-segments">
+<h1>Exporting Segments<a class="headerlink" href="#exporting-segments" title="Permalink to this headline"></a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">Segments</span></code> objects can be exported into csv files for further analysis.  Distill provides a simple function to do this:
+<code class="docutils literal notranslate"><span class="pre">export_segments</span></code>.  This function will take in the path to place the new file along with a <code class="docutils literal notranslate"><span class="pre">Segments</span></code> object and output
+a new csv with each <code class="docutils literal notranslate"><span class="pre">Segment</span></code> on a new line.  Note that this function will not currently export user defined attributes that
+are not inherently within a <code class="docutils literal notranslate"><span class="pre">Segment</span></code> object.  This function can be used as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Segments object</span>
+<span class="n">segments</span>
+
+<span class="c1"># Export segments into a csv file</span>
+<span class="n">distill</span><span class="o">.</span><span class="n">export_segments</span><span class="p">(</span><span class="s2">&quot;./test.csv&quot;</span><span class="p">,</span> <span class="n">segments</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The above code will create a csv file in the current directory entitled “test.csv”.  An example of what this file looks
+like with two <code class="docutils literal notranslate"><span class="pre">Segment</span></code> objects can be seen below:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Segment Name,Start Time,End Time,Number of Logs,Generate Field Name,Generate Matched Values,Segment Type</span>
+<span class="go">segment1,0,1,5,type,[&#39;click&#39;],Segment_Type.GENERATE</span>
+<span class="go">segment2,2,3,6,type,[&#39;click&#39;],Segment_Type.GENERATE</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, UMD ARLIS.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
