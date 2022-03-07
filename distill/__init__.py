@@ -26,7 +26,17 @@ from distill.segmentation.segment import (
     write_segment,
     generate_segments,
     detect_deadspace,
+    generate_fixed_time_segments,
+    generate_collapsing_window_segments,
     export_segments,
+)
+
+from distill.segmentation.segments import (
+    Segments,
+)
+
+from distill.segmentation.segmentation_error import (
+    SegmentationError,
 )
 
 from distill.utils.crud import (
@@ -57,6 +67,8 @@ from distill.process.transform import (
 __all__ = [
     "Segment",
     "Segment_Type",
+    "Segments",
+    "SegmentationError",
     "graph",
     "sankey",
     "funnel",
@@ -73,6 +85,8 @@ __all__ = [
     "write_segment",
     "generate_segments",
     "detect_deadspace",
+    "generate_fixed_time_segments",
+    "generate_collapsing_window_segments",
     "export_segments",
     "getUUID",
     "epoch_to_datetime",
