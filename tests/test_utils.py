@@ -23,39 +23,12 @@ import json
 import datetime
 import distill
 
-##############
-# Test Setup #
-##############
-
-def setup():
+def test_UUID_with_type():
     # Load in file and convert to raw data
     file = "./data/sample_data.json"
 
     with open(file) as json_file:
         raw_data = json.load(json_file)
-    
-    return raw_data
-
-def setup_with_uid():
-    # Load in file and convert to raw data
-    file = "./data/sample_data.json"
-
-    with open(file) as json_file:
-        raw_data = json.load(json_file)
-    
-    # Add UIDs to raw data
-    data = {}
-    for log in raw_data:
-        data[distill.getUUID(log)] = log
-
-    return data
-
-##############
-# Test Cases #
-##############
-
-def test_UUID():
-    raw_data = setup()
 
     data = {}
 
@@ -69,5 +42,28 @@ def test_UUID():
 
     # Assert UID uniqueness
     assert len(data) == len(raw_data)
-    assert len(data) == 19 
+    assert len(data) == 19
+
+def test_UUID_without_type():
+    # Load in file and convert to raw data
+    file = "./data/sample_data_without_type.json"
+
+    with open(file) as json_file:
+        raw_data = json.load(json_file)
+
+    data = {}
+
+    # Assert the same log will produce the same UID
+    id1 = distill.getUUID(raw_data[0])
+    id2 = distill.getUUID(raw_data[0])
+    assert id1 == id2
+
+    for log in raw_data:
+        data[distill.getUUID(log)] = log
+
+    # Assert UID uniqueness
+    assert len(data) == len(raw_data)
+    assert len(data) == 19
+
+
     

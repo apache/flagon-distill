@@ -30,6 +30,28 @@ import os
 ########################
 # SEGMENT OBJECT TESTS #
 ########################
+
+def test_segment_constructor():
+    segment = distill.Segment()
+    assert segment.get_segment_name() == ""
+    assert segment.get_num_logs() == 0
+    assert segment.get_start_end_val() is None
+    assert segment.get_segment_uids() == []
+
+def test_segment_string():
+    segment = distill.Segment()
+    segment.segment_name = "segment_name"
+    segment.start_end_val = (1, 2)
+    segment.segment_type = distill.Segment_Type.CREATE
+
+    assert str(segment) == "Segment: segment_name=segment_name, start=1, end=2, num_logs=0, " \
+                           "generate_field_name=None, generate_matched_values=None, segment_type=Segment_Type.CREATE"
+
+    segment.test = "test_attribute"
+    assert str(segment) == "Segment: segment_name=segment_name, start=1, end=2, num_logs=0, " \
+                           "generate_field_name=None, generate_matched_values=None, segment_type=Segment_Type.CREATE," \
+                           " test=test_attribute"
+
 def test_getters():
     data = testing_utils.setup("./data/sample_data.json", "integer")
     sorted_data = data[0]
@@ -40,7 +62,7 @@ def test_getters():
     start_end_vals.append((sorted_data[0][1]['clientTime'], sorted_data[1][1]['clientTime']))
     segment_names = ["test_segment_1"]
     result = distill.create_segment(sorted_dict, segment_names, start_end_vals)
-    seg = result["test_segment_1"]
+    seg = result.get_segment_list()[0]
 
     assert seg.get_segment_name() == "test_segment_1"
     assert seg.get_start_end_val() == (sorted_data[0][1]['clientTime'], sorted_data[1][1]['clientTime'])
@@ -67,7 +89,9 @@ def test_create_segment_integer():
     segment_names = ["test_segment_all", "test_segment_same_client_time", "test_segment_extra_log"]
 
     # Call create_segment
-    result = distill.create_segment(sorted_dict, segment_names, start_end_vals)
+    create_result = distill.create_segment(sorted_dict, segment_names, start_end_vals)
+
+    result = create_result.get_segment_name_dict()
 
     assert result["test_segment_all"].num_logs == 19
     assert result["test_segment_all"].segment_name == "test_segment_all"
@@ -104,7 +128,7 @@ def test_create_segment_datetime():
     segment_names = ["test_segment_all", "test_segment_same_client_time", "test_segment_extra_log"]
 
     # Call create_segment
-    result = distill.create_segment(sorted_dict, segment_names, start_end_vals)
+    result = distill.create_segment(sorted_dict, segment_names, start_end_vals).get_segment_name_dict()
 
     assert result["test_segment_all"].num_logs == 19
     assert result["test_segment_all"].segment_name == "test_segment_all"
@@ -256,7 +280,7 @@ def test_generate_segments_integer():
     data = testing_utils.setup("./data/segment_generator_sample_data.json", "integer")
     sorted_dict = data[1]
 
-    load_result = distill.generate_segments(sorted_dict, 'type', ['load'], 1, 1, label="load")
+    load_result = distill.generate_segments(sorted_dict, 'type', ['load'], 1, 1, label="load").get_segment_name_dict()
     assert len(load_result) == 2
     assert load_result["load0"].start_end_val == (1623691889600, 1623691891600)
     assert load_result["load0"].num_logs == 3
@@ -267,7 +291,7 @@ def test_generate_segments_integer():
         assert load_result[segment_name].generate_field_name == 'type'
         assert load_result[segment_name].generate_matched_values == ['load']
 
-    click_result = distill.generate_segments(sorted_dict, 'type', ['click'], 1, 1)
+    click_result = distill.generate_segments(sorted_dict, 'type', ['click'], 1, 1).get_segment_name_dict()
     assert len(click_result) == 4
     assert click_result["0"].start_end_val == (1623691903200, 1623691905200)
     assert click_result["0"].num_logs == 2
@@ -285,17 +309,17 @@ def test_generate_segments_integer():
         assert click_result[segment_name].generate_matched_values == ['click']
         assert click_result[segment_name].get_generate_matched_values() == ['click']
 
-    load_click_result = distill.generate_segments(sorted_dict, 'type', ['load', 'click'], 1, 1)
+    load_click_result = distill.generate_segments(sorted_dict, 'type', ['load', 'click'], 1, 1).get_segment_name_dict()
     assert len(load_click_result) == 5
-    assert load_click_result["0"].start_end_val == (1623691889600,1623691891600)
+    assert load_click_result["0"].start_end_val == (1623691889600, 1623691891600)
     assert load_click_result["0"].num_logs == 3
-    assert load_click_result["1"].start_end_val == (1623691903200,1623691905200)
+    assert load_click_result["1"].start_end_val == (1623691903200, 1623691905200)
     assert load_click_result["1"].num_logs == 2
-    assert load_click_result["2"].start_end_val == (1623691905200,1623691906488)
+    assert load_click_result["2"].start_end_val == (1623691905200, 1623691906488)
     assert load_click_result["2"].num_logs == 7
-    assert load_click_result["3"].start_end_val == (1623691906488,1623691907955)
+    assert load_click_result["3"].start_end_val == (1623691906488, 1623691907955)
     assert load_click_result["3"].num_logs == 6
-    assert load_click_result["4"].start_end_val == (1623691907955,1623691909100)
+    assert load_click_result["4"].start_end_val == (1623691907955, 1623691909100)
     assert load_click_result["4"].num_logs == 1
     for segment_name in load_click_result:
         assert load_click_result[segment_name].segment_type == distill.Segment_Type.GENERATE
@@ -309,7 +333,7 @@ def test_generate_segments_datetime():
     data = testing_utils.setup("./data/segment_generator_sample_data.json", "datetime")
     sorted_dict = data[1]
 
-    load_result = distill.generate_segments(sorted_dict, 'type', ['load'], 1, 1)
+    load_result = distill.generate_segments(sorted_dict, 'type', ['load'], 1, 1).get_segment_name_dict()
     assert len(load_result) == 2
     assert load_result["0"].start_end_val == (testing_utils.to_datetime(1623691889600),
                                               testing_utils.to_datetime(1623691891600))
@@ -325,7 +349,7 @@ def test_generate_segments_datetime():
         assert load_result[segment_name].generate_matched_values == ['load']
         assert load_result[segment_name].get_generate_matched_values() == ['load']
 
-    click_result = distill.generate_segments(sorted_dict, 'type', ['click'], 1, 1, "click")
+    click_result = distill.generate_segments(sorted_dict, 'type', ['click'], 1, 1, "click").get_segment_name_dict()
     assert len(click_result) == 4
     assert click_result["click0"].start_end_val == (testing_utils.to_datetime(1623691903200),
                                                     testing_utils.to_datetime(1623691905200))
@@ -347,22 +371,22 @@ def test_generate_segments_datetime():
         assert click_result[segment_name].generate_matched_values == ['click']
         assert click_result[segment_name].get_generate_matched_values() == ['click']
 
-    load_click_result = distill.generate_segments(sorted_dict, 'type', ['load', 'click'], 1, 1)
+    load_click_result = distill.generate_segments(sorted_dict, 'type', ['load', 'click'], 1, 1).get_segment_name_dict()
     assert len(load_click_result) == 5
     assert load_click_result["0"].start_end_val == (testing_utils.to_datetime(1623691889600),
                                                     testing_utils.to_datetime(1623691891600))
     assert load_click_result["0"].num_logs == 3
     assert load_click_result["1"].start_end_val == (testing_utils.to_datetime(1623691903200),
-                                               testing_utils.to_datetime(1623691905200))
+                                                    testing_utils.to_datetime(1623691905200))
     assert load_click_result["1"].num_logs == 2
     assert load_click_result["2"].start_end_val == (testing_utils.to_datetime(1623691905200),
-                                               testing_utils.to_datetime(1623691906488))
+                                                    testing_utils.to_datetime(1623691906488))
     assert load_click_result["2"].num_logs == 7
     assert load_click_result["3"].start_end_val == (testing_utils.to_datetime(1623691906488),
-                                               testing_utils.to_datetime(1623691907955))
+                                                    testing_utils.to_datetime(1623691907955))
     assert load_click_result["3"].num_logs == 6
     assert load_click_result["4"].start_end_val == (testing_utils.to_datetime(1623691907955),
-                                               testing_utils.to_datetime(1623691909100))
+                                                    testing_utils.to_datetime(1623691909100))
     assert load_click_result["4"].num_logs == 1
 
     for segment_name in load_click_result:
@@ -397,7 +421,7 @@ def test_deadspace_detection_integer():
     data = testing_utils.setup("./data/deadspace_detection_sample_data.json", "integer")
     sorted_dict = data[1]
 
-    result_no_label = distill.detect_deadspace(sorted_dict, 5, 1, 2)
+    result_no_label = distill.detect_deadspace(sorted_dict, 5, 1, 2).get_segment_name_dict()
 
     assert len(result_no_label) == 3
     assert result_no_label["0"].start_end_val == (1623691890459, 1623691994888)
@@ -414,7 +438,7 @@ def test_deadspace_detection_integer():
         assert result_no_label[segment_name].generate_matched_values is None
         assert result_no_label[segment_name].get_generate_matched_values() is None
 
-    result_with_label = distill.detect_deadspace(sorted_dict, 5, 1, 2, "deadspace")
+    result_with_label = distill.detect_deadspace(sorted_dict, 5, 1, 2, "deadspace").get_segment_name_dict()
     assert len(result_with_label) == 3
     assert result_with_label["deadspace0"].start_end_val == (1623691890459, 1623691994888)
     assert result_with_label["deadspace0"].num_logs == 7
@@ -435,17 +459,17 @@ def test_deadspace_detection_datetime():
     data = testing_utils.setup("./data/deadspace_detection_sample_data.json", "datetime")
     sorted_dict = data[1]
 
-    result_no_label = distill.detect_deadspace(sorted_dict, 5, 1, 2)
+    result_no_label = distill.detect_deadspace(sorted_dict, 5, 1, 2).get_segment_name_dict()
 
     assert len(result_no_label) == 3
     assert result_no_label["0"].start_end_val == (testing_utils.to_datetime(1623691890459),
-                                         testing_utils.to_datetime(1623691994888))
+                                                  testing_utils.to_datetime(1623691994888))
     assert result_no_label["0"].num_logs == 7
     assert result_no_label["1"].start_end_val == (testing_utils.to_datetime(1623691991900),
-                                         testing_utils.to_datetime(1623693994900))
+                                                  testing_utils.to_datetime(1623693994900))
     assert result_no_label["1"].num_logs == 15
     assert result_no_label["2"].start_end_val == (testing_utils.to_datetime(1623693994550),
-                                         testing_utils.to_datetime(1623697997550))
+                                                  testing_utils.to_datetime(1623697997550))
     assert result_no_label["2"].num_logs == 3
     for segment_name in result_no_label:
         assert result_no_label[segment_name].segment_type == distill.Segment_Type.DEADSPACE
@@ -455,17 +479,17 @@ def test_deadspace_detection_datetime():
         assert result_no_label[segment_name].generate_matched_values is None
         assert result_no_label[segment_name].get_generate_matched_values() is None
 
-    result_with_label = distill.detect_deadspace(sorted_dict, 5, 1, 2, "deadspace")
+    result_with_label = distill.detect_deadspace(sorted_dict, 5, 1, 2, "deadspace").get_segment_name_dict()
 
     assert len(result_with_label) == 3
     assert result_with_label["deadspace0"].start_end_val == (testing_utils.to_datetime(1623691890459),
-                                                  testing_utils.to_datetime(1623691994888))
+                                                             testing_utils.to_datetime(1623691994888))
     assert result_with_label["deadspace0"].num_logs == 7
     assert result_with_label["deadspace1"].start_end_val == (testing_utils.to_datetime(1623691991900),
-                                                  testing_utils.to_datetime(1623693994900))
+                                                             testing_utils.to_datetime(1623693994900))
     assert result_with_label["deadspace1"].num_logs == 15
     assert result_with_label["deadspace2"].start_end_val == (testing_utils.to_datetime(1623693994550),
-                                                  testing_utils.to_datetime(1623697997550))
+                                                             testing_utils.to_datetime(1623697997550))
     assert result_with_label["deadspace2"].num_logs == 3
     for segment_name in result_with_label:
         assert result_with_label[segment_name].segment_type == distill.Segment_Type.DEADSPACE
@@ -492,6 +516,137 @@ def test_deadspace_detection_error2():
 
         distill.detect_deadspace(sorted_dict, 5, 1, 2)
 
+def test_fixed_time_segments_integer():
+    data = testing_utils.setup("./data/sample_data.json", "integer")
+    sorted_dict = data[1]
+
+    result_no_label = distill.generate_fixed_time_segments(sorted_dict, 5).get_segment_name_dict()
+
+    # Check that start and end times are 5 seconds apart
+    for segment_name in result_no_label:
+        start = result_no_label[segment_name].start_end_val[0]
+        end = result_no_label[segment_name].start_end_val[1]
+        diff = end - start
+        assert diff == 5000
+
+    assert len(result_no_label) == 4
+
+    assert result_no_label["0"].start_end_val == (1623691890656, 1623691895656)
+    assert result_no_label["0"].num_logs == 3
+    assert result_no_label["1"].start_end_val == (1623691895656, 1623691900656)
+    assert result_no_label["1"].num_logs == 0
+    assert result_no_label["2"].start_end_val == (1623691900656, 1623691905656)
+    assert result_no_label["2"].num_logs == 9
+    assert result_no_label["3"].start_end_val == (1623691905656, 1623691910656)
+    assert result_no_label["3"].num_logs == 7
+
+    result_label_trim = distill.generate_fixed_time_segments(sorted_dict, 5, trim=True, label="trim").get_segment_name_dict()
+
+    # Check that start and end times are 5 seconds apart
+    for segment_name in result_label_trim:
+        start = result_label_trim[segment_name].start_end_val[0]
+        end = result_label_trim[segment_name].start_end_val[1]
+        diff = end - start
+        assert diff == 5000
+
+    assert len(result_label_trim) == 3
+
+    assert result_label_trim["trim0"].start_end_val == (1623691890656, 1623691895656)
+    assert result_label_trim["trim0"].num_logs == 3
+    assert result_label_trim["trim1"].start_end_val == (1623691895656, 1623691900656)
+    assert result_label_trim["trim1"].num_logs == 0
+    assert result_label_trim["trim2"].start_end_val == (1623691900656, 1623691905656)
+    assert result_label_trim["trim2"].num_logs == 9
+
+def test_fixed_time_segments_datetime():
+    data = testing_utils.setup("./data/sample_data.json", "datetime")
+    sorted_dict = data[1]
+
+    result_no_label = distill.generate_fixed_time_segments(sorted_dict, 5).get_segment_name_dict()
+
+    # Check that start and end times are 5 seconds apart
+    for segment_name in result_no_label:
+        start = result_no_label[segment_name].start_end_val[0]
+        end = result_no_label[segment_name].start_end_val[1]
+        diff = end - start
+        assert diff == datetime.timedelta(seconds=5)
+
+    assert len(result_no_label) == 4
+
+    assert result_no_label["0"].start_end_val == (testing_utils.to_datetime(1623691890656),
+                                                  testing_utils.to_datetime(1623691895656))
+    assert result_no_label["0"].num_logs == 3
+    assert result_no_label["1"].start_end_val == (testing_utils.to_datetime(1623691895656),
+                                                  testing_utils.to_datetime(1623691900656))
+    assert result_no_label["1"].num_logs == 0
+    assert result_no_label["2"].start_end_val == (testing_utils.to_datetime(1623691900656),
+                                                  testing_utils.to_datetime(1623691905656))
+    assert result_no_label["2"].num_logs == 9
+    assert result_no_label["3"].start_end_val == (testing_utils.to_datetime(1623691905656),
+                                                  testing_utils.to_datetime(1623691910656))
+    assert result_no_label["3"].num_logs == 7
+
+    result_label_trim = distill.generate_fixed_time_segments(sorted_dict, 5, trim=True, label="trim").get_segment_name_dict()
+
+    # Check that start and end times are 5 seconds apart
+    for segment_name in result_label_trim:
+        start = result_label_trim[segment_name].start_end_val[0]
+        end = result_label_trim[segment_name].start_end_val[1]
+        diff = end - start
+        assert diff == datetime.timedelta(seconds=5)
+
+    assert len(result_label_trim) == 3
+
+    assert result_label_trim["trim0"].start_end_val == (testing_utils.to_datetime(1623691890656),
+                                                        testing_utils.to_datetime(1623691895656))
+    assert result_label_trim["trim0"].num_logs == 3
+    assert result_label_trim["trim1"].start_end_val == (testing_utils.to_datetime(1623691895656),
+                                                        testing_utils.to_datetime(1623691900656))
+    assert result_label_trim["trim1"].num_logs == 0
+    assert result_label_trim["trim2"].start_end_val == (testing_utils.to_datetime(1623691900656),
+                                                        testing_utils.to_datetime(1623691905656))
+    assert result_label_trim["trim2"].num_logs == 9
+
+def test_fixed_time_segments_error():
+    with pytest.raises(TypeError):
+        data = testing_utils.setup("./data/deadspace_detection_sample_data.json", "string")
+        sorted_dict = data[1]
+
+        distill.generate_fixed_time_segments(sorted_dict, 10)
+
+def test_generate_collapsing_windows_integer():
+    data = testing_utils.setup("./data/sample_data.json", "integer")
+    sorted_dict = data[1]
+
+    result_no_label = distill.generate_collapsing_window_segments(sorted_dict, "path", ["button#test_button"])
+
+    segment = result_no_label[0]
+
+    assert len(result_no_label) == 1
+    assert segment.num_logs == 8
+    assert segment.segment_name == "0"
+    assert segment.start_end_val == (1623691904212, 1623691904923)
+
+def test_generate_collapsing_windows_datetime():
+    data = testing_utils.setup("./data/sample_data.json", "datetime")
+    sorted_dict = data[1]
+
+    result_no_label = distill.generate_collapsing_window_segments(sorted_dict, "path", ["Window"])
+
+    segment1 = result_no_label[0]
+    segment2 = result_no_label[1]
+
+    assert segment1.num_logs == 16
+    assert segment2.num_logs == 1
+    assert segment1.segment_name == "0"
+    assert segment2.segment_name == "1"
+    assert segment1.start_end_val == (testing_utils.to_datetime(1623691891459),
+                                      testing_utils.to_datetime(1623691907136))
+    assert segment2.start_end_val == (testing_utils.to_datetime(1623691909728),
+                                      testing_utils.to_datetime(1623691909728))
+
+    assert len(result_no_label) == 2
+
 ###################
 # SET LOGIC TESTS #
 ###################
@@ -509,10 +664,10 @@ def test_union_integer():
 
     segment_names = ["test_segment_1", "test_segment_2", "test_segment_3", "test_segment_4"]
 
-    result = distill.create_segment(sorted_dict, segment_names, start_end_vals)
+    result = distill.create_segment(sorted_dict, segment_names, start_end_vals).get_segment_name_dict()
 
     new_segment = distill.union("new_segment", result["test_segment_2"], result["test_segment_3"])
-    
+
     assert new_segment.segment_name == "new_segment"
     assert new_segment.num_logs == 4
     assert new_segment.uids == [sorted_data[5][0], sorted_data[6][0], sorted_data[7][0], sorted_data[8][0]]
@@ -523,7 +678,6 @@ def test_union_integer():
     assert new_segment.get_generate_field_name() is None
     assert new_segment.generate_matched_values is None
     assert new_segment.get_generate_matched_values() is None
-
 
 def test_union_datetime():
     data = testing_utils.setup("./data/sample_data.json", "datetime")
@@ -539,14 +693,18 @@ def test_union_datetime():
 
     segment_names = ["test_segment_1", "test_segment_2", "test_segment_3", "test_segment_4"]
 
-    result = distill.create_segment(sorted_dict, segment_names, start_end_vals)
+    result = distill.create_segment(sorted_dict, segment_names, start_end_vals).get_segment_name_dict()
 
-    new_segment = distill.union("new_segment", result["test_segment_2"], result["test_segment_3"])
+    new_segment = distill.union("new_segment", result["test_segment_3"], result["test_segment_1"])
 
     assert new_segment.segment_name == "new_segment"
-    assert new_segment.num_logs == 4
-    assert new_segment.uids == [sorted_data[5][0], sorted_data[6][0], sorted_data[7][0], sorted_data[8][0]]
-    assert new_segment.start_end_val == (sorted_data[5][1]['clientTime'], sorted_data[7][1]['clientTime'])
+    assert new_segment.num_logs == 19
+    assert new_segment.uids == [sorted_data[5][0], sorted_data[6][0], sorted_data[7][0], sorted_data[8][0],
+                                sorted_data[0][0], sorted_data[1][0], sorted_data[2][0], sorted_data[3][0],
+                                sorted_data[4][0], sorted_data[9][0], sorted_data[10][0], sorted_data[11][0],
+                                sorted_data[12][0], sorted_data[13][0], sorted_data[14][0], sorted_data[15][0],
+                                sorted_data[16][0], sorted_data[17][0], sorted_data[18][0]]
+    assert new_segment.start_end_val == (sorted_data[0][1]['clientTime'], sorted_data[18][1]['clientTime'])
     assert new_segment.segment_type == distill.Segment_Type.UNION
     assert new_segment.get_segment_type() == distill.Segment_Type.UNION
     assert new_segment.generate_field_name is None
@@ -572,8 +730,10 @@ def test_union_error():
         start_end_datetime = []
         start_end_datetime.append((sorted_data_datetime[3][1]['clientTime'], sorted_data_datetime[9][1]['clientTime']))
 
-        int_segment = distill.create_segment(sorted_dict_integer, segment_name_integer, start_end_integer)
-        datetime_segment = distill.create_segment(sorted_dict_datetime, segment_name_datetime, start_end_datetime)
+        int_segment = distill.create_segment(sorted_dict_integer, segment_name_integer,
+                                             start_end_integer).get_segment_name_dict()
+        datetime_segment = distill.create_segment(sorted_dict_datetime, segment_name_datetime,
+                                                  start_end_datetime).get_segment_name_dict()
 
         distill.union("new_segment", int_segment["test_segment_integer"], datetime_segment["test_segment_datetime"])
 
@@ -591,7 +751,7 @@ def test_intersection_integer():
 
     segment_names = ["test_segment_1", "test_segment_2", "test_segment_3", "test_segment_4"]
 
-    result = distill.create_segment(sorted_dict, segment_names, start_end_vals)
+    result = distill.create_segment(sorted_dict, segment_names, start_end_vals).get_segment_name_dict()
 
     new_segment = distill.intersection("new_segment", result["test_segment_2"], result["test_segment_3"])
 
@@ -620,14 +780,14 @@ def test_intersection_datetime():
 
     segment_names = ["test_segment_1", "test_segment_2", "test_segment_3", "test_segment_4"]
 
-    result = distill.create_segment(sorted_dict, segment_names, start_end_vals)
+    result = distill.create_segment(sorted_dict, segment_names, start_end_vals).get_segment_name_dict()
 
-    new_segment = distill.intersection("new_segment", result["test_segment_2"], result["test_segment_3"])
+    new_segment = distill.intersection("new_segment", result["test_segment_3"], result["test_segment_1"])
 
     assert new_segment.segment_name == "new_segment"
-    assert new_segment.num_logs == 2
-    assert new_segment.uids == [sorted_data[5][0], sorted_data[6][0]]
-    assert new_segment.start_end_val == (sorted_data[5][1]['clientTime'], sorted_data[7][1]['clientTime'])
+    assert new_segment.num_logs == 4
+    assert new_segment.uids == [sorted_data[5][0], sorted_data[6][0], sorted_data[7][0], sorted_data[8][0]]
+    assert new_segment.start_end_val == (sorted_data[0][1]['clientTime'], sorted_data[18][1]['clientTime'])
     assert new_segment.segment_type == distill.Segment_Type.INTERSECTION
     assert new_segment.get_segment_type() == distill.Segment_Type.INTERSECTION
     assert new_segment.generate_field_name is None
@@ -653,8 +813,10 @@ def test_intersection_error():
         start_end_datetime = []
         start_end_datetime.append((sorted_data_datetime[3][1]['clientTime'], sorted_data_datetime[9][1]['clientTime']))
 
-        int_segment = distill.create_segment(sorted_dict_integer, segment_name_integer, start_end_integer)
-        datetime_segment = distill.create_segment(sorted_dict_datetime, segment_name_datetime, start_end_datetime)
+        int_segment = distill.create_segment(sorted_dict_integer, segment_name_integer,
+                                             start_end_integer).get_segment_name_dict()
+        datetime_segment = distill.create_segment(sorted_dict_datetime, segment_name_datetime,
+                                                  start_end_datetime).get_segment_name_dict()
 
         distill.intersection("new_segment", int_segment["test_segment_integer"],
                              datetime_segment["test_segment_datetime"])
@@ -673,7 +835,7 @@ def test_difference_integer():
 
     segment_names = ["test_segment_1", "test_segment_2", "test_segment_3", "test_segment_4"]
 
-    result = distill.create_segment(sorted_dict, segment_names, start_end_vals)
+    result = distill.create_segment(sorted_dict, segment_names, start_end_vals).get_segment_name_dict()
 
     new_segment = distill.difference("new_segment", result["test_segment_1"], result["test_segment_4"])
 
@@ -704,7 +866,7 @@ def test_difference_datetime():
 
     segment_names = ["test_segment_1", "test_segment_2", "test_segment_3", "test_segment_4"]
 
-    result = distill.create_segment(sorted_dict, segment_names, start_end_vals)
+    result = distill.create_segment(sorted_dict, segment_names, start_end_vals).get_segment_name_dict()
 
     new_segment = distill.difference("new_segment", result["test_segment_1"], result["test_segment_4"])
 
