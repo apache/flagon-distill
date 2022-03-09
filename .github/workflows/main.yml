@@ -11,17 +11,6 @@ on:
       - docs/**
   pull_request:
     branches: [ distill_toolkit_refactor ]
-    paths:
-      - docs/**
-    
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# defines where the make html command will be executed
-defaults:
-  run:
-    working-directory: ./docs
     
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -34,8 +23,11 @@ jobs:
     # Standard drop-in approach that should work for most people.
     - uses: ammaraskar/sphinx-action@master
       with:
-        build-command: "sphinx-build -b html . docs"
         docs-folder: "docs/"
+    - uses: ryan-rozario/pipreqs-action@v2.0.0
+      with: 
+        PROJECT_PATH: "."
+        REQUIREMENT_PATH: "requirements.txt"
 
       # Runs a single command using the runners shell
       #- name: Run Makefile to generate the htmls
