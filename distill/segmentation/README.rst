@@ -5,15 +5,15 @@ Segmentation
 
 The ``Segment`` Object
 ------------------
-``Segment`` objects represent the metadata associated with a segment of UserAle logs.  Each object has a variety of fields, including:
+``Segment`` objects represent the metadata associated with a segment of UserALE logs.  Each object has a variety of fields, including:
 
 * ``segment_name``: The given name of a ``Segment``
 * ``start_end_val``: The start and end ``clientTime``'s of a ``Segment``
 * ``num_logs``: The number of logs in a ``Segment``
 * ``uids``: A list of the UIDs of the logs within the ``Segment``
 * ``segment_type``: An enumerated type (``Segment_Type``) that denotes how the ``Segment`` was created
-* ``generate_field_name``: The field name used for value-matching if a segment was created through segment generation (`generate_segments`)
-* ``generate_matched_values``: The values used for value-matching if a segment was created through segment generation (`generate_segments`)
+* ``generate_field_name``: The field name used for value-matching if a ``Segment`` was created through the ``generate_segments`` or ``generate_collapsing_window_segments`` functions
+* ``generate_matched_values``: The values used for value-matching if a ``Segment`` was created through the ``generate_segments`` or ``generate_collapsing_window_segments`` functions
 
 These fields can be accessed through `get` functions.  For example, if a collection of ``Segment`` objects are created using the ``generate_segments`` function:
 
@@ -338,11 +338,11 @@ The creation of segments can be done through the use of five functions: ``create
 
 Create Segment
 **************
-The most literal way to create ``Segment`` objects is through the use of the ``create_segment`` function.  This function takes in three parameters in order to create ``Segment`` objects: a target dictionary of UserAle logs, a list of segment names, and a list of tuples that represent the start ``clientTime`` and end ``clientTime`` of the segment.  Given this information, segments can be created as follows:
+The most literal way to create ``Segment`` objects is through the use of the ``create_segment`` function.  This function takes in three parameters in order to create ``Segment`` objects: a target dictionary of UserALE logs, a list of segment names, and a list of tuples that represent the start ``clientTime`` and end ``clientTime`` of the segment.  Given this information, segments can be created as follows:
 
 .. code:: python
 
-    # Sorted dictionary of UserAle logs
+    # Sorted dictionary of UserALE logs
     sorted_dict
 
     # List of segment names
@@ -363,11 +363,11 @@ The above code will output a ``Segments`` object that contains each ``Segment`` 
 
 Generate Segments
 *****************
-Segment generation is a more automatic way to create ``Segment`` objects and is based off of the matching of a particular UserAle log field with a list of possible values.  The function ``generate_segments`` will then generate ``segment`` objects based on windows of time starting before and after the matched field, indicated in seconds as a function parameter.  The below code illustrates the basic use of this function:
+Segment generation is a more automatic way to create ``Segment`` objects and is based off of the matching of a particular UserALE log field with a list of possible values.  The function ``generate_segments`` will then generate ``segment`` objects based on windows of time starting before and after the matched field, indicated in seconds as a function parameter.  The below code illustrates the basic use of this function:
 
 .. code:: python
 
-    # Sorted dictionary of UserAle logs
+    # Sorted dictionary of UserALE logs
     sorted_dict
 
     # Generate segments based on user clicks
@@ -377,7 +377,7 @@ The above code will return a ``Segments`` object that contains ``Segment`` objec
 
 .. code:: python
 
-    # Sorted dictionary of UserAle logs
+    # Sorted dictionary of UserALE logs
     sorted_dict
 
     # Generate segments based on user clicks and loads
@@ -387,11 +387,11 @@ Note that ``generate_segments`` does not overlap segments.  In the event that tw
 
 Detect Deadspace
 ****************
-Another way to create ``Segment`` objects is to do so based on deadspace in the UserAle logs.  Deadspace is simply time in which the user is idle.  The ``detect_deadspace`` function creates ``Segment`` objects based on deadspace in the logs given a threshold for what is considered to be 'deadspace'.  An example of this is shown below:
+Another way to create ``Segment`` objects is to do so based on deadspace in the UserALE logs.  Deadspace is simply time in which the user is idle.  The ``detect_deadspace`` function creates ``Segment`` objects based on deadspace in the logs given a threshold for what is considered to be 'deadspace'.  An example of this is shown below:
 
 .. code:: python
 
-    # Sorted dictionary of UserAle logs
+    # Sorted dictionary of UserALE logs
     sorted_dict
 
     # Create segments based on detected deadspace
@@ -486,7 +486,7 @@ The ``write_segment`` function creates a nested dictionary of segment names to U
 
 .. code:: python
 
-    # Sorted dictionary of UserAle logs
+    # Sorted dictionary of UserALE logs
     sorted_dict
 
     # List of segment names
@@ -498,7 +498,7 @@ The ``write_segment`` function creates a nested dictionary of segment names to U
     # Write Segments
     segments = distill.write_segment(sorted_dict, segment_names, start_end_vals)
 
-The above code looks similar to the ``create_segments`` example usage, however, rather than returning a ``Segments`` object, this code will create a dictionary of segment names to UIDs to individual UserAle logs.
+The above code looks similar to the ``create_segments`` example usage, however, rather than returning a ``Segments`` object, this code will create a dictionary of segment names to UIDs to individual UserALE logs.
 
 Exporting Segments
 ------------------
@@ -506,7 +506,7 @@ Exporting Segments
 
 .. code:: python
 
-    # Sorted dictionary of UserAle logs
+    # Sorted dictionary of UserALE logs
     sorted_dict
 
     # Create a Segments object through the detect_deadspace function
@@ -514,3 +514,12 @@ Exporting Segments
 
     # Export these segments into a csv file
     distill.export_segments("./test.csv", segments)
+
+The above code will create a csv file in the current directory entitled `test.csv`.  An example of what this file looks
+like with two ``Segment`` objects can be seen below:
+
+.. code:: console
+
+    Segment Name,Start Time,End Time,Number of Logs,Generate Field Name,Generate Matched Values,Segment Type
+    segment1,0,1,5,type,['click'],Segment_Type.GENERATE
+    segment2,2,3,6,type,['click'],Segment_Type.GENERATE
