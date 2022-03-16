@@ -25,7 +25,7 @@ def find_meta_values(key, dict, *, unique: bool = True):
     :param unique: (optional, default == True) if False returns all values for the given key
     :return: a list object with values for given key
     """
-    value_list = [sub[key] for sub in dict.values() for v in sub.keys()]
+    value_list = [sub[key] for sub in dict.values() if key in sub]
     if unique == True:
         value_set = set(value_list)
         return list(value_set)

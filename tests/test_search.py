@@ -39,9 +39,15 @@ def test_find_meta_values():
     assert 1623691909728 in clientTimes
 
 
-# TODO: Possible bug when unique=False
-#def test_find_meta_values_2():
-#    data = testing_utils.setup("./data/sample_data.json", "integer")
-#    sorted_dict = data[1]
-#    clientTimes = distill.find_meta_values('clientTime', sorted_dict, unique=False)
-#    assert len(clientTimes) == 18
+def test_find_meta_values_2():
+    data = testing_utils.setup("./data/sample_data.json", "integer")
+    sorted_dict = data[1]
+    client_times = distill.find_meta_values('clientTime', sorted_dict, unique=False)
+    assert len(client_times) == 19
+
+
+def test_find_meta_values_3():
+    data = testing_utils.setup("./data/sample_data.json", "integer")
+    sorted_dict = data[1]
+    target_vals = distill.find_meta_values('target', sorted_dict, unique=False)
+    assert len(target_vals) == 17
