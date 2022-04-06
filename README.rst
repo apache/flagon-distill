@@ -19,6 +19,8 @@
 	limitations under the License. 
 	--->
 
+.. image:: https://readthedocs.org/projects/incubator-flagon-distill/badge/?version=stable
+   
 Distill
 =======================
 
