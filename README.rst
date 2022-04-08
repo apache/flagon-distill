@@ -16,6 +16,10 @@
 	limitations under the License. 
 	--->
 
+.. image:: https://readthedocs.org/projects/incubator-flagon-distill/badge/?version=distill_toolkit_refactor
+	:target: https://incubator-flagon-distill.readthedocs.io/en/distill_toolkit_refactor/?badge=stable
+	:alt: Documentation Status
+
 Apache Flagon Distill
 =======================
 
@@ -28,3 +32,4 @@ to interact with user activity logs and apply basic analytical operations to the
 Install instructions can be found `here <http://flagon.incubator.apache.org/docs/distill/>`_.
 
 A contribution guide has been provided `here <http://flagon.incubator.apache.org/docs/contributing/>`_.
+
