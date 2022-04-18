@@ -1,115 +1,8 @@
-Graph.py Documentation
-======================
+Funnel
+======
 
-Sankey Function
----------------
-.. code:: python
-
-    def sankey(edges_segmentN, node_labels=False):
-
-*Creates Sankey Graph from defined edge list and optional user-provided labels*
-**edges_segmentN**: List of Tuples
-**node_labels**: Optional Dictionary of Values; keys are originals, values are replacements
-Returns a Sankey graph.
-
-**Remove self-to-self recursions**
-
-.. code:: python
-
-    edge_list_temp = []
-    for row in edges_segmentN:
-        if row[0] != row[1]:
-            edge_list_temp.append(row)
-    edge_list = edge_list_temp
-
-**Create a counter to count how many elements are in the edge list**
-
-.. code:: python
-
-    edge_list_counter = collections.Counter(edge_list)
-
-**Extract source list, target list, and value list from the tuples**
-
-.. code:: python
-
-    source_list = [i[0] for i in edge_list_counter.keys()]
-    target_list = [i[1] for i in edge_list_counter.keys()]
-    value_list = [i for i in edge_list_counter.values()]
-
-**Extract the node names if node_labels does not exist as an argument**
-
-.. code:: python
-
-    nodes = []
-    for row in edge_list:
-        for col in row:
-            if col not in nodes:
-                nodes.append(col)
-            
-**Replace node names with the give node_labels if it is given as an argument**
-
-.. code:: python
-
-    if node_labels:
-        new_nodes = []
-        for node in nodes:
-            if node in node_labels:
-                new_nodes.append(node_labels[node])
-            else:
-                new_nodes.append(node)
-
-**Sources are the nodes sending connections**
-
-.. code:: python
-
-    sources = []
-    for i in source_list:
-        sources.append(nodes.index(i))
-
-**Targets are the nodes receiving connections**
-
-.. code:: python
-
-    targets = []
-    for i in target_list:
-        targets.append(nodes.index(i))
-
-**Values are the weight of the connections**
-
-.. code:: python
-
-        values = value_list
-
-**If node labels is given as an argument, we replace nodes with node labels**
-**If not, we use the original node names**
-
-.. code:: python
-
-    if node_labels:
-        fig = go.Figure(data=[go.Sankey(
-            node=dict(
-                label=[new_nodes[item].split("|")[0] for item in range(len(new_nodes))],
-            ),
-            link=dict(
-                source=sources,
-                target=targets,
-                value=values
-            ))])
-    else:
-        fig = go.Figure(data=[go.Sankey(
-            node=dict(
-                label=[nodes[item].split("|")[0] for item in range(len(nodes))],
-            ),
-            link=dict(
-                source=sources,
-                target=targets,
-                value=values
-            ))])
-
-    fig.show()
-
-Funnel Function
----------------
+The Funnel Function
+-------------------
 .. code:: python
 
     funnel(edges_segmentN, user_specification, node_labels= False)
@@ -237,3 +130,100 @@ Returns a Funnel graph.
     )
 
     fig.show()
+
+Funnel Example
+--------------
+
+.. code:: python
+
+   funnel(edges_segmentN, user_specification, node_labels=False)
+
+The Funnel Function takes the arguments: edges_segmentN: List of Tuples
+user_specification: A string of target of interest e.g. #document
+node_labels (Optional): Optional Dictionary of key default values with
+value replacements And it will return a Funnel graph. Below is an
+example of a Funnel Diagram:
+
+|funnelexample.png| Additionally, users have the option to pass a
+dictionary of node labels to replace existing labels.
+
+Below is an example:
+
+**Input:**
+
+.. code:: python
+
+   edges = [('#document', 'button#test_button'),
+    ('button#test_button', '#document'),
+    ('#document', 'input'),
+    ('input', 'button'),
+    ('button', 'input'),
+    ('input', 'form#test_text_input'),
+    ('form#test_text_input', 'input'),
+    ('input', 'button'),
+    ('button', 'form#test_text_input'),
+    ('form#test_text_input', '#document'),
+    ('#document', 'form#test_radio_input'),
+    ('form#test_radio_input', 'input'),
+    ('input', 'button#Mock Request Button'),
+    ('button#Mock Request Button', '#document'),
+    ('#document', 'input'),
+    ('input', 'button'),
+    ('button', 'form#test_text_input'),
+    ('form#test_text_input', 'p'),
+    ('p', '#document'),
+    ('#document', 'button#test_button'),
+    ('button#test_button', '#document'),
+    ('#document', 'form#test_radio_input'),
+    ('form#test_radio_input', 'input'),
+    ('input', 'form#test_radio_input'),
+    ('form#test_radio_input', 'input')]
+
+   userspec = 'input'
+            
+   funnel(edges, userspec)
+
+**Output:** |image1|
+
+Now we can add the optional node labels to be replaced. **Input:**
+
+.. code:: python
+
+   edges = [('#document', 'button#test_button'),
+    ('button#test_button', '#document'),
+    ('#document', 'input'),
+    ('input', 'button'),
+    ('button', 'input'),
+    ('input', 'form#test_text_input'),
+    ('form#test_text_input', 'input'),
+    ('input', 'button'),
+    ('button', 'form#test_text_input'),
+    ('form#test_text_input', '#document'),
+    ('#document', 'form#test_radio_input'),
+    ('form#test_radio_input', 'input'),
+    ('input', 'button#Mock Request Button'),
+    ('button#Mock Request Button', '#document'),
+    ('#document', 'input'),
+    ('input', 'button'),
+    ('button', 'form#test_text_input'),
+    ('form#test_text_input', 'p'),
+    ('p', '#document'),
+    ('#document', 'button#test_button'),
+    ('button#test_button', '#document'),
+    ('#document', 'form#test_radio_input'),
+    ('form#test_radio_input', 'input'),
+    ('input', 'form#test_radio_input'),
+    ('form#test_radio_input', 'input')]
+
+   userspec = 'input'
+   labels = {'form#test_text_input':'test_text_input'}        
+   funnel(edges, userspec, labels)
+
+**Output:** |image2|
+
+.. |funnelexample.png| image:: https://i.postimg.cc/qvPxbKqT/newplot-2.png
+   :target: https://postimg.cc/tsz67YFS
+.. |image1| image:: https://i.postimg.cc/FzHydgWj/newplot-3.png
+   :target: https://postimg.cc/dkgkgdK1
+.. |image2| image:: https://i.postimg.cc/rwrSrpJY/newplot-4.png
+   :target: https://postimg.cc/RWv6r42c

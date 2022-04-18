@@ -4,5 +4,5 @@ Graph
 .. toctree::
    :maxdepth: 2
 
-   Graph
-   Example
+   Sankey_Function
+   Funnel_Function
