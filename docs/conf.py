@@ -1,7 +1,7 @@
 # -- Project information -----------------------------------------------------
-project = 'Graph Analytics Flagon Distill'
+project = 'Apache Flagon Distill'
 copyright = '2022, UMD ARLIS'
-author = 'Amir Ghaemi'
+author = 'NAMES TO BE ADDED' #add names here
 
 
 # -- General configuration ---------------------------------------------------
