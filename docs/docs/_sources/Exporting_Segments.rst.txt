@@ -72,3 +72,10 @@ The above code will create a Gantt chart similar to the screenshot shown below:
 
 .. image:: ./images/Gantt.png
    :width: 700
+
+In addition, `Plotly's Dash <https://plotly.com/dash/>`_ can be used to create useful dashboards that display Plotly plots.  An example of this can be
+seen in the video below:
+
+.. raw:: html
+
+    <video width=700 autoplay loop controls><source src="_images/dash.mp4" type="video/mp4"></video>
