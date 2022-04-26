@@ -95,21 +95,21 @@ setup_requires = [
 
 install_requires = [
     # 'elasticsearch-dsl >= 5.0.0, < 6.0.0',
-    'pandas >= 1.2.4',
-    'networkx >= 2.5',
-    'plotly >= 5.5.0',
+    'pandas ~= 1.2.4',
+    'networkx ~= 2.5',
+    'plotly ~= 5.5.0',
     # 'Flask >= 0.12.2',
     # 'celery >= 4.0.2',
 ]
 
 tests_require = [
-    'pytest >= 6.2.3',
+    'pytest ~= 6.2.3',
     'pytest-cov',
 ]
 
 docs_require = [
-    'Sphinx >= 1.6.3',
-    'sphinx-rtd-theme >= 0.2.4',
+    'Sphinx ~= 1.6.3',
+    'sphinx-rtd-theme ~= 0.2.4',
 ]
 
 extras_require = {
@@ -138,7 +138,7 @@ classifiers = [
 setuptools.setup(
     name="Distill-Test",
     version=get_version(),
-    #version="0.1.7",
+    #version="0.1.8",
     url="http://senssoft.incubator.apache.org",
     license="Apache Software License 2.0",
     author="Kelsey",
