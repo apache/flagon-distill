@@ -647,6 +647,22 @@ def test_generate_collapsing_windows_datetime():
 
     assert len(result_no_label) == 2
 
+
+def test_generate_collapsing_windows_datetime_all_logs():
+    data = testing_utils.setup("./data/sample_data.json", "datetime")
+    sorted_dict = data[1]
+
+    result_no_label = distill.generate_collapsing_window_segments(sorted_dict, "sessionID", ["session_1623691890539"])
+
+    segment1 = result_no_label[0]
+
+    assert len(result_no_label) == 1
+    assert segment1.num_logs == 19
+    assert segment1.segment_name == "0"
+    assert segment1.start_end_val == (testing_utils.to_datetime(1623691890656),
+                                      testing_utils.to_datetime(1623691909728))
+
+
 ###################
 # SET LOGIC TESTS #
 ###################

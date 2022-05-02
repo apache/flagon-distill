@@ -505,6 +505,14 @@ def generate_collapsing_window_segments(target_dict, field_name, field_values_of
                 start_end_val_lists.append(start_end)
                 segment_names.append(label + str(index))
                 segment_started = True
+
+            # End Segment if end of dictionary
+            elif segment_started and i == (len(key_list) - 1):
+                # End the Segment
+                start_end_tuple = (start_end_val_lists[index][0], target_dict[key_list[i]]['clientTime'])
+                start_end_vals.append(start_end_tuple)
+                index += 1
+                segment_started = False
         else:
             if segment_started:
                 # End the Segment
