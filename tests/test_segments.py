@@ -196,6 +196,37 @@ def test_get_segments_before_integer():
     assert result5[2].segment_name == "2"
     assert result5[3].segment_name == "3"
 
+def test_get_segments_after_integer():
+    data = testing_utils.setup("./data/sample_data.json", "integer")
+    sorted_dict = data[1]
+
+    segments = distill.generate_fixed_time_segments(sorted_dict, 5)
+
+    result1 = segments.get_segments_after(1623691909728)
+    assert len(result1) == 0
+
+    result2 = segments.get_segments_after(1623691900656)
+    assert len(result2) == 1
+    assert result2[0].segment_name == "3"
+
+    result3 = segments.get_segments_after(1623691895656)
+    assert len(result3) == 2
+    assert result3[0].segment_name == "2"
+    assert result3[1].segment_name == "3"
+
+    result4 = segments.get_segments_after(1623691890656)
+    assert len(result4) == 3
+    assert result4[0].segment_name == "1"
+    assert result4[1].segment_name == "2"
+    assert result4[2].segment_name == "3"
+
+    result5 = segments.get_segments_after(1623691000000)
+    assert len(result5) == 4
+    assert result5[0].segment_name == "0"
+    assert result5[1].segment_name == "1"
+    assert result5[2].segment_name == "2"
+    assert result5[3].segment_name == "3"
+
 def test_get_segments_before_datetime():
     data = testing_utils.setup("./data/sample_data.json", "datetime")
     sorted_dict = data[1]
@@ -221,6 +252,37 @@ def test_get_segments_before_datetime():
     assert result4[2].segment_name == "2"
 
     result5 = segments.get_segments_before(testing_utils.to_datetime(2623691910656))
+    assert len(result5) == 4
+    assert result5[0].segment_name == "0"
+    assert result5[1].segment_name == "1"
+    assert result5[2].segment_name == "2"
+    assert result5[3].segment_name == "3"
+
+def test_get_segments_after_datetime():
+    data = testing_utils.setup("./data/sample_data.json", "datetime")
+    sorted_dict = data[1]
+
+    segments = distill.generate_fixed_time_segments(sorted_dict, 5)
+
+    result1 = segments.get_segments_after(testing_utils.to_datetime(1623691909728))
+    assert len(result1) == 0
+
+    result2 = segments.get_segments_after(testing_utils.to_datetime(1623691900656))
+    assert len(result2) == 1
+    assert result2[0].segment_name == "3"
+
+    result3 = segments.get_segments_after(testing_utils.to_datetime(1623691895656))
+    assert len(result3) == 2
+    assert result3[0].segment_name == "2"
+    assert result3[1].segment_name == "3"
+
+    result4 = segments.get_segments_after(testing_utils.to_datetime(1623691890656))
+    assert len(result4) == 3
+    assert result4[0].segment_name == "1"
+    assert result4[1].segment_name == "2"
+    assert result4[2].segment_name == "3"
+
+    result5 = segments.get_segments_after(testing_utils.to_datetime(1623691000000))
     assert len(result5) == 4
     assert result5[0].segment_name == "0"
     assert result5[1].segment_name == "1"

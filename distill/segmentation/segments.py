@@ -146,6 +146,20 @@ class Segments():
         segments = [segment for segment in self.segments if segment.start_end_val[1] < time]
         return Segments(segments)
 
+    def get_segments_after(self, time):
+        """
+        Returns a new Segments object only including segments that have start times after the indicated time.
+
+        :param time: An integer or datetime object that represents the time for which Segment start times should be after.
+        :return: A new Segments object that contains Segment objects that have start times after the time indicated.
+        """
+        if not isinstance(time, int) and not isinstance(time, datetime.datetime):
+            raise TypeError('Time must be an integer or datetime object.')
+
+        segments = [segment for segment in self.segments if segment.start_end_val[0] > time]
+
+        return Segments(segments)
+
     def get_segments_of_type(self, segment_type):
         """
         Returns a new Segments object that includes Segment objects of a specified type.

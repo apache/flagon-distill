@@ -84,10 +84,11 @@ least the number of logs specified.  An example is shown below:
 
 The above code removes ``Segment`` objects "0" and "1" since they contain less than 5 logs.
 
-Filtering by Cutoff Time
-************************
-The ``get_segments_before`` function returns a new ``Segments`` object that contains all the ``Segment`` objects that
-have end times before the user given time.  An example usage of this function is shown below:
+Filtering by Time
+*****************
+The ``get_segments_before`` and ``get_segments_after`` functions return a new ``Segments`` object that contains all the
+``Segment`` objects that either have end times before the user given time or start times after the user given time.  An
+example usage of each of these functions is shown below:
 
 **Input:**
 
@@ -96,10 +97,14 @@ have end times before the user given time.  An example usage of this function is
     print("Original Segments Object:")
     print(segments)
 
-    segments = segments.get_segments_before(4)
+    segments_before = segments.get_segments_before(4)
+    segments_after = segments.get_segments_after(3)
 
-    print("\nFiltered Segments Object:")
-    print(segments)
+    print("\nFiltered Segments Object (Before):")
+    print(segments_before)
+
+    print("\nFiltered Segments Object (After):")
+    print(segments_after)
 
 **Console Output:**
 
@@ -113,14 +118,20 @@ have end times before the user given time.  An example usage of this function is
     Segment: segment_name=3, start=4, end=5, num_logs=7, generate_field_name=None, generate_matched_values=None, segment_type=Segment_Type.DEADSPACE
     ]
 
-    Filtered Segments Object:
+    Filtered Segments Object (Before):
     Segments: [
     Segment: segment_name=0, start=1, end=2, num_logs=3, generate_field_name=None, generate_matched_values=None, segment_type=Segment_Type.FIXED_TIME
     Segment: segment_name=1, start=2, end=3, num_logs=0, generate_field_name=None, generate_matched_values=None, segment_type=Segment_Type.CREATE
     ]
 
-The above output shows that the ``get_segments_before`` function filtered out any ``Segment`` object that had an end time
-after or including 4.
+    Filtered Segments Object (After):
+    Segments: [
+    Segment: segment_name=3, start=4, end=5, num_logs=7, generate_field_name=None, generate_matched_values=None, segment_type=Segment_Type.DEADSPACE
+    ]
+
+The above output shows that the ``get_segments_before`` function filtered out any ``Segment`` that had an end time
+after or including 4 and that the ``get_segments_after`` function filtered out any ``Segment`` with a start time less than
+or equal to 3.
 
 Filtering by Segment Type
 *************************

@@ -49,7 +49,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#list-comprehensions">List Comprehensions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#filtering">Filtering</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#filtering-by-number-of-logs">Filtering by Number of Logs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#filtering-by-cutoff-time">Filtering by Cutoff Time</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filtering-by-time">Filtering by Time</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#filtering-by-segment-type">Filtering by Segment Type</a></li>
 </ul>
 </li>
@@ -171,18 +171,23 @@ least the number of logs specified.  An example is shown below:</p>
 </div>
 <p>The above code removes <code class="docutils literal notranslate"><span class="pre">Segment</span></code> objects “0” and “1” since they contain less than 5 logs.</p>
 </section>
-<section id="filtering-by-cutoff-time">
-<h3>Filtering by Cutoff Time<a class="headerlink" href="#filtering-by-cutoff-time" title="Permalink to this headline"></a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">get_segments_before</span></code> function returns a new <code class="docutils literal notranslate"><span class="pre">Segments</span></code> object that contains all the <code class="docutils literal notranslate"><span class="pre">Segment</span></code> objects that
-have end times before the user given time.  An example usage of this function is shown below:</p>
+<section id="filtering-by-time">
+<h3>Filtering by Time<a class="headerlink" href="#filtering-by-time" title="Permalink to this headline"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">get_segments_before</span></code> and <code class="docutils literal notranslate"><span class="pre">get_segments_after</span></code> functions return a new <code class="docutils literal notranslate"><span class="pre">Segments</span></code> object that contains all the
+<code class="docutils literal notranslate"><span class="pre">Segment</span></code> objects that either have end times before the user given time or start times after the user given time.  An
+example usage of each of these functions is shown below:</p>
 <p><strong>Input:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Original Segments Object:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">segments</span><span class="p">)</span>
 
-<span class="n">segments</span> <span class="o">=</span> <span class="n">segments</span><span class="o">.</span><span class="n">get_segments_before</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">segments_before</span> <span class="o">=</span> <span class="n">segments</span><span class="o">.</span><span class="n">get_segments_before</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">segments_after</span> <span class="o">=</span> <span class="n">segments</span><span class="o">.</span><span class="n">get_segments_after</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Filtered Segments Object:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">segments</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Filtered Segments Object (Before):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">segments_before</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Filtered Segments Object (After):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">segments_after</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Console Output:</strong></p>
@@ -194,15 +199,21 @@ have end times before the user given time.  An example usage of this function is
 <span class="go">Segment: segment_name=3, start=4, end=5, num_logs=7, generate_field_name=None, generate_matched_values=None, segment_type=Segment_Type.DEADSPACE</span>
 <span class="go">]</span>
 
-<span class="go">Filtered Segments Object:</span>
+<span class="go">Filtered Segments Object (Before):</span>
 <span class="go">Segments: [</span>
 <span class="go">Segment: segment_name=0, start=1, end=2, num_logs=3, generate_field_name=None, generate_matched_values=None, segment_type=Segment_Type.FIXED_TIME</span>
 <span class="go">Segment: segment_name=1, start=2, end=3, num_logs=0, generate_field_name=None, generate_matched_values=None, segment_type=Segment_Type.CREATE</span>
 <span class="go">]</span>
+
+<span class="go">Filtered Segments Object (After):</span>
+<span class="go">Segments: [</span>
+<span class="go">Segment: segment_name=3, start=4, end=5, num_logs=7, generate_field_name=None, generate_matched_values=None, segment_type=Segment_Type.DEADSPACE</span>
+<span class="go">]</span>
 </pre></div>
 </div>
-<p>The above output shows that the <code class="docutils literal notranslate"><span class="pre">get_segments_before</span></code> function filtered out any <code class="docutils literal notranslate"><span class="pre">Segment</span></code> object that had an end time
-after or including 4.</p>
+<p>The above output shows that the <code class="docutils literal notranslate"><span class="pre">get_segments_before</span></code> function filtered out any <code class="docutils literal notranslate"><span class="pre">Segment</span></code> that had an end time
+after or including 4 and that the <code class="docutils literal notranslate"><span class="pre">get_segments_after</span></code> function filtered out any <code class="docutils literal notranslate"><span class="pre">Segment</span></code> with a start time less than
+or equal to 3.</p>
 </section>
 <section id="filtering-by-segment-type">
 <h3>Filtering by Segment Type<a class="headerlink" href="#filtering-by-segment-type" title="Permalink to this headline"></a></h3>
