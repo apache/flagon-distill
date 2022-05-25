@@ -1,0 +1,37 @@
+html {
+  background-color: black;
+
+}
+
+h1 {
+  color: white;
+}
+h5 {
+  color:white;
+}
+
+body {
+  
+  background-color:black;
+  background-position: fixed;
+}
+.url {
+  position: absolute;
+
+}
+.nav-pills .nav-link.active {
+  color: #fff;
+  background-color: rgb(0, 204, 255);
+}
+.style{
+  border-right: 10px;
+}
+.offcanvas {
+	background-color:rgb(22, 20, 20);
+  color: black;
+
+}
+
+.Button {
+  color: blue;
+}
