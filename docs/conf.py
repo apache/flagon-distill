@@ -1,7 +1,7 @@
 # -- Project information -----------------------------------------------------
 project = 'Apache Flagon Distill'
 copyright = '2022, UMD ARLIS'
-author = 'NAMES TO BE ADDED' #add names here
+author = 'Joshua Poore, Amir Ghaemi, Alex Veerasammy, Grant Tamrakar' #add names here
 
 
 # -- General configuration ---------------------------------------------------
