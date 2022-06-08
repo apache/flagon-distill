@@ -26,6 +26,8 @@
 Apache Flagon Distill
 =======================
 
-NOTE: This project is under development--more soon
+This project is under transition to the Apache Software Foundation.
+
+Please see our `readthedocs.org pages <https://incubator-flagon-distill.readthedocs.io/en/distill_toolkit_refactor/>`_ for documentation.
 
 A contribution guide has been provided `here <http://flagon.incubator.apache.org/docs/contributing/>`_.
