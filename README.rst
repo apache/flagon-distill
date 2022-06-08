@@ -22,8 +22,8 @@
 .. image:: https://readthedocs.org/projects/incubator-flagon-distill/badge/?version=distill_toolkit_refactor
 	:target: https://incubator-flagon-distill.readthedocs.io/en/distill_toolkit_refactor/?badge=stable
 	:alt: Documentation Status
-   
-Distill
+
+Apache Flagon Distill
 =======================
 
 NOTE: This project is under development--more soon
