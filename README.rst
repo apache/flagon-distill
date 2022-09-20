@@ -1,6 +1,9 @@
 .. ..
 
-	<!--- Licensed to the Apache Software Foundation (ASF) under one or more
+	<!---
+    Copyright 2022 The Applied Research Laboratory for Intelligence and Security (ARLIS)
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
 	contributor license agreements.  See the NOTICE file distributed with
 	this work for additional information regarding copyright ownership.
 	The ASF licenses this file to You under the Apache License, Version 2.0
@@ -16,15 +19,15 @@
 	limitations under the License. 
 	--->
 
+.. image:: https://readthedocs.org/projects/incubator-flagon-distill/badge/?version=distill_toolkit_refactor
+	:target: https://incubator-flagon-distill.readthedocs.io/en/distill_toolkit_refactor/?badge=stable
+	:alt: Documentation Status
+
 Apache Flagon Distill
 =======================
 
-NOTE: This project is not currently maintained and will be refactored. If you are interested in Distill, join the discussion on our dev list: dev-subscribe@flagon.incubator.apache.org.
+This project is under transition to the Apache Software Foundation.
 
-Distill is part of the `Apache Flagon <http://flagon.incubator.apache.org/>`_ project.
-It comprises an analytical engine for `UserALE <http://flagon.incubator.apache.org/userale/>`_
-to interact with user activity logs and apply basic analytical operations to the data.
-
-Install instructions can be found `here <http://flagon.incubator.apache.org/docs/distill/>`_.
+Please see our `readthedocs.org pages <https://incubator-flagon-distill.readthedocs.io/en/distill_toolkit_refactor/>`_ for documentation.
 
 A contribution guide has been provided `here <http://flagon.incubator.apache.org/docs/contributing/>`_.

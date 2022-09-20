@@ -1,6 +1,9 @@
 .. ..
 
-    <!--- Licensed to the Apache Software Foundation (ASF) under one or more
+    <!---
+    Copyright 2022 The Applied Research Laboratory for Intelligence and Security (ARLIS)
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
     contributor license agreements.  See the NOTICE file distributed with
     this work for additional information regarding copyright ownership.
     The ASF licenses this file to You under the Apache License, Version 2.0
@@ -20,6 +23,7 @@
 
 Contributing to Apache SensSoft
 -------------------------------
+##TO DO: Update for WIP-Package
 
 Thank you for contributing to the Distill project!
 

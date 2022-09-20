@@ -1,6 +1,9 @@
 .. ..
 
-	<!--- Licensed to the Apache Software Foundation (ASF) under one or more
+	<!---
+    Copyright 2022 The Applied Research Laboratory for Intelligence and Security (ARLIS)
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
 	contributor license agreements.  See the NOTICE file distributed with
 	this work for additional information regarding copyright ownership.
 	The ASF licenses this file to You under the Apache License, Version 2.0
@@ -18,17 +21,25 @@
 
 .. _authors:
 
-Apache Distill is written and maintained by Draper and various contributors:
+Apache Distill is written and maintained by various contributors:
 
-Development Lead
-````````````````
+Development Leads:
+``````````````````
+
+- Joshua Poore <jpoore@apache.org>
+- Kelsey Rassmann
+
+Contributors:
+`````````````
+- Grant Tamrakar
+- Alex Veerasammy
+- Amir Ghaemi
+
+Inspired by Previous Contributors:
+``````````````````````````````````
 
 - Michelle Beard <msbeard@apache.org>
-
-Additional Staff
-````````````````
-
 - Laura Mariano <lmariano@apache.org>
-- Dr. Joshua Poore <jpoore@apache.org>
+- Ryan Brill
 - Clay Gimenez <cgimenez@dapache.org>
 - Arthi Vezhavendan <avezhavendan@apache.org>

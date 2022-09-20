@@ -1,3 +1,6 @@
+#
+# Copyright 2022 The Applied Research Laboratory for Intelligence and Security (ARLIS)
+#
 # Licensed to the Apache Software Foundation (ASF) under one or more
 # contributor license agreements.  See the NOTICE file distributed with
 # this work for additional information regarding copyright ownership.
@@ -13,13 +16,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+##TODO Update for WIP-PACKAGE
+
 import setuptools
 import io
 import os
 import sys
 
 if sys.version_info[:2] < (2, 7):
-    m = "Python 2.7 or later is required for Distill (%d.%d detected)."
+    m = "Python 3.8 or later is required for Distill (%d.%d detected)."
     raise ImportError(m % sys.version_info[:2])
 
 if sys.argv[-1] == 'setup.py':
@@ -27,6 +32,9 @@ if sys.argv[-1] == 'setup.py':
     print("To run tests, run 'python setup.py test'\n")
     print("To build docs, run 'python setup.py docs'\n")
     print("To clean, run 'python setup.py clean'\n")
+
+with open("README.rst", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
 
 
 class CleanCommand(setuptools.Command):
@@ -86,22 +94,22 @@ setup_requires = [
 ]
 
 install_requires = [
-    'elasticsearch-dsl >= 5.0.0, < 6.0.0',
-    # 'pandas >= 0.20.2',
-    'Flask >= 0.12.2',
-    'celery >= 4.0.2',
+    # 'elasticsearch-dsl >= 5.0.0, < 6.0.0',
+    'pandas ~= 1.2.4',
+    'networkx ~= 2.5',
+    'plotly ~= 5.5.0',
+    # 'Flask >= 0.12.2',
+    # 'celery >= 4.0.2',
 ]
 
 tests_require = [
-    'pytest >= 3.0.0',
-    'pytest-pylint',
-    'pytest-html',
+    'pytest ~= 6.2.3',
     'pytest-cov',
 ]
 
 docs_require = [
-    'Sphinx >= 1.5.2',
-    'sphinx-rtd-theme >= 0.1.9',
+    'Sphinx ~= 1.6.3',
+    'sphinx-rtd-theme ~= 0.2.4',
 ]
 
 extras_require = {
@@ -128,16 +136,17 @@ classifiers = [
 ]
 
 setuptools.setup(
-    name="Distill",
+    name="Distill-Test",
     version=get_version(),
+    #version="0.1.8",
     url="http://senssoft.incubator.apache.org",
     license="Apache Software License 2.0",
-    author="Michelle Beard",
-    author_email="mbeard@apache.org",
-    description="An analytical framework for UserALE and TAP.",
-    long_description=__doc__,
+    author="Kelsey",
+    #author_email="",
+    description="A framework for the processing and analysis of UserALE logs.",
+    long_description=long_description,
     classifiers=classifiers,
-    keywords="stout userale tap distill",
+    keywords="userale distill",
     packages=setuptools.find_packages(exclude=['examples', 'tests']),
     include_package_data=True,
     zip_safe=False,
