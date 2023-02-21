@@ -498,7 +498,10 @@ def generate_collapsing_window_segments(target_dict, field_name, field_values_of
     segment_started = False
 
     for i in range(len(key_list)):
-        if field_name in target_dict[key_list[i]] and any(item in target_dict[key_list[i]][field_name] for item in field_values_of_interest):
+        field_values = target_dict[key_list[i]][field_name]
+        if not isinstance(field_values, (list, tuple, set)):
+            field_values = [field_values]
+        if field_name in target_dict[key_list[i]] and len(set(field_values_of_interest) & set(field_values)) > 0:
             if not segment_started:
                 # Start a new Segment
                 start_end = [target_dict[key_list[i]]['clientTime'], None]
