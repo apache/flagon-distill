@@ -30,8 +30,14 @@ import matplotlib.animation as animation
 import numpy as np
 import matplotlib.pyplot as plt
 
-
+# Setup the sorted dictionary
 def setup(file, date_type, filter_func=None):
+    """
+    :param file: Location to the json file
+    :param date_type: datetime or integer 
+    :return: A sorted dictionary (based on clientTime)
+    """
+    
     with open(file) as text_file:
         text = text_file.read()
     
@@ -77,3 +83,6 @@ def click_rate(file):
     totalTime = (times[len(times)-1] - times[0]).total_seconds()
     clickrate = round((clicks / totalTime),2)
     return(clickrate, totalTime, clicks)
+
+
+

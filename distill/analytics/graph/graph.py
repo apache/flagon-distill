@@ -19,6 +19,82 @@
 import collections
 import networkx as nx
 import plotly.graph_objects as go
+from datetime import datetime, timedelta
+import json
+import pandas as pd
+import plotly.express as px
+import re
+from PIL import Image
+import matplotlib.animation as animation
+import numpy as np
+import matplotlib.pyplot as plt
+import os
+
+def get_partition(log, partition_elements):
+    """
+    Creates a partition of logs
+    :param log: Log file
+    :param partition_elements: Dictionary of elements mapped to colors
+    :return: Partition
+    """   
+    partition = list(set(log['path']) & set(partition_elements))
+    if len(partition) == 1:
+        return partition[0]
+    if len(partition) == 0:
+        return "Other"
+    return "Error with partitioning"
+
+def get_color_graph(log_dict, color_dict, partition_func):
+    """
+    Creates a colored NetworkX Directed Graph Object (G) from a dictionary of logs
+    :param log_dict: Dictionary of logs
+    :param color_dict: Dictionary of elements:colors (mapping colors to nodes)
+    :param partition_func: creates a partition of logs
+    :return: A NetworkX graph object with the colors for each node
+    """    
+
+    targets = []
+    partition_dict = {}
+    label_dict = {}
+    for log in log_dict.values():
+        targets.append(''.join(log['path']))
+        partition_dict[targets[-1]] = partition_func(log, color_dict.keys())
+        label_dict[targets[-1]] = log['target']
+        
+    edges = list(nx.utils.pairwise(targets))
+
+    graph = nx.DiGraph((x, y, {'capacity': v}) for (x, y), v in collections.Counter(edges).items())
+    nx.set_node_attributes(graph, partition_dict, "partition")
+    nx.set_node_attributes(graph, label_dict, "label")
+    colors = [color_dict[p] for p in nx.get_node_attributes(graph, "partition").values()]
+    return (graph, colors)
+
+
+def show_color_sankey(graph, color_dict):
+    """
+    Creates a colored Sankey Graph
+    :param graph: The graph created from get_color_graph
+    :param color_dict: Dictionary of element:colors (mapping colors to nodes)
+    :return: A Sankey graph
+    """   
+    labels = []
+    colors = []
+    nodes = []
+    edges = list(graph.edges(data=True))
+    for node in graph.nodes(data=True):
+        nodes.append(node[0])
+        labels.append(node[1]["label"])
+        colors.append(color_dict[node[1]["partition"]])
+
+    sources = [nodes.index(edge[0]) for edge in edges]
+    targets = [nodes.index(edge[1]) for edge in edges]
+    values = [edge[2]['capacity'] for edge in edges]
+
+    go.Figure(data=[go.Sankey(
+            textfont=dict(color="rgba(0,0,0,0)"),
+            node=dict(label=labels, color=colors),
+            link=dict(source=sources, target=targets, value=values))]).show()
+
 
 def createDiGraph(nodes, edges, *, drop_recursions: bool=False, node_labels=False):
     """
@@ -175,7 +251,9 @@ def funnel(edges, targets, node_labels=False, *, infer=True):
     img_resized = img.resize((new_width, new_height), Image.ANTIALIAS)
 
     fig, ax = plt.subplots()
+    # Set color and size for mouseover events
     scat_m = ax.scatter(x_m, y_m, c='g', s = 3)
+    # Set color and size for click events
     scat_c = ax.scatter(x_c, y_c, c='r', s = 10)
     ax.set_xlabel('Screen Width ({})'.format(x_range))
     ax.set_ylabel('Screen Height ({})'.format(y_range))
