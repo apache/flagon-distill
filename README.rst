@@ -1,8 +1,6 @@
 .. ..
 
 	<!---
-    Copyright 2022 The Applied Research Laboratory for Intelligence and Security (ARLIS)
-
     Licensed to the Apache Software Foundation (ASF) under one or more
 	contributor license agreements.  See the NOTICE file distributed with
 	this work for additional information regarding copyright ownership.
@@ -26,7 +24,7 @@
 Apache Flagon Distill
 =======================
 
-This project is under transition to the Apache Software Foundation.
+This project is a work in progress, prior to an official Apache Software Foundation release. Check back soon for important updates.
 
 Please see our `readthedocs.org pages <https://incubator-flagon-distill.readthedocs.io/en/distill_toolkit_refactor/>`_ for documentation.
 
