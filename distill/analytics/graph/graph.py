@@ -188,7 +188,7 @@ def funnel(edges, targets, node_labels=False, *, infer=True):
     # Return a funnel representing the flow throughout the constructed path
     return go.Figure(go.Funnel(y=targets, x=counts))
 
-    def display_segments(segments, log_dict, get_partition, name_dict):
+def display_segments(segments, log_dict, get_partition, name_dict):
     """
     Displays a Plotly timeline of Segment objects.
 
@@ -209,66 +209,3 @@ def funnel(edges, targets, node_labels=False, *, infer=True):
     fig = px.timeline(segment_metadata, x_start="Start Time", x_end="End Time", y="Partition", color="Number of Clicks")
     fig.update_yaxes(autorange="reversed")
     return fig
-
-
-    def click_plot_ani(sorted_dict, img_location, gif_save_name = None):
-    """
-    Displays a heatmap, overlaying clicks and mouseover events on top of an image
-
-    :param sorted_dict: ADictionary of sorted logs
-    :param img_location: location of the snapshot image
-    :param gif_save_name: the name to save the GIF as
-    """
-        
-    xy_values_clicks = []
-    xy_values_mouseover = []
-    res_values = []
-    
-    for key, value in sorted_dict.items():
-        if "location" in value:
-            if "x" in value["location"] and "y" in value["location"]:
-                if value['type'] == 'click':
-                    xy_values_clicks.append((value["location"]["x"], value["location"]["y"]))
-                if value['type'] == 'mouseover':
-                    xy_values_mouseover.append((value["location"]["x"], value["location"]["y"]))
-            if "width" in value["scrnRes"] and "height" in value["scrnRes"]:
-                if (value["scrnRes"]["width"], value["scrnRes"]["height"]) not in res_values:
-                    res_values.append((value["scrnRes"]["width"], value["scrnRes"]["height"]))
-    
-    x_c = [x[0] for x in xy_values_clicks]
-    y_c = [y[1] for y in xy_values_clicks]
-    x_m = [x[0] for x in xy_values_mouseover]
-    y_m = [y[1] for y in xy_values_mouseover]
-    x_range, y_range = res_values[0]
-    
-    # Load the image
-    img = Image.open(img_location)
-
-    # Define the new size
-    new_width, new_height = x_range, y_range
-
-    # Resize the image
-    img_resized = img.resize((new_width, new_height), Image.ANTIALIAS)
-
-    fig, ax = plt.subplots()
-    # Set color and size for mouseover events
-    scat_m = ax.scatter(x_m, y_m, c='g', s = 3)
-    # Set color and size for click events
-    scat_c = ax.scatter(x_c, y_c, c='r', s = 10)
-    ax.set_xlabel('Screen Width ({})'.format(x_range))
-    ax.set_ylabel('Screen Height ({})'.format(y_range))
-    ax.imshow(img_resized)
-    
-    
-    def update(frame, x_m, y_m):
-        plt.clf()
-        plt.scatter(x_m[:frame], y_m[:frame], c='g', s=3)
-        plt.scatter(x_c, y_c, c='r', s=10)
-        plt.xlabel('Screen Width ({})'.format(x_range))
-        plt.ylabel('Screen Height ({})'.format(y_range))
-        plt.title(gif_save_name)
-        plt.imshow(img_resized)
-
-    ani = animation.FuncAnimation(plt.gcf(), update, frames=len(x_m), fargs=(x_m, y_m), repeat=False)
-    ani.save(gif_save_name+".gif", writer='imagemagick')
-    plt.show(ani)
