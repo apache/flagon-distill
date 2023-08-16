@@ -17,6 +17,9 @@
 .DS_Store
 .idea
 
+# Depedencies
+.venv
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
