@@ -3,7 +3,7 @@ name = "incubator-flagon-distill"
 version = "0.1.0"
 description = "Apache Distill is an analytics framework for handling and analyzing UserALE data. Distill allows you to focus on the data you want and model it. Distill empowers you to learn more from your data than any commercial service; use Distill's analytic libraries to generate statistics on how users interact with different elements of your application and also understand how users interact with your applications. Distill specializes in models of sequence and workflow so that you can understand how users experiment with your application and whether they interact with your application the way you expected. Distill is written in Python and built for scalable growth and customization. "
 authors = []
-license = "Apache License"
+license = "Apache-2.0"
 readme = "README.md"
 packages = [{ include = "incubator_flagon_distill" }]
 
@@ -58,3 +58,27 @@ omit = ["tests/*", "Dashboard/*", "docs/*", "examples/*"]
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.pytest.ini_options]
+# --strict-markers will raise errors on unknown marks.
+# https://docs.pytest.org/en/7.1.x/how-to/mark.html#raising-errors-on-unknown-marks
+#
+# https://docs.pytest.org/en/7.1.x/reference/reference.html
+# --strict-config       any warnings encountered while parsing the `pytest`
+#                       section of the configuration file raise errors.
+#
+# https://github.com/tophat/syrupy
+# --snapshot-warn-unused    Prints a warning on unused snapshots rather than fail the test suite.
+addopts = "-s --strict-markers --ignore=build --ignore=dist --ignore=docs --junitxml=test-report.xml"
+norecursedirs = "docs docker example build *.eggs *env* .git"
+testpaths = "tests distill"
+markers = [
+    "unit: Unit tests are fast and only test a single module.",
+    "pylint: Run linter",
+    "integration: Integration tests integrate several modules or integrate with the OS.",
+    "interactive: Interactive tests require interaction with the user to complete.",
+    "requires_user_action: Test cannot run without user interaction.",
+    "requires_user_validation: Test cannot validate without user interaction, but can run for sanity.",
+    "only_interactive: This test can only be run in interactive mode.",
+]

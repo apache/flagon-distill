@@ -16,14 +16,17 @@
 
 # @TODO add header with description of file
 
-# Util Tests
 import json
-import datetime
+import os
+
+# Util Tests
 import distill
+from tests.data_config import DATA_DIR
+
 
 def test_UUID_with_type():
     # Load in file and convert to raw data
-    file = "./data/sample_data.json"
+    file = os.path.join(DATA_DIR, "sample_data.json")
 
     with open(file) as json_file:
         raw_data = json.load(json_file)
@@ -41,10 +44,11 @@ def test_UUID_with_type():
     # Assert UID uniqueness
     assert len(data) == len(raw_data)
     assert len(data) == 19
+
 
 def test_UUID_without_type():
     # Load in file and convert to raw data
-    file = "./data/sample_data_without_type.json"
+    file = os.path.join(DATA_DIR, "sample_data_without_type.json")
 
     with open(file) as json_file:
         raw_data = json.load(json_file)
@@ -62,6 +66,3 @@ def test_UUID_without_type():
     # Assert UID uniqueness
     assert len(data) == len(raw_data)
     assert len(data) == 19
-
-
-    
