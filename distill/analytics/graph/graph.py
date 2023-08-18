@@ -15,6 +15,7 @@
 # limitations under the License.
 
 import collections
+
 import networkx as nx
 import plotly.graph_objects as go
 from datetime import datetime, timedelta
@@ -122,7 +123,8 @@ def sankey(edges, node_labels=False, *, drop_recursions=False):
     """
     Creates Sankey Graph from defined edge list and optional user-provided labels
     :param edges_segmentN: List of Tuples
-    :param node_labels: Optional Dictionary of Values; keys are originals, values are replacements
+    :param node_labels: Optional Dictionary of Values; keys are originals, values\
+        are replacements
     :return: A Sankey graph
     """
 

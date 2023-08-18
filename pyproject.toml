@@ -4,14 +4,40 @@ version = "0.1.0"
 description = "Apache Distill is an analytics framework for handling and analyzing UserALE data. Distill allows you to focus on the data you want and model it. Distill empowers you to learn more from your data than any commercial service; use Distill's analytic libraries to generate statistics on how users interact with different elements of your application and also understand how users interact with your applications. Distill specializes in models of sequence and workflow so that you can understand how users experiment with your application and whether they interact with your application the way you expected. Distill is written in Python and built for scalable growth and customization. "
 authors = []
 license = "Apache-2.0"
-readme = "README.md"
+readme = "README.rst"
+documentation = "http://flagon.incubator.apache.org/distill/"
 packages = [{ include = "incubator_flagon_distill" }]
+classifiers = [
+    'Development Status :: 4 - Beta',
+    'Intended Audience :: Developers',
+    'Intended Audience :: Science/Research',
+    'License :: OSI Approved :: Apache Software License',
+    'Natural Language :: English',
+    'Operating System :: OS Independent',
+    'Programming Language :: Python',
+    'Programming Language :: Python :: 3.8',
+    'Environment :: Web Environment',
+    'Framework :: Flask',
+    'Topic :: Internet :: Log Analysis',
+]
 
+
+#
+# Dependencies
+#
 [tool.poetry.dependencies]
 python = ">=3.8,<4.0"
 networkx = "^2.5"
 pandas = "^1.2.4"
 plotly = "^5.5.0"
+
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
+sphinx = "^4.5.0"
+sphinx-rtd-theme = "^0.5.2"
+
 
 [tool.poetry.group.test.dependencies]
 pytest = "^6.2.3"
@@ -30,6 +56,8 @@ black = "^23.1.0"
 [tool.poetry.group.typing.dependencies]
 mypy = "^0.991"
 types-pyyaml = "^6.0.12.2"
+pandas-stubs = "^2.0.3.230814"
+networkx-stubs = "^0.0.1"
 
 [tool.poetry.group.dev]
 optional = true
@@ -38,6 +66,15 @@ optional = true
 setuptools = "^67.6.1"
 pre-commit = "^3.3.3"
 
+#
+# Scripts
+#
+[tool.poetry.scripts]
+dev = "distill.server:dev_server"
+
+#
+# Linting & Formatting
+#
 [tool.ruff]
 select = [
     "E", # pycodestyle
@@ -46,19 +83,19 @@ select = [
 ]
 exclude = ["tests/data/", ".github/", "docs/", "examples/"]
 
-
 [tool.mypy]
-ignore_missing_imports = "True"
-disallow_untyped_defs = "True"
-exclude = ["tests/data/", ".github/", "docs/", "examples/"]
+ignore_missing_imports = "False"
+disallow_untyped_defs = "False"
+exclude = ["tests/data/", ".github/", "docs/", "examples/", "Dashboard"]
+[[tool.mypy.overrides]]
+module = "plotly."
+ignore_errors = true
 
+#
+# Testing
+#
 [tool.coverage.run]
 omit = ["tests/*", "Dashboard/*", "docs/*", "examples/*"]
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
-
 
 [tool.pytest.ini_options]
 # --strict-markers will raise errors on unknown marks.
@@ -82,3 +119,8 @@ markers = [
     "requires_user_validation: Test cannot validate without user interaction, but can run for sanity.",
     "only_interactive: This test can only be run in interactive mode.",
 ]
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
