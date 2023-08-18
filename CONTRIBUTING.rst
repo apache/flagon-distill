@@ -19,7 +19,7 @@
 
 .. _contributing:
 
-Contributing to Apache SensSoft
+Contributing to Apache Flagon Distill
 -------------------------------
 ##TO DO: Update for WIP-Package
 
