@@ -1,12 +1,12 @@
 [tool.poetry]
-name = "incubator-flagon-distill"
+name = "flagon-distill"
 version = "0.1.0"
 description = "Apache Distill is an analytics framework for handling and analyzing UserALE data. Distill allows you to focus on the data you want and model it. Distill empowers you to learn more from your data than any commercial service; use Distill's analytic libraries to generate statistics on how users interact with different elements of your application and also understand how users interact with your applications. Distill specializes in models of sequence and workflow so that you can understand how users experiment with your application and whether they interact with your application the way you expected. Distill is written in Python and built for scalable growth and customization. "
 authors = []
 license = "Apache-2.0"
 readme = "README.rst"
 documentation = "http://flagon.incubator.apache.org/distill/"
-packages = [{ include = "incubator_flagon_distill" }]
+packages = [{ include = "distill" }]
 classifiers = [
     'Development Status :: 4 - Beta',
     'Intended Audience :: Developers',
