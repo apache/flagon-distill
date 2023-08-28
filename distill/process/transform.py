@@ -22,7 +22,7 @@ def pairwiseStag(iterable, *, split: bool = False):
     Creates sequence of staggered, pairwise tuples for edge-lists:\
         "s -> (s0, s1), (s2, s3), (s4, s5), ..."
     :param iterable: a series or list
-    :param split: split=True returns pairwise elements in two
+    :param split: split=True returns pairwise elements in two\
         separate lists of same len (default=False)
     :return: returns list object(s)
     """
@@ -37,10 +37,10 @@ def pairwiseStag(iterable, *, split: bool = False):
 
 def pairwiseSeq(iterable, *, split: bool = False):
     """
-    Creates sequence of pairwise tuples that can be
+    Creates sequence of pairwise tuples that can be\
         used as edge-lists: "s -> (s0, s1), (s1, s2), (s2, s3), ..."
     :param iterable: a series or list
-    :param split=True returns pairwise elements in two separate
+    :param split=True returns pairwise elements in two separate\
         lists of same len (default=False)
     :return: returns list object(s)
     """
