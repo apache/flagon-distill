@@ -19,7 +19,8 @@ import datetime
 import distill
 from distill.segmentation.segmentation_error import SegmentationError
 
-class Segments():
+
+class Segments:
     """
     A list of Segment objects.
     """
@@ -32,7 +33,8 @@ class Segments():
         """
         Segments initialization function.
 
-        :param segments ([]): An optional List of Segment objects to be included in the Segments abstraction.
+        :param segments ([]): An optional List of Segment objects to be included\
+            in the Segments abstraction.
         """
         self.segments = segments
 
@@ -69,7 +71,10 @@ class Segments():
 
         if isinstance(key, str):
             if not value.segment_name == key:
-                raise SegmentationError("Segment name in subscript must match the segment name of the Segment object.")
+                raise SegmentationError(
+                    "Segment name in subscript must match the segment name of the"
+                    " Segment object."
+                )
 
             segment_names = [segment.get_segment_name() for segment in self.segments]
             if key in segment_names:
@@ -81,8 +86,10 @@ class Segments():
             if key < len(self.segments):
                 self.segments[key] = value
             else:
-                raise SegmentationError("Index provided goes beyond the length of the underlying list of Segment objects.")
-
+                raise SegmentationError(
+                    "Index provided goes beyond the length of the underlying list of"
+                    " Segment objects."
+                )
 
     def __str__(self):
         """
@@ -108,8 +115,8 @@ class Segments():
 
     def get_segment_name_dict(self):
         """
-        Returns a dictionary of segment_name to Segment objects based on the key parameter.  Note that segment names
-        must be unique.
+        Returns a dictionary of segment_name to Segment objects based on the\
+            key parameter.  Note that segment names must be unique.
         """
         result = {}
         for segment in self.segments:
@@ -125,51 +132,74 @@ class Segments():
 
     def get_num_logs(self, num_logs):
         """
-        Returns a new Segments object only including segments with the specified number of logs.
-        :param num_logs: The minimum number of logs (inclusive) necessary to be included in the new Segments object.
-        :return: A new Segments object that contains Segment objects with at least the specified number of logs.
+        Returns a new Segments object only including segments with the \
+            specified number of logs.
+        :param num_logs: The minimum number of logs (inclusive) necessary \
+            to be included in the new Segments object.
+        :return: A new Segments object that contains Segment objects with \
+            at least the specified number of logs.
         """
-        segments = [segment for segment in self.segments if segment.num_logs >= num_logs]
+        segments = [
+            segment for segment in self.segments if segment.num_logs >= num_logs
+        ]
         return Segments(segments)
 
     def get_segments_before(self, time):
         """
-        Returns a new Segments object only including segments that have end times before the indicated time.
+        Returns a new Segments object only including segments that have end times\
+            before the indicated time.
 
-        :param time: An integer or datetime object that represents the time for which Segment end times should be before.
-        :return: A new Segments object that contains Segment objects that have end times prior to the time indicated.
+        :param time: An integer or datetime object that represents the time for\
+            which Segment end times should be before.
+        :return: A new Segments object that contains Segment objects that have\
+            end times prior to the time indicated.
         """
         if not isinstance(time, int) and not isinstance(time, datetime.datetime):
-            raise TypeError('Time must be an integer or datetime object.')
+            raise TypeError("Time must be an integer or datetime object.")
 
-        segments = [segment for segment in self.segments if segment.start_end_val[1] < time]
+        segments = [
+            segment for segment in self.segments if segment.start_end_val[1] < time
+        ]
         return Segments(segments)
 
     def get_segments_after(self, time):
         """
-        Returns a new Segments object only including segments that have start times after the indicated time.
+        Returns a new Segments object only including segments that have start times\
+            after the indicated time.
 
-        :param time: An integer or datetime object that represents the time for which Segment start times should be after.
-        :return: A new Segments object that contains Segment objects that have start times after the time indicated.
+        :param time: An integer or datetime object that represents the time for which\
+            Segment start times should be after.
+        :return: A new Segments object that contains Segment objects that have start\
+            times after the time indicated.
         """
         if not isinstance(time, int) and not isinstance(time, datetime.datetime):
-            raise TypeError('Time must be an integer or datetime object.')
+            raise TypeError("Time must be an integer or datetime object.")
 
-        segments = [segment for segment in self.segments if segment.start_end_val[0] > time]
+        segments = [
+            segment for segment in self.segments if segment.start_end_val[0] > time
+        ]
 
         return Segments(segments)
 
     def get_segments_of_type(self, segment_type):
         """
-        Returns a new Segments object that includes Segment objects of a specified type.
+        Returns a new Segments object that includes Segment objects of a specified\
+            type.
 
         :param segment_type: The type of Segment objects that should be included.
-        :return: A new Segments object that contains Segment objects of the specified type.
+        :return: A new Segments object that contains Segment objects of the specified\
+            type.
         """
         if not isinstance(segment_type, distill.Segment_Type):
-            raise TypeError("Given segment_type: " + str(segment_type) + " is not a valid segment type.")
+            raise TypeError(
+                "Given segment_type: "
+                + str(segment_type)
+                + " is not a valid segment type."
+            )
 
-        segments = [segment for segment in self.segments if segment.segment_type == segment_type]
+        segments = [
+            segment for segment in self.segments if segment.segment_type == segment_type
+        ]
         return Segments(segments)
 
     #################################
@@ -187,11 +217,14 @@ class Segments():
 
     def append_segments(self, segments):
         """
-        Adds all Segment objects in the given Segments object to the current Segments object.
+        Adds all Segment objects in the given Segments object to the current\
+            Segments object.
         :param segments: A Segments object to append to the calling Segments object.
         """
         if not isinstance(segments, distill.Segments):
-            raise TypeError("Only Segments objects can be appended with append_segments.")
+            raise TypeError(
+                "Only Segments objects can be appended with append_segments."
+            )
 
         self.segments.extend(segments.segments)
 
@@ -206,5 +239,6 @@ class Segments():
             segment = self.segments[index]
             self.segments.remove(segment)
         else:
-            raise SegmentationError("No Segment objects with given segment name: " + segment_name)
-
+            raise SegmentationError(
+                "No Segment objects with given segment name: " + segment_name
+            )

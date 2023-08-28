@@ -17,7 +17,6 @@
 # @TODO add header with description of file
 
 import datetime
-import json
 import os
 
 import pandas as pd
@@ -50,16 +49,17 @@ def test_segment_string():
 
     assert (
         str(segment)
-        == "Segment: segment_name=segment_name, start=1, end=2, num_logs=0, "
-        "generate_field_name=None, generate_matched_values=None, segment_type=Segment_Type.CREATE"
+        == "Segment: segment_name=segment_name, start=1, end=2, num_logs=0,"
+        " generate_field_name=None, generate_matched_values=None,"
+        " segment_type=Segment_Type.CREATE"
     )
 
     segment.test = "test_attribute"
     assert (
         str(segment)
-        == "Segment: segment_name=segment_name, start=1, end=2, num_logs=0, "
-        "generate_field_name=None, generate_matched_values=None, segment_type=Segment_Type.CREATE,"
-        " test=test_attribute"
+        == "Segment: segment_name=segment_name, start=1, end=2, num_logs=0,"
+        " generate_field_name=None, generate_matched_values=None,"
+        " segment_type=Segment_Type.CREATE, test=test_attribute"
     )
 
 
@@ -241,7 +241,6 @@ def test_create_segment_error_1():
 def test_create_segment_error_2():
     with pytest.raises(TypeError):
         data = testing_utils.setup(os.path.join(DATA_DIR, "sample_data.json"), "string")
-        sorted_data = data[0]
         sorted_dict = data[1]
 
         # Create Test Segment Tuples
@@ -368,7 +367,8 @@ def test_write_segment_error_1():
         )
         segment_names = ["test_segment_error"]
 
-        result = distill.write_segment(sorted_dict, segment_names, start_end_vals)
+        # Should there be some assertions?
+        distill.write_segment(sorted_dict, segment_names, start_end_vals)
 
 
 def test_write_segment_error_2():
@@ -387,7 +387,8 @@ def test_write_segment_error_2():
         )
         segment_names = ["test_segment_error"]
 
-        result = distill.write_segment(sorted_dict, segment_names, start_end_vals)
+        # Should there be some assertions here?
+        distill.write_segment(sorted_dict, segment_names, start_end_vals)
 
 
 ###########################
@@ -768,10 +769,10 @@ def test_deadspace_detection_error2():
         )
         sorted_dict = data[1]
 
-        sorted_dict["session_16236918905391623691891459rawscroll"][
-            "clientTime"
-        ] = testing_utils.to_datetime(
-            sorted_dict["session_16236918905391623691891459rawscroll"]["clientTime"]
+        sorted_dict["session_16236918905391623691891459rawscroll"]["clientTime"] = (
+            testing_utils.to_datetime(
+                sorted_dict["session_16236918905391623691891459rawscroll"]["clientTime"]
+            )
         )
 
         distill.detect_deadspace(sorted_dict, 5, 1, 2)
@@ -904,7 +905,9 @@ def test_fixed_time_segments_error():
 
 def test_generate_collapsing_windows_integer():
     data = testing_utils.setup(os.path.join(DATA_DIR, "sample_data.json"), "integer")
+    print(data)
     sorted_dict = data[1]
+    print(sorted_dict)
 
     result_no_label = distill.generate_collapsing_window_segments(
         sorted_dict, "path", ["button#test_button"]
@@ -1426,11 +1429,11 @@ def test_export_segments():
     assert len(lines) == 4
     assert (
         lines[0]
-        == "Segment Name,Start Time,End Time,Number of Logs,Generate Field Name,Generate Matched Values,"
-        "Segment Type\n"
+        == "Segment Name,Start Time,End Time,Number of Logs,Generate Field"
+        " Name,Generate Matched Values,Segment Type\n"
     )
-    assert lines[1] == "0,1623691890459,1623691994888,7,,," "Segment_Type.DEADSPACE\n"
-    assert lines[2] == "1,1623691991900,1623693994900,15,,," "Segment_Type.DEADSPACE\n"
-    assert lines[3] == "2,1623693994550,1623697997550,3,,," "Segment_Type.DEADSPACE\n"
+    assert lines[1] == "0,1623691890459,1623691994888,7,,,Segment_Type.DEADSPACE\n"
+    assert lines[2] == "1,1623691991900,1623693994900,15,,,Segment_Type.DEADSPACE\n"
+    assert lines[3] == "2,1623693994550,1623697997550,3,,,Segment_Type.DEADSPACE\n"
 
     os.remove("./test.csv")

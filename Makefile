@@ -22,6 +22,6 @@ lint:
 
 format:
 	@echo "Running formatting..."
-	poetry run black $(PYTHON_FILES)
+	poetry run black $(PYTHON_FILES) 
 	poetry run ruff --select I --fix $(PYTHON_FILES)
 	@echo "Done."

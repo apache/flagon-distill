@@ -83,6 +83,10 @@ select = [
 ]
 exclude = ["tests/data/", ".github/", "docs/", "examples/"]
 
+[tool.black]
+line-length = 88
+preview = true
+
 [tool.mypy]
 ignore_missing_imports = "False"
 disallow_untyped_defs = "False"
