@@ -13,51 +13,74 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+from datetime import datetime, timedelta
+import distill
+import json
+import networkx as nx
+import pandas as pd
+import plotly.express as px
+import re
+import collections
+import plotly.graph_objects as go
+import os
+from PIL import Image
+import matplotlib.animation as animation
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Setup the sorted dictionary
+def setup(file, date_type, filter_func=None):
+    """
+    :param file: Location to the json file
+    :param date_type: datetime or integer 
+    :return: A sorted dictionary (based on clientTime)
+    """
+    
+    with open(file) as text_file:
+        text = text_file.read()
+    
+    # Filter and parse JSON file
+    text = re.sub(r'\n\t,\n', "\n", text)
+    data = json.loads(text)
+    data = list(filter(lambda x: x and 'clientTime' in x, data))
+    data = list(filter(filter_func, data)) if filter_func else data
+    
+    # Convert clientTime to specified type
+    for log in data:
+        client_time = log['clientTime']
+        if date_type == "integer":
+            log['clientTime'] = distill.epoch_to_datetime(client_time)
+        elif date_type == "datetime":
+            log['clientTime'] = pd.to_datetime(client_time, unit='ms', origin='unix')
+    
+    # Index data on UUID
+    data = {distill.getUUID(log): log for log in data}
+
+    # Sort data based off clientTime, return dict
+    return dict(sorted(data.items(), key=lambda kv: kv[1]['clientTime']))
+
 
 # Session Click-Rate
-def session_clickrate_dict(data, session):
+def click_rate(file):
     """
-    Creates clickrate dictionary from user defined dataframe and session
-    :param data: Dataframe of logs imported from JSON (SampleLogs2Session)
-    :param session: String of session ID of interest
-    :return: A session clickrate dictionary
+    :param file: Location to the json file
+    :return: Click-rate (clicks/sec), total session time, and total number of clicks.
     """
 
-    # turn clientTime into indexable data-time object
-    new_dateTime = pd.to_datetime(df['clientTime'], unit='ms', origin='unix')
-    df['client_dateTime'] = (new_dateTime - pd.Timestamp('1970-01-01')) // pd.Timedelta('1ms')
-    df.set_index('client_dateTime', inplace=True)
-    df.sort_values('client_dateTime')
-    print('data indexed by time')
+    def filter_func(log):
+        return log and log['logType'] == 'raw'
+    
+    sorted_dict = setup(file, "datetime")
+    times = []
+    clicks = 0
+    for key, value in sorted_dict.items():
+        times.append((value["clientTime"]))
+        if value['type'] == 'click':
+            clicks = clicks + 1
+                         
+    totalTime = (times[len(times)-1] - times[0]).total_seconds()
+    clickrate = round((clicks / totalTime),2)
+    return(clickrate, totalTime, clicks)
 
-    if session != False:
-        # filter data by session
-        session_segment = (df.groupby(df['sessionID'])).get_group(session)
-        print('data filtered')
 
-    # segmentation
-    # build filter mask
-    # filter rows Events Of Interest (eoi)
-    # create list of tuplesthat bound start/stop of each segment
-    eoi = ['XMLHttpRequest.open', 'XMLHttpRequest.response']
-    segment_events = session_segment.loc[session_segment['type'].isin(eoi)]
-    segment_events = segment_events.sort_values('client_dateTime').index
-    segment_start_stop = pairwiseStag(segment_events)
-    print('segments defined')
 
-    cr_dict = {}
-    for i in segment_start_stop:
-        segnum = 'Segment' + str(segment_start_stop.index(i) + 1)
-        cr_dict[segnum] = {}
-        cr_dict[segnum]['Segment'] = str(segnum)
-        cr_dict[segnum]['Start_stop'] = i
-        cr_dict[segnum]['Duration_ms'] = i[1] - i[0]
-        dur_sec = ((i[1] - i[0]) / 1000)
-        cr_dict[segnum]['Duration_s'] = dur_sec
-
-        tempdf = session_segment.reset_index()
-        segmentClicks = len(tempdf.query('clientTime >= @i[0] & clientTime <= @i[1] & type == "click"').index)
-        cr_dict[segnum]['Clicks_c'] = segmentClicks
-        cr_dict[segnum]['Clickrate_cs'] = round(segmentClicks / dur_sec, 3)
-
-    return cr_dict
