@@ -582,7 +582,7 @@ def generate_collapsing_window_segments(
     segment_started = False
 
     for i in range(len(key_list)):
-        field_values = target_dict[key_list[i]][field_name]
+        field_values = target_dict[key_list[i]].get(field_name)
         if not isinstance(field_values, (list, tuple, set)):
             field_values = [field_values]
         if (
