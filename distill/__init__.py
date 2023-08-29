@@ -14,53 +14,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from distill.analytics.graph.graph import createDiGraph, funnel, sankey
+from distill.process.search import find_meta_values
+from distill.process.transform import pairwiseSeq, pairwiseStag
 from distill.segmentation.segment import (
     Segment,
     Segment_Type,
-    union,
-    intersection,
-    difference,
     create_segment,
-    write_segment,
-    generate_segments,
     detect_deadspace,
-    generate_fixed_time_segments,
-    generate_collapsing_window_segments,
+    difference,
     export_segments,
+    generate_collapsing_window_segments,
+    generate_fixed_time_segments,
+    generate_segments,
+    intersection,
+    union,
+    write_segment,
 )
-
-from distill.segmentation.segments import (
-    Segments,
-)
-
-from distill.segmentation.segmentation_error import (
-    SegmentationError,
-)
-
-from distill.utils.crud import (
-    epoch_to_datetime,
-    getUUID,
-)
-
-from distill.analytics.graph.graph import (
-    createDiGraph,
-    sankey,
-    funnel,
-)
-
-from distill.analytics.stat.stats import (
-    session_clickrate_dict,
-)
-
-from distill.process.search import (
-    find_meta_values,
-)
-
-from distill.process.transform import (
-    pairwiseStag,
-    pairwiseSeq,
-
-)
+from distill.segmentation.segmentation_error import SegmentationError
+from distill.segmentation.segments import Segments
+from distill.utils.crud import epoch_to_datetime, getUUID
 
 __all__ = [
     "Segment",
@@ -68,12 +41,12 @@ __all__ = [
     "Segments",
     "SegmentationError",
     "graph",
+    "createDiGraph",
     "sankey",
     "funnel",
     "find_meta_values",
     "pairwiseStag",
     "pairwiseSeq",
-    "session_clickrate_dict",
     "search",
     "transform",
     "union",

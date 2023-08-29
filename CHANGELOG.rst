@@ -25,6 +25,11 @@ Changelog
 0.1.0 (2022)
 ------------------
 
+0.0.6 (2023-08-18)
+------------------
+* Migrate package and build management to poetry
+* Remove deprecated setup code
+
 0.0.5 (2017-06-30)
 ------------------
 * Updated elasticsearch-dsl to 5.4.1

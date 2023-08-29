@@ -14,18 +14,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
 def find_meta_values(key, dict, *, unique: bool = True):
     """
     Uses List Comprehension to list all unique values for the given key in a dict,
     assuming nested dict of dicts with depth = 2, e.g., {k:{k:v, ...}, ...}
     :param key: a dict key to find values for
     :param dict: a nested dictionary of depth 2 (dict of dicts)
-    :param unique: (optional, default == True) if False returns all values for the given key
+    :param unique: (optional, default == True) if False returns all
+        values for the given key
     :return: a list object with values for given key
     """
     value_list = [sub[key] for sub in dict.values() if key in sub]
-    if unique == True:
+    if unique:
         value_set = set(value_list)
         return list(value_set)
-    if unique == False:
+    else:
         return value_list
