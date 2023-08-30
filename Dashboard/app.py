@@ -14,15 +14,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from matplotlib.colors import LightSource
 import dash
-from dash import dcc, html, Output, Input, State
-import dash_labs as dl
 import dash_bootstrap_components as dbc
-from pages import upload
+import dash_labs as dl
+from dash import Input, Output, State, html
 
 app = dash.Dash(
-    __name__, plugins=[dl.plugins.pages], suppress_callback_exceptions=True,external_stylesheets=[dbc.themes.BOOTSTRAP]
+    __name__,
+    plugins=[dl.plugins.pages],
+    suppress_callback_exceptions=True,
+    external_stylesheets=[dbc.themes.BOOTSTRAP],
 )
 navbar = dbc.NavbarSimple(
     children=[
@@ -50,30 +51,29 @@ offcanvas = html.Div(
         dbc.Offcanvas(
             dbc.ListGroup(
                 [
-                    #dbc.ListGroupItem(dcc.Link('Home',href ="/Home")),
-                    
-                    
+                    # dbc.ListGroupItem(dcc.Link('Home',href ="/Home")),
                     dbc.ListGroupItem(page["name"], href=page["path"])
                     for page in dash.page_registry.values()
                     if page["module"] != "pages.not_found_404"
-                    
                 ]
-          
             ),
             id="offcanvas",
             is_open=False,
         ),
-       
     ],
-    className="my-3"
+    className="my-3",
 )
 
-app.layout = html.Div([
-    #navbar,
-    dbc.Container([offcanvas, dl.plugins.page_container],
-    fluid=True,
-)])
- 
+app.layout = html.Div(
+    [
+        # navbar,
+        dbc.Container(
+            [offcanvas, dl.plugins.page_container],
+            fluid=True,
+        )
+    ]
+)
+
 
 @app.callback(
     Output("offcanvas", "is_open"),

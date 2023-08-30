@@ -17,6 +17,12 @@
 .DS_Store
 .idea
 
+# Depedencies
+.venv
+
+# VS code
+.vscode
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -42,6 +48,7 @@ htmlcov/
 .cache
 nosetests.xml
 coverage.xml
+test-report.xml
 *,cover
 .hypothesis/
 

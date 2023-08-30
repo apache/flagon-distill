@@ -15,7 +15,7 @@
 # limitations under the License.
 
 import pandas as pd
-from uuid import uuid4
+
 
 def epoch_to_datetime(epoch_string):
     """
@@ -24,8 +24,12 @@ def epoch_to_datetime(epoch_string):
     :return: int
     """
 
-    new_datetime = (pd.to_datetime(epoch_string, unit='ms', origin='unix') - pd.Timestamp('1970-01-01')) // pd.Timedelta('1ms')
+    new_datetime = (
+        pd.to_datetime(epoch_string, unit="ms", origin="unix")
+        - pd.Timestamp("1970-01-01")
+    ) // pd.Timedelta("1ms")
     return new_datetime
+
 
 def getUUID(log):
     """
@@ -33,9 +37,13 @@ def getUUID(log):
     :param log: Userale log in the form of a dictionary
     :return: A string representing a unique identifier for the log
     """
-    
-    if 'type' in log:
-        return str(log['sessionID']) + str(log['clientTime']) + str(log['logType']) + str(log['type'])
-    else:
-        return str(log['sessionID']) + str(log['clientTime']) + str(log['logType'])
 
+    if "type" in log:
+        return (
+            str(log["sessionID"])
+            + str(log["clientTime"])
+            + str(log["logType"])
+            + str(log["type"])
+        )
+    else:
+        return str(log["sessionID"]) + str(log["clientTime"]) + str(log["logType"])

@@ -15,34 +15,39 @@
 # limitations under the License.
 
 import itertools
-from collections import Counter, deque
+
 
 def pairwiseStag(iterable, *, split: bool = False):
-    '''
-    Creates sequence of staggered, pairwise tuples for edge-lists: "s -> (s0, s1), (s2, s3), (s4, s5), ..."
+    """
+    Creates sequence of staggered, pairwise tuples for edge-lists:\
+        "s -> (s0, s1), (s2, s3), (s4, s5), ..."
     :param iterable: a series or list
-    :param split: split=True returns pairwise elements in two separate lists of same len (default=False)
+    :param split: split=True returns pairwise elements in two\
+        separate lists of same len (default=False)
     :return: returns list object(s)
-    '''
+    """
     a = iter(iterable)
     pairs = zip(a, a)
-    if split == True:
+    if split:
         list1, list2 = zip(*pairs)
         return list1, list2
     else:
         return list(pairs)
 
+
 def pairwiseSeq(iterable, *, split: bool = False):
     """
-    Creates sequence of pairwise tuples that can be used as edge-lists: "s -> (s0, s1), (s1, s2), (s2, s3), ..."
+    Creates sequence of pairwise tuples that can be\
+        used as edge-lists: "s -> (s0, s1), (s1, s2), (s2, s3), ..."
     :param iterable: a series or list
-    :param split=True returns pairwise elements in two separate lists of same len (default=False)
+    :param split=True returns pairwise elements in two separate\
+        lists of same len (default=False)
     :return: returns list object(s)
     """
     a, b = itertools.tee(iterable, 2)
     next(b, None)
     pairs = zip(a, b)
-    if split == True:
+    if split:
         list1, list2 = zip(*pairs)
         return list1, list2
     else:

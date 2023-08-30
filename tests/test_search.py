@@ -14,13 +14,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
+
 import distill
-import testing_utils
+from tests import testing_utils
+from tests.data_config import DATA_DIR
+
 
 def test_find_meta_values():
-    data = testing_utils.setup("./data/sample_data.json", "integer")
+    data = testing_utils.setup(os.path.join(DATA_DIR, "sample_data.json"), "integer")
     sorted_dict = data[1]
-    clientTimes = distill.find_meta_values('clientTime', sorted_dict)
+    clientTimes = distill.find_meta_values("clientTime", sorted_dict)
     assert len(clientTimes) == 13
     assert 1623691890656 in clientTimes
     assert 1623691891459 in clientTimes
@@ -38,14 +42,14 @@ def test_find_meta_values():
 
 
 def test_find_meta_values_2():
-    data = testing_utils.setup("./data/sample_data.json", "integer")
+    data = testing_utils.setup(os.path.join(DATA_DIR, "sample_data.json"), "integer")
     sorted_dict = data[1]
-    client_times = distill.find_meta_values('clientTime', sorted_dict, unique=False)
+    client_times = distill.find_meta_values("clientTime", sorted_dict, unique=False)
     assert len(client_times) == 19
 
 
 def test_find_meta_values_3():
-    data = testing_utils.setup("./data/sample_data.json", "integer")
+    data = testing_utils.setup(os.path.join(DATA_DIR, "sample_data.json"), "integer")
     sorted_dict = data[1]
-    target_vals = distill.find_meta_values('target', sorted_dict, unique=False)
+    target_vals = distill.find_meta_values("target", sorted_dict, unique=False)
     assert len(target_vals) == 17

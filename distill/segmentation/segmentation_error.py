@@ -14,8 +14,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
 class SegmentationError(Exception):
     """
     Basic Segmentation Exception.
     """
+
     pass

@@ -63,4 +63,4 @@ of ``Segment`` objects is simple.  Below is some example code that shows how thi
     # Create list of start and end values
     start_end_vals = [segment.start_end_val for segment in segments]
 
-    written_segments = distill.write_segments(sorted_dict, segment_names, start_end_vals)
+    written_segments = distill.create_segments(sorted_dict, segment_names, start_end_vals)

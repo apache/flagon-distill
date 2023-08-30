@@ -14,13 +14,91 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import itertools
-import json
 import collections
+from datetime import timedelta
+
 import networkx as nx
+import plotly.express as px
 import plotly.graph_objects as go
 
-def createDiGraph(nodes, edges, *, drop_recursions: bool = False):
+
+def get_partition(log, partition_elements):
+    """
+    Creates a partition of logs
+    :param log: Log file
+    :param partition_elements: Dictionary of elements mapped to colors
+    :return: Partition
+    """
+    partition = list(set(log["path"]) & set(partition_elements))
+    if len(partition) == 1:
+        return partition[0]
+    if len(partition) == 0:
+        return "Other"
+    return "Error with partitioning"
+
+
+def get_color_graph(log_dict, color_dict, partition_func):
+    """
+    Creates a colored NetworkX Directed Graph Object (G) from a dictionary of logs
+    :param log_dict: Dictionary of logs
+    :param color_dict: Dictionary of elements:colors (mapping colors to nodes)
+    :param partition_func: creates a partition of logs
+    :return: A NetworkX graph object with the colors for each node
+    """
+
+    targets = []
+    partition_dict = {}
+    label_dict = {}
+    for log in log_dict.values():
+        targets.append("".join(log["path"]))
+        partition_dict[targets[-1]] = partition_func(log, color_dict.keys())
+        label_dict[targets[-1]] = log["target"]
+
+    edges = list(nx.utils.pairwise(targets))
+
+    graph = nx.DiGraph(
+        (x, y, {"capacity": v}) for (x, y), v in collections.Counter(edges).items()
+    )
+    nx.set_node_attributes(graph, partition_dict, "partition")
+    nx.set_node_attributes(graph, label_dict, "label")
+    colors = [
+        color_dict[p] for p in nx.get_node_attributes(graph, "partition").values()
+    ]
+    return (graph, colors)
+
+
+def show_color_sankey(graph, color_dict):
+    """
+    Creates a colored Sankey Graph
+    :param graph: The graph created from get_color_graph
+    :param color_dict: Dictionary of element:colors (mapping colors to nodes)
+    :return: A Sankey graph
+    """
+    labels = []
+    colors = []
+    nodes = []
+    edges = list(graph.edges(data=True))
+    for node in graph.nodes(data=True):
+        nodes.append(node[0])
+        labels.append(node[1]["label"])
+        colors.append(color_dict[node[1]["partition"]])
+
+    sources = [nodes.index(edge[0]) for edge in edges]
+    targets = [nodes.index(edge[1]) for edge in edges]
+    values = [edge[2]["capacity"] for edge in edges]
+
+    go.Figure(
+        data=[
+            go.Sankey(
+                textfont=dict(color="rgba(0,0,0,0)"),
+                node=dict(label=labels, color=colors),
+                link=dict(source=sources, target=targets, value=values),
+            )
+        ]
+    ).show()
+
+
+def createDiGraph(nodes, edges, *, drop_recursions: bool = False, node_labels=False):
     """
     Creates NetworkX Directed Graph Object (G) from defined node, edge list
     :param nodes: Series or List of Events, Elements
@@ -28,203 +106,159 @@ def createDiGraph(nodes, edges, *, drop_recursions: bool = False):
     :param drop_recursions: if True eliminates self:self pairs in edges
     :return: A NetworkX graph object
     """
-    G=nx.DiGraph()
-    G.add_nodes_from(nodes)
-    if drop_recursions==True:
-        edges_filtered = []
-        for row in edges:
-            if row[0] != row[1]:
-                edges_filtered.append(row)
-        G.add_edges_from(edges_filtered)
-        return G
-    else:
-        G.add_edges_from(edges)
-        return G
+
+    # Replace node names with the node_labels if it is given as an argument
+    if node_labels:
+        nodes = [
+            node if node not in node_labels else node_labels[node] for node in nodes
+        ]
+        for i in range(len(edges)):
+            edges[i] = tuple(
+                [
+                    node if node not in node_labels else node_labels[node]
+                    for node in edges[i]
+                ]
+            )
+
+    # Remove self-to-self recursions
+    if drop_recursions:
+        edges = list(filter(lambda row: row[0] != row[1], edges))
+
+    # Create a digraph with capacity attributes that
+    # represent the number of edges between nodes
+    graph = nx.DiGraph(
+        (x, y, {"capacity": v}) for (x, y), v in collections.Counter(edges).items()
+    )
+    graph.add_nodes_from(nodes)
+    return graph
 
 
-#    TODO complete function (args--input edge-list, labels)
-def sankey(edges_segmentN, node_labels=False):
+def sankey(edges, node_labels=False, *, drop_recursions=False):
     """
     Creates Sankey Graph from defined edge list and optional user-provided labels
     :param edges_segmentN: List of Tuples
-    :param node_labels: Optional Dictionary of Values; keys are originals, values are replacements
+    :param node_labels: Optional Dictionary of Values; keys are originals, values\
+        are replacements
     :return: A Sankey graph
     """
-    # Remove self-to-self recursions
-    edge_list_temp = []
-    for row in edges_segmentN:
-        if row[0] != row[1]:
-            edge_list_temp.append(row)
-    edge_list = edge_list_temp
 
-    # Create a counter to count how many elements are in the edge list
-    edge_list_counter = collections.Counter(edge_list)
+    # Convert raw edges to a weighted digraph
+    graph = createDiGraph(
+        list(), edges, node_labels=node_labels, drop_recursions=drop_recursions
+    )
+    nodes = list(graph.nodes())
+    edges = graph.edges(data=True)
 
-    # Extract source list, target list, and value list from the tuples
-    source_list = [i[0] for i in edge_list_counter.keys()]
-    target_list = [i[1] for i in edge_list_counter.keys()]
-    value_list = [i for i in edge_list_counter.values()]
+    # Format weighted edge data for the sankey function
+    sources = [nodes.index(edge[0]) for edge in edges]
+    targets = [nodes.index(edge[1]) for edge in edges]
+    values = [edge[2]["capacity"] for edge in edges]
 
-    # Extract the node names if node_labels does not exist as an argument
-    nodes = []
-    for row in edge_list:
-        for col in row:
-            if col not in nodes:
-                nodes.append(col)
-    # Replace node names with the give node_labels if it is given as an argument
-    if node_labels:
-        new_nodes = []
-        for node in nodes:
-            if node in node_labels:
-                new_nodes.append(node_labels[node])
-            else:
-                new_nodes.append(node)
-    # Sources are the nodes sending connections
-    sources = []
-    for i in source_list:
-        sources.append(nodes.index(i))
-    # Targets are the nodes receiving connections
-    targets = []
-    for i in target_list:
-        targets.append(nodes.index(i))
-    # Values are the weight of the connections
-    values = value_list
-
-    # If node labels is given as an argument, we replace nodes with node labels
-    # If not, we use the original node names
-    if node_labels:
-        fig = go.Figure(data=[go.Sankey(
-            node=dict(
-                label=[new_nodes[item].split("|")[0] for item in range(len(new_nodes))],
-            ),
-            link=dict(
-                source=sources,
-                target=targets,
-                value=values
-            ))])
-    else:
-        fig = go.Figure(data=[go.Sankey(
-            node=dict(
-                label=[nodes[item].split("|")[0] for item in range(len(nodes))],
-            ),
-            link=dict(
-                source=sources,
-                target=targets,
-                value=values
-            ))])
-
-    fig.show()
-
-    return fig
+    return go.Figure(
+        data=[
+            go.Sankey(
+                node=dict(label=nodes),
+                link=dict(source=sources, target=targets, value=values),
+            )
+        ]
+    )
 
 
-#   TODO complete function (args--input edge-list, labels)
-def funnel(edges_segmentN,
-           user_specification,
-           node_labels=False):
-
+def funnel(edges, targets, node_labels=False, *, infer=True):
     """
     Creates Funnel Graph from defined edge list and optional user-provided labels
-    :param edges_segmentN: List of Tuples
-    :param user_specification: String of Target of interest e.g. #document
-    :param node_labels: Optional Dictionary of key default values, value replacements
+    :param edges: List of Tuples
+    :param targets: String or list of strings representing \
+        elements of interest
+    :param node_labels: Optional Dictionary of key default \
+        values, value replacements
+    :param infer: Optional boolean, true = consider nondirect \
+        paths between targets and elements after the last target,\
+        false = only consider the provided elements
     :return: A Funnel graph
     """
 
-    ## Removing duplicates
+    # Convert raw edges to a weighted digraph
+    graph = createDiGraph(list(), edges, drop_recursions=True, node_labels=node_labels)
 
-    edge_list_temp = []
-    for row in edges_segmentN:
-        if row[0] != row[1]:
-            edge_list_temp.append(row)
-    edge_list = edge_list_temp
+    # Put raw strings into a list of one
+    if isinstance(targets, str):
+        targets = [targets]
 
-    ## Convert from list of 2s to list of 1s
+    target_edges = list()
+    if infer:
+        # Find the path through each provided target that maximizes flow
+        for i in range(len(targets) - 1):
+            path = max(
+                [
+                    path
+                    for path in nx.all_simple_paths(graph, targets[i], targets[i + 1])
+                ],
+                key=lambda path: nx.path_weight(graph, path, "capacity"),
+            )
+            target_edges.extend(nx.utils.pairwise(path))
 
-    edgelist_list = []
-    length = len(edge_list) - 1
-    for i in edge_list:
-        if edge_list.index(i) != length:
-            edgelist_list.append(i[0])
-        else:
-            edgelist_list.append(i[0])
-            edgelist_list.append(i[1])
+        # Extend the path constructed above as much as possible without creating cycles
+        dests = filter(lambda dest: dest not in targets, graph.nodes())
+        paths = [
+            path
+            for path in nx.all_simple_paths(graph, targets[len(targets) - 1], dests)
+        ]
+        targets = [edge[0] for edge in target_edges]
+        path = max(filter(lambda path: not (set(path) & set(targets)), paths), key=len)
+        target_edges.extend(nx.utils.pairwise(path))
+        targets.extend(path)
+    else:
+        # Otherwise construct a path literally
+        target_edges = nx.utils.pairwise(targets)
 
-    # Remove the None values
-
-    funnel_targets_temp = []
-    for item in edgelist_list:
-        if item != None:
-            funnel_targets_temp.append(item)
-    funnel_targets = funnel_targets_temp
-
-    ## Convert that list into a list of 3s
-    edge_list = []
-    for i in range(len(funnel_targets)):
-        if i == (len(funnel_targets) - 2):
-            break
-        else:
-            edge_list.append((funnel_targets[i], funnel_targets[i + 1], funnel_targets[i + 2]))
-
-    ## Convert the list of 3s to a counter
-
-    edge_list_counter = collections.Counter(edge_list)
-    first_rung = user_specification
-    new_edge_list = []
-    for i in edge_list:
-        if i[0] == user_specification:
-            new_edge_list.append((i[0], i[1], i[2]))
-
-    new_edge_list_counter = collections.Counter(new_edge_list)
-    new_edge_list_counter.most_common(1)
-
-    first_rung = new_edge_list_counter.most_common(1)[0][0][0]
-    second_rung = new_edge_list_counter.most_common(1)[0][0][1]
-    third_rung = new_edge_list_counter.most_common(1)[0][0][2]
-
-    counter1 = 0
-    counter2 = 0
-    counter3 = 0
-    for i in edge_list:
-        if i[0] == first_rung:
-            counter1 += 1
-            if i[1] == second_rung:
-                counter2 += 1
-                if i[2] == third_rung:
-                    counter3 += 1
-
-    # Numbers are how many times each target occured
-    # Edges are the targets
-    numbers = [counter1, counter2, counter3]
-    edges = [first_rung, second_rung, third_rung]
-
-    # If node labels was given as an argument, replaces the targets with the provided names
-    if node_labels:
-        new_edges = []
-        for edge in edges:
-            if edge in node_labels:
-                new_edges.append(node_labels[edge])
-            else:
-                new_edges.append(edge)
-        edges = new_edges
-
-
-    # Plotting labels from the list with the values from the dictionary
-    data = dict(
-        number=numbers,
-        edge=edges)
-
-    # Plotting the figure
-    fig = go.Figure(go.Funnel(
-        y=edges,
-        x=numbers,
-        textposition="inside",
-        textinfo="value+percent initial",
-        opacity=0.65, marker={"color": ["deepskyblue", "lightsalmon", "tan"],
-                              "line": {"width": [2]}},
-        connector={"line": {"color": "lime", "dash": "dot", "width": 5}})
+    # Get the total outflow of the starting node
+    counts = sum(
+        [
+            graph.get_edge_data(*edge)["capacity"]
+            for edge in graph.out_edges(target_edges[0][0])
+        ]
     )
 
-    fig.show()
+    # Get the flow at every other node in the path
+    counts = [counts] + [
+        graph.get_edge_data(*edge)["capacity"] for edge in target_edges
+    ]
+    counts = [min(counts[0:i]) for i in range(1, len(counts) + 1)]
 
+    # Return a funnel representing the flow throughout the constructed path
+    return go.Figure(go.Funnel(y=targets, x=counts))
+
+
+def display_segments(segments, log_dict, get_partition, name_dict):
+    """
+    Displays a Plotly timeline of Segment objects.
+
+    :param segments: A Segments object containing the Segment objects to display
+    :param log_dict: Dictionary of the logs
+    :param get_partition: function to create our partitions
+    :param name_dict: Dictionary of partitions, elements can be renamed in \
+        dictionary using "k:v"
+    """
+
+    segment_metadata = []
+    for segment in segments:
+        first_log = log_dict[segment.get_segment_uids()[0]]
+        segment_metadata.append(
+            {
+                "Start Time": segment.get_start_end_val()[0],
+                "End Time": segment.get_start_end_val()[1] + timedelta(seconds=0.5),
+                "Partition": name_dict[get_partition(first_log, name_dict.keys())],
+                "Number of Clicks": segment.get_num_logs(),
+            }
+        )
+
+    fig = px.timeline(
+        segment_metadata,
+        x_start="Start Time",
+        x_end="End Time",
+        y="Partition",
+        color="Number of Clicks",
+    )
+    fig.update_yaxes(autorange="reversed")
     return fig

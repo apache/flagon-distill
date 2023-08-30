@@ -16,20 +16,24 @@
 
 import distill
 
+
 def test_pairwiseStag_1():
     test_list = [1, 2, 3, 4]
     result = distill.pairwiseStag(test_list)
     assert result == [(1, 2), (3, 4)]
+
 
 def test_pairwiseStag_2():
     test_list = [1, 2, 3, 4]
     result = distill.pairwiseStag(test_list, split=True)
     assert result == ((1, 3), (2, 4))
 
+
 def test_pairwiseSeq_1():
     test_list = [1, 2, 3, 4]
     result = distill.pairwiseSeq(test_list)
     assert result == [(1, 2), (2, 3), (3, 4)]
+
 
 def test_pairwiseSeq_2():
     test_list = [1, 2, 3, 4]
