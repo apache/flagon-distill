@@ -1,16 +1,19 @@
 name: Upload Python Package to PyPI Test
 
 on:
-  push:
+  pull_request:
     branches:
       - dev
+    types: [closed]
+
 # Use the following for when we want to publish to the official PyPI from master
 #   push:
 #     tags:
 #       - "v*" # Will trigger for every tag, 'v*'
 
 jobs:
-  deploy:
+  publish-test-pypi:
+    if: github.event.pull_request.merged
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
