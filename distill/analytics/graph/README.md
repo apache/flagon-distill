@@ -122,5 +122,3 @@ funnel(edges, userspec, labels)
 
 **Output:**
 [![sankey.png](https://i.postimg.cc/rwrSrpJY/newplot-4.png)](https://postimg.cc/RWv6r42c)
-
-
