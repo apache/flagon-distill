@@ -16,9 +16,9 @@ setup_commitizen:
 	cz init
 	@echo "Done."
 
-
 commit:
 	@echo "Committing with commitizen..."
+	poetry run pre-commit run --all-files
 	poetry run cz commit
 	@echo "Done."
 
