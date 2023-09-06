@@ -905,9 +905,7 @@ def test_fixed_time_segments_error():
 
 def test_generate_collapsing_windows_integer():
     data = testing_utils.setup(os.path.join(DATA_DIR, "sample_data.json"), "integer")
-    print(data)
     sorted_dict = data[1]
-    print(sorted_dict)
 
     result_no_label = distill.generate_collapsing_window_segments(
         sorted_dict, "path", ["button#test_button"]

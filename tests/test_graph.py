@@ -23,7 +23,7 @@ def test_create_di_graph_1():
     nodes = ["A", "B", "C", "D"]
     edges = [("A", "C"), ("C", "D"), ("B", "A"), ("A", "A")]
     graph = distill.createDiGraph(nodes, edges)
-    assert type(graph) == nx.DiGraph
+    assert isinstance(graph, nx.DiGraph)
     assert graph.has_node("A")
     assert graph.has_node("B")
     assert graph.has_node("C")
@@ -39,7 +39,7 @@ def test_create_di_graph_2():
     nodes = ["A", "B", "C", "D"]
     edges = [("A", "C"), ("C", "D"), ("B", "A"), ("A", "A")]
     graph = distill.createDiGraph(nodes, edges, drop_recursions=True)
-    assert type(graph) == nx.DiGraph
+    assert isinstance(graph, nx.DiGraph)
     assert graph.has_node("A")
     assert graph.has_node("B")
     assert graph.has_node("C")
