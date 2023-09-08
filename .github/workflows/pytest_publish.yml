@@ -4,7 +4,7 @@ on:
   pull_request:
     branches:
       - dev
-    types: [closed]
+    # types: [closed]
 
 # Use the following for when we want to publish to the official PyPI from master
 #   push:
@@ -37,4 +37,7 @@ jobs:
         env:
           PYPI_USERNAME: __token__
           PYPI_PASSWORD: ${{ secrets.PYPI_TOKEN }}
-        run: make publish_pytest
+        run: |
+          poetry config repositories.testpypi https://test.pypi.org/legacy/
+          poetry config http-basic.testpypi $PYPI_USERNAME $PYPI_PASSWORD
+          make publish_pytest
