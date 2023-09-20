@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: Upload Python Package to PyPI Test
+name: Release Audit Tool
 
 on:
   push:
@@ -22,8 +22,7 @@ on:
       - "v*"
 
 jobs:
-  publish-test-pypi:
-    if: github.event.pull_request.merged
+  rat:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -43,11 +42,22 @@ jobs:
         run: |
           poetry --version
           poetry install
-      - name: Build and publish
-        env:
-          PYPI_USERNAME: __token__
-          PYPI_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+      - name: Build
+        run: poetry build
+      - name: Checkout RAT
+        uses: actions/checkout@v3
+        with:
+          repository: 'apache/creadur-rat'
+          ref: 'apache-rat-project-0.15'
+          path: 'rat'
+      - name: Setup Maven
+        uses: s4u/setup-maven-action@v1.9.0
+        with:
+          java-version: 17
+          checkout-path: maven
+      - name: Install RAT
         run: |
-          poetry config repositories.testpypi https://test.pypi.org/legacy/
-          poetry config http-basic.testpypi $PYPI_USERNAME $PYPI_PASSWORD
-          make publish_pytest
+          cd rat/apache-rat
+          mvn clean install
+      - name: Run RAT
+        run: java -jar rat/apache-rat/target/apache-rat-0.15.jar -d dist/flagon_distill-*.tar.gz
