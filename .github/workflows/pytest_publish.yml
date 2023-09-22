@@ -17,13 +17,13 @@
 name: Upload Python Package to PyPI Test
 
 on:
-  push:
-    tags:
-      - "v*"
+  workflow_run:
+    workflows: ["Bump Version"]
+    types:
+      - completed
 
 jobs:
   publish-test-pypi:
-    if: github.event.pull_request.merged
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

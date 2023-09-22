@@ -17,7 +17,12 @@
 name: Release Audit Tool
 
 on:
-  push:
+  workflow_run:
+    workflows: ["Test Suite"]
+    types:
+      - completed
+    branches:
+      - "master"
     tags:
       - "v*"
 
