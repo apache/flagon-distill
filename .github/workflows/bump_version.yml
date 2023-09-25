@@ -17,10 +17,6 @@
 name: Bump Version
 
 on:
-  #   workflow_run:
-  #     workflows: ["Release Audit Tool"]
-  #     types:
-  #       - completed
   pull_request:
     branches:
       - dev
