@@ -14,48 +14,55 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: Test Suite
+name: Release Audit Tool
 
 on:
-  pull_request:
+  workflow_run:
+    workflows: ["Test Suite"]
+    types:
+      - completed
     branches:
-      - dev
-      - master
-  push:
-    branches:
-      - dev
-      - master
+      - "master"
+    tags:
+      - "v*"
 
 jobs:
-  test:
+  rat:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        python-version: ["3.8", "3.9", "3.10", "3.11"]
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.python-version }}
-
-      - name: Install poetry
+          python-version: "3.x"
+      - name: Install Poetry
         uses: snok/install-poetry@v1
         with:
           version: latest
           virtualenvs-in-project: true
           virtualenvs-create: true
-
       - name: Install dependencies
         run: |
           poetry --version
           poetry install
-
-      - name: Run tests
-        run: make test
+      - name: Build
+        run: poetry build
+      - name: Checkout RAT
+        uses: actions/checkout@v3
+        with:
+          repository: 'apache/creadur-rat'
+          ref: 'apache-rat-project-0.15'
+          path: 'rat'
+      - name: Setup Maven
+        uses: s4u/setup-maven-action@v1.9.0
+        with:
+          java-version: 17
+          checkout-path: maven
+      - name: Install RAT
+        run: |
+          cd rat/apache-rat
+          mvn clean install
+      - name: Run RAT
+        run: java -jar rat/apache-rat/target/apache-rat-0.15.jar -d dist/flagon_distill-*.tar.gz
