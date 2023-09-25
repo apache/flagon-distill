@@ -20,4 +20,4 @@ This file is imported by ``Distill.__init__``,
 and parsed by ``setup.py``.
 """
 
-version = "v0.0.6"
+version = "v0.0.7"

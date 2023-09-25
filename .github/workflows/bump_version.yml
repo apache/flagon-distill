@@ -17,10 +17,13 @@
 name: Bump Version
 
 on:
-  workflow_run:
-    workflows: ["Release Audit Tool"]
-    types:
-      - completed
+  #   workflow_run:
+  #     workflows: ["Release Audit Tool"]
+  #     types:
+  #       - completed
+  push:
+    branches:
+      - dev
 
 jobs:
   bump-version:
