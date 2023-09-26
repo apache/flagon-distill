@@ -48,4 +48,3 @@ jobs:
       # Runs a single command using the runners shell
       #- name: Run Makefile to generate the htmls
         #run: make html
-

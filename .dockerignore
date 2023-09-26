@@ -18,7 +18,7 @@
 *.in
 LICENSE
 NOTICE
-env
+.env
 docs
 doc_requirements.txt
 docker

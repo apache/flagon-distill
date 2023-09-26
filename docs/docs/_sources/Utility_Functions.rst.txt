@@ -33,4 +33,3 @@ usage of this function is shown below:
 
 Similarly to the ``epoch_to_datetime`` function, the ``get_uuid`` function is particularly useful when preprocessing UserALE
 logs in preparation for Segmentation.
-

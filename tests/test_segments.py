@@ -35,7 +35,7 @@ def test_segments_general():
 
     segments = distill.generate_fixed_time_segments(sorted_dict, 5)
 
-    assert type(segments) == distill.Segments
+    assert isinstance(segments, distill.Segments)
     assert len(segments) == 4
 
     index = 0
@@ -50,7 +50,7 @@ def test_segments_subscript_get():
 
     segments = distill.generate_fixed_time_segments(sorted_dict, 5)
 
-    assert type(segments["0"]) == distill.Segment
+    assert isinstance(segments["0"], distill.Segment)
     assert segments["0"].get_segment_name() == "0"
     assert segments[0].get_segment_name() == "0"
     assert segments["1"].get_segment_name() == "1"
@@ -141,7 +141,7 @@ def test_get_segment_list():
     segments = distill.generate_fixed_time_segments(sorted_dict, 5)
 
     segments_list = segments.get_segment_list()
-    assert type(segments_list) == list
+    assert isinstance(segments_list, list)
     assert len(segments_list) == 4
 
 
@@ -152,7 +152,7 @@ def test_get_segment_name_dict():
     segments = distill.generate_fixed_time_segments(sorted_dict, 5)
 
     segments_dict = segments.get_segment_name_dict()
-    assert type(segments_dict) == dict
+    assert isinstance(segments_dict, dict)
     assert len(segments_dict) == 4
 
 

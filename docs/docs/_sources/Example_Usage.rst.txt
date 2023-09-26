@@ -340,7 +340,3 @@ Using these outputs we can now calculate the average edit distance with the foll
     (32.0 + 34.0 + 38.0 + 2.0 + 18.0 + 4.0)/6   # 21.33
 
 This shows that the average edit distance between each of these session DiGraphs is 21.33.
-
-
-
-

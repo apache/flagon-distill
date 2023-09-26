@@ -1,7 +1,23 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 [tool.poetry]
 name = "flagon-distill"
-version = "0.1.0"
-description = "Apache Distill is an analytics framework for handling and analyzing UserALE data. Distill allows you to focus on the data you want and model it. Distill empowers you to learn more from your data than any commercial service; use Distill's analytic libraries to generate statistics on how users interact with different elements of your application and also understand how users interact with your applications. Distill specializes in models of sequence and workflow so that you can understand how users experiment with your application and whether they interact with your application the way you expected. Distill is written in Python and built for scalable growth and customization. "
+version = "v0.0.6"
+description = "An analytics framework for front-end UserALE data, enabling modeling, sequence analysis, and customization in Python."
 authors = []
 license = "Apache-2.0"
 readme = "README.rst"
@@ -65,6 +81,22 @@ optional = true
 [tool.poetry.group.dev.dependencies]
 setuptools = "^67.6.1"
 pre-commit = "^3.3.3"
+
+
+#
+# Changelog, versioning, and commit management
+#
+[tool.commitizen]
+name = "cz_conventional_commits"
+tag_format = "v$version"
+version_scheme = "semver"
+version_provider = "poetry"
+update_changelog_on_bump = true
+major_version_zero = true
+version = "0.0.6"
+gpg_sign = true
+version_files = ["pyproject.toml:version", "distill/__version__.py"]
+
 
 #
 # Scripts
