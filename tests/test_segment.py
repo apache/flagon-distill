@@ -1421,17 +1421,17 @@ def test_export_segments():
     distill.export_segments("./test.csv", result)
 
     # Read from file
-    file = open("./test.csv", "r")
-    lines = file.readlines()
+    with open("./test.csv", "r") as file:
+        lines = file.readlines()
 
-    assert len(lines) == 4
-    assert (
-        lines[0]
-        == "Segment Name,Start Time,End Time,Number of Logs,Generate Field"
-        " Name,Generate Matched Values,Segment Type\n"
-    )
-    assert lines[1] == "0,1623691890459,1623691994888,7,,,Segment_Type.DEADSPACE\n"
-    assert lines[2] == "1,1623691991900,1623693994900,15,,,Segment_Type.DEADSPACE\n"
-    assert lines[3] == "2,1623693994550,1623697997550,3,,,Segment_Type.DEADSPACE\n"
+        assert len(lines) == 4
+        assert (
+            lines[0]
+            == "Segment Name,Start Time,End Time,Number of Logs,Generate Field"
+            " Name,Generate Matched Values,Segment Type\n"
+        )
+        assert lines[1] == "0,1623691890459,1623691994888,7,,,Segment_Type.DEADSPACE\n"
+        assert lines[2] == "1,1623691991900,1623693994900,15,,,Segment_Type.DEADSPACE\n"
+        assert lines[3] == "2,1623693994550,1623697997550,3,,,Segment_Type.DEADSPACE\n"
 
     os.remove("./test.csv")
