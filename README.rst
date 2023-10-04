@@ -59,14 +59,14 @@ Follow these steps to set up and install the project:
 
     .. code-block:: bash
 
-        git clone https://github.com/UMD-ARLIS/incubator-flagon-distill.git
+        git clone https://github.com/apache/flagon-distill.git
 
 
 2. Navigate to the project directory:
 
     .. code-block:: bash
 
-        cd incubator-flagon-distill
+        cd flagon-distill
 
 3. Use Poetry to install project dependencies and create a virtual environment:
 
