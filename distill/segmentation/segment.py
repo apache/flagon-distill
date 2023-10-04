@@ -648,30 +648,29 @@ def export_segments(path, segments):
     :param segments: A Segments object containing Segment objects.
     """
 
-    file = open(path, "w")
-    writer = csv.writer(file)
+    with open(path, "w", newline="") as file:
+        writer = csv.writer(file)
 
-    # Populate the csv row by row
-    # TODO: Make sure this is the right format
-    header_row = [
-        "Segment Name",
-        "Start Time",
-        "End Time",
-        "Number of Logs",
-        "Generate Field Name",
-        "Generate Matched Values",
-        "Segment Type",
-    ]
-    writer.writerow(header_row)
-    for segment in segments:
-        row = [
-            segment.segment_name,
-            str(segment.start_end_val[0]),
-            str(segment.start_end_val[1]),
-            segment.num_logs,
-            segment.generate_field_name,
-            segment.generate_matched_values,
-            segment.segment_type,
+        # Populate the csv row by row
+        # TODO: Make sure this is the right format
+        header_row = [
+            "Segment Name",
+            "Start Time",
+            "End Time",
+            "Number of Logs",
+            "Generate Field Name",
+            "Generate Matched Values",
+            "Segment Type",
         ]
-        writer.writerow(row)
-    file.close()
+        writer.writerow(header_row)
+        for segment in segments:
+            row = [
+                segment.segment_name,
+                str(segment.start_end_val[0]),
+                str(segment.start_end_val[1]),
+                segment.num_logs,
+                segment.generate_field_name,
+                segment.generate_matched_values,
+                segment.segment_type,
+            ]
+            writer.writerow(row)
