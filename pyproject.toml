@@ -16,7 +16,7 @@
 
 [tool.poetry]
 name = "flagon-distill"
-version = "0.0.7"
+version = "0.1.0"
 description = "An analytics framework for front-end UserALE data, enabling modeling, sequence analysis, and customization in Python."
 authors = []
 license = "Apache-2.0"
@@ -93,7 +93,7 @@ version_scheme = "semver"
 version_provider = "poetry"
 update_changelog_on_bump = true
 major_version_zero = true
-version = "0.0.7"
+version = "0.1.0"
 gpg_sign = true
 version_files = ["pyproject.toml:version", "distill/__version__.py"]
 
