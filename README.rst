@@ -44,11 +44,38 @@ Before you begin, make sure you have the following prerequisites installed on yo
 - Python (>= 3.8)
 - Poetry (>= 1.0)
 
-You can install Poetry using ``pip``:
+You can check your Python version by running:
 
 .. code-block:: bash
 
-   pip install poetry
+    python --version
+
+This will return the version of Python installed on your system. If you do not have Python installed, you can download it from the `official website <https://www.python.org/downloads/>`_. However, we recommend using a Python version manager such as `pyenv`. You can refer to this guide for setting it up: `pyenv guide <https://realpython.com/intro-to-pyenv/>`_.
+
+You can install Poetry a number of ways (see the `Poetry docs <https://python-poetry.org/docs/>`_ for all methods). We recommend installing one of the following two ways:
+
+**Official Installer**:
+
+*Linux, macOS, Windows (WSL)*
+
+.. code-block:: bash
+
+    curl -sSL https://install.python-poetry.org | python3 -
+
+*Windows (Powershell)*
+
+.. code-block:: bash
+
+    (Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
+
+**pipx**:
+
+.. code-block:: bash
+
+    pipx install poetry
+
+The above two methods should minimize the chances of dependency conflicts with your system Python (global) installation. Some users have reported issues with Poetry using an incorrect Python environment instead of the project's local virtual environment when using regular pip method. If you run into issues, please refer to the official Poetry docs or Github for more in-depth installation instructions.
+
 
 Installation Steps
 ~~~~~~~~~~~~~~~~~~
