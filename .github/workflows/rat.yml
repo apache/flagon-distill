@@ -17,14 +17,10 @@
 name: Release Audit Tool
 
 on:
-  workflow_run:
-    workflows: ["Test Suite"]
-    types:
-      - completed
-    branches:
-      - "master"
+  create:
     tags:
-      - "v*"
+      - '[0-9]+.[0-9]+.[0-9]+'
+      - '[0-9]+.[0-9]+.[0-9]+rc[0-9]+'
 
 jobs:
   rat:
@@ -32,37 +28,29 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          path: target
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Run RAT on repo
+        run: |
+          curl -O https://archive.apache.org/dist/creadur/apache-rat-0.15/apache-rat-0.15-bin.tar.gz
+          tar xzvf apache-rat-0.15-bin.tar.gz
+          java -jar apache-rat-0.15/apache-rat-0.15.jar -d target
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.x"
+          python-version: "3.11"
       - name: Install Poetry
         uses: snok/install-poetry@v1
         with:
           version: latest
           virtualenvs-in-project: true
           virtualenvs-create: true
-      - name: Install dependencies
+      - name: Run RAT on release tarball
         run: |
-          poetry --version
+          cd target
           poetry install
-      - name: Build
-        run: poetry build
-      - name: Checkout RAT
-        uses: actions/checkout@v3
-        with:
-          repository: 'apache/creadur-rat'
-          ref: 'apache-rat-project-0.15'
-          path: 'rat'
-      - name: Setup Maven
-        uses: s4u/setup-maven-action@v1.9.0
-        with:
-          java-version: 17
-          checkout-path: maven
-      - name: Install RAT
-        run: |
-          cd rat/apache-rat
-          mvn clean install
-      - name: Run RAT
-        run: java -jar rat/apache-rat/target/apache-rat-0.15.jar -d dist/flagon_distill-*.tar.gz
+          poetry build
+          java -jar ../apache-rat-0.15/apache-rat-0.15.jar -d dist/flagon_distill-*.tar.gz
