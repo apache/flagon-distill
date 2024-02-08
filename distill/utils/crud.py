@@ -121,7 +121,11 @@ def chunk_by_tabId(log):
         if 'tabId' in d:
             tab_key = 'tab_' + str(d['tabId'])
         elif 'details' in d:
-            tab_key = 'tab_' + str(d['details']['id'])
+            if 'id' in d['details']:            
+                tab_key = 'tab_' + str(d['details']['id'])
+            else:
+                tab_key = 'unknown' 
+                print('TabId not found')
         else:
             tab_key = 'unknown' 
         if tab_key not in grouped_data:
