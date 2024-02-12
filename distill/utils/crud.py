@@ -38,12 +38,20 @@ def getUUID(log):
     :return: A string representing a unique identifier for the log
     """
 
+    # Add session ID
+    UUID = str(log["sessionID"])
+    
+    # Add timestmap from clientTime if exists, otherwise use endTime information
+    if log["logType"] == "interval":
+        UUID = UUID + str(log["endTime"])
+    else: 
+        UUID = UUID + str(log["clientTime"])
+    
+    # Add logtype information
+    UUID = UUID + str(log["logType"])
+
+    # Add type information, if it exists
     if "type" in log:
-        return (
-            str(log["sessionID"])
-            + str(log["clientTime"])
-            + str(log["logType"])
-            + str(log["type"])
-        )
-    else:
-        return str(log["sessionID"]) + str(log["clientTime"]) + str(log["logType"])
+        UUID = UUID + str(log["type"])
+    
+    return UUID
