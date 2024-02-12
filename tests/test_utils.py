@@ -66,3 +66,17 @@ def test_UUID_without_type():
     # Assert UID uniqueness
     assert len(data) == len(raw_data)
     assert len(data) == 19
+
+
+def test_chunk_to_usersessions():
+    # Load in file and convert to raw data
+    file = os.path.join(DATA_DIR, "sample_data_multiusers.json")
+    with open(file) as json_file:
+        raw_data = json.load(json_file)
+
+    result = distill.chunk_to_usersessions(raw_data)
+
+    # Assert that there are two distinct users
+    assert len(result) == 2
+
+    # Assert that for the first users, there are two distinct tabs
