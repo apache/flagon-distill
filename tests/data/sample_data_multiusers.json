@@ -1,0 +1,6972 @@
+[
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357850963,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://github.githubassets.com/favicons/favicon.svg",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195099,
+			"incognito": false,
+			"index": 1,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "complete",
+			"title": "apache/flagon-useralejs: Apache Flagon UserALE.js is a comprehensive, thin-client behavioral logging tool",
+			"url": "https://github.com/apache/flagon-useralejs",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"tabId": 602195099,
+		"windowId": 602194905,
+		"tabEvent": "tabs.onActivated"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357860094,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://incubator-flagon-distill.readthedocs.io/favicon.ico",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195100,
+			"incognito": false,
+			"index": 2,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "complete",
+			"title": "Apache SensSoft Distill — Apache Distill 0.1.3 documentation",
+			"url": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"tabId": 602195100,
+		"windowId": 602194905,
+		"tabEvent": "tabs.onActivated"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357872314,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://github.githubassets.com/favicons/favicon.svg",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195099,
+			"incognito": false,
+			"index": 1,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "complete",
+			"title": "apache/flagon-useralejs: Apache Flagon UserALE.js is a comprehensive, thin-client behavioral logging tool",
+			"url": "https://github.com/apache/flagon-useralejs",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"tabId": 602195099,
+		"windowId": 602194905,
+		"tabEvent": "tabs.onActivated"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357892029,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://incubator-flagon-distill.readthedocs.io/favicon.ico",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195100,
+			"incognito": false,
+			"index": 2,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "complete",
+			"title": "Apache SensSoft Distill — Apache Distill 0.1.3 documentation",
+			"url": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"tabId": 602195100,
+		"windowId": 602194905,
+		"tabEvent": "tabs.onActivated"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357894565,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195100,
+			"incognito": false,
+			"index": 2,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "loading",
+			"title": "incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+			"url": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"status": "loading",
+		"url": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"tabEvent": "tabs.onUpdated"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357894567,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195100,
+			"incognito": false,
+			"index": 2,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "loading",
+			"title": "Installation Guide — Apache Distill 0.1.3 documentation",
+			"url": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"title": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"tabEvent": "tabs.onUpdated"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357894569,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195100,
+			"incognito": false,
+			"index": 2,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "loading",
+			"title": "Installation Guide — Apache Distill 0.1.3 documentation",
+			"url": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"newZoomFactor": 1,
+		"oldZoomFactor": 1,
+		"tabId": 602195100,
+		"zoomSettings": {
+			"mode": "automatic",
+			"scope": "per-origin"
+		},
+		"tabEvent": "tabs.onZoomChange"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357894922,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195100,
+			"incognito": false,
+			"index": 2,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "complete",
+			"title": "Installation Guide — Apache Distill 0.1.3 documentation",
+			"url": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"status": "complete",
+		"tabEvent": "tabs.onUpdated"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357894923,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://incubator-flagon-distill.readthedocs.io/favicon.ico",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195100,
+			"incognito": false,
+			"index": 2,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "complete",
+			"title": "Installation Guide — Apache Distill 0.1.3 documentation",
+			"url": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"favIconUrl": "https://incubator-flagon-distill.readthedocs.io/favicon.ico",
+		"tabEvent": "tabs.onUpdated"
+	},
+	{
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357894934,
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"logType": "custom",
+		"userAction": false,
+		"details": {
+			"pageLoadTime": 96
+		},
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"type": "load",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357895006,
+		"microTime": 0.6,
+		"location": {
+			"x": 481,
+			"y": 924
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357895035,
+		"microTime": 0.9,
+		"location": {
+			"x": 497,
+			"y": 995
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "Window",
+		"path": [
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357895623,
+		"microTime": 0.7,
+		"location": {
+			"x": null,
+			"y": null
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "blur",
+		"logType": "raw",
+		"userAction": true,
+		"details": {
+			"window": true
+		},
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "Window",
+		"path": [
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357904341,
+		"microTime": 0.3,
+		"location": {
+			"x": null,
+			"y": null
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "focus",
+		"logType": "raw",
+		"userAction": true,
+		"details": {
+			"window": true
+		},
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "section#installing-apache-distill-in-an-virtual-environment",
+		"path": [
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357905176,
+		"microTime": 0.2,
+		"location": {
+			"x": 522,
+			"y": 1017
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 2,
+		"duration": 10170,
+		"startTime": 1707357895006,
+		"endTime": 1707357905176,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357905182,
+		"microTime": 0.9,
+		"location": {
+			"x": 525,
+			"y": 953
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "div.admonition note",
+		"path": [
+			"div.admonition note",
+			"section#installing-apache-distill",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357905213,
+		"microTime": 0.7,
+		"location": {
+			"x": 524,
+			"y": 804
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 3,
+		"duration": 10207,
+		"startTime": 1707357895006,
+		"endTime": 1707357905213,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357905252,
+		"microTime": 0.8,
+		"location": {
+			"x": 534,
+			"y": 638
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "pre",
+		"path": [
+			"pre",
+			"div.highlight",
+			"div.highlight-default notranslate",
+			"section#installing-apache-distill",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357905283,
+		"microTime": 0.3,
+		"location": {
+			"x": 549,
+			"y": 576
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 4,
+		"duration": 10277,
+		"startTime": 1707357895006,
+		"endTime": 1707357905283,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "section#installing-apache-distill",
+		"path": [
+			"section#installing-apache-distill",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357906356,
+		"microTime": 0.9,
+		"location": {
+			"x": 548,
+			"y": 537
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 4,
+		"duration": 11350,
+		"startTime": 1707357895006,
+		"endTime": 1707357906356,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "pre",
+		"path": [
+			"pre",
+			"div.highlight",
+			"div.highlight-default notranslate",
+			"section#installing-apache-distill",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357906454,
+		"microTime": 0.6,
+		"location": {
+			"x": 477,
+			"y": 277
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 4,
+		"duration": 11448,
+		"startTime": 1707357895006,
+		"endTime": 1707357906454,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357906716,
+		"microTime": 0.4,
+		"location": {
+			"x": 474,
+			"y": 224
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "section#installing-apache-distill",
+		"path": [
+			"section#installing-apache-distill",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357908133,
+		"microTime": 0,
+		"location": {
+			"x": 471,
+			"y": 212
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 5,
+		"duration": 13127,
+		"startTime": 1707357895006,
+		"endTime": 1707357908133,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "section#installation-guide",
+		"path": [
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357908152,
+		"microTime": 0.8,
+		"location": {
+			"x": 459,
+			"y": 143
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 5,
+		"duration": 13146,
+		"startTime": 1707357895006,
+		"endTime": 1707357908152,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "div.rst-content",
+		"path": [
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357908181,
+		"microTime": 0.4,
+		"location": {
+			"x": 446,
+			"y": 83
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 5,
+		"duration": 13175,
+		"startTime": 1707357895006,
+		"endTime": 1707357908181,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "li",
+		"path": [
+			"li",
+			"ul.wy-breadcrumbs",
+			"div",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357908221,
+		"microTime": 0.3,
+		"location": {
+			"x": 435,
+			"y": 33
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 5,
+		"duration": 13215,
+		"startTime": 1707357895006,
+		"endTime": 1707357908221,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "div.wy-nav-content",
+		"path": [
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357908250,
+		"microTime": 0.8,
+		"location": {
+			"x": 431,
+			"y": 22
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 5,
+		"duration": 13244,
+		"startTime": 1707357895006,
+		"endTime": 1707357908250,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "Window",
+		"path": [
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357909033,
+		"microTime": 0.7,
+		"location": {
+			"x": null,
+			"y": null
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "blur",
+		"logType": "raw",
+		"userAction": true,
+		"details": {
+			"window": true
+		},
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707357909051,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://github.githubassets.com/favicons/favicon.svg",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195099,
+			"incognito": false,
+			"index": 1,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "complete",
+			"title": "apache/flagon-useralejs: Apache Flagon UserALE.js is a comprehensive, thin-client behavioral logging tool",
+			"url": "https://github.com/apache/flagon-useralejs",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"tabId": 602195099,
+		"windowId": 602194905,
+		"tabEvent": "tabs.onActivated"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358059326,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://github.githubassets.com/favicons/favicon.svg",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195099,
+			"incognito": false,
+			"index": 1,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "loading",
+			"title": "apache/flagon-useralejs: Apache Flagon UserALE.js is a comprehensive, thin-client behavioral logging tool",
+			"url": "https://github.com/apache/flagon-useralejs?tab=readme-ov-file",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"status": "loading",
+		"url": "https://github.com/apache/flagon-useralejs?tab=readme-ov-file",
+		"tabEvent": "tabs.onUpdated"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358059327,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://github.githubassets.com/favicons/favicon.svg",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195099,
+			"incognito": false,
+			"index": 1,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "complete",
+			"title": "apache/flagon-useralejs: Apache Flagon UserALE.js is a comprehensive, thin-client behavioral logging tool",
+			"url": "https://github.com/apache/flagon-useralejs?tab=readme-ov-file",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"status": "complete",
+		"tabEvent": "tabs.onUpdated"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358059328,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://github.githubassets.com/favicons/favicon.svg",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195099,
+			"incognito": false,
+			"index": 1,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "complete",
+			"title": "apache/flagon-useralejs: Apache Flagon UserALE.js is a comprehensive, thin-client behavioral logging tool",
+			"url": "https://github.com/apache/flagon-useralejs?tab=readme-ov-file",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"favIconUrl": "https://github.githubassets.com/favicons/favicon.svg",
+		"tabEvent": "tabs.onUpdated"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358059328,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://github.githubassets.com/favicons/favicon.svg",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195099,
+			"incognito": false,
+			"index": 1,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "complete",
+			"title": "apache/flagon-useralejs: Apache Flagon UserALE.js is a comprehensive, thin-client behavioral logging tool",
+			"url": "https://github.com/apache/flagon-useralejs?tab=readme-ov-file",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"newZoomFactor": 0.8,
+		"oldZoomFactor": 0.8,
+		"tabId": 602195099,
+		"zoomSettings": {
+			"mode": "automatic",
+			"scope": "per-origin"
+		},
+		"tabEvent": "tabs.onZoomChange"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358059362,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://github.githubassets.com/favicons/favicon.svg",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195099,
+			"incognito": false,
+			"index": 1,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "loading",
+			"title": "apache/flagon-useralejs: Apache Flagon UserALE.js is a comprehensive, thin-client behavioral logging tool",
+			"url": "https://github.com/apache/flagon-useralejs?tab=readme-ov-file",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"status": "loading",
+		"tabEvent": "tabs.onUpdated"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358059363,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://github.githubassets.com/favicons/favicon.svg",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195099,
+			"incognito": false,
+			"index": 1,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "complete",
+			"title": "apache/flagon-useralejs: Apache Flagon UserALE.js is a comprehensive, thin-client behavioral logging tool",
+			"url": "https://github.com/apache/flagon-useralejs?tab=readme-ov-file",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"status": "complete",
+		"tabEvent": "tabs.onUpdated"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358059367,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://github.githubassets.com/favicons/favicon.svg",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195099,
+			"incognito": false,
+			"index": 1,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "loading",
+			"title": "apache/flagon-useralejs: Apache Flagon UserALE.js is a comprehensive, thin-client behavioral logging tool",
+			"url": "https://github.com/apache/flagon-useralejs#whats-new-in-version-210",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"status": "loading",
+		"url": "https://github.com/apache/flagon-useralejs#whats-new-in-version-210",
+		"tabEvent": "tabs.onUpdated"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358059368,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://github.githubassets.com/favicons/favicon.svg",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195099,
+			"incognito": false,
+			"index": 1,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "complete",
+			"title": "apache/flagon-useralejs: Apache Flagon UserALE.js is a comprehensive, thin-client behavioral logging tool",
+			"url": "https://github.com/apache/flagon-useralejs#whats-new-in-version-210",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"status": "complete",
+		"tabEvent": "tabs.onUpdated"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358059370,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://github.githubassets.com/favicons/favicon.svg",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195099,
+			"incognito": false,
+			"index": 1,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "complete",
+			"title": "apache/flagon-useralejs: Apache Flagon UserALE.js is a comprehensive, thin-client behavioral logging tool",
+			"url": "https://github.com/apache/flagon-useralejs#whats-new-in-version-210",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"newZoomFactor": 0.8,
+		"oldZoomFactor": 0.8,
+		"tabId": 602195099,
+		"zoomSettings": {
+			"mode": "automatic",
+			"scope": "per-origin"
+		},
+		"tabEvent": "tabs.onZoomChange"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358059370,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://github.githubassets.com/favicons/favicon.svg",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195099,
+			"incognito": false,
+			"index": 1,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "complete",
+			"title": "apache/flagon-useralejs: Apache Flagon UserALE.js is a comprehensive, thin-client behavioral logging tool",
+			"url": "https://github.com/apache/flagon-useralejs#whats-new-in-version-210",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"newZoomFactor": 0.8,
+		"oldZoomFactor": 0.8,
+		"tabId": 602195099,
+		"zoomSettings": {
+			"mode": "automatic",
+			"scope": "per-origin"
+		},
+		"tabEvent": "tabs.onZoomChange"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358059370,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://github.githubassets.com/favicons/favicon.svg",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195099,
+			"incognito": false,
+			"index": 1,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "complete",
+			"title": "apache/flagon-useralejs: Apache Flagon UserALE.js is a comprehensive, thin-client behavioral logging tool",
+			"url": "https://github.com/apache/flagon-useralejs#whats-new-in-version-210",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"favIconUrl": "https://github.githubassets.com/favicons/favicon.svg",
+		"tabEvent": "tabs.onUpdated"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358071644,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://incubator-flagon-distill.readthedocs.io/favicon.ico",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195100,
+			"incognito": false,
+			"index": 2,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "complete",
+			"title": "Installation Guide — Apache Distill 0.1.3 documentation",
+			"url": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"tabId": 602195100,
+		"windowId": 602194905,
+		"tabEvent": "tabs.onActivated"
+	},
+	{
+		"target": "Window",
+		"path": [
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358071630,
+		"microTime": 0.6,
+		"location": {
+			"x": null,
+			"y": null
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "focus",
+		"logType": "raw",
+		"userAction": true,
+		"details": {
+			"window": true
+		},
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "ul.wy-breadcrumbs",
+		"path": [
+			"ul.wy-breadcrumbs",
+			"div",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358072371,
+		"microTime": 0.9,
+		"location": {
+			"x": 576,
+			"y": 29
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 5,
+		"duration": 177365,
+		"startTime": 1707357895006,
+		"endTime": 1707358072371,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "div",
+		"path": [
+			"div",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358072384,
+		"microTime": 0.2,
+		"location": {
+			"x": 573,
+			"y": 63
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 5,
+		"duration": 177378,
+		"startTime": 1707357895006,
+		"endTime": 1707358072384,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "h1",
+		"path": [
+			"h1",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358072403,
+		"microTime": 0.8,
+		"location": {
+			"x": 571,
+			"y": 119
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 5,
+		"duration": 177397,
+		"startTime": 1707357895006,
+		"endTime": 1707358072403,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "section#installing-apache-distill",
+		"path": [
+			"section#installing-apache-distill",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358072433,
+		"microTime": 0.7,
+		"location": {
+			"x": 583,
+			"y": 203
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 5,
+		"duration": 177427,
+		"startTime": 1707357895006,
+		"endTime": 1707358072433,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "pre",
+		"path": [
+			"pre",
+			"div.highlight",
+			"div.highlight-default notranslate",
+			"section#installing-apache-distill",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358072474,
+		"microTime": 0.2,
+		"location": {
+			"x": 593,
+			"y": 298
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 5,
+		"duration": 177468,
+		"startTime": 1707357895006,
+		"endTime": 1707358072474,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358072503,
+		"microTime": 0.2,
+		"location": {
+			"x": 598,
+			"y": 353
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358073273,
+		"microTime": 0.2,
+		"location": {
+			"x": 598,
+			"y": 355
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "wheel",
+		"logType": "raw",
+		"userAction": true,
+		"details": {
+			"x": 0,
+			"y": 77.49999237060547,
+			"z": 0
+		},
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "#document",
+		"path": [
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358073290,
+		"microTime": 0.5,
+		"location": {
+			"x": null,
+			"y": null
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "scroll",
+		"logType": "raw",
+		"userAction": true,
+		"details": {
+			"x": 0,
+			"y": 100
+		},
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358074010,
+		"microTime": 0.2,
+		"location": {
+			"x": 598,
+			"y": 935
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "section#installing-apache-distill-in-an-virtual-environment",
+		"path": [
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358075376,
+		"microTime": 0.9,
+		"location": {
+			"x": 581,
+			"y": 1026
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 7,
+		"duration": 180370,
+		"startTime": 1707357895006,
+		"endTime": 1707358075376,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "pre",
+		"path": [
+			"pre",
+			"div.highlight",
+			"div.highlight-default notranslate",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358075437,
+		"microTime": 0,
+		"location": {
+			"x": 562,
+			"y": 1196
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 7,
+		"duration": 180431,
+		"startTime": 1707357895006,
+		"endTime": 1707358075437,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358075465,
+		"microTime": 0.3,
+		"location": {
+			"x": 547,
+			"y": 1262
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "section#installing-apache-distill-in-an-virtual-environment",
+		"path": [
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358075486,
+		"microTime": 0,
+		"location": {
+			"x": 537,
+			"y": 1289
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 8,
+		"duration": 180480,
+		"startTime": 1707357895006,
+		"endTime": 1707358075486,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "pre",
+		"path": [
+			"pre",
+			"div.highlight",
+			"div.highlight-default notranslate",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358078648,
+		"microTime": 0.9,
+		"location": {
+			"x": 528,
+			"y": 1309
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 8,
+		"duration": 183642,
+		"startTime": 1707357895006,
+		"endTime": 1707358078648,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358078694,
+		"microTime": 0.3,
+		"location": {
+			"x": 486,
+			"y": 1395
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "section#installing-apache-distill-in-an-virtual-environment",
+		"path": [
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358078704,
+		"microTime": 0.4,
+		"location": {
+			"x": 481,
+			"y": 1409
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 9,
+		"duration": 183698,
+		"startTime": 1707357895006,
+		"endTime": 1707358078704,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "pre",
+		"path": [
+			"pre",
+			"div.highlight",
+			"div.highlight-default notranslate",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358078754,
+		"microTime": 0,
+		"location": {
+			"x": 470,
+			"y": 1456
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 9,
+		"duration": 183748,
+		"startTime": 1707357895006,
+		"endTime": 1707358078754,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "section#installing-apache-distill-in-an-virtual-environment",
+		"path": [
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358079512,
+		"microTime": 0.2,
+		"location": {
+			"x": 470,
+			"y": 1463
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 9,
+		"duration": 184506,
+		"startTime": 1707357895006,
+		"endTime": 1707358079512,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358079533,
+		"microTime": 0.4,
+		"location": {
+			"x": 465,
+			"y": 1495
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "pre",
+		"path": [
+			"pre",
+			"div.highlight",
+			"div.highlight-default notranslate",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358079561,
+		"microTime": 0,
+		"location": {
+			"x": 458,
+			"y": 1547
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 10,
+		"duration": 184555,
+		"startTime": 1707357895006,
+		"endTime": 1707358079561,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "section#installing-apache-distill-in-an-virtual-environment",
+		"path": [
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358079580,
+		"microTime": 0.9,
+		"location": {
+			"x": 455,
+			"y": 1581
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 10,
+		"duration": 184574,
+		"startTime": 1707357895006,
+		"endTime": 1707358079580,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "Window",
+		"path": [
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358080488,
+		"microTime": 0.7,
+		"location": {
+			"x": null,
+			"y": null
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "blur",
+		"logType": "raw",
+		"userAction": true,
+		"details": {
+			"window": true
+		},
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "Window",
+		"path": [
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358106744,
+		"microTime": 0.8,
+		"location": {
+			"x": null,
+			"y": null
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "focus",
+		"logType": "raw",
+		"userAction": true,
+		"details": {
+			"window": true
+		},
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "pre",
+		"path": [
+			"pre",
+			"div.highlight",
+			"div.highlight-default notranslate",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358108898,
+		"microTime": 0.3,
+		"location": {
+			"x": 532,
+			"y": 1555
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 10,
+		"duration": 213892,
+		"startTime": 1707357895006,
+		"endTime": 1707358108898,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "pre",
+		"path": [
+			"pre",
+			"div.highlight",
+			"div.highlight-default notranslate",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358108926,
+		"microTime": 0.6,
+		"location": {
+			"x": 535,
+			"y": 1456
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 10,
+		"duration": 213920,
+		"startTime": 1707357895006,
+		"endTime": 1707358108926,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "section#installing-apache-distill-in-an-virtual-environment",
+		"path": [
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358108937,
+		"microTime": 0,
+		"location": {
+			"x": 536,
+			"y": 1406
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 10,
+		"duration": 213931,
+		"startTime": 1707357895006,
+		"endTime": 1707358108937,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "pre",
+		"path": [
+			"pre",
+			"div.highlight",
+			"div.highlight-default notranslate",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358108966,
+		"microTime": 0.1,
+		"location": {
+			"x": 562,
+			"y": 1227
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 10,
+		"duration": 213960,
+		"startTime": 1707357895006,
+		"endTime": 1707358108966,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "section#installing-apache-distill-in-an-virtual-environment",
+		"path": [
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358108996,
+		"microTime": 0.3,
+		"location": {
+			"x": 580,
+			"y": 1155
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 10,
+		"duration": 213990,
+		"startTime": 1707357895006,
+		"endTime": 1707358108996,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358109301,
+		"microTime": 0.2,
+		"location": {
+			"x": 568,
+			"y": 1134
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "pre",
+		"path": [
+			"pre",
+			"div.highlight",
+			"div.highlight-default notranslate",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358109320,
+		"microTime": 0.6,
+		"location": {
+			"x": 468,
+			"y": 1036
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 11,
+		"duration": 214314,
+		"startTime": 1707357895006,
+		"endTime": 1707358109320,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358109340,
+		"microTime": 0.9,
+		"location": {
+			"x": 403,
+			"y": 951
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "div.wy-nav-content",
+		"path": [
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358109370,
+		"microTime": 0.7,
+		"location": {
+			"x": 348,
+			"y": 843
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 12,
+		"duration": 214364,
+		"startTime": 1707357895006,
+		"endTime": 1707358109370,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "input",
+		"path": [
+			"input",
+			"form#rtd-search-form.wy-form",
+			"div",
+			"div.wy-side-nav-search",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358109692,
+		"microTime": 0.4,
+		"location": {
+			"x": 229,
+			"y": 676
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 12,
+		"duration": 214686,
+		"startTime": 1707357895006,
+		"endTime": 1707358109692,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "a.icon icon-home",
+		"path": [
+			"a.icon icon-home",
+			"div.wy-side-nav-search",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358109713,
+		"microTime": 0.4,
+		"location": {
+			"x": 202,
+			"y": 603
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "p",
+		"path": [
+			"p",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 12,
+		"duration": 214707,
+		"startTime": 1707357895006,
+		"endTime": 1707358109713,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358112126,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://incubator-flagon-distill.readthedocs.io/favicon.ico",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195100,
+			"incognito": false,
+			"index": 2,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "loading",
+			"title": "Installation Guide — Apache Distill 0.1.3 documentation",
+			"url": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"status": "loading",
+		"tabEvent": "tabs.onUpdated"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358112130,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://incubator-flagon-distill.readthedocs.io/favicon.ico",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195100,
+			"incognito": false,
+			"index": 2,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "loading",
+			"title": "Installation Guide — Apache Distill 0.1.3 documentation",
+			"url": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"favIconUrl": "https://incubator-flagon-distill.readthedocs.io/favicon.ico",
+		"tabEvent": "tabs.onUpdated"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358112130,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://incubator-flagon-distill.readthedocs.io/favicon.ico",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195100,
+			"incognito": false,
+			"index": 2,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "loading",
+			"title": "Installation Guide — Apache Distill 0.1.3 documentation",
+			"url": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"newZoomFactor": 1,
+		"oldZoomFactor": 1,
+		"tabId": 602195100,
+		"zoomSettings": {
+			"mode": "automatic",
+			"scope": "per-origin"
+		},
+		"tabEvent": "tabs.onZoomChange"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358112387,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://incubator-flagon-distill.readthedocs.io/favicon.ico",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195100,
+			"incognito": false,
+			"index": 2,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "complete",
+			"title": "Installation Guide — Apache Distill 0.1.3 documentation",
+			"url": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"status": "complete",
+		"tabEvent": "tabs.onUpdated"
+	},
+	{
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358112487,
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"logType": "custom",
+		"userAction": false,
+		"details": {
+			"pageLoadTime": 8
+		},
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"type": "load",
+		"tabId": 602195100
+	},
+	{
+		"target": "div.wy-side-nav-search",
+		"path": [
+			"div.wy-side-nav-search",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358118116,
+		"microTime": 0.7,
+		"location": {
+			"x": 87,
+			"y": 581
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "a.icon icon-home",
+		"path": [
+			"a.icon icon-home",
+			"div.wy-side-nav-search",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358118163,
+		"microTime": 0.5,
+		"location": {
+			"x": 90,
+			"y": 605
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "div.wy-side-nav-search",
+		"path": [
+			"div.wy-side-nav-search",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 1,
+		"duration": 47,
+		"startTime": 1707358118116,
+		"endTime": 1707358118163,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "div.wy-side-nav-search",
+		"path": [
+			"div.wy-side-nav-search",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358118232,
+		"microTime": 0.3,
+		"location": {
+			"x": 93,
+			"y": 626
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "div.version",
+		"path": [
+			"div.version",
+			"div.wy-side-nav-search",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358118264,
+		"microTime": 0.3,
+		"location": {
+			"x": 93,
+			"y": 633
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "div.wy-side-nav-search",
+		"path": [
+			"div.wy-side-nav-search",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 2,
+		"duration": 148,
+		"startTime": 1707358118116,
+		"endTime": 1707358118264,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "div.wy-side-nav-search",
+		"path": [
+			"div.wy-side-nav-search",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358118331,
+		"microTime": 0.3,
+		"location": {
+			"x": 93,
+			"y": 645
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "input",
+		"path": [
+			"input",
+			"form#rtd-search-form.wy-form",
+			"div",
+			"div.wy-side-nav-search",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358118380,
+		"microTime": 0.3,
+		"location": {
+			"x": 93,
+			"y": 657
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "div.wy-side-nav-search",
+		"path": [
+			"div.wy-side-nav-search",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 3,
+		"duration": 264,
+		"startTime": 1707358118116,
+		"endTime": 1707358118380,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "div.wy-side-nav-search",
+		"path": [
+			"div.wy-side-nav-search",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358118440,
+		"microTime": 0.1,
+		"location": {
+			"x": 94,
+			"y": 687
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "div.wy-side-scroll",
+		"path": [
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358118481,
+		"microTime": 0.2,
+		"location": {
+			"x": 96,
+			"y": 701
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "div.wy-side-nav-search",
+		"path": [
+			"div.wy-side-nav-search",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 4,
+		"duration": 365,
+		"startTime": 1707358118116,
+		"endTime": 1707358118481,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "a.reference internal current",
+		"path": [
+			"a.reference internal current",
+			"li.toctree-l1 current",
+			"ul.current",
+			"div.wy-menu wy-menu-vertical",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358118508,
+		"microTime": 0.6,
+		"location": {
+			"x": 96,
+			"y": 720
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "div.wy-side-nav-search",
+		"path": [
+			"div.wy-side-nav-search",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 4,
+		"duration": 392,
+		"startTime": 1707358118116,
+		"endTime": 1707358118508,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "a.reference internal",
+		"path": [
+			"a.reference internal",
+			"li.toctree-l2",
+			"ul",
+			"li.toctree-l1 current",
+			"ul.current",
+			"div.wy-menu wy-menu-vertical",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358118568,
+		"microTime": 0.9,
+		"location": {
+			"x": 94,
+			"y": 750
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "div.wy-side-nav-search",
+		"path": [
+			"div.wy-side-nav-search",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 4,
+		"duration": 452,
+		"startTime": 1707358118116,
+		"endTime": 1707358118568,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "a.reference internal",
+		"path": [
+			"a.reference internal",
+			"li.toctree-l2",
+			"ul",
+			"li.toctree-l1 current",
+			"ul.current",
+			"div.wy-menu wy-menu-vertical",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358118699,
+		"microTime": 0.7,
+		"location": {
+			"x": 92,
+			"y": 776
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "div.wy-side-nav-search",
+		"path": [
+			"div.wy-side-nav-search",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 4,
+		"duration": 583,
+		"startTime": 1707358118116,
+		"endTime": 1707358118699,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "a.reference internal",
+		"path": [
+			"a.reference internal",
+			"li.toctree-l2",
+			"ul",
+			"li.toctree-l1 current",
+			"ul.current",
+			"div.wy-menu wy-menu-vertical",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358119105,
+		"microTime": 0.1,
+		"location": {
+			"x": 92,
+			"y": 783
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mousedown",
+		"logType": "raw",
+		"userAction": true,
+		"details": {
+			"clicks": 1,
+			"ctrl": false,
+			"alt": false,
+			"shift": false,
+			"meta": false
+		},
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "a.reference internal",
+		"path": [
+			"a.reference internal",
+			"li.toctree-l2",
+			"ul",
+			"li.toctree-l1 current",
+			"ul.current",
+			"div.wy-menu wy-menu-vertical",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358119109,
+		"microTime": 0.9,
+		"location": {
+			"x": null,
+			"y": null
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "focus",
+		"logType": "raw",
+		"userAction": true,
+		"details": {
+			"window": true
+		},
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "a.reference internal",
+		"path": [
+			"a.reference internal",
+			"li.toctree-l2",
+			"ul",
+			"li.toctree-l1 current",
+			"ul.current",
+			"div.wy-menu wy-menu-vertical",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358119109,
+		"microTime": 0.9,
+		"location": {
+			"x": null,
+			"y": null
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "focus",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "div.wy-side-nav-search",
+		"path": [
+			"div.wy-side-nav-search",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 4,
+		"duration": 993,
+		"startTime": 1707358118116,
+		"endTime": 1707358119109,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": true,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "a.reference internal",
+		"path": [
+			"a.reference internal",
+			"li.toctree-l2",
+			"ul",
+			"li.toctree-l1 current",
+			"ul.current",
+			"div.wy-menu wy-menu-vertical",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358119203,
+		"microTime": 0.3,
+		"location": {
+			"x": 92,
+			"y": 783
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseup",
+		"logType": "raw",
+		"userAction": true,
+		"details": {
+			"clicks": 1,
+			"ctrl": false,
+			"alt": false,
+			"shift": false,
+			"meta": false
+		},
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "a.reference internal",
+		"path": [
+			"a.reference internal",
+			"li.toctree-l2",
+			"ul",
+			"li.toctree-l1 current",
+			"ul.current",
+			"div.wy-menu wy-menu-vertical",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358119203,
+		"microTime": 0.3,
+		"location": {
+			"x": 92,
+			"y": 783
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "click",
+		"logType": "raw",
+		"userAction": true,
+		"details": {
+			"clicks": 1,
+			"ctrl": false,
+			"alt": false,
+			"shift": false,
+			"meta": false
+		},
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "div.wy-side-nav-search",
+		"path": [
+			"div.wy-side-nav-search",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 4,
+		"duration": 1087,
+		"startTime": 1707358118116,
+		"endTime": 1707358119203,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": true,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358119218,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://incubator-flagon-distill.readthedocs.io/favicon.ico",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195100,
+			"incognito": false,
+			"index": 2,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "loading",
+			"title": "Installation Guide — Apache Distill 0.1.3 documentation",
+			"url": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html#installing-apache-distill-in-an-virtual-environment",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"status": "loading",
+		"url": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html#installing-apache-distill-in-an-virtual-environment",
+		"tabEvent": "tabs.onUpdated"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358119220,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://incubator-flagon-distill.readthedocs.io/favicon.ico",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195100,
+			"incognito": false,
+			"index": 2,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "complete",
+			"title": "Installation Guide — Apache Distill 0.1.3 documentation",
+			"url": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html#installing-apache-distill-in-an-virtual-environment",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"status": "complete",
+		"tabEvent": "tabs.onUpdated"
+	},
+	{
+		"target": "a.reference internal",
+		"path": [
+			"a.reference internal",
+			"li.toctree-l2",
+			"ul",
+			"li.toctree-l1 current",
+			"ul.current",
+			"div.wy-menu wy-menu-vertical",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html#installing-apache-distill-in-an-virtual-environment",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358119212,
+		"microTime": 0.8,
+		"location": {
+			"x": null,
+			"y": null
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "blur",
+		"logType": "raw",
+		"userAction": true,
+		"details": {
+			"window": true
+		},
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "a.reference internal",
+		"path": [
+			"a.reference internal",
+			"li.toctree-l2",
+			"ul",
+			"li.toctree-l1 current",
+			"ul.current",
+			"div.wy-menu wy-menu-vertical",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html#installing-apache-distill-in-an-virtual-environment",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358119212,
+		"microTime": 0.8,
+		"location": {
+			"x": null,
+			"y": null
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "blur",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "div.wy-side-nav-search",
+		"path": [
+			"div.wy-side-nav-search",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html#installing-apache-distill-in-an-virtual-environment",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 4,
+		"duration": 1096,
+		"startTime": 1707358118116,
+		"endTime": 1707358119212,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": true,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "#document",
+		"path": [
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html#installing-apache-distill-in-an-virtual-environment",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358119213,
+		"microTime": 0.9,
+		"location": {
+			"x": null,
+			"y": null
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "scroll",
+		"logType": "raw",
+		"userAction": true,
+		"details": {
+			"x": 0,
+			"y": 834
+		},
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358119223,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://incubator-flagon-distill.readthedocs.io/favicon.ico",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195100,
+			"incognito": false,
+			"index": 2,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "complete",
+			"title": "Installation Guide — Apache Distill 0.1.3 documentation",
+			"url": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html#installing-apache-distill-in-an-virtual-environment",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"newZoomFactor": 1,
+		"oldZoomFactor": 1,
+		"tabId": 602195100,
+		"zoomSettings": {
+			"mode": "automatic",
+			"scope": "per-origin"
+		},
+		"tabEvent": "tabs.onZoomChange"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358119223,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://incubator-flagon-distill.readthedocs.io/favicon.ico",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195100,
+			"incognito": false,
+			"index": 2,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "complete",
+			"title": "Installation Guide — Apache Distill 0.1.3 documentation",
+			"url": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html#installing-apache-distill-in-an-virtual-environment",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"favIconUrl": "https://incubator-flagon-distill.readthedocs.io/favicon.ico",
+		"tabEvent": "tabs.onUpdated"
+	},
+	{
+		"target": "a.reference internal",
+		"path": [
+			"a.reference internal",
+			"li.toctree-l2",
+			"ul",
+			"li.toctree-l1 current",
+			"ul.current",
+			"div.wy-menu wy-menu-vertical",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html#installing-apache-distill-in-an-virtual-environment",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358119440,
+		"microTime": 0.1,
+		"location": {
+			"x": 107,
+			"y": 998
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "div.wy-side-nav-search",
+		"path": [
+			"div.wy-side-nav-search",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html#installing-apache-distill-in-an-virtual-environment",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 4,
+		"duration": 1324,
+		"startTime": 1707358118116,
+		"endTime": 1707358119440,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "div.wy-side-nav-search",
+		"path": [
+			"div.wy-side-nav-search",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html#installing-apache-distill-in-an-virtual-environment",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358119477,
+		"microTime": 0,
+		"location": {
+			"x": 117,
+			"y": 948
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "a.icon icon-home",
+		"path": [
+			"a.icon icon-home",
+			"div.wy-side-nav-search",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html#installing-apache-distill-in-an-virtual-environment",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358119574,
+		"microTime": 0.7,
+		"location": {
+			"x": 121,
+			"y": 855
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "div.wy-side-nav-search",
+		"path": [
+			"div.wy-side-nav-search",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html#installing-apache-distill-in-an-virtual-environment",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 5,
+		"duration": 1458,
+		"startTime": 1707358118116,
+		"endTime": 1707358119574,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "div.wy-side-nav-search",
+		"path": [
+			"div.wy-side-nav-search",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html#installing-apache-distill-in-an-virtual-environment",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358119634,
+		"microTime": 0,
+		"location": {
+			"x": 116,
+			"y": 840
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358121175,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://incubator-flagon-distill.readthedocs.io/favicon.ico",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195100,
+			"incognito": false,
+			"index": 2,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "loading",
+			"title": "Installation Guide — Apache Distill 0.1.3 documentation",
+			"url": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html#installing-apache-distill-in-an-virtual-environment",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"status": "loading",
+		"tabEvent": "tabs.onUpdated"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358121179,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://incubator-flagon-distill.readthedocs.io/favicon.ico",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195100,
+			"incognito": false,
+			"index": 2,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "loading",
+			"title": "Installation Guide — Apache Distill 0.1.3 documentation",
+			"url": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html#installing-apache-distill-in-an-virtual-environment",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"favIconUrl": "https://incubator-flagon-distill.readthedocs.io/favicon.ico",
+		"tabEvent": "tabs.onUpdated"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358121180,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://incubator-flagon-distill.readthedocs.io/favicon.ico",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195100,
+			"incognito": false,
+			"index": 2,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "loading",
+			"title": "Installation Guide — Apache Distill 0.1.3 documentation",
+			"url": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html#installing-apache-distill-in-an-virtual-environment",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"newZoomFactor": 1,
+		"oldZoomFactor": 1,
+		"tabId": 602195100,
+		"zoomSettings": {
+			"mode": "automatic",
+			"scope": "per-origin"
+		},
+		"tabEvent": "tabs.onZoomChange"
+	},
+	{
+		"pageUrl": "chrome-extension://glifkfgngpmliakinpibmjodbclonhjd/_generated_background_page.html",
+		"pageTitle": "",
+		"pageReferrer": "",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358121356,
+		"scrnRes": {
+			"width": 0,
+			"height": 0
+		},
+		"logType": "custom",
+		"userAction": true,
+		"details": {
+			"active": true,
+			"audible": false,
+			"autoDiscardable": true,
+			"discarded": false,
+			"favIconUrl": "https://incubator-flagon-distill.readthedocs.io/favicon.ico",
+			"groupId": -1,
+			"height": 1032,
+			"highlighted": true,
+			"id": 602195100,
+			"incognito": false,
+			"index": 2,
+			"mutedInfo": {
+				"muted": false
+			},
+			"pinned": false,
+			"selected": true,
+			"status": "complete",
+			"title": "Installation Guide — Apache Distill 0.1.3 documentation",
+			"url": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html#installing-apache-distill-in-an-virtual-environment",
+			"width": 1920,
+			"windowId": 602194905
+		},
+		"userId": "pluginUser",
+		"toolVersion": "2.4.0",
+		"toolName": "useralePlugin",
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357850051",
+		"status": "complete",
+		"tabEvent": "tabs.onUpdated"
+	},
+	{
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html#installing-apache-distill-in-an-virtual-environment",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358121453,
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"logType": "custom",
+		"userAction": false,
+		"details": {
+			"pageLoadTime": 3
+		},
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"type": "load",
+		"tabId": 602195100
+	},
+	{
+		"target": "a.reference internal",
+		"path": [
+			"a.reference internal",
+			"li.toctree-l2",
+			"ul",
+			"li.toctree-l1 current",
+			"ul.current",
+			"div.wy-menu wy-menu-vertical",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html#installing-apache-distill-in-an-virtual-environment",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358121892,
+		"microTime": 0.9,
+		"location": {
+			"x": 236,
+			"y": 1119
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "div.wy-nav-content",
+		"path": [
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html#installing-apache-distill-in-an-virtual-environment",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358122306,
+		"microTime": 0.2,
+		"location": {
+			"x": 322,
+			"y": 1380
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "a.reference internal",
+		"path": [
+			"a.reference internal",
+			"li.toctree-l2",
+			"ul",
+			"li.toctree-l1 current",
+			"ul.current",
+			"div.wy-menu wy-menu-vertical",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html#installing-apache-distill-in-an-virtual-environment",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 1,
+		"duration": 414,
+		"startTime": 1707358121892,
+		"endTime": 1707358122306,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "pre",
+		"path": [
+			"pre",
+			"div.highlight",
+			"div.highlight-default notranslate",
+			"section#installing-apache-distill-in-an-virtual-environment",
+			"section#installation-guide",
+			"div",
+			"div.document",
+			"div.rst-content",
+			"div.wy-nav-content",
+			"section.wy-nav-content-wrap",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html#installing-apache-distill-in-an-virtual-environment",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358122775,
+		"microTime": 0.5,
+		"location": {
+			"x": 419,
+			"y": 1792
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "mouseover",
+		"logType": "raw",
+		"userAction": true,
+		"details": null,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "a.reference internal",
+		"path": [
+			"a.reference internal",
+			"li.toctree-l2",
+			"ul",
+			"li.toctree-l1 current",
+			"ul.current",
+			"div.wy-menu wy-menu-vertical",
+			"div.wy-side-scroll",
+			"nav.wy-nav-side",
+			"div.wy-grid-for-nav",
+			"body.wy-body-for-nav",
+			"html.writer-html5",
+			"#document",
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html#installing-apache-distill-in-an-virtual-environment",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"count": 1,
+		"duration": 883,
+		"startTime": 1707358121892,
+		"endTime": 1707358122775,
+		"type": "mouseover",
+		"logType": "interval",
+		"targetChange": true,
+		"typeChange": false,
+		"userAction": false,
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	},
+	{
+		"target": "Window",
+		"path": [
+			"Window"
+		],
+		"pageUrl": "https://incubator-flagon-distill.readthedocs.io/en/stable/installation.html#installing-apache-distill-in-an-virtual-environment",
+		"pageTitle": "Installation Guide — Apache Distill 0.1.3 documentation",
+		"pageReferrer": "https://incubator-flagon-distill.readthedocs.io/en/stable/",
+		"browser": {
+			"browser": "chrome",
+			"version": "114.0.0"
+		},
+		"clientTime": 1707358124069,
+		"microTime": 0.2,
+		"location": {
+			"x": null,
+			"y": null
+		},
+		"scrnRes": {
+			"width": 1920,
+			"height": 1032
+		},
+		"type": "blur",
+		"logType": "raw",
+		"userAction": true,
+		"details": {
+			"window": true
+		},
+		"userId": null,
+		"toolVersion": null,
+		"toolName": null,
+		"useraleVersion": "2.4.0",
+		"sessionID": "session_1707357894826",
+		"tabId": 602195100
+	}
+]
