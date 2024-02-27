@@ -15,6 +15,8 @@
 # limitations under the License.
 
 import pandas as pd
+from urllib.parse import urlparse
+import re
 
 
 def epoch_to_datetime(epoch_string):
@@ -48,19 +50,18 @@ def getUUID(log):
     else:
         return str(log["sessionID"]) + str(log["clientTime"]) + str(log["logType"])
     
-def group_by_sessionID_userID(log):
+def group_by_user(log):
     """
     A helper function to create separate logs associated with unique users
-    where a unique user to is a combination of the log's session ID and user ID  
+    where a unique user to is the browserSessionId
     :param log: Userale log in the form of dictionary
     :return: A dictionary that represent logs belonging to unique users
     """
     grouped_data = {}
     for d in log:
         # Create a combination of the two key values userId and sessionID
-        userId = d.get('userId', '')
-        sessionId = d.get('sessionID', '')
-        combined_key = str(userId) + "_" + str(sessionId)
+        sessionId = d.get('browserSessionId', '')
+        combined_key = str(sessionId)
         if combined_key not in grouped_data:
             grouped_data[combined_key] = []
         grouped_data[combined_key].append(d)
@@ -111,21 +112,15 @@ def chunk_by_idle_time(log, inactive_interval_s=60):
 
 def chunk_by_tabId(log):
     """
-    Separate logs by their tab ID
+    Separate logs by their browserSessionId
     :param log: Userale log in the form of dictionary
-    :return: A dictionary that represent sets separated by unique tab ID
+    :return: A dictionary that represent sets separated by unique browserSessionId
     """
     grouped_data = {}
     for d in log:
         # Depending on the log types, tabID can be inside the details element
-        if 'tabId' in d:
-            tab_key = 'tab_' + str(d['tabId'])
-        elif 'details' in d:
-            if 'id' in d['details']:            
-                tab_key = 'tab_' + str(d['details']['id'])
-            else:
-                tab_key = 'unknown' 
-                print('TabId not found')
+        if 'browserSessionId' in d:
+            tab_key = 'tab_' + str(d['httpSessionId'])
         else:
             tab_key = 'unknown' 
         if tab_key not in grouped_data:
@@ -133,7 +128,50 @@ def chunk_by_tabId(log):
         grouped_data[tab_key].append(d)
     return grouped_data
 
-def chunk_to_usersessions(log, inactive_interval_s = 60):
+def match_url(url, pattern):
+    # Escape dots in the pattern since dot is a special character in regex
+    # and replace '*' with '.*' to match any characters sequence
+    regex_pattern = re.escape(pattern).replace('\\*', '.*')
+    
+    # Add anchors to match the entire string
+    regex_pattern = '^' + regex_pattern + '$'
+    
+    # Compile the regex pattern
+    compiled_pattern = re.compile(regex_pattern)
+    
+    # Check if the URL matches the pattern
+    return bool(compiled_pattern.match(url))
+
+def chunk_by_URL(log, re):
+    """
+    Separate logs by the site that users interact with
+    :param log: Userale log in the form of dictionary
+    :param log: 
+    :return: A dictionary that represent sets separated by unique browserSessionId
+    """
+    grouped_data = {}
+    for d in log:
+        # Depending on the log types, tabID can be inside the details element
+        if 'pageUrl' in d:
+            domain = urlparse(d['pageUrl']).netloc
+            # Filter with the "re" parameter
+            if (re != "."):
+                if (match_url(domain, re)):
+                    domain_key = re
+                else:
+                    #Does not match, so we are skipping it
+                    continue
+            else:
+                domain_key = domain
+        else:
+            domain_key = 'unknown' 
+
+        if domain_key not in grouped_data:
+            grouped_data[domain_key] = []
+        grouped_data[domain_key].append(d)
+    return grouped_data
+
+def chunk_to_usersessions(log, inactive_interval_s = 60, group_by_type = "None", url_re = "."):
     """
     Separate a raw log to sets of user sessions.
     A user session is defined by: unique session ID, user ID, and separated by idle time
@@ -141,10 +179,12 @@ def chunk_to_usersessions(log, inactive_interval_s = 60):
     This set is further separated by the windows tab in which the user activities occurred
     :param log: Userale log in the form of dictionary
     :param inactive_interval_s: Threshold of inactivity (no logged activity) in seconds
+    :param url_re: Regular expression to filter the log
+    :param group_by_type: either group by tab, URL, browser (None)
     :return: A dictionary that represent sets of user sessions
     """
     data_by_users = {}
-    data_by_users = group_by_sessionID_userID(log)
+    data_by_users = group_by_user(log)
 
     chunk_data_by_users_sessions = {}
     for user in data_by_users:
@@ -152,14 +192,24 @@ def chunk_to_usersessions(log, inactive_interval_s = 60):
         # Sort the logs associated by each users so we can create sets accordingly
         sorted_data = sorted(data_by_users[user], key=lambda item: item.get('clientTime', item.get('endTime')))
 
-        # We first detect if there is an idle time between the logs that exceed X seconds
-        # And separate the logs when it is detected
-        chunked_set_time = chunk_by_idle_time(sorted_data, inactive_interval_s)
-
-        # for each chunk, we further chunk the data based on their tabID
-        for index, value in enumerate(chunked_set_time):
-            chunked_set_tab = chunk_by_tabId(value)
-            user_session_sets[index] = chunked_set_tab
-        chunk_data_by_users_sessions[user] = user_session_sets
+        chunked_group = {}
+        # Separate by browser tab
+        if (group_by_type == "tab"):
+            chunked_group = chunk_by_tabId(sorted_data)
+            for g_id in chunked_group:
+                # For each set, detect if there is an idle time between the logs that exceed X seconds
+                user_session_sets[g_id] = chunk_by_idle_time(chunked_group[g_id], inactive_interval_s)
+            chunk_data_by_users_sessions[user] = user_session_sets
+        # Separate by domain application
+        elif (group_by_type == "URL"):
+            # Do something
+            chunked_group = chunk_by_URL(sorted_data, url_re)
+            for g_id in chunked_group:
+                # For each set, detect if there is an idle time between the logs that exceed X seconds
+                user_session_sets[g_id] = chunk_by_idle_time(chunked_group[g_id], inactive_interval_s)
+            chunk_data_by_users_sessions[user] = user_session_sets
+        else:
+            # For each set, detect if there is an idle time between the logs that exceed X seconds
+            chunk_data_by_users_sessions[user] = chunk_by_idle_time(sorted_data, inactive_interval_s)
 
     return chunk_data_by_users_sessions
