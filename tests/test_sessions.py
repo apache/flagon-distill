@@ -20,8 +20,9 @@ import json
 import os
 
 # Util Tests
-import distill
+from distill.sessions.sessions import Sessions
 from tests.data_config import DATA_DIR
+
 
 def test_chunk_to_user_sessions_by_default():
     # Load in file and convert to raw data
@@ -29,7 +30,7 @@ def test_chunk_to_user_sessions_by_default():
     with open(file) as json_file:
         raw_data = json.load(json_file)
 
-    result = distill.Session.chunk_by_user_sessions(raw_data)
+    result = Sessions(logs=raw_data)
 
     # Get the session names from the parsed session
     session_names = result.get_session_names()
@@ -43,14 +44,15 @@ def test_chunk_to_user_sessions_by_default():
     # Assert that there are two distinct users
     assert len(unique_user_names) == 2
 
+
 def test_chunk_to_user_sessions_by_tab():
     # Load in file and convert to raw data
     file = os.path.join(DATA_DIR, "sample_data_multiusers.json")
     with open(file) as json_file:
         raw_data = json.load(json_file)
 
-    result_tab = distill.Session.chunk_by_user_sessions(raw_data, group_by_type="tab")
-    
+    result_tab = Sessions(raw_data, group_by_type="tab")
+
     # Get the session names from the parsed session
     session_names = result_tab.get_session_names()
     unique_tab = set()
@@ -58,7 +60,7 @@ def test_chunk_to_user_sessions_by_tab():
     for name in session_names:
         # The second part of the session names represent user identifier
         name_parts = name.split("_")
-        if name_parts[0] == '9486d2f32a8f9d4ef0dae14430c3b918':
+        if name_parts[0] == "9486d2f32a8f9d4ef0dae14430c3b918":
             unique_tab.add(name_parts[1])
 
     # Assert that there 3 distinct tabs for user: 9486d2f32a8f9d4ef0dae14430c3b918
@@ -71,9 +73,10 @@ def test_chunk_to_user_sessions_by_domain():
     with open(file) as json_file:
         raw_data = json.load(json_file)
 
-    # Assert that there is logs with pageURL include www.google.com for user: 06b0db1ab30e8e92819ba3d4091b83bc
+    # Assert that there is logs with pageURL
+    # include www.google.com for user: 06b0db1ab30e8e92819ba3d4091b83bc
     # But none for user: 9486d2f32a8f9d4ef0dae14430c3b918
-    result_url = distill.Session.chunk_by_user_sessions(raw_data, group_by_type="domain", url_re="*.google.*")
+    result_url = Sessions(raw_data, group_by_type="domain", url_re="*.google.*")
 
     # Get the session names from the parsed session
     session_names = result_url.get_session_names()
@@ -83,9 +86,9 @@ def test_chunk_to_user_sessions_by_domain():
     for name in session_names:
         # The second part of the session names represent user identifier
         name_parts = name.split("_")
-        if name_parts[0] == '9486d2f32a8f9d4ef0dae14430c3b918':
+        if name_parts[0] == "9486d2f32a8f9d4ef0dae14430c3b918":
             domain_names_user1.add(name_parts[1])
-        elif name_parts[0] == '06b0db1ab30e8e92819ba3d4091b83bc':
+        elif name_parts[0] == "06b0db1ab30e8e92819ba3d4091b83bc":
             domain_names_user2.add(name_parts[1])
 
     assert "domain*.google.*" not in domain_names_user1

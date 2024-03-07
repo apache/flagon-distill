@@ -1426,8 +1426,7 @@ def test_export_segments():
 
     assert len(lines) == 4
     assert (
-        lines[0]
-        == "Segment Name,Start Time,End Time,Number of Logs,Generate Field"
+        lines[0] == "Segment Name,Start Time,End Time,Number of Logs,Generate Field"
         " Name,Generate Matched Values,Segment Type\n"
     )
     assert lines[1] == "0,1623691890459,1623691994888,7,,,Segment_Type.DEADSPACE\n"

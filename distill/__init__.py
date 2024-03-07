@@ -33,9 +33,9 @@ from distill.segmentation.segment import (
 )
 from distill.segmentation.segmentation_error import SegmentationError
 from distill.segmentation.segments import Segments
-from distill.utils.crud import epoch_to_datetime, getUUID
-from distill.sessions.sessions import Sessions
 from distill.sessions.session import Session
+from distill.sessions.sessions import Sessions
+from distill.utils.crud import epoch_to_datetime, getUUID
 
 __all__ = [
     "Segment",

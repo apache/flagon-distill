@@ -524,8 +524,7 @@ def test_str():
     segments = distill.Segments([segment])
 
     assert (
-        str(segments)
-        == "Segments: [\n"
+        str(segments) == "Segments: [\n"
         "Segment: segment_name=segment_name, start=1, end=2, num_logs=5, "
         "generate_field_name=None, generate_matched_values=None, segment_type=None\n"
         "]"
