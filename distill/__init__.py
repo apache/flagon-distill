@@ -33,13 +33,17 @@ from distill.segmentation.segment import (
 )
 from distill.segmentation.segmentation_error import SegmentationError
 from distill.segmentation.segments import Segments
-from distill.utils.crud import epoch_to_datetime, getUUID, chunk_to_usersessions
+from distill.utils.crud import epoch_to_datetime, getUUID
+from distill.sessions.sessions import Sessions
+from distill.sessions.session import Session
 
 __all__ = [
     "Segment",
     "Segment_Type",
     "Segments",
     "SegmentationError",
+    "Sessions",
+    "Session",
     "graph",
     "createDiGraph",
     "sankey",
@@ -61,5 +65,4 @@ __all__ = [
     "export_segments",
     "getUUID",
     "epoch_to_datetime",
-    "chunk_to_usersessions",
 ]
