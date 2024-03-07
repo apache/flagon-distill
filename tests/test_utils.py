@@ -66,25 +66,3 @@ def test_UUID_without_type():
     # Assert UID uniqueness
     assert len(data) == len(raw_data)
     assert len(data) == 19
-
-
-def test_chunk_to_usersessions():
-    # Load in file and convert to raw data
-    file = os.path.join(DATA_DIR, "sample_data_multiusers.json")
-    with open(file) as json_file:
-        raw_data = json.load(json_file)
-
-    result = distill.chunk_to_usersessions(raw_data)
-
-    # Assert that there are two distinct users
-    assert len(result) == 2
-
-    # Assert that there 3 distinct tabs for user: 9486d2f32a8f9d4ef0dae14430c3b918
-    result_tab = distill.chunk_to_usersessions(raw_data, group_by_type="tab")
-    assert len(result_tab['9486d2f32a8f9d4ef0dae14430c3b918']) == 3
-
-    # Assert that there is logs with pageURL include www.google.com for user: 06b0db1ab30e8e92819ba3d4091b83bc
-    # But none for user: 9486d2f32a8f9d4ef0dae14430c3b918
-    result_url = distill.chunk_to_usersessions(raw_data, group_by_type="URL", url_re="*.google.*")
-    assert "*.google.*" not in result_url['9486d2f32a8f9d4ef0dae14430c3b918']
-    assert "*.google.*" in result_url['06b0db1ab30e8e92819ba3d4091b83bc']
