@@ -67,7 +67,7 @@ codespell = "^2.2.0"
 [tool.poetry.group.lint.dependencies]
 ruff = "^0.0.249"
 types-toml = "^0.10.8.1"
-black = "^23.1.0"
+black = ">=23.1,<25.0"
 
 [tool.poetry.group.typing.dependencies]
 mypy = "^0.991"
