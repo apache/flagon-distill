@@ -18,40 +18,50 @@ import json
 import os
 
 from pydantic import ValidationError
-from distill.process.log import Log
+
+from distill.core.log import Log
 from tests.data_config import DATA_DIR
+
 
 def test_log_constructor():
     exception_thrown = False
     try:
-        _ = Log("garbage data")
+        _ = Log(data="garbage data")
     except ValidationError:
         exception_thrown = True
     assert exception_thrown == True
 
     with open(os.path.join(DATA_DIR, "log_test_data.json")) as f:
         data = f.readline()
-    test_log = Log(data)
+        data_object = json.loads(data)
+
+    test_log = Log(data=data)
     assert test_log is not None
 
-    pageUrl = test_log.data.pageUrl
-    assert pageUrl == "https://github.com/apache/flagon/tree/master/docker" 
+    test_log2 = Log(data=data_object)
+    assert test_log2 is not None
+
+    pageUrl = test_log.data.page_url
+    assert pageUrl == "https://github.com/apache/flagon/tree/master/docker"
+
 
 def test_log_serialize():
     with open(os.path.join(DATA_DIR, "log_test_data.json")) as f:
         data = f.readline()
-    test_log = Log(data)
+    test_log = Log(data=data)
 
-    correct_str = json.dumps(json.loads(data), separators=(',', ':'), ensure_ascii=False)
-    serialized_data = test_log.serializeJson()
+    correct_str = json.dumps(
+        json.loads(data), separators=(",", ":"), ensure_ascii=False
+    )
+    serialized_data = test_log.to_json()
     assert serialized_data == correct_str
+
 
 def test_log_deserialize():
     with open(os.path.join(DATA_DIR, "log_test_data.json")) as f:
         data = f.readline()
-    test_log = Log(data)
+    test_log = Log(data=data)
 
     correct_object = json.loads(data)
-    deserialized_data = test_log.deserializeJson()
+    deserialized_data = test_log.to_dict()
     assert deserialized_data == correct_object
-    
