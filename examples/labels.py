@@ -10,9 +10,7 @@ class FeatureDefinition:
         if not callable(rule):
             raise TypeError("Rule not callable")
         
-        if isinstance(label, str):
-            pass
-        else:
+        if not isinstance(label, str):
             raise TypeError("Label is not a string")
         # Immediately validate the rule, so you can error
         # out/exit early if it's invalid
