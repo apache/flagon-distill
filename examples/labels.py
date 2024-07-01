@@ -1,4 +1,4 @@
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Callable
 import pandas as pd
 
 
@@ -6,9 +6,14 @@ class FeatureDefinition:
     # Implement class logic
     # TODO: Add a very specific type hint to the rule object:
     # see: https://docs.python.org/3/library/typing.html#annotating-callable-objects
-    def __init__(self, label: str, rule: Dict[str, Any]):
+    def __init__(self, label: str, rule: Callable[[Dict[str, Any]], bool]):
         if not callable(rule):
             raise TypeError("Rule not callable")
+        
+        if isinstance(label, str):
+            pass
+        else:
+            raise TypeError("Label is not a string")
         # Immediately validate the rule, so you can error
         # out/exit early if it's invalid
             # TODO: raise an informative error to the user
@@ -17,7 +22,7 @@ class FeatureDefinition:
             # - https://docs.python.org/3/tutorial/errors.html#raising-exceptions
 
         self.label = label
-        self.__rule = rule
+        self._rule = rule
 
     # This is a wrapper method around the private rule attribute we
     # store on self during init.
@@ -31,8 +36,7 @@ class FeatureDefinition:
     # and is an important part of writing clean, idiomatic python code.
     # TODO: Implement this wrapper function by using the _rule attribute
     def matches(self, log: Dict[str, Any]) -> bool:
-        if log == self.__rule:
-            return log
+            return self._rule(log)
 
 
 def label_features(
@@ -68,7 +72,8 @@ def label_features(
 if __name__ == "__main__":
     # TODO: Import logs from JSON file here ...
     json_file = input("Enter your json file path: ")
-    logs = pd.read_json(json_file)
+    logs = setup(json_file, "datetime")
+    
     
 
     # Create a map rule to test out the FeatureDefinition with
@@ -80,6 +85,11 @@ if __name__ == "__main__":
     
     def table_rule(log: Dict[str, Any]) -> bool:
         return "path" in log and "table" in log["path"]
+    
+    def integer_rule(log: Dict[str, Any]) -> bool:
+        return "path" in log and 10 in log["path"]
+    
+
 
     # TODO: Examine the UserALE logs, see what fields-values exist
     # and write a few more fews we can test our logic against
@@ -91,7 +101,10 @@ if __name__ == "__main__":
     map_page_definition = FeatureDefinition(rule=map_rule, label="map_page")
     container_path_definition = FeatureDefinition(rule=container_rule, label="container_path")
     table_path_definition = FeatureDefinition(rule=table_rule, label="table_path")
+    integer_path_definition = FeatureDefinition(rule=integer_rule, label= 10)
 
     label_features(logs=logs, definitions=[map_page_definition])
     label_features(logs=logs, definitions=[container_path_definition])
     label_features(logs=logs, definitions=[table_path_definition])
+    label_features(logs=logs, definitions=[integer_path_definition])
+
