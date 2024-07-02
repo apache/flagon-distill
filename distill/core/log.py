@@ -66,7 +66,7 @@ def normalize_timestamp(timestamp: Timestamp, tz: str ='+0000') -> datetime:
         tz: an arbitrary timestamp string (ex: '+0100')
     """
     if isinstance(timestamp, str):
-        # Only uses US/Eastern if there is no associated timezone
+        # Only uses provided timezone arg if there is no associated timezone in the timestamp
         parsed = dateparser.parse(timestamp, settings={'TIMEZONE': tz})
         if parsed is None:
             raise ValueError("ERROR: could not parse timestamp " + str(timestamp))
