@@ -19,7 +19,7 @@ import os
 
 from pydantic import ValidationError
 
-from distill.core.log import Log
+from distill.core.log import Log, normalize_timestamp
 from tests.data_config import DATA_DIR
 
 
@@ -31,9 +31,8 @@ def test_log_constructor():
         exception_thrown = True
     assert exception_thrown == True
 
-    with open(os.path.join(DATA_DIR, "log_test_data.json")) as f:
-        data = f.readline()
-        data_object = json.loads(data)
+    data = load_log()
+    data_object = json.loads(data)
 
     test_log = Log(data=data)
     assert test_log is not None
@@ -46,8 +45,7 @@ def test_log_constructor():
 
 
 def test_log_serialize():
-    with open(os.path.join(DATA_DIR, "log_test_data.json")) as f:
-        data = f.readline()
+    data = load_log()
     test_log = Log(data=data)
 
     correct_str = json.dumps(
@@ -58,10 +56,26 @@ def test_log_serialize():
 
 
 def test_log_deserialize():
-    with open(os.path.join(DATA_DIR, "log_test_data.json")) as f:
-        data = f.readline()
+    data = load_log()
     test_log = Log(data=data)
 
     correct_object = json.loads(data)
     deserialized_data = test_log.to_dict()
     assert deserialized_data == correct_object
+
+
+def test_log_normalize_timestamp():
+    test_timestamp_1 = 1719530111079
+    ts1 = normalize_timestamp(test_timestamp_1)
+    assert (test_timestamp_1 / 1000) == ts1.timestamp()
+
+    test_timestamp_2 = "02/19/24 12:00:00"
+    correct = 1708365600
+    ts2 = normalize_timestamp(test_timestamp_2)
+    assert correct == ts2.timestamp()
+
+
+def load_log() -> str:
+    with open(os.path.join(DATA_DIR, "log_test_data.json")) as f:
+        data = f.readline()
+    return data
