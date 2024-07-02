@@ -1,5 +1,5 @@
 from typing import Union, List, Dict
-from typing_extensions import Annotated, TypeAliasType
+from typing_extensions import TypeAliasType
 
 # TypeAliasType is necessary to avoid recursion error when validating this
 # type with Pydantic
@@ -16,5 +16,7 @@ JSONSerializable = TypeAliasType(
 )
 
 JsonDict = Dict[str, 'JSONSerializable']
+
+Timestamp = Union[str, int, float]
 
 
