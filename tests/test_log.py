@@ -74,6 +74,13 @@ def test_log_normalize_timestamp():
     ts2 = normalize_timestamp(test_timestamp_2)
     assert correct == ts2.timestamp()
 
+    exception_thrown = False 
+    try:
+        normalize_timestamp("garbage data")
+    except ValueError:
+        exception_thrown = True
+    assert exception_thrown == True
+
 
 def load_log() -> str:
     with open(os.path.join(DATA_DIR, "log_test_data.json")) as f:
