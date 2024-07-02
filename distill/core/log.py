@@ -56,26 +56,3 @@ class Log:
     def to_dict(self) -> JsonDict:
         return self.data.model_dump(by_alias=True)
 
-
-def normalize_timestamp(timestamp: Timestamp, tz: str ='+0000') -> datetime:
-    """
-    Attempts to normalize a given timestamp to a datetime object 
-    Arguments:
-        timestamp: a int or float representing (milli)seconds since the epoch or an 
-            arbitrary timestamp string (ex: '02/19/24 10:32:02', 1719530111079)
-        tz: an arbitrary timestamp string (ex: '+0100')
-    """
-    if isinstance(timestamp, str):
-        # Only uses provided timezone arg if there is no associated timezone in the timestamp
-        parsed = dateparser.parse(timestamp, settings={'TIMEZONE': tz})
-        if parsed is None:
-            raise ValueError("ERROR: could not parse timestamp " + str(timestamp))
-        return parsed.astimezone(timezone.utc)
-    elif isinstance(timestamp, float) or isinstance(timestamp, int):
-        tzinformation = dateparser.parse("00:01", settings={'TIMEZONE': tz}).tzinfo
-
-        if timestamp > datetime.now().timestamp():
-            timestamp = timestamp / 1000
-        return datetime.fromtimestamp(float(timestamp), tzinformation)
-    else:
-        raise TypeError("ERROR: " + str(type(timestamp)) + " timestamp should be a string, int, or datetime object")

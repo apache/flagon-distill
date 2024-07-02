@@ -19,8 +19,9 @@ import os
 
 from pydantic import ValidationError
 
-from distill.core.log import Log, normalize_timestamp
+from distill.core.log import Log 
 from tests.data_config import DATA_DIR
+from datetime import datetime
 
 
 def test_log_constructor():
@@ -65,21 +66,16 @@ def test_log_deserialize():
 
 
 def test_log_normalize_timestamp():
-    test_timestamp_1 = 1719530111079
-    ts1 = normalize_timestamp(test_timestamp_1)
-    assert (test_timestamp_1 / 1000) == ts1.timestamp()
+    data = load_log()
+    test_log = Log(data=data)
 
-    test_timestamp_2 = "02/19/24 12:00:00"
-    correct = 1708365600
-    ts2 = normalize_timestamp(test_timestamp_2)
-    assert correct == ts2.timestamp()
+    # note provided UserAle schema has clientTime in milliseconds but need it in 
+    # seconds to be able to parse
+    correct_ms = 1719530111079
+    correct_dt = datetime.fromtimestamp(correct_ms / 1000)
 
-    exception_thrown = False 
-    try:
-        normalize_timestamp("garbage data")
-    except ValueError:
-        exception_thrown = True
-    assert exception_thrown == True
+    assert test_log.data.client_time == correct_dt
+    assert test_log.to_dict()["clientTime"] == correct_ms
 
 
 def load_log() -> str:

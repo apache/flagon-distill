@@ -16,9 +16,10 @@
 from enum import Enum
 from typing import List, Optional
 
-from pydantic import AliasGenerator, BaseModel, Field
+from pydantic import AliasGenerator, BaseModel, Field, field_serializer, field_validator
 from pydantic.alias_generators import to_camel
 from pydantic.config import ConfigDict
+from datetime import datetime
 
 
 class Browser(BaseModel):
@@ -58,7 +59,7 @@ class UserAleSchema(BaseModel):
     page_title: str
     page_referrer: str
     browser: Browser
-    client_time: int
+    client_time: int 
     micro_time: int = Field(..., lt=2)
     location: Location
     scrn_res: ScrnRes
@@ -71,3 +72,12 @@ class UserAleSchema(BaseModel):
     tool_name: Optional[str]
     userale_version: Optional[str]
     session_id: str
+
+    @field_validator("client_time")
+    def validate_ct(cls, ct: float):
+        return datetime.fromtimestamp(ct / 1000)
+
+    @field_serializer("client_time")
+    def serialize_ct(self, ct: datetime):
+        return int(ct.timestamp() * 1000)
+
