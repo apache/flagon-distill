@@ -40,7 +40,7 @@ class Details(BaseModel):
     window: bool
 
 
-class LogSchema(BaseModel):
+class UserAleSchema(BaseModel):
     """
     A raw or custom log produced by UserAle
     """

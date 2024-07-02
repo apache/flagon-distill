@@ -16,11 +16,13 @@
 import json
 
 from pydantic import BaseModel
-from typing import Any
+from pydantic.type_adapter import TypeAdapter
+from typing import Dict, Union
 
-from distill.core.core_types import JsonObject 
-from distill.schemas.userale import LogSchema
+from distill.core.types import JsonDict, JSONSerializable
+from distill.schemas.userale import UserAleSchema
 
+ta = TypeAdapter(JsonDict)
 
 class Log:
     """
@@ -31,26 +33,23 @@ class Log:
                 defaults to UserAle log schema
     """
 
-    def __init__(self, data: str | JsonObject, schema=LogSchema):
+    def __init__(self, data: Union[str, JsonDict], schema=UserAleSchema):
         if not issubclass(schema, BaseModel):
             raise TypeError("schema should inherit from pydantic.BaseModel")
 
-        if isinstance(data, dict):
-            schema.model_validate(data, strict=True)
-
-            self.data = LogSchema(**data)
-        elif isinstance(data, str):
+        if isinstance(data, str):
             schema.model_validate_json(data, strict=True)
-
-            json_str_data = json.loads(data)
-            self.data = schema(**json_str_data)
+            data = json.loads(data)
+        elif ta.validate_python(data):
+            schema.model_validate(data, strict=True)
         else:
-            raise TypeError("ERROR: " + str(type(data)) + " data should be either a string or a JsonObject")
+            raise TypeError("ERROR: " + str(type(data)) + " data should be either a string or a JsonDict")
+        self.data = schema(**data)
 
         # TODO: need to create ID field here on object initialization
 
     def to_json(self) -> str:
         return self.data.model_dump_json(by_alias=True)
 
-    def to_dict(self) -> JsonObject:
+    def to_dict(self) -> JsonDict:
         return self.data.model_dump(by_alias=True)
