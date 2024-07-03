@@ -7,6 +7,7 @@ class FeatureDefinition:
         Allows users to specify a rule or set of rules and an 
         associated label and then use this to add labels to  
         logs in Distill
+        
         param label: a string we want to add to the log if the rule is met
         param rule: must be a callable function which accepts a UserALE log 
             as an input, and returns a boolean of whether that rule was met or not

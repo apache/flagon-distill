@@ -46,23 +46,25 @@ def test_pairwiseSeq_2():
     result = distill.pairwiseSeq(test_list, split=True)
     assert result == ((1, 2, 3), (2, 3, 4))
     
-data = testing_utils.setup(os.path.join(DATA_DIR, "sample_data.json"), "integer")
-logs = data[1]
-
-def input_rule(log):
-    return "target" in log and "input" in log["target"]
-
 def test_label_features_1():
-    result = distill.label_features(logs,[FeatureDefinition(input_rule, "input_target")])
-    assert result
+    def input_rule(log):
+        return "target" in log and "input" in log["target"]
+    logs = testing_utils.setup("./data/task_example.json", "datetime")
+    result = distill.label_features(logs,[FeatureDefinition(rule=input_rule, label="input_target")])
+    assert isinstance(result, list)
+    assert "input_target" in result 
 
-def test_label_features_2():
+def test_feature_definition_does_not_accept_non_string_label():
     with pytest.raises(TypeError):
-        result = distill.label_features(logs,[FeatureDefinition(input_rule, 10)])
+        def input_rule(log):
+            return "target" in log and "input" in log["target"]
+        logs = testing_utils.setup("./data/task_example.json", "datetime")
+        result = distill.label_features(logs,[FeatureDefinition(rule=input_rule, label=10)])
 
-def test_label_features_2():
+def test_feature_definition_does_not_accept_non_callable_rules():
     with pytest.raises(TypeError):
-        result = distill.label_features(logs,[FeatureDefinition("input_rule", "input_target")])
+        logs = testing_utils.setup("./data/task_example.json", "datetime")
+        result = distill.label_features(logs,[FeatureDefinition(rule="input_rule", label="input_target")])
     
 
 
