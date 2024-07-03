@@ -18,10 +18,8 @@ import json
 from pydantic import BaseModel
 from pydantic.type_adapter import TypeAdapter
 from typing import Dict, Union
-from datetime import datetime, timezone, tzinfo
-import dateparser
 
-from distill.core.types import JsonDict, JSONSerializable, Timestamp
+from distill.core.types import JsonDict, JSONSerializable
 from distill.schemas.userale import UserAleSchema
 
 ta = TypeAdapter(JsonDict)
