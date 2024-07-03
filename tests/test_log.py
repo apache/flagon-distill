@@ -19,8 +19,9 @@ import os
 
 from pydantic import ValidationError
 
-from distill.core.log import Log
+from distill.core.log import Log 
 from tests.data_config import DATA_DIR
+from datetime import datetime
 
 
 def test_log_constructor():
@@ -31,9 +32,8 @@ def test_log_constructor():
         exception_thrown = True
     assert exception_thrown == True
 
-    with open(os.path.join(DATA_DIR, "log_test_data.json")) as f:
-        data = f.readline()
-        data_object = json.loads(data)
+    data = load_log()
+    data_object = json.loads(data)
 
     test_log = Log(data=data)
     assert test_log is not None
@@ -46,8 +46,7 @@ def test_log_constructor():
 
 
 def test_log_serialize():
-    with open(os.path.join(DATA_DIR, "log_test_data.json")) as f:
-        data = f.readline()
+    data = load_log()
     test_log = Log(data=data)
 
     correct_str = json.dumps(
@@ -58,10 +57,28 @@ def test_log_serialize():
 
 
 def test_log_deserialize():
-    with open(os.path.join(DATA_DIR, "log_test_data.json")) as f:
-        data = f.readline()
+    data = load_log()
     test_log = Log(data=data)
 
     correct_object = json.loads(data)
     deserialized_data = test_log.to_dict()
     assert deserialized_data == correct_object
+
+
+def test_log_normalize_timestamp():
+    data = load_log()
+    test_log = Log(data=data)
+
+    # note provided UserAle schema has clientTime in milliseconds but need it in 
+    # seconds to be able to parse
+    correct_ms = 1719530111079
+    correct_dt = datetime.fromtimestamp(correct_ms / 1000)
+
+    assert test_log.data.client_time == correct_dt
+    assert test_log.to_dict()["clientTime"] == correct_ms
+
+
+def load_log() -> str:
+    with open(os.path.join(DATA_DIR, "log_test_data.json")) as f:
+        data = f.readline()
+    return data

@@ -53,3 +53,4 @@ class Log:
 
     def to_dict(self) -> JsonDict:
         return self.data.model_dump(by_alias=True)
+
