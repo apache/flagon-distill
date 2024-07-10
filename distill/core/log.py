@@ -18,6 +18,7 @@ import json
 from pydantic import BaseModel
 from pydantic.type_adapter import TypeAdapter
 from typing import Dict, Union
+from pksuid import PKSUID
 
 from distill.core.types import JsonDict, JSONSerializable
 from distill.schemas.userale import UserAleSchema
@@ -39,14 +40,17 @@ class Log:
 
         if isinstance(data, str):
             schema.model_validate_json(data, strict=True)
+            hash_sfx = str(hash(data))
             data = json.loads(data)
         elif ta.validate_python(data):
+            hash_sfx = str(hash(json.dumps(data)))
             schema.model_validate(data, strict=True)
         else:
             raise TypeError("ERROR: " + str(type(data)) + " data should be either a string or a JsonDict")
         self.data = schema(**data)
 
-        # TODO: need to create ID field here on object initialization
+        self.id = PKSUID("log_" + hash_sfx, schema._timestamp(self.data))
+
 
     def to_json(self) -> str:
         return self.data.model_dump_json(by_alias=True)

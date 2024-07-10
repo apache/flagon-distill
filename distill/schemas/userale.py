@@ -14,10 +14,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 from typing import List, Optional
+from datetime import datetime
 
 from pydantic import AliasGenerator, BaseModel, Field, field_serializer, field_validator
 from pydantic.alias_generators import to_camel
 from pydantic.config import ConfigDict
+
+from .base import BaseSchema
 from datetime import datetime
 
 
@@ -40,7 +43,7 @@ class Details(BaseModel):
     window: bool
 
 
-class UserAleSchema(BaseModel):
+class UserAleSchema(BaseSchema):
     """
     A raw or custom log produced by UserAle
     """
@@ -80,3 +83,9 @@ class UserAleSchema(BaseModel):
     def serialize_ct(self, ct: datetime):
         return int(ct.timestamp() * 1000)
 
+    def _timestamp(self):
+        """
+        Returns:
+            float: POSIX time from userALE log's client_time field
+        """
+        return self.client_time.timestamp()

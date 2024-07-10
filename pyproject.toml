@@ -51,6 +51,8 @@ matplotlib = "3.7.5"
 scipy = "1.9.3"
 pydantic = "^2.7.4"
 dateparser = "^1.2.0"
+pksuid = "^1.1.2"
+datetime = "^5.5"
 
 [tool.poetry.group.docs]
 optional = true

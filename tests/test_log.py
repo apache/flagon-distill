@@ -44,6 +44,10 @@ def test_log_constructor():
     pageUrl = test_log.data.page_url
     assert pageUrl == "https://github.com/apache/flagon/tree/master/docker"
 
+    id = test_log.id
+    assert id.get_timestamp() == 1719530111079 // 1000
+    assert id.prefix.startswith("log_")
+
 
 def test_log_serialize():
     data = load_log()
