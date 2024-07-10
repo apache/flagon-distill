@@ -84,4 +84,7 @@ class UserAleSchema(BaseSchema):
         return int(ct.timestamp() * 1000)
 
     def _timestamp(self):
+        """
+        Returns timestamp as datetime object from userALE log's client_time field
+        """
         return self.client_time.timestamp()

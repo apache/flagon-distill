@@ -24,8 +24,17 @@ from pydantic.config import ConfigDict
 
 
 class BaseSchema(BaseModel, abc.ABC):
+    """
+    Abstract base class to serve as model for any and all schemas
+    """
+
     @property
     @abc.abstractmethod
     def _timestamp(self):
+        """
+        Represents a timestamp associated with the schema
+        Subclasses must override to provide specific timestamp value
+        Expected to return datetime object
+        """
         pass
     
