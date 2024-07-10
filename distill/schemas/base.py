@@ -34,7 +34,8 @@ class BaseSchema(BaseModel, abc.ABC):
         """
         Represents a timestamp associated with the schema
         Subclasses must override to provide specific timestamp value
-        Expected to return datetime object
+        Returns:
+            float: POSIX timestamp corresponding to datetime instance
         """
         pass
     

@@ -85,6 +85,7 @@ class UserAleSchema(BaseSchema):
 
     def _timestamp(self):
         """
-        Returns timestamp as datetime object from userALE log's client_time field
+        Returns:
+            float: POSIX time from userALE log's client_time field
         """
         return self.client_time.timestamp()
