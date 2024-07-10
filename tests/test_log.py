@@ -46,7 +46,7 @@ def test_log_constructor():
 
     id = test_log.id
     assert id.get_timestamp() == 1719530111079 // 1000
-    assert id.prefix == "log"
+    assert id.prefix.startswith("log_")
 
 
 def test_log_serialize():
