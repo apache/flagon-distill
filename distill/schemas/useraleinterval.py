@@ -20,60 +20,41 @@ from pydantic import AliasGenerator, BaseModel, Field, field_serializer, field_v
 from pydantic.alias_generators import to_camel
 from pydantic.config import ConfigDict
 
-from .base import BaseSchema
+from .userale import UserAleSchema, Browser, Location, ScrnRes, Details
 from datetime import datetime
 
 
-class Browser(BaseModel):
-    browser: str
-    version: str
-
-
-class Location(BaseModel):
-    x: Optional[int]
-    y: Optional[int]
-
-
-class ScrnRes(BaseModel):
-    width: int
-    height: int
-
-
-class Details(BaseModel):
-    window: bool
-
-
-class UserAleSchema(BaseSchema):
+class UserAleIntervalSchema(UserAleSchema):
     """
     A raw or custom log produced by UserAle
     """
 
-    model_config: ConfigDict
+    model_config = ConfigDict(
+        title="IntervalLog",
+        alias_generator=AliasGenerator(
+            validation_alias=to_camel, serialization_alias=to_camel
+        ),
+    )
 
-    target: str
-    path: List[str]
-    page_url: str
-    page_title: str
-    page_referrer: str
-    browser: Browser
-    location: Location
-    scrn_res: ScrnRes
-    type_field: str = Field(..., validation_alias="type", serialization_alias="type")
-    log_type: str
-    user_action: bool
-    details: Details
-    user_id: str
-    tool_version: Optional[str]
-    tool_name: Optional[str]
-    userale_version: Optional[str]
-    session_id: str
-    http_session_id: str
-    browser_session_id: str
+    start_time: int 
+    end_time: int 
+    target_change: bool
+    type_change: bool
+    duration: int
 
+    @field_validator("start_time")
+    def validate_st(cls, st: float):
+        return datetime.fromtimestamp(st / 1000)
+
+    @field_serializer("start_time")
+    def serialize_st(self, st: datetime):
+        return int(st.timestamp() * 1000)
+    
+    # add in end_time validator and serializer under same tag
 
     def _timestamp(self):
         """
         Returns:
-            float: POSIX time from userALE log's client_time field
+            float: POSIX time from userALE log's start_time field
         """
-        pass
+        return self.start_time.timestamp()
