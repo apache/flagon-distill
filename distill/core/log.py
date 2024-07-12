@@ -14,16 +14,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import json
-
-from pydantic import BaseModel
-from pydantic.type_adapter import TypeAdapter
 from typing import Dict, Union
-from pksuid import PKSUID
 
-from distill.core.types import JsonDict, JSONSerializable
-from distill.schemas.userale import UserAleSchema
+from pksuid import PKSUID
+from pydantic import BaseModel, parse_obj_as
+from pydantic.type_adapter import TypeAdapter
+
+from distill.core.types import JsonDict, JSONSerializable, UserAleSchema
 
 ta = TypeAdapter(JsonDict)
+
 
 class Log:
     """
@@ -34,27 +34,33 @@ class Log:
                 defaults to UserAle log schema
     """
 
-    def __init__(self, data: Union[str, JsonDict], schema=UserAleSchema):
-        if not issubclass(schema, BaseModel):
+    def __init__(self, data: Union[str, JsonDict], schema=None):
+        if schema is None:
+            schema = UserAleSchema
+        elif issubclass(schema, BaseModel):
             raise TypeError("schema should inherit from pydantic.BaseModel")
 
         if isinstance(data, str):
-            schema.model_validate_json(data, strict=True)
+            # schema.model_validate_json(data, strict=True)
             hash_sfx = str(hash(data))
             data = json.loads(data)
         elif ta.validate_python(data):
             hash_sfx = str(hash(json.dumps(data)))
-            schema.model_validate(data, strict=True)
+            # schema.model_validate(data, strict=True)
         else:
-            raise TypeError("ERROR: " + str(type(data)) + " data should be either a string or a JsonDict")
-        self.data = schema(**data)
+            raise TypeError(
+                "ERROR: "
+                + str(type(data))
+                + " data should be either a string or a JsonDict"
+            )
+        # self.data = schema(**data)
+        self.data = schema.validate_python(data)
 
-        self.id = PKSUID("log_" + hash_sfx, schema._timestamp(self.data))
-
+        # self.id = PKSUID("log_" + hash_sfx, schema._timestamp(self.data))
+        self.id = PKSUID("log_" + hash_sfx, self.data._timestamp())
 
     def to_json(self) -> str:
         return self.data.model_dump_json(by_alias=True)
 
     def to_dict(self) -> JsonDict:
         return self.data.model_dump(by_alias=True)
-

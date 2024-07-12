@@ -13,15 +13,13 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-from typing import List, Optional
 from datetime import datetime
+from typing import List, Optional
 
-from pydantic import AliasGenerator, BaseModel, Field, field_serializer, field_validator
+from pydantic import BaseModel, Field
 from pydantic.alias_generators import to_camel
-from pydantic.config import ConfigDict
 
 from .base import BaseSchema
-from datetime import datetime
 
 
 class Browser(BaseModel):
@@ -29,26 +27,10 @@ class Browser(BaseModel):
     version: str
 
 
-class Location(BaseModel):
-    x: Optional[int]
-    y: Optional[int]
-
-
-class ScrnRes(BaseModel):
-    width: int
-    height: int
-
-
-class Details(BaseModel):
-    window: bool
-
-
-class UserAleSchema(BaseSchema):
+class UserAleBaseSchema(BaseSchema):
     """
     A raw or custom log produced by UserAle
     """
-
-    model_config: ConfigDict
 
     target: str
     path: List[str]
@@ -56,12 +38,9 @@ class UserAleSchema(BaseSchema):
     page_title: str
     page_referrer: str
     browser: Browser
-    location: Location
-    scrn_res: ScrnRes
     type_field: str = Field(..., validation_alias="type", serialization_alias="type")
     log_type: str
     user_action: bool
-    details: Details
     user_id: str
     tool_version: Optional[str]
     tool_name: Optional[str]
@@ -69,7 +48,6 @@ class UserAleSchema(BaseSchema):
     session_id: str
     http_session_id: str
     browser_session_id: str
-
 
     def _timestamp(self):
         """

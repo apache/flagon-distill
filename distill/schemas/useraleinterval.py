@@ -13,18 +13,16 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-from typing import List, Optional
 from datetime import datetime
 
-from pydantic import AliasGenerator, BaseModel, Field, field_serializer, field_validator
+from pydantic import AliasGenerator, field_serializer, field_validator
 from pydantic.alias_generators import to_camel
 from pydantic.config import ConfigDict
 
-from .userale import UserAleSchema, Browser, Location, ScrnRes, Details
-from datetime import datetime
+from .useralebase import UserAleBaseSchema
 
 
-class UserAleIntervalSchema(UserAleSchema):
+class UserAleIntervalSchema(UserAleBaseSchema):
     """
     A raw or custom log produced by UserAle
     """
@@ -36,20 +34,21 @@ class UserAleIntervalSchema(UserAleSchema):
         ),
     )
 
-    start_time: int 
-    end_time: int 
+    count: int
+    duration: int
+    start_time: int
+    end_time: int
     target_change: bool
     type_change: bool
-    duration: int
 
-    @field_validator("start_time")
+    @field_validator("start_time", "end_time")
     def validate_st(cls, st: float):
         return datetime.fromtimestamp(st / 1000)
 
-    @field_serializer("start_time")
+    @field_serializer("start_time", "end_time")
     def serialize_st(self, st: datetime):
         return int(st.timestamp() * 1000)
-    
+
     # add in end_time validator and serializer under same tag
 
     def _timestamp(self):

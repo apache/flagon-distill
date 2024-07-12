@@ -13,18 +13,31 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-from typing import List, Optional
 from datetime import datetime
+from typing import List, Optional
 
 from pydantic import AliasGenerator, BaseModel, Field, field_serializer, field_validator
 from pydantic.alias_generators import to_camel
 from pydantic.config import ConfigDict
 
-from .userale import UserAleSchema
-from datetime import datetime
+from .useralebase import UserAleBaseSchema
 
 
-class UserAleRawSchema(UserAleSchema):
+class Location(BaseModel):
+    x: Optional[int]
+    y: Optional[int]
+
+
+class ScrnRes(BaseModel):
+    width: int
+    height: int
+
+
+class Details(BaseModel):
+    window: bool
+
+
+class UserAleRawSchema(UserAleBaseSchema):
     """
     A raw or custom log produced by UserAle
     """
@@ -36,8 +49,11 @@ class UserAleRawSchema(UserAleSchema):
         ),
     )
 
-    client_time: int 
+    client_time: int
     micro_time: int = Field(..., lt=2)
+    location: Location
+    scrn_res: ScrnRes
+    details: Details
 
     @field_validator("client_time")
     def validate_ct(cls, ct: float):
