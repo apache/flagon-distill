@@ -3,8 +3,7 @@ from typing import Dict, List, Union
 from pydantic.type_adapter import TypeAdapter
 from typing_extensions import TypeAliasType
 
-from distill.schemas.useraleinterval import UserAleIntervalSchema
-from distill.schemas.useraleraw import UserAleRawSchema
+from distill.schemas.userale import UserAleRawSchema, UserAleIntervalSchema
 
 # TypeAliasType is necessary to avoid recursion error when validating this
 # type with Pydantic

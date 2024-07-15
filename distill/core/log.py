@@ -41,22 +41,18 @@ class Log:
             raise TypeError("schema should inherit from pydantic.BaseModel")
 
         if isinstance(data, str):
-            # schema.model_validate_json(data, strict=True)
             hash_sfx = str(hash(data))
             data = json.loads(data)
         elif ta.validate_python(data):
             hash_sfx = str(hash(json.dumps(data)))
-            # schema.model_validate(data, strict=True)
         else:
             raise TypeError(
                 "ERROR: "
                 + str(type(data))
                 + " data should be either a string or a JsonDict"
             )
-        # self.data = schema(**data)
         self.data = schema.validate_python(data)
 
-        # self.id = PKSUID("log_" + hash_sfx, schema._timestamp(self.data))
         self.id = PKSUID("log_" + hash_sfx, self.data._timestamp())
 
     def to_json(self) -> str:
