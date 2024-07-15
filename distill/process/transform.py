@@ -15,6 +15,8 @@
 # limitations under the License.
 
 import itertools
+from typing import Any, Dict, List, Callable
+from distill.core.feature_definition import FeatureDefinition
 
 
 def pairwiseStag(iterable, *, split: bool = False):
@@ -52,3 +54,22 @@ def pairwiseSeq(iterable, *, split: bool = False):
         return list1, list2
     else:
         return list(pairs)
+    
+def label_features(
+    logs: List[Dict[str, Any]], definitions: List[FeatureDefinition]
+) -> List[Dict[str, Any]]:
+    """
+    Check whether a log matches the specified a rule or set of rules 
+    and an associated label definition
+
+    param logs: UserALE log
+    definitions: specified rule(s) and label
+    return: logs
+    """
+    for log in logs:
+        for definition in definitions:
+            if definition.matches(log):
+                if "labels" not in log:
+                    log.update({"labels": list()})
+                log["labels"].append(definition.label)
+    return logs

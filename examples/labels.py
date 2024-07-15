@@ -1,23 +1,23 @@
+import os
+
+import distill
+from tests import testing_utils
+from tests.data_config import DATA_DIR
 from typing import Any, Dict, List, Callable
-import pandas as pd
+import json
+
 
 
 class FeatureDefinition:
     # Implement class logic
-    # TODO: Add a very specific type hint to the rule object:
-    # see: https://docs.python.org/3/library/typing.html#annotating-callable-objects
     def __init__(self, label: str, rule: Callable[[Dict[str, Any]], bool]):
+        # Immediately validate the rule, so you can error
+         # out/exit early if it's invalid
         if not callable(rule):
             raise TypeError("Rule not callable")
         
         if not isinstance(label, str):
             raise TypeError("Label is not a string")
-        # Immediately validate the rule, so you can error
-        # out/exit early if it's invalid
-            # TODO: raise an informative error to the user
-            # see:
-            # - https://www.geeksforgeeks.org/python-exception-handling/
-            # - https://docs.python.org/3/tutorial/errors.html#raising-exceptions
 
         self.label = label
         self._rule = rule
@@ -32,9 +32,8 @@ class FeatureDefinition:
     # In `label_features` below, you see that we can then check whether
     # a log `matches` the definition which reads more like plain english
     # and is an important part of writing clean, idiomatic python code.
-    # TODO: Implement this wrapper function by using the _rule attribute
     def matches(self, log: Dict[str, Any]) -> bool:
-            return self._rule(log)
+        return self._rule(log)
 
 
 def label_features(
@@ -68,41 +67,25 @@ def label_features(
 # that needs to be executed.
 ###########################################################
 if __name__ == "__main__":
-    # TODO: Import logs from JSON file here ...
-    json_file = input("Enter your json file path: ")
-    logs = setup(json_file, "datetime")
+    file = open(os.path.join(DATA_DIR, "sample_data.json"), "r")
+    logs = json.load(file)
+
+    # Rule to test out the FeatureDefinition with
+    def type_rule(log):
+        return "type" in log and "scroll" in log["type"]
+
+    # Definitions to test out the FeatureDefinition with
+    type_rule_definition = FeatureDefinition(rule=type_rule, label="scroll_type")
+    rule_not_callable_definintion = FeatureDefinition(rule="rule", label="scroll_type")
+    string_error_definition = FeatureDefinition(rule=type_rule, label= 10)
     
-    
-
-    # Create a map rule to test out the FeatureDefinition with
-    def map_rule(log: Dict[str, Any]) -> bool:
-        return "pageUrl" in log and "map" in log["pageUrl"]
-
-    def container_rule(log: Dict[str, Any]) -> bool:
-        return "path" in log and "container" in log["path"]
-    
-    def table_rule(log: Dict[str, Any]) -> bool:
-        return "path" in log and "table" in log["path"]
-    
-    def integer_rule(log: Dict[str, Any]) -> bool:
-        return "path" in log and 10 in log["path"]
-    
+    # Call label feature function to test the 3 definitions
+    label_features(logs=logs, definitions=[type_rule_definition])
+    label_features(logs=logs, definitions=[rule_not_callable_definintion])
+    label_features(logs=logs, definitions=[string_error_definition])
 
 
-    # TODO: Examine the UserALE logs, see what fields-values exist
-    # and write a few more fews we can test our logic against
-    # So long as the rule accepts a log and returns a true/false
-    # value, it is valid. This is a very expansive signature which
-    # supports things like string matching, regular expressions,
-    # and more.
+ 
 
-    map_page_definition = FeatureDefinition(rule=map_rule, label="map_page")
-    container_path_definition = FeatureDefinition(rule=container_rule, label="container_path")
-    table_path_definition = FeatureDefinition(rule=table_rule, label="table_path")
-    integer_path_definition = FeatureDefinition(rule=integer_rule, label= 10)
 
-    label_features(logs=logs, definitions=[map_page_definition])
-    label_features(logs=logs, definitions=[container_path_definition])
-    label_features(logs=logs, definitions=[table_path_definition])
-    label_features(logs=logs, definitions=[integer_path_definition])
 

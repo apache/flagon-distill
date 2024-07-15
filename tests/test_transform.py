@@ -20,7 +20,10 @@ import distill
 from tests import testing_utils
 from tests.data_config import DATA_DIR
 import pytest
-from core import feature_definition
+import json
+from distill.core.feature_definition import FeatureDefinition
+from typing import Any, Dict, List, Callable
+
 
 
 def test_pairwiseStag_1():
@@ -45,25 +48,31 @@ def test_pairwiseSeq_2():
     test_list = [1, 2, 3, 4]
     result = distill.pairwiseSeq(test_list, split=True)
     assert result == ((1, 2, 3), (2, 3, 4))
-    
-def test_label_features_1():
-    def input_rule(log):
-        return "target" in log and "input" in log["target"]
-    logs = testing_utils.setup("./data/task_example.json", "datetime")
-    result = distill.label_features(logs,[FeatureDefinition(rule=input_rule, label="input_target")])
+
+def test_label_features():
+    file = open(os.path.join(DATA_DIR, "sample_data.json"), "r")
+    logs = json.load(file)
+    def type_rule(log) -> bool:
+        return "type" in log and "scroll" in log["type"]
+    result = distill.label_features(logs,[FeatureDefinition(rule=type_rule, label="scroll_type")])
     assert isinstance(result, list)
-    assert "input_target" in result 
+    assert "labels" in set().union(*result)
+    assert 'labels', 'scroll_type' in result[1].items()
+
 
 def test_feature_definition_does_not_accept_non_string_label():
     with pytest.raises(TypeError):
+        file = open(os.path.join(DATA_DIR, "sample_data.json"), "r")
+        logs = json.load(file)
         def input_rule(log):
             return "target" in log and "input" in log["target"]
-        logs = testing_utils.setup("./data/task_example.json", "datetime")
         result = distill.label_features(logs,[FeatureDefinition(rule=input_rule, label=10)])
 
 def test_feature_definition_does_not_accept_non_callable_rules():
     with pytest.raises(TypeError):
-        logs = testing_utils.setup("./data/task_example.json", "datetime")
+        #file = open(os.path.join(DATA_DIR, "sample_data.json"), "r")
+        #logs = json.load(file)
+        logs = testing_utils.setup(os.path.join(DATA_DIR, "sample_data.json"), "integer")
         result = distill.label_features(logs,[FeatureDefinition(rule="input_rule", label="input_target")])
     
 
