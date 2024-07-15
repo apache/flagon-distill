@@ -23,6 +23,7 @@ import pytest
 import json
 from distill.core.feature_definition import FeatureDefinition
 from typing import Any, Dict, List, Callable
+from distill.process.transform import label_features
 
 
 
@@ -54,7 +55,7 @@ def test_label_features():
     logs = json.load(file)
     def type_rule(log) -> bool:
         return "type" in log and "scroll" in log["type"]
-    result = distill.label_features(logs,[FeatureDefinition(rule=type_rule, label="scroll_type")])
+    result = label_features(logs,[FeatureDefinition(rule=type_rule, label="scroll_type")])
     assert isinstance(result, list)
     assert "labels" in set().union(*result)
     assert 'labels', 'scroll_type' in result[1].items()
@@ -66,14 +67,14 @@ def test_feature_definition_does_not_accept_non_string_label():
         logs = json.load(file)
         def input_rule(log):
             return "target" in log and "input" in log["target"]
-        result = distill.label_features(logs,[FeatureDefinition(rule=input_rule, label=10)])
+        result = label_features(logs,[FeatureDefinition(rule=input_rule, label=10)])
 
 def test_feature_definition_does_not_accept_non_callable_rules():
     with pytest.raises(TypeError):
         #file = open(os.path.join(DATA_DIR, "sample_data.json"), "r")
         #logs = json.load(file)
         logs = testing_utils.setup(os.path.join(DATA_DIR, "sample_data.json"), "integer")
-        result = distill.label_features(logs,[FeatureDefinition(rule="input_rule", label="input_target")])
+        result = label_features(logs,[FeatureDefinition(rule="input_rule", label="input_target")])
     
 
 
