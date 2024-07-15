@@ -71,9 +71,8 @@ def test_feature_definition_does_not_accept_non_string_label():
 
 def test_feature_definition_does_not_accept_non_callable_rules():
     with pytest.raises(TypeError):
-        #file = open(os.path.join(DATA_DIR, "sample_data.json"), "r")
-        #logs = json.load(file)
-        logs = testing_utils.setup(os.path.join(DATA_DIR, "sample_data.json"), "integer")
+        file = open(os.path.join(DATA_DIR, "sample_data.json"), "r")
+        logs = json.load(file)
         result = label_features(logs,[FeatureDefinition(rule="input_rule", label="input_target")])
     
 
