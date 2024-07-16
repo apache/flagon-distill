@@ -81,7 +81,20 @@ def test_log_normalize_timestamp():
     assert test_log.data.client_time == correct_dt
     assert test_log.to_dict()["clientTime"] == correct_ms
 
+def test_log_comparison():
+    data = load_log()
+    test_log = Log(data=data)
 
+    test_log_equal = Log(data=data)
+
+    data_other = json.loads(load_log())
+    data_other["clientTime"] += 10000
+    data_other = json.dumps(data_other)
+    test_other = Log(data=data_other)
+
+    assert test_log == test_log_equal
+    assert test_log < test_other < datetime.now()
+    
 def load_log() -> str:
     with open(os.path.join(DATA_DIR, "log_test_data.json")) as f:
         data = f.readline()
