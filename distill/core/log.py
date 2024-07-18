@@ -17,6 +17,7 @@ import json
 from typing import Dict, Union
 
 from pksuid import PKSUID
+from datetime import datetime
 from pydantic import BaseModel, parse_obj_as
 from pydantic.type_adapter import TypeAdapter
 
@@ -60,3 +61,37 @@ class Log:
 
     def to_dict(self) -> JsonDict:
         return self.data.model_dump(by_alias=True)
+    
+    def __lt__(self, other):
+        if isinstance(other, Log):
+            return self.id < other.id
+        if isinstance(other, datetime):
+            return self.id.get_datetime() < other
+    
+    def __le__(self, other):
+        if isinstance(other, Log):
+            return self.id <= other.id
+        if isinstance(other, datetime):
+            return self.id.get_datetime() <= other
+    
+    def __gt__(self, other):
+        if isinstance(other, Log):
+            return self.id > other.id
+        if isinstance(other, datetime):
+            return self.id.get_datetime() > other
+    
+    def __ge__(self, other):
+        if isinstance(other, Log):
+            return self.id > other.id
+        if isinstance(other, datetime):
+            return self.id.get_datetime() >= other
+    
+    def __ne__(self, other):
+        if isinstance(other, Log):
+            return self.data != other.data
+        return NotImplemented
+    
+    def __eq__(self, other):
+        if isinstance(other, Log):
+            return self.data == other.data
+        return NotImplemented
