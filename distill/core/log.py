@@ -66,25 +66,25 @@ class Log:
         if isinstance(other, Log):
             return self.id < other.id
         if isinstance(other, datetime):
-            return self.id.get_datetime() < other.now()
+            return self.id.get_datetime() < other
     
     def __le__(self, other):
         if isinstance(other, Log):
             return self.id <= other.id
         if isinstance(other, datetime):
-            return self.id.get_datetime() <= other.now()
+            return self.id.get_datetime() <= other
     
     def __gt__(self, other):
         if isinstance(other, Log):
             return self.id > other.id
         if isinstance(other, datetime):
-            return self.id.get_datetime() > other.now()
+            return self.id.get_datetime() > other
     
     def __ge__(self, other):
         if isinstance(other, Log):
             return self.id > other.id
         if isinstance(other, datetime):
-            return self.id.get_datetime() >= other.now()
+            return self.id.get_datetime() >= other
     
     def __ne__(self, other):
         if isinstance(other, Log):
