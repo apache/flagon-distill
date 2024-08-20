@@ -54,6 +54,24 @@ test:
 	poetry run pytest 
 	@echo "Done."
 
+test_all:
+	@echo "Testing with python3 versions 3.8 and up..."
+	@echo "This may take a while..."
+	tox run-parallel
+
+#########
+# Setup #
+#########
+install_py_versions:
+	@echo "Installing python 3.8 and up..."
+ifeq ($(OS),Windows_NT)
+	@echo "Windows detected..."
+	@echo "Please run this in Windows Subsystem for Linux (WSL)"
+else
+	@echo "Unix detected"
+	./install_py_versions.sh
+endif
+
 ##########################
 # LINTING AND FORMATTING #
 ##########################
