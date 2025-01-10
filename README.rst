@@ -111,13 +111,19 @@ Follow these steps to set up and install the project:
    
    You are now inside the project's virtual environment, which isolates the project's dependencies from your system-wide Python packages.
 
+4.5 Ensure you've downloaded pre-commit and other dependencies
+
+    .. code-block:: bash
+        pip install pre-commit
+        poetry install --all-groups
+
 5. Run the tests:
    
    You can now run the tests to make sure everything installed properly. For example:
 
     .. code-block:: bash
 
-        make test
+       poetry run make test
    
    Remember that you need to activate the virtual environment (step 4) each time you work on the project.
 
