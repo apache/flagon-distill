@@ -111,7 +111,7 @@ Follow these steps to set up and install the project:
    
    You are now inside the project's virtual environment, which isolates the project's dependencies from your system-wide Python packages.
 
-4.5 Ensure you've downloaded pre-commit and other dependencies
+4.5 Ensure you've downloaded pre-commit and other dependecies
 
     .. code-block:: bash
         pip install pre-commit
