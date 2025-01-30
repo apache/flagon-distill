@@ -103,18 +103,10 @@ Follow these steps to set up and install the project:
    
    This command reads the ``pyproject.toml`` file and installs all required packages into a dedicated virtual environment.
 
-4. Activate the virtual environment:
+
+4. If you would like to run tests or make changes, install optional dependency groups.
 
     .. code-block:: bash
-
-        poetry shell
-   
-   You are now inside the project's virtual environment, which isolates the project's dependencies from your system-wide Python packages.
-
-4.5 Ensure you've downloaded pre-commit and other dependecies
-
-    .. code-block:: bash
-        pip install pre-commit
         poetry install --all-groups
 
 5. Run the tests:
@@ -122,8 +114,7 @@ Follow these steps to set up and install the project:
    You can now run the tests to make sure everything installed properly. For example:
 
     .. code-block:: bash
-
-       poetry run make test
+        make test
    
    Remember that you need to activate the virtual environment (step 4) each time you work on the project.
 
