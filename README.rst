@@ -21,6 +21,9 @@
 Apache Flagon Distill
 =====================
 
+🚨 This repository has been archived and it's contents have moved to https://github.com/apache/flagon
+-----------------------------------------------------------------------------------------------------
+
 .. image:: https://readthedocs.org/projects/incubator-flagon-distill/badge/?version=distill_toolkit_refactor
 	:target: https://incubator-flagon-distill.readthedocs.io/en/distill_toolkit_refactor/?badge=stable
 	:alt: Documentation Status
